@@ -36,25 +36,47 @@ protocol Joystick {
 class HorizontalJoystick: SKNode, Joystick {
     var delegate: JoystickDelegate?
     
-    let button = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    let button_left_left = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    
+    let button_left_right = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    
+    let button_left_up = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    
+    let button_left_down = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    
+    let button_right_left = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    
+    let button_right_right = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    
+    let button_right_up = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    
+    let button_right_down = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
+    
+    var DeviceSize: CGSize {
+        return UIScreen.main.bounds.size
+    }
     
     override init() {
         super.init()
-        self.addChild(button)
+        AddChildren()
+    }
+    
+    func AddChildren(){
+        self.addChild(button_left_left)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if button.color == UIColor.black{
-            button.color = UIColor.blue
+        if button_left_left.color == UIColor.black{
+            button_left_left.color = UIColor.blue
         }
         else{
-            button.color = UIColor.black
+            button_left_left.color = UIColor.black
         }
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.addChild(button)
+        AddChildren()
     }
 }
