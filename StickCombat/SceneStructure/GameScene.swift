@@ -11,11 +11,9 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    
     override func didMove(to view: SKView) {
         
+        /*
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
         if let label = self.label {
@@ -26,11 +24,11 @@ class GameScene: SKScene {
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
         self.spinnyNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: w, height: w))
-
+*/
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        /*
         let fighter1 = childNode(withName: "fighterModel_1")!
         
         if let touchLocation = touches.first?.location(in: self){
@@ -38,6 +36,7 @@ class GameScene: SKScene {
                 fighter1.physicsBody!.applyImpulse(CGVector(dx: 50, dy: -30), at: touchLocation)
             }
         }
+ */
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

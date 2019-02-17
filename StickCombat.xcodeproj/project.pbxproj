@@ -16,6 +16,11 @@
 		8517A645221294C400880F20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8517A644221294C400880F20 /* Assets.xcassets */; };
 		8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8517A646221294C400880F20 /* LaunchScreen.storyboard */; };
 		852A59F92219494F000EEB12 /* GameScene.mdj in Resources */ = {isa = PBXBuildFile; fileRef = 852A59F82219494F000EEB12 /* GameScene.mdj */; };
+		852A59FC22194B97000EEB12 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FB22194B97000EEB12 /* Logic.swift */; };
+		852A59FE22194BEE000EEB12 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FD22194BEE000EEB12 /* Action.swift */; };
+		852A5A0022194CA1000EEB12 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FF22194CA1000EEB12 /* Condition.swift */; };
+		852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A01221959FB000EEB12 /* ActionEngine.swift */; };
+		852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0322195DCB000EEB12 /* FighterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		8517A647221294C400880F20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8517A649221294C400880F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		852A59F82219494F000EEB12 /* GameScene.mdj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GameScene.mdj; sourceTree = "<group>"; };
+		852A59FB22194B97000EEB12 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
+		852A59FD22194BEE000EEB12 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		852A59FF22194CA1000EEB12 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
+		852A5A01221959FB000EEB12 /* ActionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEngine.swift; sourceTree = "<group>"; };
+		852A5A0322195DCB000EEB12 /* FighterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FighterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +73,10 @@
 		8517A636221294C200880F20 /* StickCombat */ = {
 			isa = PBXGroup;
 			children = (
+				852A59FA22194ADE000EEB12 /* SceneStructure */,
 				8517A637221294C200880F20 /* AppDelegate.swift */,
 				8517A639221294C200880F20 /* GameScene.sks */,
 				8517A63B221294C200880F20 /* Actions.sks */,
-				8517A63D221294C200880F20 /* GameScene.swift */,
 				8517A63F221294C200880F20 /* GameViewController.swift */,
 				8517A641221294C200880F20 /* Main.storyboard */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
@@ -90,6 +100,19 @@
 				852A59F82219494F000EEB12 /* GameScene.mdj */,
 			);
 			path = UML;
+			sourceTree = "<group>";
+		};
+		852A59FA22194ADE000EEB12 /* SceneStructure */ = {
+			isa = PBXGroup;
+			children = (
+				8517A63D221294C200880F20 /* GameScene.swift */,
+				852A59FB22194B97000EEB12 /* Logic.swift */,
+				852A59FD22194BEE000EEB12 /* Action.swift */,
+				852A59FF22194CA1000EEB12 /* Condition.swift */,
+				852A5A01221959FB000EEB12 /* ActionEngine.swift */,
+				852A5A0322195DCB000EEB12 /* FighterView.swift */,
+			);
+			path = SceneStructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,8 +189,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */,
 				8517A63E221294C200880F20 /* GameScene.swift in Sources */,
+				852A5A0022194CA1000EEB12 /* Condition.swift in Sources */,
+				852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */,
 				8517A640221294C200880F20 /* GameViewController.swift in Sources */,
+				852A59FC22194B97000EEB12 /* Logic.swift in Sources */,
+				852A59FE22194BEE000EEB12 /* Action.swift in Sources */,
 				8517A638221294C200880F20 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
