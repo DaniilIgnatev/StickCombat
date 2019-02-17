@@ -36,7 +36,7 @@ protocol Joystick {
 class HorizontalJoystick: SKNode, Joystick {
     var delegate: JoystickDelegate?
     
-    let button = SKSpriteNode(color: UIColor.black, size: CGSize(width: 20, height: 20))
+    let button = SKSpriteNode(color: UIColor.black, size: CGSize(width: 50, height: 50))
     
     override init() {
         super.init()
@@ -55,5 +55,6 @@ class HorizontalJoystick: SKNode, Joystick {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.addChild(button)
     }
 }
