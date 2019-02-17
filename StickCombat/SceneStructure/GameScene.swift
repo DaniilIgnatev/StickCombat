@@ -20,6 +20,8 @@ class GameScene: SKScene {
         let firstFighterNode = childNode(withName: "fighter_1") as! SKSpriteNode
         let secondFighterNode = childNode(withName: "fighter_2") as! SKSpriteNode
         
+        horizontalJoystickNode.SceneSize = self.size
+
         switch mode {
         case .pvpNet(let fighter, let url):
             Logic = ServerLogicController(firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, gameMode: mode, adress: url)
@@ -77,8 +79,8 @@ class GameScene: SKScene {
         
     }
     
-    
+    /*
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-    }
+    }*/
 }

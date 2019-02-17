@@ -17,12 +17,13 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .fill
                 
                 // Present the scene
                 view.presentScene(scene)
+                scene.SetUpGameLogic(mode: .pvpNet(figherID: .first, adress: URL(string: "ws://localhost:8080/")!))
             }
             
             view.ignoresSiblingOrder = true
