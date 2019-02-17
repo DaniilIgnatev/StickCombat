@@ -15,7 +15,7 @@
 		8517A643221294C200880F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8517A641221294C200880F20 /* Main.storyboard */; };
 		8517A645221294C400880F20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8517A644221294C400880F20 /* Assets.xcassets */; };
 		8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8517A646221294C400880F20 /* LaunchScreen.storyboard */; };
-		85525A00221822BF00FFF3BB /* Annotation.mdj in Resources */ = {isa = PBXBuildFile; fileRef = 855259FF221822BF00FFF3BB /* Annotation.mdj */; };
+		852A59F92219494F000EEB12 /* GameScene.mdj in Resources */ = {isa = PBXBuildFile; fileRef = 852A59F82219494F000EEB12 /* GameScene.mdj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		8517A644221294C400880F20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8517A647221294C400880F20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8517A649221294C400880F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		855259FF221822BF00FFF3BB /* Annotation.mdj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Annotation.mdj; sourceTree = "<group>"; };
+		852A59F82219494F000EEB12 /* GameScene.mdj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GameScene.mdj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 		8517A62B221294C200880F20 = {
 			isa = PBXGroup;
 			children = (
-				855259FF221822BF00FFF3BB /* Annotation.mdj */,
+				852A59F62219491A000EEB12 /* Docs */,
 				8517A636221294C200880F20 /* StickCombat */,
 				8517A635221294C200880F20 /* Products */,
 			);
@@ -74,6 +74,22 @@
 				8517A649221294C400880F20 /* Info.plist */,
 			);
 			path = StickCombat;
+			sourceTree = "<group>";
+		};
+		852A59F62219491A000EEB12 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				852A59F72219494F000EEB12 /* UML */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		852A59F72219494F000EEB12 /* UML */ = {
+			isa = PBXGroup;
+			children = (
+				852A59F82219494F000EEB12 /* GameScene.mdj */,
+			);
+			path = UML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,11 +150,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85525A00221822BF00FFF3BB /* Annotation.mdj in Resources */,
 				8517A643221294C200880F20 /* Main.storyboard in Resources */,
 				8517A63A221294C200880F20 /* GameScene.sks in Resources */,
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
+				852A59F92219494F000EEB12 /* GameScene.mdj in Resources */,
 				8517A63C221294C200880F20 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
