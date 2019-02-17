@@ -27,7 +27,8 @@ protocol ActionEngine {
 
 
 
-class GestureEngine: ActionEngine {
+class GestureEngine: ActionEngine, JoystickDelegate {
+
     
     let fighter: FighterID
     var Fighter: FighterID{
@@ -54,6 +55,12 @@ class GestureEngine: ActionEngine {
     public init(fighterID : FighterID, condition : SceneCondition){
         self.fighter = fighterID
         self.condition = condition
+    }
+    
+    //MARK: Joystick Delegate
+    
+    func ControlCommand(_: JoystickDescriptor) {
+        
     }
 }
 

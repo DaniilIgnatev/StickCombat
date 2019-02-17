@@ -11,6 +11,30 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    private var Logic : LogicController? = nil
+    
+
+    
+    public func SetUpGameLogic(mode : GameMode){
+        var horizontalJoystickNode = childNode(withName: "HorizontalJoystick") as! Joystick
+        let firstFighterNode = childNode(withName: "fighter_1") as! SKSpriteNode
+        let secondFighterNode = childNode(withName: "fighter_2") as! SKSpriteNode
+        
+        switch mode {
+        case .pvpNet(let fighter, let url):
+            Logic = ServerLogicController(firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, gameMode: mode, adress: url)
+            
+            if fighter == .first{
+                horizontalJoystickNode.delegate = (Logic!.Engine_1 as! GestureEngine)
+            }
+            else{
+                horizontalJoystickNode.delegate = (Logic!.Engine_2 as! GestureEngine)
+            }
+        default:
+            break
+        }
+    }
+    
     override func didMove(to view: SKView) {
         
         /*
@@ -37,6 +61,8 @@ class GameScene: SKScene {
             }
         }
  */
+        
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

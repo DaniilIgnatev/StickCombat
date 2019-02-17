@@ -21,6 +21,7 @@
 		852A5A0022194CA1000EEB12 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FF22194CA1000EEB12 /* Condition.swift */; };
 		852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A01221959FB000EEB12 /* ActionEngine.swift */; };
 		852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0322195DCB000EEB12 /* FighterView.swift */; };
+		852A5A0622199CA5000EEB12 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0522199CA5000EEB12 /* Joystick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		852A59FF22194CA1000EEB12 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		852A5A01221959FB000EEB12 /* ActionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEngine.swift; sourceTree = "<group>"; };
 		852A5A0322195DCB000EEB12 /* FighterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FighterView.swift; sourceTree = "<group>"; };
+		852A5A0522199CA5000EEB12 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				852A59FF22194CA1000EEB12 /* Condition.swift */,
 				852A5A01221959FB000EEB12 /* ActionEngine.swift */,
 				852A5A0322195DCB000EEB12 /* FighterView.swift */,
+				852A5A0522199CA5000EEB12 /* Joystick.swift */,
 			);
 			path = SceneStructure;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				852A5A0622199CA5000EEB12 /* Joystick.swift in Sources */,
 				852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */,
 				8517A63E221294C200880F20 /* GameScene.swift in Sources */,
 				852A5A0022194CA1000EEB12 /* Condition.swift in Sources */,
