@@ -12,7 +12,7 @@ import SpriteKit
 
 class FighterView {
     
-    private let FighterNode : SKSpriteNode
+    public let FighterNode : SKSpriteNode
     
     init(node : SKSpriteNode) {
         self.FighterNode = node

@@ -45,8 +45,8 @@ class StrikeAction: Action {
     }
     
     
-    required init(kind: ActionType, fighter: FighterID, vector : CGVector, point : CGPoint) {
-        self.kind = kind
+    required init(fighter: FighterID, vector : CGVector, point : CGPoint) {
+        self.kind = .Strike
         self.fighter = fighter
         self.Vector = vector
         self.Point = point
@@ -78,21 +78,29 @@ class HorizontalAction: Action {
         }
     }
     
-    required init(kind: ActionType, fighter: FighterID, from : Double, to : Double, by : Double = 0.0) {
-        self.kind = kind
+    init(fighter: FighterID, from : CGFloat, to : CGFloat) {
+        self.kind = .Horizontal
         self.fighter = fighter
         self.From = from
         self.To = to
+        self.By = 0.0
+    }
+    
+    init(fighter: FighterID, from : CGFloat, by : CGFloat) {
+        self.kind = .Horizontal
+        self.fighter = fighter
+        self.From = from
+        self.To = 0.0
         self.By = by
     }
     
-    public let From : Double
+    public let From : CGFloat
     
     
-    public let To : Double
+    public let To : CGFloat
     
     
-    public let By : Double
+    public let By : CGFloat
 }
 
 
@@ -113,8 +121,8 @@ class VerticalAction: Action {
         }
     }
     
-    required init(kind: ActionType, fighter: FighterID, from : VerticalStance, to : VerticalStance) {
-        self.kind = kind
+    required init(fighter: FighterID, from : VerticalStance, to : VerticalStance) {
+        self.kind = .Vertical
         self.fighter = fighter
         self.From = from
         self.To = to

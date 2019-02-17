@@ -62,6 +62,9 @@ class LogicController : ActionEngineDelegate {
         default:
             break
         }
+        
+        View_1.PlayAction(HorizontalAction(fighter: .first, from: View_1.FighterNode.position.x, to: sceneCondition.fighter_1.shape.origin.x))
+        View_2.PlayAction(HorizontalAction(fighter: .second, from: View_2.FighterNode.position.x, to: sceneCondition.fighter_2.shape.origin.x))
     }
 }
 
