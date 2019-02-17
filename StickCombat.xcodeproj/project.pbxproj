@@ -22,6 +22,7 @@
 		852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A01221959FB000EEB12 /* ActionEngine.swift */; };
 		852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0322195DCB000EEB12 /* FighterView.swift */; };
 		852A5A0622199CA5000EEB12 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0522199CA5000EEB12 /* Joystick.swift */; };
+		A153FE67B822013ED5814E4B /* Pods_StickCombat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,9 @@
 		852A5A01221959FB000EEB12 /* ActionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEngine.swift; sourceTree = "<group>"; };
 		852A5A0322195DCB000EEB12 /* FighterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FighterView.swift; sourceTree = "<group>"; };
 		852A5A0522199CA5000EEB12 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
+		933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.debug.xcconfig"; sourceTree = "<group>"; };
+		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
+		ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickCombat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,18 +53,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A153FE67B822013ED5814E4B /* Pods_StickCombat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E9F65EF790BEA99F77D5595 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */,
+				E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8517A62B221294C200880F20 = {
 			isa = PBXGroup;
 			children = (
 				852A59F62219491A000EEB12 /* Docs */,
 				8517A636221294C200880F20 /* StickCombat */,
 				8517A635221294C200880F20 /* Products */,
+				1E9F65EF790BEA99F77D5595 /* Pods */,
+				EEFD09FD49A6A2D8427548F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +134,14 @@
 			path = SceneStructure;
 			sourceTree = "<group>";
 		};
+		EEFD09FD49A6A2D8427548F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8517A64C221294C400880F20 /* Build configuration list for PBXNativeTarget "StickCombat" */;
 			buildPhases = (
+				ECC12D064869E8B3847F60CE /* [CP] Check Pods Manifest.lock */,
 				8517A630221294C200880F20 /* Sources */,
 				8517A631221294C200880F20 /* Frameworks */,
 				8517A632221294C200880F20 /* Resources */,
+				729CF6D8F69DD09AFFB79689 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,6 +212,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		729CF6D8F69DD09AFFB79689 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECC12D064869E8B3847F60CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StickCombat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8517A630221294C200880F20 /* Sources */ = {
@@ -344,6 +409,7 @@
 		};
 		8517A64D221294C400880F20 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -362,6 +428,7 @@
 		};
 		8517A64E221294C400880F20 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
