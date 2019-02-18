@@ -12,7 +12,7 @@ import SpriteKit
 
 
 enum GameMode {
-    case pvpNet(figherID : FighterID, adress : URL)
+    case pvpNet(figherID : FighterID, moveController : Joystick, strikeController : Joystick , adress : URL)
     case pvpLocal(figherID : FighterID)
     case pveLocal(figherID : FighterID)
 }

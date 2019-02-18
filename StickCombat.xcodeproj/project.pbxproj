@@ -23,6 +23,8 @@
 		852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0322195DCB000EEB12 /* FighterView.swift */; };
 		852A5A0622199CA5000EEB12 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0522199CA5000EEB12 /* Joystick.swift */; };
 		A153FE67B822013ED5814E4B /* Pods_StickCombat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */; };
+		A5187510221AB4B2007CDFDE /* ControllerStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518750F221AB4B2007CDFDE /* ControllerStickView.swift */; };
+		A5187512221AB73E007CDFDE /* ControllerButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* ControllerButtonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		852A5A0322195DCB000EEB12 /* FighterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FighterView.swift; sourceTree = "<group>"; };
 		852A5A0522199CA5000EEB12 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.debug.xcconfig"; sourceTree = "<group>"; };
+		A518750F221AB4B2007CDFDE /* ControllerStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerStickView.swift; sourceTree = "<group>"; };
+		A5187511221AB73E007CDFDE /* ControllerButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerButtonsView.swift; sourceTree = "<group>"; };
 		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
 		ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickCombat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,6 +127,7 @@
 		852A59FA22194ADE000EEB12 /* SceneStructure */ = {
 			isa = PBXGroup;
 			children = (
+				A518750C221AB447007CDFDE /* Controllers */,
 				8517A63D221294C200880F20 /* GameScene.swift */,
 				852A59FB22194B97000EEB12 /* Logic.swift */,
 				852A59FD22194BEE000EEB12 /* Action.swift */,
@@ -132,6 +137,15 @@
 				852A5A0522199CA5000EEB12 /* Joystick.swift */,
 			);
 			path = SceneStructure;
+			sourceTree = "<group>";
+		};
+		A518750C221AB447007CDFDE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A518750F221AB4B2007CDFDE /* ControllerStickView.swift */,
+				A5187511221AB73E007CDFDE /* ControllerButtonsView.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		EEFD09FD49A6A2D8427548F0 /* Frameworks */ = {
@@ -261,8 +275,10 @@
 				852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */,
 				8517A63E221294C200880F20 /* GameScene.swift in Sources */,
 				852A5A0022194CA1000EEB12 /* Condition.swift in Sources */,
+				A5187512221AB73E007CDFDE /* ControllerButtonsView.swift in Sources */,
 				852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */,
 				8517A640221294C200880F20 /* GameViewController.swift in Sources */,
+				A5187510221AB4B2007CDFDE /* ControllerStickView.swift in Sources */,
 				852A59FC22194B97000EEB12 /* Logic.swift in Sources */,
 				852A59FE22194BEE000EEB12 /* Action.swift in Sources */,
 				8517A638221294C200880F20 /* AppDelegate.swift in Sources */,

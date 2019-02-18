@@ -13,14 +13,13 @@ class GameScene: SKScene {
     
     private var Logic : LogicController? = nil
     
-
     
     public func SetUpGameLogic(mode : GameMode){
-        var horizontalJoystickNode = childNode(withName: "HorizontalJoystick") as! Joystick
+     
         let firstFighterNode = childNode(withName: "fighter_1") as! SKSpriteNode
         let secondFighterNode = childNode(withName: "fighter_2") as! SKSpriteNode
         
-        horizontalJoystickNode.SceneSize = self.size
+        //horizontalJoystickNode.SceneSize = self.size
 
         switch mode {
         case .pvpNet(let fighter, let url):

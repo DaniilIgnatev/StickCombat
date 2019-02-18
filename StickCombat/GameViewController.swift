@@ -12,6 +12,12 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    let stickRadius : CGFloat = 50
+    
+    let firstFighterStick = ControllerStickView.init(frame: CGRect(x: 0, y: 0, width: stickRadius, height: stickRadius))
+    
+    let firstFighterButtons = ControllerButtonsView.init(frame: CGRect(x: 0, y: 0, width: <#T##CGFloat#>, height: <#T##CGFloat#>))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
