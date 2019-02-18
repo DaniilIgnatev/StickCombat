@@ -95,6 +95,7 @@
 		8517A636221294C200880F20 /* StickCombat */ = {
 			isa = PBXGroup;
 			children = (
+				A518750C221AB447007CDFDE /* Controllers */,
 				852A59FA22194ADE000EEB12 /* SceneStructure */,
 				8517A637221294C200880F20 /* AppDelegate.swift */,
 				8517A639221294C200880F20 /* GameScene.sks */,
@@ -127,7 +128,6 @@
 		852A59FA22194ADE000EEB12 /* SceneStructure */ = {
 			isa = PBXGroup;
 			children = (
-				A518750C221AB447007CDFDE /* Controllers */,
 				8517A63D221294C200880F20 /* GameScene.swift */,
 				852A59FB22194B97000EEB12 /* Logic.swift */,
 				852A59FD22194BEE000EEB12 /* Action.swift */,
