@@ -8,13 +8,14 @@
 
 import UIKit
 
+@IBDesignable
 class ControllerStickView: UIView, Joystick {
     var delegate: JoystickDelegate?
     
 
-    var leftStickRadius : CGFloat = 20
+    private let StickRadius : CGFloat = 20
     
-    var leftRingRadius : CGFloat = 60
+    private let RingRadius : CGFloat = 60
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -22,9 +23,14 @@ class ControllerStickView: UIView, Joystick {
         // Drawing code
         
     if let context = UIGraphicsGetCurrentContext(){
-            
+            context.addEllipse(in: CGRect(x: 0, y: 0, width: StickRadius, height: StickRadius))
+         
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let loc = touches.first!.location(in: superview!)
+        print("x = \(loc.x); y = \(loc.y)")
+    }
 
 }

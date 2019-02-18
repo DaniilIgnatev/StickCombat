@@ -12,7 +12,7 @@ class ControllerButtonsView: UIView, Joystick {
     var delegate: JoystickDelegate?
     
     let buttonsSize : CGFloat = 30
-    
+    /*
     var button_E : UIButton
     
      var button_R : UIButton
@@ -20,7 +20,8 @@ class ControllerButtonsView: UIView, Joystick {
      var button_S : UIButton
     
      var button_D : UIButton
-
+*/
+ 
     override init(frame: CGRect) {
         super.init(frame: frame)
         initButtons()
@@ -35,10 +36,12 @@ class ControllerButtonsView: UIView, Joystick {
         let verticalOffset : CGFloat = 15
         let horizontalOffset : CGFloat = 10
         
+        /*
         button_E = UIButton(frame: CGRect(x: 0, y: 0, width: buttonsSize, height: buttonsSize))
         button_R = UIButton(frame: CGRect(x: 0, y: 0, width: buttonsSize, height: buttonsSize))
         button_S = UIButton(frame: CGRect(x: 0, y: 0, width: buttonsSize, height: buttonsSize))
         button_D = UIButton(frame: CGRect(x: 0, y: 0, width: buttonsSize, height: buttonsSize))
+ */
     }
     
     /*

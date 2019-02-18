@@ -22,14 +22,16 @@ class GameScene: SKScene {
         //horizontalJoystickNode.SceneSize = self.size
 
         switch mode {
-        case .pvpNet(let fighter, let url):
+        case .pvpNet(let fighter, var moveJoystick, var strikeJoystick, let url):
             Logic = ServerLogicController(firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, gameMode: mode, adress: url)
             
             if fighter == .first{
-                horizontalJoystickNode.delegate = (Logic!.Engine_1 as! GestureEngine)
+                moveJoystick.delegate = (Logic!.Engine_1 as! GestureEngine)
+                strikeJoystick.delegate = (Logic!.Engine_1 as! GestureEngine)
             }
             else{
-                horizontalJoystickNode.delegate = (Logic!.Engine_2 as! GestureEngine)
+                moveJoystick.delegate = (Logic!.Engine_2 as! GestureEngine)
+                strikeJoystick.delegate = (Logic!.Engine_2 as! GestureEngine)
             }
         default:
             break

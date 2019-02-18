@@ -12,14 +12,17 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
-    let stickRadius : CGFloat = 50
+    private let stickRadius : CGFloat = 50
     
-    let firstFighterStick = ControllerStickView.init(frame: CGRect(x: 0, y: 0, width: stickRadius, height: stickRadius))
+    private var firstFighterStick : ControllerStickView?
     
-    let firstFighterButtons = ControllerButtonsView.init(frame: CGRect(x: 0, y: 0, width: <#T##CGFloat#>, height: <#T##CGFloat#>))
+    private var firstFighterButtons : ControllerButtonsView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        firstFighterStick = ControllerStickView.init(frame: CGRect(x: 0, y: 0, width: stickRadius, height: stickRadius))
+        firstFighterButtons = ControllerButtonsView(frame: CGRect(x: 0, y: 0, width: stickRadius, height: stickRadius))
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -29,7 +32,7 @@ class GameViewController: UIViewController {
                 
                 // Present the scene
                 view.presentScene(scene)
-                scene.SetUpGameLogic(mode: .pvpNet(figherID: .first, adress: URL(string: "ws://localhost:8080/")!))
+                scene.SetUpGameLogic(mode: .pvpNet(figherID: .first, moveController: firstFighterStick!, strikeController: firstFighterButtons!, adress: URL(string: "ws://localhost:8080/")!))
             }
             
             view.ignoresSiblingOrder = true
