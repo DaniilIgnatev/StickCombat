@@ -48,6 +48,22 @@ class ControllerStickView: UIView, Joystick {
         }
     }
     
+    private var _StickPosition : CGPoint? = nil
+    private var StickPosition : CGPoint?{
+        get{
+            if _StickPosition == nil{
+                return CGPoint(x: bounds.width / 2, y: bounds.height / 2)
+            }
+            else{
+                return _StickPosition!
+            }
+        }
+        set{
+            _StickPosition = newValue
+            setNeedsDisplay()
+        }
+    }
+    
     private var _StickStrokeColor : UIColor = UIColor.darkGray
     @IBInspectable public var StickStrokeColor : UIColor{
         get{
@@ -113,8 +129,9 @@ class ControllerStickView: UIView, Joystick {
         }
     }
     
-    private var RingRadius: CGFloat {
-        return (bounds.width / 2) - _StickThickness
+
+    @IBInspectable public var RingRadius : CGFloat{
+        return (bounds.width / 2) - _StickThickness - _StickRadius / 2
     }
     
     // Only override draw() if you perform custom drawing.
@@ -140,13 +157,61 @@ class ControllerStickView: UIView, Joystick {
             let locations : [CGFloat] = [0.0,_RingColorPoint,1.0]
             
             let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: locations)!
-            context.drawRadialGradient(gradient, startCenter: center, startRadius: 0, endCenter: center, endRadius: StickRadius, options:  .drawsBeforeStartLocation)
+            context.drawRadialGradient(gradient, startCenter: StickPosition!, startRadius: 0, endCenter: StickPosition!, endRadius: StickRadius, options:  .drawsBeforeStartLocation)
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let loc = touches.first!.location(in: superview!)
+        let loc = touches.first!.location(in: self)
         print("x = \(loc.x); y = \(loc.y)")
+        
+        _ = Angle(pos: loc)
+        
+        StickPosition = loc
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        StickPosition = nil
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let loc = touches.first!.location(in: self)
+   
+        
+      
+            print("x = \(loc.x); y = \(loc.y)")
+             StickPosition = loc
+        
+    }
+    
+    func Distance(pos : CGPoint) -> CGFloat{
+        return sqrt(pow(pos.x - RingRadius,2) + pow(pos.y - RingRadius,2))
+    }
+    
+    func Angle(pos : CGPoint) -> CGFloat{
+        //Local coordinates
+        let localRadius = Distance(pos: pos)
+  
+        //Calculate cos
+        let dx = pos.x - RingRadius >= 0 ? pos.x - RingRadius : -(pos.x - RingRadius)
+        var cos = dx / localRadius;
+        
+        //Check negative cos
+        if (pos.x < RingRadius)
+        {
+            cos *= -1;
+        }
+        
+        var Angle = acos(cos) * 180.0 / CGFloat.pi
+        
+        //Check negative sin
+        if (pos.y > RingRadius)
+        {
+            Angle = 360.0 - Angle;
+        }
+        
+        print("angle = \(Angle)")
+        
+        return Angle;
+    }
 }
