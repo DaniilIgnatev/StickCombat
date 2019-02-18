@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYY-ZE-8FQ" userLabel="LeftStickView" customClass="ControllerStickView" customModule="StickCombat" customModuleProvider="target">
-                                <rect key="frame" x="40" y="235" width="100" height="100"/>
+                                <rect key="frame" x="40" y="255" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="RlQ-be-jZd"/>
                                     <constraint firstAttribute="height" constant="100" id="uoA-gb-xcl"/>
@@ -51,7 +51,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="EYY-ZE-8FQ" secondAttribute="bottom" constant="40" id="QJq-v1-Rpe"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="EYY-ZE-8FQ" secondAttribute="bottom" constant="20" id="QJq-v1-Rpe"/>
                             <constraint firstItem="EYY-ZE-8FQ" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="40" id="lSV-CF-rpd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
