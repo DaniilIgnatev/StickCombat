@@ -9,16 +9,15 @@
 import Foundation
 import SpriteKit
 
+
 protocol JoystickDelegate {
     func ControlCommand(_ : JoystickDescriptor)
 }
 
 
-
 enum ButtonDescriptor{
-    case w,a,s,d
+    case first,second,third,fourth
 }
-
 
 
 struct JoystickDescriptor {
@@ -27,8 +26,6 @@ struct JoystickDescriptor {
 }
 
 
-
 protocol Joystick {
     var delegate : JoystickDelegate? {get set}
 }
-
