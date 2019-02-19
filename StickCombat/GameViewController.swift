@@ -14,15 +14,15 @@ class GameViewController: UIViewController {
 
     private let stickRadius : CGFloat = 50
     
-    private var firstFighterStick : ControllerStickView?
+    @IBOutlet weak var firstFighterStick: ControllerStickView!
     
-    private var firstFighterButtons : ControllerButtonsView?
+    private var firstFighterButtons : ControllerButtonsView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstFighterStick = ControllerStickView.init(frame: CGRect(x: 0, y: 0, width: stickRadius, height: stickRadius))
-        firstFighterButtons = ControllerButtonsView(frame: CGRect(x: 0, y: 0, width: stickRadius, height: stickRadius))
+        firstFighterButtons = ControllerButtonsView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -56,5 +56,17 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        firstFighterStick?.touchBeganInSuperView(touches.first!,superpos : touches.first!.location(in: view))
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        firstFighterStick?.touchMovedInSuperView(touches.first!,superpos : touches.first!.location(in: view))
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        firstFighterStick?.touchEndedInSuperView(touches.first!,superpos : touches.first!.location(in: view))
     }
 }

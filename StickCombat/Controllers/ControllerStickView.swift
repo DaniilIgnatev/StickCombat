@@ -129,9 +129,9 @@ class ControllerStickView: UIView, Joystick {
         }
     }
     
-
-    @IBInspectable public var RingRadius : CGFloat{
-        return (bounds.width / 2) - _StickThickness - _StickRadius / 2
+    
+    private var RingRadius : CGFloat{
+        return (bounds.width / 2) - _StickThickness - _StickRadius 
     }
     
     // Only override draw() if you perform custom drawing.
@@ -160,44 +160,41 @@ class ControllerStickView: UIView, Joystick {
             context.drawRadialGradient(gradient, startCenter: StickPosition!, startRadius: 0, endCenter: StickPosition!, endRadius: StickRadius, options:  .drawsBeforeStartLocation)
         }
     }
+
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let loc = touches.first!.location(in: self)
-        print("x = \(loc.x); y = \(loc.y)")
+    func StickerPosBy(angle : CGFloat, scaleX : CGFloat, scaleY : CGFloat) -> CGPoint{
+        let stock_x = RingRadius
+        let stock_y = RingRadius
         
-        _ = Angle(pos: loc)
+        let rotated_x = stock_x * cos(angle * CGFloat.pi / 180)
+        let rotated_y = stock_y * -sin(angle * CGFloat.pi / 180)
         
-        StickPosition = loc
+        let scaled_x = rotated_x * scaleX
+        let scaled_y = rotated_y * scaleY
+        
+        let final_x = bounds.width / 2 + scaled_x
+        let final_y = bounds.height / 2 + scaled_y
+        
+        //print("New position: \(final_x),\(final_y)")
+        
+        return CGPoint(x: final_x, y: final_y)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        StickPosition = nil
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let loc = touches.first!.location(in: self)
-   
+    func GetAngleRespectively(superPos : CGPoint) -> CGFloat{
+        let posinsuper = frame.origin
+        let center = CGPoint(x : posinsuper.x + frame.width / 2,y : posinsuper.y + frame.height / 2)
+        //print("center: \(center)")
         
-      
-            print("x = \(loc.x); y = \(loc.y)")
-             StickPosition = loc
-        
-    }
-    
-    func Distance(pos : CGPoint) -> CGFloat{
-        return sqrt(pow(pos.x - RingRadius,2) + pow(pos.y - RingRadius,2))
-    }
-    
-    func Angle(pos : CGPoint) -> CGFloat{
         //Local coordinates
-        let localRadius = Distance(pos: pos)
-  
+        let localRadius = sqrt(pow(superPos.x - center.x,2) + pow(superPos.y - center.y,2))
+        
         //Calculate cos
-        let dx = pos.x - RingRadius >= 0 ? pos.x - RingRadius : -(pos.x - RingRadius)
+        //модуль
+        let dx = superPos.x - center.x >= 0 ? superPos.x - center.x : -(superPos.x - center.x)
         var cos = dx / localRadius;
         
         //Check negative cos
-        if (pos.x < RingRadius)
+        if (superPos.x < center.x)
         {
             cos *= -1;
         }
@@ -205,13 +202,50 @@ class ControllerStickView: UIView, Joystick {
         var Angle = acos(cos) * 180.0 / CGFloat.pi
         
         //Check negative sin
-        if (pos.y > RingRadius)
+        if (superPos.y > center.y)
         {
             Angle = 360.0 - Angle;
         }
         
-        print("angle = \(Angle)")
+        //print("angle = \(Angle)")
         
         return Angle;
     }
+    
+    func GetScaleRespectively(superPos : CGPoint) -> (xScale : CGFloat, yScale : CGFloat){
+        let xOffset = superPos.x - center.x > 0 ? superPos.x - center.x : -(superPos.x - center.x)
+        let yOffset = superPos.y - center.y > 0 ? superPos.y - center.y : -(superPos.y - center.y)
+        let maxOffset = RingRadius
+        
+        let xScale = xOffset / maxOffset > 1.0 ? 1.0 : xOffset / maxOffset
+        let yScale = yOffset / maxOffset > 1.0 ? 1.0 : yOffset / maxOffset
+        
+        return (xScale,yScale)
+    }
+    
+    public func touchBeganInSuperView(_ t : UITouch, superpos : CGPoint){
+        //print("Began at superpos \(superpos)")
+        
+    }
+    
+    public func touchMovedInSuperView(_ t : UITouch, superpos : CGPoint){
+        //print("Moved at superpos \(superpos)")
+   
+        let angle = GetAngleRespectively(superPos: superpos)
+        let scale = GetScaleRespectively(superPos: superpos)
+        if sqrt(pow(scale.xScale,2) + pow(scale.yScale,2)) < 1.0 {
+            let pos = t.location(in: self)
+            StickPosition = pos
+        }
+        else{
+            StickPosition = StickerPosBy(angle: angle, scaleX: scale.xScale, scaleY: scale.yScale)
+        }
+        print("angle: \(angle); scale\(scale)")
+    }
+    
+    public func touchEndedInSuperView(_ t : UITouch, superpos : CGPoint){
+        //print("Ended at superpos \(superpos)")
+        StickPosition = nil
+    }
+
 }
