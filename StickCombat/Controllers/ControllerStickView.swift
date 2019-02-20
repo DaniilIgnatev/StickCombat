@@ -162,18 +162,18 @@ class ControllerStickView: UIView, Joystick {
     }
 
     
-    func StickerPosBy(angle : CGFloat, scaleX : CGFloat, scaleY : CGFloat) -> CGPoint{
+    func StickerPosBy(angle : CGFloat, scale : CGFloat) -> CGPoint{
         let stock_x = RingRadius
         let stock_y = RingRadius
-        
+
         let rotated_x = stock_x * cos(angle * CGFloat.pi / 180)
         let rotated_y = stock_y * -sin(angle * CGFloat.pi / 180)
         
-        let scaled_x = rotated_x * scaleX
-        let scaled_y = rotated_y * scaleY
+        let scaled_x = rotated_x * scale
+        let scaled_y = rotated_y * scale
         
-        let final_x = bounds.width / 2 + scaled_x
-        let final_y = bounds.height / 2 + scaled_y
+        let final_x = frame.width / 2 + scaled_x
+        let final_y = frame.height / 2 + scaled_y
         
         //print("New position: \(final_x),\(final_y)")
         
@@ -212,15 +212,17 @@ class ControllerStickView: UIView, Joystick {
         return Angle;
     }
     
-    func GetScaleRespectively(superPos : CGPoint) -> (xScale : CGFloat, yScale : CGFloat){
+    func GetScaleRespectively(superPos : CGPoint) -> (scale : CGFloat,xScale : CGFloat, yScale : CGFloat){
         let xOffset = superPos.x - center.x > 0 ? superPos.x - center.x : -(superPos.x - center.x)
         let yOffset = superPos.y - center.y > 0 ? superPos.y - center.y : -(superPos.y - center.y)
         let maxOffset = RingRadius
         
         let xScale = xOffset / maxOffset > 1.0 ? 1.0 : xOffset / maxOffset
         let yScale = yOffset / maxOffset > 1.0 ? 1.0 : yOffset / maxOffset
-        
-        return (xScale,yScale)
+
+        let scale = sqrt(pow(xScale, 2) + pow(yScale, 2))
+
+        return (scale,xScale,yScale)
     }
     
     public func touchBeganInSuperView(_ t : UITouch, superpos : CGPoint){
@@ -233,14 +235,14 @@ class ControllerStickView: UIView, Joystick {
    
         let angle = GetAngleRespectively(superPos: superpos)
         let scale = GetScaleRespectively(superPos: superpos)
-        if sqrt(pow(scale.xScale,2) + pow(scale.yScale,2)) < 1.0 {
+        if scale.scale < 1.0 {
             let pos = t.location(in: self)
             StickPosition = pos
         }
         else{
-            StickPosition = StickerPosBy(angle: angle, scaleX: scale.xScale, scaleY: scale.yScale)
+            StickPosition = StickerPosBy(angle: angle, scale: 1)
         }
-        print("angle: \(angle); scale\(scale)")
+        print("angle: \(angle); scale\(scale.scale)")
     }
     
     public func touchEndedInSuperView(_ t : UITouch, superpos : CGPoint){
