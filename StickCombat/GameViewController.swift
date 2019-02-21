@@ -11,37 +11,66 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
     private let stickRadius : CGFloat = 50
     
     @IBOutlet weak var firstFighterStick: ControllerStickView!
     
     private var firstFighterButtons : ControllerButtonsView!
     
+    private var mode : GameMode?
+    internal var Mode : GameMode?{
+        get{
+            return mode
+        }
+        set{
+            mode = newValue
+            
+            if let mode = mode{
+                //настройка джойстиков
+                var joysticks : JoystickSet? = nil
+                
+                switch(mode){
+                case .pvpNet:
+                    joysticks = JoystickSet(fmJ: firstFighterStick, fsJ: firstFighterButtons, smJ: nil, ssJ: nil)
+                    break
+                case .pvpLocal:
+                    joysticks = JoystickSet(fmJ: firstFighterStick, fsJ: firstFighterButtons, smJ: nil, ssJ: nil)
+                    break
+                case .pveLocal:
+                    joysticks = JoystickSet(fmJ: firstFighterStick, fsJ: firstFighterButtons, smJ: nil, ssJ: nil)
+                    break
+                }
+                
+                scene.SetUpGameLogic(mode: mode, joysticks: joysticks!)
+            }
+        }
+    }
+    
+    private var scene : GameScene = SKScene(fileNamed: "GameScene") as! GameScene
+    
+    var View: SKView {
+        return self.view as! SKView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         firstFighterButtons = ControllerButtonsView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .fill
-                
-                // Present the scene
-                view.presentScene(scene)
-                scene.SetUpGameLogic(mode: .pvpNet(playerID: .first, moveController: firstFighterStick!, strikeController: firstFighterButtons!, adress: URL(string: "ws://localhost:8080/")!))
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        scene.scaleMode = .fill
+        View.presentScene(scene)
+        
+        View.ignoresSiblingOrder = true
+        
+        View.showsFPS = true
+        View.showsNodeCount = true
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -53,7 +82,7 @@ class GameViewController: UIViewController {
             return .landscape
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

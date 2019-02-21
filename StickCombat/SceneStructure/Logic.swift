@@ -12,69 +12,96 @@ import SpriteKit
 
 
 enum GameMode {
-    case pvpNet(playerID : FighterID, moveController : Joystick, strikeController : Joystick , adress : URL)
-    case pvpLocal(firstMoveController : Joystick, firstStrikeController : Joystick, secondMoveController : Joystick, secondStrikeController : Joystick)
-    case pveLocal(playerID : FighterID, moveController : Joystick, strikeController : Joystick)
+    case pvpNet(playerID : FighterID, adress : URL)
+    case pvpLocal()
+    case pveLocal(playerID : FighterID)
 }
 
 
 
-class LogicController : ActionEngineDelegate {
+protocol LogicController : ActionEngineDelegate {
     
-    fileprivate let View_1 : FighterView
-    
-    
-    fileprivate let View_2 : FighterView
+    var View_1 : FighterView{ get }
     
     
-    internal var Engine_1 : ActionEngine? = nil
+    var View_2 : FighterView {get }
     
     
-    internal var Engine_2 : ActionEngine? = nil
+    var Engine_1 : ActionEngine?{get}
     
     
-    fileprivate let Mode : GameMode
+    var Engine_2 : ActionEngine?{get}
     
+    var FighterID : FighterID{get}
     
     ///Описывается все положение сцены
-    fileprivate let sceneCondition = SceneCondition(firstShape: CGRect(x: -122.5, y: -92, width: 75, height: 150), secondShape: CGRect(x: 122.5, y: -92, width: 75, height: 150))
+    var SceneDescriptor : SceneCondition {get}
     
+    
+    func requestAction(_: Action)
+    
+}
+
+class LogicControllerFactory {
+    static func BuildLogicFor(gameMode : GameMode, joysticks : JoystickSet, firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode) -> LogicController?{
+        switch gameMode {
+        case .pvpNet(let fighterID, let adress):
+            return ServerLogicController(fighterID: fighterID, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, adress: adress)
+        default:
+            return nil
+        }
+    }
+}
+
+class ServerLogicController: LogicController {
+    
+    private var fighterID : FighterID
+    var FighterID: FighterID{
+        return fighterID
+    }
+    
+    private var View1 : FighterView
+    var View_1: FighterView{
+        return View1
+        
+    }
+    
+    private var View2 : FighterView
+    var View_2: FighterView{
+        return View2
+    }
+    
+    fileprivate var Engine1: ActionEngine?
+    var Engine_1: ActionEngine?{
+        return Engine1
+    }
+    
+    fileprivate var Engine2: ActionEngine?
+    var Engine_2: ActionEngine?{
+        return Engine2
+    }
+    
+    private var sceneDescriptor: SceneCondition
+    var SceneDescriptor: SceneCondition{
+        return sceneDescriptor
+    }
     
     func requestAction(_: Action) {
         
     }
     
-    fileprivate init(firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode, gameMode : GameMode) {
-        self.View_1 = FighterView(node: firstFighterNode)
-        self.View_2 = FighterView(node: secondFighterNode)
-        self.Mode = gameMode
+    init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, adress : URL) {
+        self.fighterID = fighterID
+        self.adress = adress
         
-        //определяются actionEngine ()
-        switch Mode {
-        case .pvpNet(let id,_,_,_):
-            if id == .first{
-                Engine_1 = GestureEngine(fighterID: id, condition: sceneCondition)
-                Engine_1!.Delegate = self
-            }
-            else{
-                Engine_2 = GestureEngine(fighterID: id, condition: sceneCondition)
-                Engine_2!.Delegate = self
-            }
-        default:
-            break
-        }
+        let rectFiller = CGRect(x: 20, y: 20, width: 40, height: 80)
+        self.sceneDescriptor = SceneCondition(firstShape: rectFiller, secondShape: rectFiller)
         
-        View_1.PlayAction(HorizontalAction(fighter: .first, from: View_1.FighterNode.position.x, to: sceneCondition.fighter_1.shape.origin.x))
-        View_2.PlayAction(HorizontalAction(fighter: .second, from: View_2.FighterNode.position.x, to: sceneCondition.fighter_2.shape.origin.x))
-    }
-}
-
-
-
-class ServerLogicController: LogicController {
-    required init(firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode, gameMode : GameMode, adress : URL) {
-        super.init(firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, gameMode: gameMode)
+        self.View1 = FighterView(node: firstFighterNode)
+        self.View2 = FighterView(node: secondFighterNode)
     }
     
+    
+    private let adress : URL
     
 }

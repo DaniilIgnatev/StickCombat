@@ -7061,7 +7061,7 @@
 											"top": 504,
 											"width": 274.87890625,
 											"height": 13,
-											"text": "+pvpNet(FighterID, Joystick, Joystick, URL)",
+											"text": "+pvpNet(FighterID, URL)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7078,7 +7078,7 @@
 											"top": 519,
 											"width": 274.87890625,
 											"height": 13,
-											"text": "+pvpLocal(Joystick, Joystick, Joystick, Joystick)",
+											"text": "+pvpLocal()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7095,7 +7095,7 @@
 											"top": 534,
 											"width": 274.87890625,
 											"height": 13,
-											"text": "+pveLocal(FighterID, Joystick, Joystick)",
+											"text": "+pveLocal(FighterID)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -11374,22 +11374,6 @@
 									"_parent": {
 										"$ref": "AAAAAAFpD8lZ348+d4M="
 									},
-									"name": "Joystick"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFpD8oxt5GDpfs=",
-									"_parent": {
-										"$ref": "AAAAAAFpD8lZ348+d4M="
-									},
-									"name": "Joystick"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFpD8oxuJGEKg4=",
-									"_parent": {
-										"$ref": "AAAAAAFpD8lZ348+d4M="
-									},
 									"name": "URL"
 								}
 							]
@@ -11400,41 +11384,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFo+sVJ6IuhUi0="
 							},
-							"name": "pvpLocal",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFpD8tV4pxHyXU=",
-									"_parent": {
-										"$ref": "AAAAAAFpD8tII5tQboM="
-									},
-									"name": "Joystick"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFpD8tV4pxINg4=",
-									"_parent": {
-										"$ref": "AAAAAAFpD8tII5tQboM="
-									},
-									"name": "Joystick"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFpD8tV4pxJm2M=",
-									"_parent": {
-										"$ref": "AAAAAAFpD8tII5tQboM="
-									},
-									"name": "Joystick"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFpD8tV45xKeZg=",
-									"_parent": {
-										"$ref": "AAAAAAFpD8tII5tQboM="
-									},
-									"name": "Joystick"
-								}
-							]
+							"name": "pvpLocal"
 						},
 						{
 							"_type": "UMLOperation",
@@ -11450,26 +11400,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFpD8wUP54wy9M="
 									},
-									"name": "FighterID",
-									"type": ""
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFpD8xT3p8otmc=",
-									"_parent": {
-										"$ref": "AAAAAAFpD8wUP54wy9M="
-									},
-									"name": "Joystick",
-									"type": ""
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFpD8xT3p8pTs0=",
-									"_parent": {
-										"$ref": "AAAAAAFpD8wUP54wy9M="
-									},
-									"name": "Joystick",
-									"type": ""
+									"name": "FighterID"
 								}
 							]
 						}
