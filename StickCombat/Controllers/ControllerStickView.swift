@@ -248,7 +248,7 @@ class ControllerStickView: UIView, Joystick {
             StickPosition = StickerPosBy(angle: angle, scale: 1.0)
         }
         
-        print("angle: \(angle); scale\(scale.xyScale)")
+        //print("angle: \(angle); scale\(scale.xyScale)")
     }
     
     public func touchEndedInSuperView(_ t : UITouch, superpos : CGPoint){

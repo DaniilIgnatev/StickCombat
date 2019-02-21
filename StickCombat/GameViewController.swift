@@ -32,7 +32,7 @@ class GameViewController: UIViewController {
                 
                 // Present the scene
                 view.presentScene(scene)
-                scene.SetUpGameLogic(mode: .pvpNet(figherID: .first, moveController: firstFighterStick!, strikeController: firstFighterButtons!, adress: URL(string: "ws://localhost:8080/")!))
+                scene.SetUpGameLogic(mode: .pvpNet(playerID: .first, moveController: firstFighterStick!, strikeController: firstFighterButtons!, adress: URL(string: "ws://localhost:8080/")!))
             }
             
             view.ignoresSiblingOrder = true
