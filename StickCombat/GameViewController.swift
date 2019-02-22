@@ -88,7 +88,7 @@ class GameViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        firstFighterStick?.touchBeganInSuperView(touches.first!,superpos : touches.first!.location(in: view))
+        //firstFighterStick?.touchBeganInSuperView(touches.first!,superpos : touches.first!.location(in: view))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
