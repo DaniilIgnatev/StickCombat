@@ -8,20 +8,77 @@
 
 import UIKit
 
+@IBDesignable
 class ControllerButtonsView: UIView, Joystick {
     var delegate: JoystickDelegate?
     
-    let buttonsSize : CGFloat = 30
-    /*
-    var button_E : UIButton
+    private func initButtons(){
+        
+        let rect = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
+        if (button_A == nil){
+            button_A = UIButton(frame: rect)
+            button_A!.addTarget(self, action: #selector(ControllerButtonsView.button_A_Clicked), for: .touchUpInside)
+            addSubview(button_A!)
+        }
+        else{
+            button_A?.bounds = rect
+        }
+        
+        if (button_B == nil){
+            button_B = UIButton(frame: rect)
+            button_B!.addTarget(self, action: #selector(ControllerButtonsView.button_B_Clicked), for: .touchUpInside)
+            addSubview(button_B!)
+        }
+        else{
+            button_B?.bounds = rect
+        }
+        
+        if (button_C == nil){
+            button_C = UIButton(frame: rect)
+            button_C!.addTarget(self, action: #selector(ControllerButtonsView.button_C_Clicked), for: .touchUpInside)
+            addSubview(button_C!)
+        }
+        else{
+            button_C?.bounds = rect
+        }
+        
+        if (button_D == nil){
+            button_D = UIButton(frame: rect)
+            button_D!.addTarget(self, action: #selector(ControllerButtonsView.button_D_Clicked), for: .touchUpInside)
+            addSubview(button_D!)
+        }
+        else{
+            button_D?.bounds = rect
+        }
+        
+        button_A!.backgroundColor = UIColor.blue
+        button_B!.backgroundColor = UIColor.yellow
+        button_C!.backgroundColor = UIColor.red
+        button_D!.backgroundColor = UIColor.green
+        
+        button_C!.center = CGPoint(x: buttonSize / 2, y: buttonSize * 3)
+        button_A!.center = CGPoint(x: buttonSize * 1.5, y: buttonSize)
+        button_D!.center = CGPoint(x: buttonSize * 2.5, y: buttonSize * 2.5)
+        button_B!.center = CGPoint(x: buttonSize * 3.5, y: buttonSize / 2)
+    }
     
-     var button_R : UIButton
+    @objc func button_A_Clicked(){
+        print("A")
+    }
     
-     var button_S : UIButton
+    @objc func button_B_Clicked(){
+        print("B")
+    }
     
-     var button_D : UIButton
-*/
- 
+    @objc func button_C_Clicked(){
+        print("C")
+    }
+    
+    @objc func button_D_Clicked(){
+        print("D")
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initButtons()
@@ -32,102 +89,29 @@ class ControllerButtonsView: UIView, Joystick {
         initButtons()
     }
     
-    func initButtons(){
-        let verticalOffset : CGFloat = 15
-        let horizontalOffset : CGFloat = 10
-        
-        /*
-        button_E = UIButton(frame: CGRect(x: 0, y: 0, width: buttonsSize, height: buttonsSize))
-        button_R = UIButton(frame: CGRect(x: 0, y: 0, width: buttonsSize, height: buttonsSize))
-        button_S = UIButton(frame: CGRect(x: 0, y: 0, width: buttonsSize, height: buttonsSize))
-        button_D = UIButton(frame: CGRect(x: 0, y: 0, width: buttonsSize, height: buttonsSize))
- */
+    
+    private var buttonSize : CGFloat = 30
+    @IBInspectable var ButtonSize : CGFloat{
+        get{
+            return buttonSize
+        }
+        set{
+            buttonSize = newValue
+            
+            initButtons()
+        }
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-    /*
- 
- let button_left_left = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 30, height: 30))
- 
- let button_left_right = SKSpriteNode(color: UIColor.red, size: CGSize(width: 30, height: 30))
- 
- let button_left_up = SKSpriteNode(color: UIColor.blue, size: CGSize(width: 30, height: 30))
- 
- let button_left_down = SKSpriteNode(color: UIColor.yellow, size: CGSize(width: 30, height: 30))
- 
- let button_right_left = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 30, height: 30))
- 
- let button_right_right = SKSpriteNode(color: UIColor.red, size: CGSize(width: 30, height: 30))
- 
- let button_right_up = SKSpriteNode(color: UIColor.blue, size: CGSize(width: 30, height: 30))
- 
- let button_right_down = SKSpriteNode(color: UIColor.yellow, size: CGSize(width: 30, height: 30))
- 
- func AddChildren(){
- self.addChild(button_left_left)
- self.addChild(button_left_right)
- self.addChild(button_left_up)
- self.addChild(button_left_down)
- 
- self.addChild(button_right_left)
- self.addChild(button_right_right)
- self.addChild(button_right_up)
- self.addChild(button_right_down)
- }
- 
- var sceneSize: CGSize = UIScreen.main.bounds.size
- var SceneSize: CGSize{
- get{
- return sceneSize
- }
- set{
- sceneSize = newValue
- ArrangeButtons()
- }
- }
- 
- private func ArrangeButtons(){
- let leftOffset : CGFloat = 30
- let bottomOffset : CGFloat = 30
- let rightOffset : CGFloat = 40
- 
- let leftStart : CGFloat = -sceneSize.width / 2 + leftOffset
- let bottomStart : CGFloat = -sceneSize.height / 2 + bottomOffset
- let rightStart : CGFloat = sceneSize.width / 2 - rightOffset
- 
- 
- let leftButtonsHorizontalOffset : CGFloat = 10
- let leftButtonsVerticalOffset: CGFloat = 10
- 
- let rightButtonsHorizontalOffset : CGFloat = 10
- let rightButtonsVerticalOffset: CGFloat = 10
- 
- 
- button_left_left.position = CGPoint(x: leftStart + button_left_left.size.width / 2, y: bottomStart + button_left_down.size.height + leftButtonsVerticalOffset + button_left_left.size.height / 2)
- 
- button_left_down.position = CGPoint(x: button_left_left.position.x + button_left_left.size.width / 2 + leftButtonsHorizontalOffset + button_left_down.size.width / 2, y: bottomStart + button_left_down.size.height / 2)
- 
- button_left_up.position = CGPoint(x: button_left_down.position.x, y: button_left_down.position.y + button_left_down.size.height / 2 + leftButtonsVerticalOffset + button_left_left.size.height + leftButtonsVerticalOffset + button_left_up.size.height / 2)
- 
- button_left_right.position = CGPoint(x: button_left_down.position.x + button_left_down.size.width / 2 + leftButtonsHorizontalOffset + button_left_right.size.width / 2, y: button_left_left.position.y)
- 
- 
- button_right_right.position = CGPoint(x: rightStart - button_right_right.size.width / 2, y: bottomStart + button_right_down.size.height + rightButtonsVerticalOffset + button_right_right.size.height / 2)
- 
- button_right_down.position = CGPoint(x: button_right_right.position.x - button_right_right.size.width / 2 - rightButtonsHorizontalOffset - button_right_down.size.width / 2, y: bottomStart + button_right_down.size.height / 2)
- 
- button_right_up.position = CGPoint(x: button_right_down.position.x, y: button_right_down.position.y + button_right_down.size.height / 2 + rightButtonsVerticalOffset + button_right_right.size.height + rightButtonsVerticalOffset + button_right_up.size.height / 2)
- 
- button_right_left.position = CGPoint(x: button_right_up.position.x - button_right_up.size.width / 2 - rightButtonsHorizontalOffset - button_right_left.size.width / 2, y: button_right_right.position.y)
- }
- 
- */
+    
+    private var button_C: UIButton?
+    
+    private var button_A: UIButton?
+    
+    private var button_D: UIButton?
+    
+    private var button_B: UIButton?
+    
+    
+    
     
 }

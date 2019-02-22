@@ -229,30 +229,34 @@ class ControllerStickView: UIView, Joystick {
         return (xyScale,xScale,yScale)
     }
     
-    public func touchBeganInSuperView(_ t : UITouch, superpos : CGPoint){
-        //print("Began at superpos \(superpos)")
-        
+    private var inProgress : Bool = false
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        inProgress = true
     }
     
     public func touchMovedInSuperView(_ t : UITouch, superpos : CGPoint){
         //print("Moved at superpos \(superpos)")
    
-        let angle = GetAngleRespectively(superPos: superpos)
-        let scale = GetScaleRespectively(superPos: superpos)
-        
-        if scale.xyScale < 1.0 {
-            let pos = t.location(in: self)
-            StickPosition = pos
+        if inProgress{
+            let angle = GetAngleRespectively(superPos: superpos)
+            let scale = GetScaleRespectively(superPos: superpos)
+            
+            if scale.xyScale < 1.0 {
+                let pos = t.location(in: self)
+                StickPosition = pos
+            }
+            else{
+                StickPosition = StickerPosBy(angle: angle, scale: 1.0)
+            }
+            
+            //print("angle: \(angle); scale\(scale.xyScale)")
         }
-        else{
-            StickPosition = StickerPosBy(angle: angle, scale: 1.0)
-        }
-        
-        print("angle: \(angle); scale\(scale.xyScale)")
     }
     
     public func touchEndedInSuperView(_ t : UITouch, superpos : CGPoint){
         //print("Ended at superpos \(superpos)")
+        inProgress = false
         StickPosition = nil
     }
 

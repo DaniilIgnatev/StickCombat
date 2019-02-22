@@ -9,33 +9,38 @@
 import SpriteKit
 import GameplayKit
 
+class JoystickSet {
+    internal let firstMoveJoystick : Joystick?
+    internal let firstStrikeJoystick : Joystick?
+    internal let secondMoveJoystick : Joystick?
+    internal let secondStrikeJoystick : Joystick?
+    
+    init(fmJ : Joystick?, fsJ : Joystick?,smJ : Joystick?,ssJ:Joystick?) {
+        firstMoveJoystick = fmJ
+        firstStrikeJoystick = fsJ
+        secondMoveJoystick = smJ
+        secondStrikeJoystick = ssJ
+    }
+}
+
 class GameScene: SKScene {
+    
     
     private var Logic : LogicController? = nil
     
     
-    public func SetUpGameLogic(mode : GameMode){
+    var Joysticks : JoystickSet?
+    
+    
+    func SetUpGameLogic(mode : GameMode, joysticks : JoystickSet){
      
+        self.Joysticks = joysticks
+        
         let firstFighterNode = childNode(withName: "fighter_1") as! SKSpriteNode
         let secondFighterNode = childNode(withName: "fighter_2") as! SKSpriteNode
         
-        //horizontalJoystickNode.SceneSize = self.size
-
-        switch mode {
-        case .pvpNet(let fighter, var moveJoystick, var strikeJoystick, let url):
-            Logic = ServerLogicController(firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, gameMode: mode, adress: url)
-            
-            if fighter == .first{
-                moveJoystick.delegate = (Logic!.Engine_1 as! GestureEngine)
-                strikeJoystick.delegate = (Logic!.Engine_1 as! GestureEngine)
-            }
-            else{
-                moveJoystick.delegate = (Logic!.Engine_2 as! GestureEngine)
-                strikeJoystick.delegate = (Logic!.Engine_2 as! GestureEngine)
-            }
-        default:
-            break
-        }
+        
+        Logic = LogicControllerFactory.BuildLogicFor(gameMode: mode, joysticks: Joysticks!, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode)
     }
     
     override func didMove(to view: SKView) {
