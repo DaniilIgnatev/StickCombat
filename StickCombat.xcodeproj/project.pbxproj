@@ -26,6 +26,8 @@
 		A5187510221AB4B2007CDFDE /* ControllerStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518750F221AB4B2007CDFDE /* ControllerStickView.swift */; };
 		A5187512221AB73E007CDFDE /* ControllerButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* ControllerButtonsView.swift */; };
 		A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDE75622204AFB000FC333 /* Menu.storyboard */; };
+		A5EDE75922209CED000FC333 /* ТЗ_StickCombat.pages in Resources */ = {isa = PBXBuildFile; fileRef = A5EDE75822209CED000FC333 /* ТЗ_StickCombat.pages */; };
+		A5EDE75D2220A9D0000FC333 /* SFSportsNightNS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5EDE75C2220A9D0000FC333 /* SFSportsNightNS.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		A518750F221AB4B2007CDFDE /* ControllerStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerStickView.swift; sourceTree = "<group>"; };
 		A5187511221AB73E007CDFDE /* ControllerButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerButtonsView.swift; sourceTree = "<group>"; };
 		A5EDE75622204AFB000FC333 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		A5EDE75822209CED000FC333 /* ТЗ_StickCombat.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ТЗ_StickCombat.pages"; path = "../../ТЗ_StickCombat.pages"; sourceTree = "<group>"; };
+		A5EDE75C2220A9D0000FC333 /* SFSportsNightNS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFSportsNightNS.ttf; path = ../../../../Library/Fonts/SFSportsNightNS.ttf; sourceTree = "<group>"; };
 		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
 		ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickCombat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,6 +109,7 @@
 				8517A63F221294C200880F20 /* GameViewController.swift */,
 				8517A641221294C200880F20 /* Main.storyboard */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
+				A5EDE75C2220A9D0000FC333 /* SFSportsNightNS.ttf */,
 				8517A646221294C400880F20 /* LaunchScreen.storyboard */,
 				8517A649221294C400880F20 /* Info.plist */,
 				A5EDE75622204AFB000FC333 /* Menu.storyboard */,
@@ -115,6 +120,7 @@
 		852A59F62219491A000EEB12 /* Docs */ = {
 			isa = PBXGroup;
 			children = (
+				A5EDE75822209CED000FC333 /* ТЗ_StickCombat.pages */,
 				852A59F72219494F000EEB12 /* UML */,
 			);
 			path = Docs;
@@ -225,7 +231,9 @@
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
 				852A59F92219494F000EEB12 /* GameScene.mdj in Resources */,
+				A5EDE75922209CED000FC333 /* ТЗ_StickCombat.pages in Resources */,
 				8517A63C221294C200880F20 /* Actions.sks in Resources */,
+				A5EDE75D2220A9D0000FC333 /* SFSportsNightNS.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

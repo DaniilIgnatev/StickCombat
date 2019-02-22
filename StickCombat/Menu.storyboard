@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFSportsNightNS.ttf">
+            <string>SFSportsNightNS</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="WJP-IH-fKI">
@@ -33,14 +38,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3l-a9-FLy">
-                                <rect key="frame" x="219" y="264" width="30" height="30"/>
+                                <rect key="frame" x="159" y="258" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Yes"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                <state key="normal" title="Yes" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyU-89-3OE">
-                                <rect key="frame" x="405" y="264" width="30" height="30"/>
+                                <rect key="frame" x="345" y="258" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="No"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                <state key="normal" title="No" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="qaK-cT-uhK" kind="show" id="JqX-1Y-YS8"/>
                                 </connections>
@@ -62,10 +73,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2i-gR-omm">
-                                <rect key="frame" x="318" y="100" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2i-gR-omm">
+                                <rect key="frame" x="261" y="111" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="PVP"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                <state key="normal" title="PVP" backgroundImage="MenuButton"/>
                                 <connections>
                                     <segue destination="9SU-oT-RFL" kind="show" id="A1b-np-YGX"/>
                                 </connections>
@@ -78,16 +90,13 @@
                                     <segue destination="Uaj-5A-GUb" kind="show" id="T3v-aE-Yyf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-HQ-Rrs">
-                                <rect key="frame" x="289" y="172" width="95" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="PVP 1 device"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfV-98-UCE">
-                                <rect key="frame" x="318" y="250" width="30" height="30"/>
+                                <rect key="frame" x="258" y="244" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="PVE"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                <state key="normal" title="PVE" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-IU-uU5">
                                 <rect key="frame" x="577" y="39" width="57" height="30"/>
@@ -105,6 +114,14 @@
                                     <segue destination="Vu1-Cx-7MF" kind="show" id="SfT-te-BJx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-HQ-Rrs">
+                                <rect key="frame" x="263" y="176" width="150" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                <state key="normal" title="PVP 1 device" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Isa-W2-WBl"/>
@@ -112,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4H-uj-8ln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="-526"/>
+            <point key="canvasLocation" x="163.26836581709148" y="-527.20000000000005"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3qx-Rl-sOT">
@@ -245,9 +262,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-O1-Mwx">
-                                <rect key="frame" x="316" y="287" width="34" height="30"/>
+                                <rect key="frame" x="258" y="281" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                <state key="normal" title="Start" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="BV1-FR-VrT" kind="show" id="jFy-cU-gho"/>
                                 </connections>
@@ -378,9 +398,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idQ-qk-GlQ">
-                                <rect key="frame" x="306" y="148" width="55" height="30"/>
+                                <rect key="frame" x="259" y="142" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Resume"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                <state key="normal" title="Resume" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="BV1-FR-VrT" kind="show" id="bzI-dn-iv0"/>
                                 </connections>
@@ -393,9 +416,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLw-mv-tDH">
-                                <rect key="frame" x="318" y="271" width="30" height="30"/>
+                                <rect key="frame" x="258" y="265" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Exit"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                <state key="normal" title="Exit" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="CfH-JR-Jr5" kind="show" id="RUU-Zb-0lA"/>
                                 </connections>
@@ -430,17 +456,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zt-zW-afC">
-                                <rect key="frame" x="285" y="172" width="96" height="30"/>
+                                <rect key="frame" x="258" y="166" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="To main menu"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="18"/>
+                                <state key="normal" title="To main menu" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="qaK-cT-uhK" kind="show" id="3PU-Vg-C0t"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-SH-xyy">
-                                <rect key="frame" x="280" y="235" width="106" height="30"/>
+                                <rect key="frame" x="259" y="229" width="150" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="To homescreen"/>
+                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="16"/>
+                                <state key="normal" title="To homescreen" backgroundImage="MenuButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dc5-l1-EbM">
                                 <rect key="frame" x="312" y="60" width="36" height="21"/>
@@ -459,9 +491,12 @@
             <point key="canvasLocation" x="1639" y="1329"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MenuButton" width="150" height="42"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mH4-VV-7uU"/>
-        <segue reference="bzI-dn-iv0"/>
-        <segue reference="qPf-wV-hmY"/>
+        <segue reference="Vbd-BE-b8T"/>
+        <segue reference="jFy-cU-gho"/>
+        <segue reference="JqX-1Y-YS8"/>
     </inferredMetricsTieBreakers>
 </document>
