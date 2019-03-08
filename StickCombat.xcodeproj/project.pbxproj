@@ -49,6 +49,8 @@
 		933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.debug.xcconfig"; sourceTree = "<group>"; };
 		A518750F221AB4B2007CDFDE /* ControllerStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerStickView.swift; sourceTree = "<group>"; };
 		A5187511221AB73E007CDFDE /* ControllerButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerButtonsView.swift; sourceTree = "<group>"; };
+		A567BDD32232C3E800D143B4 /* ТЗ_StickCombat.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ТЗ_StickCombat.pages"; path = "../../ТЗ_StickCombat.pages"; sourceTree = "<group>"; };
+		A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFSportsNightNS.ttf; path = ../../../../Library/Fonts/SFSportsNightNS.ttf; sourceTree = "<group>"; };
 		A5EDE75622204AFB000FC333 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
 		ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickCombat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 				8517A63F221294C200880F20 /* GameViewController.swift */,
 				8517A641221294C200880F20 /* Main.storyboard */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
+				A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */,
 				8517A646221294C400880F20 /* LaunchScreen.storyboard */,
 				8517A649221294C400880F20 /* Info.plist */,
 				A5EDE75622204AFB000FC333 /* Menu.storyboard */,
@@ -115,6 +118,7 @@
 		852A59F62219491A000EEB12 /* Docs */ = {
 			isa = PBXGroup;
 			children = (
+				A567BDD32232C3E800D143B4 /* ТЗ_StickCombat.pages */,
 				852A59F72219494F000EEB12 /* UML */,
 			);
 			path = Docs;
