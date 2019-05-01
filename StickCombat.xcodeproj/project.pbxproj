@@ -17,7 +17,7 @@
 		8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8517A646221294C400880F20 /* LaunchScreen.storyboard */; };
 		852A59F92219494F000EEB12 /* GameScene.mdj in Resources */ = {isa = PBXBuildFile; fileRef = 852A59F82219494F000EEB12 /* GameScene.mdj */; };
 		852A59FC22194B97000EEB12 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FB22194B97000EEB12 /* Logic.swift */; };
-		852A59FE22194BEE000EEB12 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FD22194BEE000EEB12 /* GameAction.swift */; };
+		852A59FE22194BEE000EEB12 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FD22194BEE000EEB12 /* Action.swift */; };
 		852A5A0022194CA1000EEB12 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FF22194CA1000EEB12 /* Condition.swift */; };
 		852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A01221959FB000EEB12 /* ActionEngine.swift */; };
 		852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0322195DCB000EEB12 /* FighterView.swift */; };
@@ -25,7 +25,6 @@
 		A153FE67B822013ED5814E4B /* Pods_StickCombat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */; };
 		A5187510221AB4B2007CDFDE /* ControllerStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518750F221AB4B2007CDFDE /* ControllerStickView.swift */; };
 		A5187512221AB73E007CDFDE /* ControllerButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* ControllerButtonsView.swift */; };
-		A567BDD62232C48700D143B4 /* ТЗ_StickCombat.pages in Resources */ = {isa = PBXBuildFile; fileRef = A567BDD52232C48700D143B4 /* ТЗ_StickCombat.pages */; };
 		A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDE75622204AFB000FC333 /* Menu.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +41,7 @@
 		8517A649221294C400880F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		852A59F82219494F000EEB12 /* GameScene.mdj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GameScene.mdj; sourceTree = "<group>"; };
 		852A59FB22194B97000EEB12 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
-		852A59FD22194BEE000EEB12 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
+		852A59FD22194BEE000EEB12 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		852A59FF22194CA1000EEB12 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		852A5A01221959FB000EEB12 /* ActionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEngine.swift; sourceTree = "<group>"; };
 		852A5A0322195DCB000EEB12 /* FighterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FighterView.swift; sourceTree = "<group>"; };
@@ -51,7 +50,6 @@
 		A518750F221AB4B2007CDFDE /* ControllerStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerStickView.swift; sourceTree = "<group>"; };
 		A5187511221AB73E007CDFDE /* ControllerButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerButtonsView.swift; sourceTree = "<group>"; };
 		A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFSportsNightNS.ttf; path = ../../../../Library/Fonts/SFSportsNightNS.ttf; sourceTree = "<group>"; };
-		A567BDD52232C48700D143B4 /* ТЗ_StickCombat.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ТЗ_StickCombat.pages"; path = "../../ТЗ_StickCombat.pages"; sourceTree = "<group>"; };
 		A5EDE75622204AFB000FC333 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
 		ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickCombat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +117,6 @@
 		852A59F62219491A000EEB12 /* Docs */ = {
 			isa = PBXGroup;
 			children = (
-				A567BDD52232C48700D143B4 /* ТЗ_StickCombat.pages */,
 				852A59F72219494F000EEB12 /* UML */,
 			);
 			path = Docs;
@@ -138,7 +135,7 @@
 			children = (
 				8517A63D221294C200880F20 /* GameScene.swift */,
 				852A59FB22194B97000EEB12 /* Logic.swift */,
-				852A59FD22194BEE000EEB12 /* GameAction.swift */,
+				852A59FD22194BEE000EEB12 /* Action.swift */,
 				852A59FF22194CA1000EEB12 /* Condition.swift */,
 				852A5A01221959FB000EEB12 /* ActionEngine.swift */,
 				852A5A0322195DCB000EEB12 /* FighterView.swift */,
@@ -230,7 +227,6 @@
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
 				852A59F92219494F000EEB12 /* GameScene.mdj in Resources */,
-				A567BDD62232C48700D143B4 /* ТЗ_StickCombat.pages in Resources */,
 				8517A63C221294C200880F20 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,7 +286,7 @@
 				8517A640221294C200880F20 /* GameViewController.swift in Sources */,
 				A5187510221AB4B2007CDFDE /* ControllerStickView.swift in Sources */,
 				852A59FC22194B97000EEB12 /* Logic.swift in Sources */,
-				852A59FE22194BEE000EEB12 /* GameAction.swift in Sources */,
+				852A59FE22194BEE000EEB12 /* Action.swift in Sources */,
 				8517A638221294C200880F20 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

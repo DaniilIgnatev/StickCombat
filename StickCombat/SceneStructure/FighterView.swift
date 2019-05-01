@@ -11,14 +11,18 @@ import SpriteKit
 
 
 class FighterView {
-    
+
+    public let ID : FighterID
+
     public let FighterNode : SKSpriteNode
     
-    init(node : SKSpriteNode) {
+    init(id : FighterID,node : SKSpriteNode) {
+        self.ID = id
         self.FighterNode = node
     }
     
     public func PlayAction(_ : GameAction){
+        //пробник
         
     }
 }

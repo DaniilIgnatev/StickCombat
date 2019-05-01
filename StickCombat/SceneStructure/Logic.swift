@@ -113,8 +113,8 @@ class ServerLogicController: LogicController {
         let rectFiller = CGRect(x: 20, y: 20, width: 40, height: 80)
         self.sceneDescriptor = SceneCondition(firstShape: rectFiller, secondShape: rectFiller)
         
-        self.View1 = FighterView(node: firstFighterNode)
-        self.View2 = FighterView(node: secondFighterNode)
+        self.View1 = FighterView(id : .first,node: firstFighterNode)
+        self.View2 = FighterView(id : .second,node: secondFighterNode)
     }
     
     

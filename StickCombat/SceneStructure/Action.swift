@@ -140,10 +140,10 @@ enum VerticalStance {
 }
 */
 
-class ConnectionAction{
-
+struct ConnectionAction{
+    
 }
 
-class StatusAction{
+struct StatusAction{
 
 }
