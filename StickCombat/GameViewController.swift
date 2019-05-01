@@ -33,6 +33,7 @@ class GameViewController: UIViewController {
                 switch(mode){
                 case .pvpNet:
                     joysticks = JoystickSet(fmJ: firstFighterStick, fsJ: firstFighterButtons, smJ: nil, ssJ: nil)
+                    //
                     break
                 case .pvpLocal:
                     joysticks = JoystickSet(fmJ: firstFighterStick, fsJ: firstFighterButtons, smJ: nil, ssJ: nil)

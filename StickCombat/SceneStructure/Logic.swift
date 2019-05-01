@@ -38,7 +38,11 @@ protocol LogicController : ActionEngineDelegate {
     var SceneDescriptor : SceneCondition {get}
     
     
-    func requestAction(_: Action)
+    func requestGameAction(_: GameAction)
+
+    func requestConnectionAction(_: ConnectionAction)
+
+    func requestStatusAction(_: StatusAction)
     
 }
 
@@ -54,7 +58,7 @@ class LogicControllerFactory {
 }
 
 class ServerLogicController: LogicController {
-    
+
     private var fighterID : FighterID
     var FighterID: FighterID{
         return fighterID
@@ -85,11 +89,23 @@ class ServerLogicController: LogicController {
     var SceneDescriptor: SceneCondition{
         return sceneDescriptor
     }
-    
-    func requestAction(_: Action) {
+
+
+    func requestConnectionAction(_: ConnectionAction) {
+
+    }
+
+
+    func requestGameAction(_: GameAction) {
         
     }
-    
+
+
+    func requestStatusAction(_: StatusAction) {
+
+    }
+
+
     init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, adress : URL) {
         self.fighterID = fighterID
         self.adress = adress

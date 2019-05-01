@@ -11,7 +11,7 @@ import Foundation
 
 
 protocol ActionEngineDelegate {
-    func requestAction(_ : Action)
+    func requestGameAction(_ : GameAction)
 }
 
 

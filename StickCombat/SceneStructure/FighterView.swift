@@ -18,7 +18,7 @@ class FighterView {
         self.FighterNode = node
     }
     
-    public func PlayAction(_ : Action){
+    public func PlayAction(_ : GameAction){
         
     }
 }

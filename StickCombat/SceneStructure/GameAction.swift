@@ -17,7 +17,7 @@ enum ActionType {
 
 
 
-protocol Action {
+protocol GameAction {
     
     var Kind: ActionType {get}
     
@@ -27,7 +27,7 @@ protocol Action {
 
 
 
-class StrikeAction: Action {
+class StrikeAction: GameAction {
     
     private let kind : ActionType
     public var Kind: ActionType{
@@ -61,7 +61,7 @@ class StrikeAction: Action {
 
 
 
-class HorizontalAction: Action {
+class HorizontalAction: GameAction {
     
     private let kind : ActionType
     public var Kind: ActionType{
@@ -104,8 +104,8 @@ class HorizontalAction: Action {
 }
 
 
-
-class VerticalAction: Action {
+/*
+class VerticalAction: GameAction {
     private let kind : ActionType
     public var Kind: ActionType{
         get{
@@ -137,4 +137,13 @@ class VerticalAction: Action {
 
 enum VerticalStance {
     case stand, jump, crouch
+}
+*/
+
+class ConnectionAction{
+
+}
+
+class StatusAction{
+
 }
