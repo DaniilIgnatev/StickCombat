@@ -21,8 +21,8 @@ enum ButtonDescriptor{
 
 
 struct JoystickDescriptor {
-    var axisShift : (angle : Double,power : Double)?
-    var buttonPressed : ButtonDescriptor?
+    let axisShift : (angle : CGFloat,power : CGFloat)?
+    let buttonPressed : ButtonDescriptor?
 }
 
 

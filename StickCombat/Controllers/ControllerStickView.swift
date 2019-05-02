@@ -241,15 +241,19 @@ class ControllerStickView: UIView, Joystick {
         if inProgress{
             let angle = GetAngleRespectively(superPos: superpos)
             let scale = GetScaleRespectively(superPos: superpos)
-            
+            var power = scale.xyScale
+
             if scale.xyScale < 1.0 {
                 let pos = t.location(in: self)
                 StickPosition = pos
             }
             else{
                 StickPosition = StickerPosBy(angle: angle, scale: 1.0)
+                power = 1.0
             }
+
             
+            delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: (angle: angle, power: power), buttonPressed: nil))
             //print("angle: \(angle); scale\(scale.xyScale)")
         }
     }

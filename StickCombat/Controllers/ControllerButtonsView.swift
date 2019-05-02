@@ -64,19 +64,22 @@ class ControllerButtonsView: UIView, Joystick {
     
     @objc func button_A_Clicked(){
         print("A")
-        //delegate
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.first))
     }
     
     @objc func button_B_Clicked(){
         print("B")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.second))
     }
     
     @objc func button_C_Clicked(){
         print("C")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.third))
     }
     
     @objc func button_D_Clicked(){
         print("D")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.fourth))
     }
     
     
