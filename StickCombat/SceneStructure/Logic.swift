@@ -8,7 +8,7 @@
 
 import Foundation
 import SpriteKit
-
+import Starscream
 
 
 enum GameMode {
@@ -17,6 +17,10 @@ enum GameMode {
     case pveLocal(playerID : FighterID)
 }
 
+
+protocol LogicDelegate {
+    func GameStatusChanged(status: SceneStatus)
+}
 
 
 protocol LogicController : ActionEngineDelegate {
@@ -58,7 +62,7 @@ class LogicControllerFactory {
 }
 
 ///Алгоритм игры по протоколу websocket
-class ServerLogicController: LogicController {
+class ServerLogicController: LogicController, WebSocketDelegate {
 
     private var fighterID : FighterID
     var FighterID: FighterID{
@@ -95,16 +99,19 @@ class ServerLogicController: LogicController {
     //MARK: REQUEST
     func requestConnectionAction(_: ConnectionAction) {
         //отправить connection action на сервер
+        //парсинг, отправка
     }
 
 
     func requestGameAction(_: GameAction) {
         //отправить game action на сервер
+        //парсинг, отправка
     }
 
 
     func requestStatusAction(_: StatusAction) {
         //отправить status action на сервер
+        //парсинг, отправка
     }
 
 
@@ -112,6 +119,7 @@ class ServerLogicController: LogicController {
     init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, adress : URL) {
         self.fighterID = fighterID
         self.adress = adress
+        self.socket = WebSocket.init(url: adress)
 
         //инициализация представления сцены
         self.sceneDescriptor = SceneCondition(firstX: 20, secondX: 150)
@@ -131,7 +139,24 @@ class ServerLogicController: LogicController {
     //MARK: SOCKET
     private let adress : URL
 
-    //обработка ответа от сервера
-    //MARK: ANSWER
+    private let socket : WebSocket
 
+    func websocketDidConnect(socket: WebSocketClient) {
+        
+    }
+
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+
+    }
+
+    //MARK: ANSWER
+    //обработка ответа от сервера
+
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+
+    }
+
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+
+    }
 }

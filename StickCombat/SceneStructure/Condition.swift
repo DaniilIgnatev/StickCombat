@@ -57,7 +57,7 @@ class FighterPresence {
 
 
 enum SceneStatus {
-    case Preparation, On, Finished
+    case Preparation, Play, Pause, Finished
 }
 
 
