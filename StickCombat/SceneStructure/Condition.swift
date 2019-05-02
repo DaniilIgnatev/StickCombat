@@ -23,9 +23,9 @@ class SceneCondition {
     
     public var gameEndTime : TimeInterval = 0.0
     
-    public init(firstShape : CGRect, secondShape : CGRect, endTime : TimeInterval = 0.0){
-        self.fighter_1 = FighterPresence(id: .first, firstShape: firstShape)
-        self.fighter_2 = FighterPresence(id: .second, firstShape: secondShape)
+    public init(firstX : CGFloat, secondX : CGFloat, endTime : TimeInterval = 0.0){
+        self.fighter_1 = FighterPresence(id: .first, X: firstX)
+        self.fighter_2 = FighterPresence(id: .second, X: secondX)
         self.gameEndTime = endTime
     }
 }
@@ -34,19 +34,23 @@ class SceneCondition {
 
 class FighterPresence {
     
-    static let maxHP = 100.0
+    static public let maxHP : CGFloat = 100.0
+
+    static public let width : CGFloat = 40.0
+
+     static public let height : CGFloat = 80.0
     
     public let ID : FighterID
     
-    public var shape : CGRect
+    public var X : CGFloat
     
-    public var hp : Double = maxHP
+    public var hp : CGFloat = maxHP
     
     public var comboPoints : Int = 0
     
-    public init(id : FighterID, firstShape : CGRect){
+    public init(id : FighterID, X : CGFloat){
         self.ID = id
-        self.shape = firstShape
+        self.X = X
     }
 }
 

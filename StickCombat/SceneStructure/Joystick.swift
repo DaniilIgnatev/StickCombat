@@ -11,7 +11,7 @@ import SpriteKit
 
 
 protocol JoystickDelegate {
-    func ControlCommand(_ : JoystickDescriptor)
+    func ControlCommand(descriptor : JoystickDescriptor)
 }
 
 

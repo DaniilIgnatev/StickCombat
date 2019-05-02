@@ -64,6 +64,7 @@ class ControllerButtonsView: UIView, Joystick {
     
     @objc func button_A_Clicked(){
         print("A")
+        //delegate
     }
     
     @objc func button_B_Clicked(){

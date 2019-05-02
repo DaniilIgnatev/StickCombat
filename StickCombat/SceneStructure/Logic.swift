@@ -57,6 +57,7 @@ class LogicControllerFactory {
     }
 }
 
+///Алгоритм игры по протоколу websocket
 class ServerLogicController: LogicController {
 
     private var fighterID : FighterID
@@ -91,33 +92,46 @@ class ServerLogicController: LogicController {
     }
 
 
+    //MARK: REQUEST
     func requestConnectionAction(_: ConnectionAction) {
-
+        //отправить connection action на сервер
     }
 
 
     func requestGameAction(_: GameAction) {
-        
+        //отправить game action на сервер
     }
 
 
     func requestStatusAction(_: StatusAction) {
-        
+        //отправить status action на сервер
     }
+
 
 
     init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, adress : URL) {
         self.fighterID = fighterID
         self.adress = adress
-        
-        let rectFiller = CGRect(x: 20, y: 20, width: 40, height: 80)
-        self.sceneDescriptor = SceneCondition(firstShape: rectFiller, secondShape: rectFiller)
-        
+
+        //инициализация представления сцены
+        self.sceneDescriptor = SceneCondition(firstX: 20, secondX: 150)
+
         self.View1 = FighterView(id : .first,node: firstFighterNode)
         self.View2 = FighterView(id : .second,node: secondFighterNode)
+
+        if fighterID == .first{
+            Engine1 = GestureEngine(fighterID: fighterID, condition: sceneDescriptor)
+            Engine1?.Delegate = self
+        }else{
+            Engine2 = GestureEngine(fighterID: fighterID, condition: sceneDescriptor)
+            Engine2!.Delegate = self
+        }
     }
-    
-    
+
+    //MARK: SOCKET
     private let adress : URL
-    
+
+    //обработка ответа от сервера
+    //MARK: ANSWER
+
 }

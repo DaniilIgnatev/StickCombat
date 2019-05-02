@@ -365,36 +365,57 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-NN-21D">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-NN-21D">
                                 <rect key="frame" x="310" y="20" width="47" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="cZJ-qb-TFo"/>
+                                    <constraint firstAttribute="width" constant="47" id="jk4-uu-Qjr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-g2-i4O">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-g2-i4O">
                                 <rect key="frame" x="607" y="20" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="PV1-z6-HgJ"/>
+                                    <constraint firstAttribute="height" constant="40" id="QdA-Nz-wzu"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="MenuIngame"/>
                                 <connections>
                                     <segue destination="2bG-mh-mWC" kind="show" id="Vbd-BE-b8T"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uo7-HJ-Ctn" customClass="ControllerButtonsView" customModule="StickCombat" customModuleProvider="target">
+                                <rect key="frame" x="527" y="248" width="120" height="105"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="4TL-4v-KAu"/>
+                                    <constraint firstAttribute="width" constant="120" id="O5P-cC-xCN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ivp-NN-21D" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="G7F-cc-P8W"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="HUI-g2-i4O" secondAttribute="trailing" constant="20" id="HjR-zr-0jk"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="EYY-ZE-8FQ" secondAttribute="bottom" constant="-10" id="QJq-v1-Rpe"/>
+                            <constraint firstItem="HUI-g2-i4O" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="V16-9a-tUB"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="Uo7-HJ-Ctn" secondAttribute="trailing" constant="20" id="jft-0a-FbM"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="Uo7-HJ-Ctn" secondAttribute="bottom" constant="22" id="kah-z9-1Gr"/>
                             <constraint firstItem="EYY-ZE-8FQ" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="30" id="lSV-CF-rpd"/>
+                            <constraint firstItem="ivp-NN-21D" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="nM1-wc-pOb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
+                        <outlet property="firstFighterButtons" destination="Uo7-HJ-Ctn" id="AeY-DA-YdZ"/>
                         <outlet property="firstFighterStick" destination="EYY-ZE-8FQ" id="ZDK-c1-SWS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="1330"/>
+            <point key="canvasLocation" x="64.31784107946028" y="1328.8"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dsH-t0-dtu">

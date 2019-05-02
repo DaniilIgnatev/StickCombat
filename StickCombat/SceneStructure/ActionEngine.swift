@@ -59,8 +59,8 @@ class GestureEngine: ActionEngine, JoystickDelegate {
     
     //MARK: Joystick Delegate
     
-    func ControlCommand(_: JoystickDescriptor) {
-        
+    func ControlCommand(descriptor : JoystickDescriptor) {
+        //генерация команды из данных дескриптора
     }
 }
 
