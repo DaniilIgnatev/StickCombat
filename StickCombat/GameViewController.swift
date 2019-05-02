@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var firstFighterStick: ControllerStickView!
     
-    private var firstFighterButtons : ControllerButtonsView!
+    @IBOutlet weak var firstFighterButtons : ControllerButtonsView!
     
     private var mode : GameMode?
     internal var Mode : GameMode?{
@@ -55,10 +55,8 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        firstFighterButtons = ControllerButtonsView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        
+        super.viewDidLoad()        
+
         scene.scaleMode = .fill
         View.presentScene(scene)
         
