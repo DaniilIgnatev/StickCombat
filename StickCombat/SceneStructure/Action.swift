@@ -12,7 +12,7 @@ import SpriteKit
 
 
 enum ActionType {
-    case Strike, Horizontal,Vertical
+    case Strike, Horizontal, Vertical, Block
 }
 
 
@@ -103,7 +103,35 @@ class HorizontalAction: GameAction {
     public let By : CGFloat
 }
 
-
+class BlockAction: GameAction{
+    
+    private let kind : ActionType
+    public var Kind: ActionType{
+        get{
+            return kind
+        }
+    }
+    
+    private let fighter : FighterID
+    public var Fighter: FighterID{
+        get{
+            return fighter
+        }
+    }
+    
+    private let isOn: Bool
+    public var IsOn: Bool{
+        get{
+            return isOn
+        }
+    }
+    
+    init(fighter: FighterID, isOn: Bool) {
+        self.kind = .Block
+        self.fighter = fighter
+        self.isOn = isOn
+    }
+}
 /*
 class VerticalAction: GameAction {
     private let kind : ActionType
