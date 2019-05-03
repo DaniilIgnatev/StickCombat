@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import SpriteKit
 
 //парсинг json
 class Parser{
     
-    func connectionToJSON(){
+    public func connectionActionToJSON(connectionaction: ConnectionAction) -> String{
         //ЭТО МОЙ ПРИМЕР ЧТОБЫ НЕ ЗАБЫТЬ ЧТО-ТО
         
 //        if let name = nameCardsBox.text{
@@ -60,25 +61,29 @@ class Parser{
 //                nameCardsBox.placeholder = "Please enter the name"
 //            }
 //        }
-    }
-    func connectionToAction(){
-        
-    }
-    
-    func gameActionToJSON(){
-        
-    }
-    func gameActionToAction(){
-        
+        let somestring: String = ""
+        return somestring
     }
     
-    func statusActionToJSON(){
-        
+    public func gameActionToJSON(gameaction: GameAction) -> String{
+        let somestring: String = ""
+        return somestring
     }
-    func statusActionToAction(){
-        
+    public func JSONToGameAction(json: String) -> GameAction{
+        let gameAction = StrikeAction.init(fighter: FighterID.first, vector: CGVector(dx: 0, dy: 1), point: CGPoint(x: 0, y: 0))
+        return gameAction
+    }
+    
+    public func statusActionToJSON(status: StatusAction) -> String{
+        let somestring: String = ""
+        return somestring
+    }
+    public func JSONToStatusAction(json: String) -> StatusAction{
+        let status = StatusAction.pause
+        return status
     }
 }
+
 
 struct Head: Codable{
     let id: Int
@@ -96,7 +101,7 @@ struct ConnectionJSON: Codable{
     
 }
 
-struct GameActionJSON: Codable{
+struct GameActionStrikeJSON: Codable{
     
     struct Body: Codable{
         //Strike
@@ -105,17 +110,36 @@ struct GameActionJSON: Codable{
         let dx: Float
         let dy: Float
         let endHP: Float
-        //Block
-        let isOn: Bool
-        //Move
-        let from: Float
-        let to: Float
-        let by: Float
     }
 
     let head: Head
     let body: Body
 }
+
+struct GameActionBlockJSON: Codable{
+    
+    struct Body: Codable{
+        //Block
+        let isOn: Bool
+    }
+    
+    let head: Head
+    let body: Body
+}
+
+struct GameActionMoveJSON: Codable{
+    
+    struct Body: Codable{
+        //Move
+        let from: Float
+        let to: Float
+        let by: Float
+    }
+    
+    let head: Head
+    let body: Body
+}
+
 
 struct StatusJSON: Codable{
     struct Body: Codable{
