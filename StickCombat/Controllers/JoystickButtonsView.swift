@@ -51,15 +51,20 @@ class JoystickButtonsView: UIView, Joystick {
             button_D?.bounds = rect
         }
         
-        button_A!.backgroundColor = UIColor.blue
-        button_B!.backgroundColor = UIColor.yellow
-        button_C!.backgroundColor = UIColor.red
-        button_D!.backgroundColor = UIColor.green
+        button_A!.setImage(UIImage(named: "Abutton"), for: .normal)
+        button_B!.setImage(UIImage(named: "Bbutton"), for: .normal)
+        button_C!.setImage(UIImage(named: "Cbutton"), for: .normal)
+        button_D!.setImage(UIImage(named: "Dbutton"), for: .normal)
         
-        button_C!.center = CGPoint(x: buttonSize / 2, y: buttonSize * 3)
-        button_A!.center = CGPoint(x: buttonSize * 1.5, y: buttonSize)
-        button_D!.center = CGPoint(x: buttonSize * 2.5, y: buttonSize * 2.5)
-        button_B!.center = CGPoint(x: buttonSize * 3.5, y: buttonSize / 2)
+        //button_C!.center = CGPoint(x: buttonSize / 2, y: buttonSize * 3)
+        //button_A!.center = CGPoint(x: buttonSize * 1.5, y: buttonSize)
+        //button_D!.center = CGPoint(x: buttonSize * 2.5, y: buttonSize * 2.5)
+        //button_B!.center = CGPoint(x: buttonSize * 3.5, y: buttonSize / 2)
+        
+        button_A?.center = CGPoint(x: buttonSize / 2, y: buttonSize / 2 + buttonOffset)
+        button_B?.center = CGPoint(x: buttonSize * 1.5 + buttonOffset, y: buttonSize / 2 + buttonOffset)
+        button_C?.center = CGPoint(x: buttonSize / 2 + buttonOffset, y: buttonSize * 1.5)
+        button_D?.center = CGPoint(x: buttonSize * 1.5, y: buttonSize * 1.5 )
     }
     
     @objc func button_A_Clicked(){
@@ -94,7 +99,7 @@ class JoystickButtonsView: UIView, Joystick {
     }
     
     
-    private var buttonSize : CGFloat = 30
+    private var buttonSize : CGFloat = 45
     @IBInspectable var ButtonSize : CGFloat{
         get{
             return buttonSize
@@ -106,6 +111,18 @@ class JoystickButtonsView: UIView, Joystick {
         }
     }
     
+    
+    private var buttonOffset : CGFloat = 15
+    @IBInspectable var ButtonOffset : CGFloat{
+        get{
+            return buttonOffset
+        }
+        set{
+            buttonOffset = newValue
+            
+            initButtons()
+        }
+    }
     
     private var button_C: UIButton?
     

@@ -14,9 +14,12 @@ class GameViewController: UIViewController {
     
     private let stickRadius : CGFloat = 50
     
+    
     @IBOutlet weak var firstFighterStick: JoystickStickView!
     
+    
     @IBOutlet weak var firstFighterButtons : JoystickButtonsView!
+    
     
     private var mode : GameMode?
     internal var Mode : GameMode?{
@@ -48,11 +51,14 @@ class GameViewController: UIViewController {
         }
     }
     
+    
     private var scene : GameScene = SKScene(fileNamed: "GameScene") as! GameScene
+    
     
     var View: SKView {
         return self.view as! SKView
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -73,9 +79,11 @@ class GameViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    
     override var shouldAutorotate: Bool {
         return true
     }
+    
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
@@ -89,13 +97,14 @@ class GameViewController: UIViewController {
         return true
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //firstFighterStick?.touchBeganInSuperView(touches.first!,superpos : touches.first!.location(in: view))
-    }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        firstFighterStick?.touchMovedInSuperView(touches.first!,superpos : touches.first!.location(in: view))
+        let touch = touches.first!
+        let superpos = touch.location(in: self.View)
+        
+        firstFighterStick?.MoveStick(superposition: superpos, touch: touch)
     }
+    
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         firstFighterStick?.touchEndedInSuperView(touches.first!,superpos : touches.first!.location(in: view))

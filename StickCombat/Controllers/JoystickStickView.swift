@@ -12,19 +12,24 @@ import UIKit
 class JoystickStickView: UIView, Joystick {
     var delegate: JoystickDelegate?
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         InitializationActions()
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         InitializationActions()
     }
     
+    
     private func InitializationActions(){
         backgroundColor = UIColor.init(white: 1, alpha: 0)
     }
+    
+    //MARK: DRAW
     
     private var _StickThickness : CGFloat = 4
     @IBInspectable public var StickThickness : CGFloat{
@@ -37,6 +42,7 @@ class JoystickStickView: UIView, Joystick {
         }
     }
     
+    
     private var _StickRadius : CGFloat = 20
     @IBInspectable public var StickRadius : CGFloat{
         get{
@@ -47,6 +53,7 @@ class JoystickStickView: UIView, Joystick {
             setNeedsDisplay()
         }
     }
+    
     
     private var _StickPosition : CGPoint? = nil
     private var StickPosition : CGPoint?{
@@ -64,6 +71,7 @@ class JoystickStickView: UIView, Joystick {
         }
     }
     
+    
     private var _StickStrokeColor : UIColor = UIColor.darkGray
     @IBInspectable public var StickStrokeColor : UIColor{
         get{
@@ -74,6 +82,7 @@ class JoystickStickView: UIView, Joystick {
             setNeedsDisplay()
         }
     }
+    
     
     private var _StickFillColor : UIColor = UIColor.lightGray
     @IBInspectable public var StickFillColor : UIColor{
@@ -86,6 +95,7 @@ class JoystickStickView: UIView, Joystick {
         }
     }
     
+    
     private var _RingStartColor : UIColor = UIColor.red
     @IBInspectable public var RingStartColor : UIColor{
         get{
@@ -97,6 +107,7 @@ class JoystickStickView: UIView, Joystick {
         }
     }
     
+    
     private var _RingEndColor : UIColor = UIColor.blue
     @IBInspectable public var RingEndColor : UIColor{
         get{
@@ -104,9 +115,9 @@ class JoystickStickView: UIView, Joystick {
         }
         set{
             _RingEndColor = newValue
-            setNeedsDisplay()
         }
     }
+    
     
     private var _RingColorPoint : CGFloat = 0.5
     @IBInspectable public var RingColorPoint : Int{
@@ -133,6 +144,7 @@ class JoystickStickView: UIView, Joystick {
     private var RingRadius : CGFloat{
         return (bounds.width / 2) - _StickThickness - _StickRadius 
     }
+    
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -162,7 +174,31 @@ class JoystickStickView: UIView, Joystick {
     }
 
     
-    func StickerPosBy(angle : CGFloat, scale : CGFloat) -> CGPoint{
+    //MARK: TOUCH HANDLERS
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        inProgress = true
+    }
+    
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let superpos = touch.location(in: superview!)
+        
+        MoveStick(superposition: superpos, touch: touch)
+    }
+    
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let superpos = touch.location(in: superview!)
+        touchEndedInSuperView(touch,superpos: superpos)
+    }
+    
+    //MARK: GEOMETRY
+    
+    
+    private func StickerPosBy(angle : CGFloat, scale : CGFloat) -> CGPoint{
         let stock_x = RingRadius
         let stock_y = RingRadius
 
@@ -180,7 +216,7 @@ class JoystickStickView: UIView, Joystick {
         return CGPoint(x: final_x, y: final_y)
     }
     
-    func GetAngleRespectively(superPos : CGPoint) -> CGFloat{
+    private func GetAngleRespectively(superPos : CGPoint) -> CGFloat{
         let posinsuper = frame.origin
         let center = CGPoint(x : posinsuper.x + frame.width / 2,y : posinsuper.y + frame.height / 2)
         //print("center: \(center)")
@@ -212,7 +248,7 @@ class JoystickStickView: UIView, Joystick {
         return Angle;
     }
     
-    func GetScaleRespectively(superPos : CGPoint) -> (xyScale : CGFloat,xScale : CGFloat, yScale : CGFloat){
+    private func GetScaleRespectively(superPos : CGPoint) -> (xyScale : CGFloat,xScale : CGFloat, yScale : CGFloat){
         let xOffset = superPos.x - center.x > 0 ? superPos.x - center.x : -(superPos.x - center.x)
         let yOffset = superPos.y - center.y > 0 ? superPos.y - center.y : -(superPos.y - center.y)
         let maxOffset = RingRadius
@@ -229,37 +265,36 @@ class JoystickStickView: UIView, Joystick {
         return (xyScale,xScale,yScale)
     }
     
+    
     private var inProgress : Bool = false
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        inProgress = true
-    }
     
-    public func touchMovedInSuperView(_ t : UITouch, superpos : CGPoint){
-        //print("Moved at superpos \(superpos)")
-   
+    internal func MoveStick(superposition : CGPoint, touch : UITouch){
+        //print("Moved at superpos \(superposition)")
+        
         if inProgress{
-            let angle = GetAngleRespectively(superPos: superpos)
-            let scale = GetScaleRespectively(superPos: superpos)
+            let angle = GetAngleRespectively(superPos: superposition)
+            let scale = GetScaleRespectively(superPos: superposition)
             var power = scale.xyScale
-
+            
             if scale.xyScale < 1.0 {
-                let pos = t.location(in: self)
+                let pos = touch.location(in: self)
                 StickPosition = pos
             }
             else{
                 StickPosition = StickerPosBy(angle: angle, scale: 1.0)
                 power = 1.0
             }
-
+            
             
             delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: (angle: angle, power: power), buttonPressed: nil))
             //print("angle: \(angle); scale\(scale.xyScale)")
         }
     }
     
-    public func touchEndedInSuperView(_ t : UITouch, superpos : CGPoint){
-        //print("Ended at superpos \(superpos)")
+    
+    internal func touchEndedInSuperView(_ t : UITouch, superpos : CGPoint){
+        print("Ended at superpos \(superpos)")
         inProgress = false
         StickPosition = nil
     }
