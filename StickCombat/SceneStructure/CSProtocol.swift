@@ -12,57 +12,34 @@ import SpriteKit
 //парсинг json
 class Parser{
     
+    public func defineAction(action: String) -> defineActionEnum{
+        let json = action
+        do{
+            let parsedAction = try JSONDecoder().decode(Head.self, from: json.data(using: .utf8)!)
+            if parsedAction.type == "pause" || parsedAction.type == "surrender"{
+                return defineActionEnum.statusAction
+            }else if parsedAction.type == "strike" || parsedAction.type == "horizontalMove" || parsedAction.type == "block"{
+                return defineActionEnum.gameAction
+            }else{
+                return defineActionEnum.error
+            }
+        }catch{
+            return defineActionEnum.error
+        }
+    }
+    
     public func connectionActionToJSON(connectionaction: ConnectionAction) -> String{
-        //ЭТО МОЙ ПРИМЕР ЧТОБЫ НЕ ЗАБЫТЬ ЧТО-ТО
-        
-//        if let name = nameCardsBox.text{
-//            if name != ""{
-//                let nameWOSpaces = name.replacingOccurrences(of: " ", with: "%20")
-//
-//                //MARK: Формирую строку запроса на основе введенного названия карты
-//                let addPart = "cards/\(nameWOSpaces)"
-//                let nameCardsURL = URL(string: hsURLString + addPart)
-//
-//                //TODO: При неверном имени карты выдает ошибку, так как nil. Исправить!
-//                var hsRequest = URLRequest(url: nameCardsURL!)
-//                hsRequest.allHTTPHeaderFields = hsHeaders
-//                hsRequest.httpMethod = "GET"
-//                hsRequest.httpBody = Data()
-//                hsRequest.addValue("contentType", forHTTPHeaderField: "Application/JSON")
-//
-//                let request = URLSession.shared.dataTask(with: hsRequest, completionHandler: {data, response, error in
-//                    if error == nil {
-//                        do {
-//                            //MARK: Парсинг полученной структурки в структурку hsCard
-//                            let json = try JSONDecoder().decode([hsCard].self, from: data!)
-//                            DispatchQueue.main.async {
-//                                searchCardImage = json.map({ (card: hsCard) in return card.img ?? ""}).first
-//                                searchCardGoldImage = json.map({ (card: hsCard) in return card.imgGold ?? ""}).first
-//                                //MARK: Переход на одиночную вьюху
-//                                let singleStoryboard = UIStoryboard(name: "SingleViews", bundle: Bundle.main)
-//                                guard let destViewController = singleStoryboard.instantiateViewController(withIdentifier: "SingleCardViewController") as? SingleCardViewController  else {
-//                                    return
-//                                }
-//                                destViewController.modalTransitionStyle = .crossDissolve
-//                                self.present(destViewController, animated: true, completion: nil)
-//                            }
-//                        } catch {
-//                            print(error)
-//                        }
-//                    } else {
-//                        print(error ?? "Undefined error")
-//                    }
-//                }
-//                )
-//                request.resume()
-//            }else{
-//                //MARK: Если пользователь ничего не ввел в TextField
-//                nameCardsBox.text = nil
-//                nameCardsBox.placeholder = "Please enter the name"
-//            }
-//        }
-        let somestring: String = ""
-        return somestring
+        let action = connectionaction
+        let jsonStruct = ConnectionJSON(head: Head(id: 0, type: "connection"), body: ConnectionJSON.Body(name: action.name, password: action.password))
+        do{
+            let json = try JSONEncoder().encode(jsonStruct)
+            return json.base64EncodedString()
+        }catch{
+            return ""
+        }
+
+//        let somestring: String = ""
+//        return somestring
     }
     
     public func gameActionToJSON(gameaction: GameAction) -> String{
@@ -92,13 +69,12 @@ struct Head: Codable{
 
 struct ConnectionJSON: Codable{
     struct Body: Codable {
-        let name: String
-        let password: String
+        var name: String
+        var password: String
     }
     
     let head: Head
-    let body: Body
-    
+    var body: Body
 }
 
 struct GameActionStrikeJSON: Codable{
@@ -147,4 +123,10 @@ struct StatusJSON: Codable{
     }
     let head: Head
     let body: Body
+}
+
+enum defineActionEnum{
+    case statusAction
+    case gameAction
+    case error
 }
