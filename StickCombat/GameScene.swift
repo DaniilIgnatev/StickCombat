@@ -10,10 +10,10 @@ import SpriteKit
 import GameplayKit
 
 class JoystickSet {
-    internal let firstMoveJoystick : Joystick?
-    internal let firstStrikeJoystick : Joystick?
-    internal let secondMoveJoystick : Joystick?
-    internal let secondStrikeJoystick : Joystick?
+    internal var firstMoveJoystick : Joystick?
+    internal var firstStrikeJoystick : Joystick?
+    internal var secondMoveJoystick : Joystick?
+    internal var secondStrikeJoystick : Joystick?
     
     init(fmJ : Joystick?, fsJ : Joystick?,smJ : Joystick?,ssJ:Joystick?) {
         firstMoveJoystick = fmJ

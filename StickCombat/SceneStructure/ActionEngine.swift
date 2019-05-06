@@ -11,7 +11,7 @@ import Foundation
 
 
 protocol ActionEngineDelegate {
-    func requestGameAction(action : GameAction)
+    func requestGameAction(_ action : GameAction)
 }
 
 
@@ -52,9 +52,13 @@ class GestureEngine: ActionEngine, JoystickDelegate {
     var Delegate: ActionEngineDelegate?
     
     
-    public init(fighterID : FighterID, condition : SceneCondition){
+    public init(fighterID : FighterID, condition : SceneCondition, joysticks : JoystickSet){
         self.fighter = fighterID
         self.condition = condition
+        joysticks.firstMoveJoystick?.delegate = self
+        joysticks.firstStrikeJoystick?.delegate = self
+        joysticks.secondMoveJoystick?.delegate = self
+        joysticks.secondStrikeJoystick?.delegate = self
     }
     
     //MARK: Joystick Delegate
