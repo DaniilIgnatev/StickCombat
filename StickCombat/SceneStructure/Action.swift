@@ -170,12 +170,13 @@ enum VerticalStance {
 
 struct ConnectionAction{
     ///true -- создать лобби,false -- присоединиться
-    public let create : Bool
-    public let name : String
-    public let password : String
+    public let create: Bool
+    public let name: String
+    public let password: String
 }
 
-enum StatusAction{
-    case pause
-    case surrender
+struct StatusAction{
+    public let fighter: FighterID
+    public let pause: Bool
+    public let surrender: Bool
 }
