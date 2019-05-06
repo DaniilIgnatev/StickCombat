@@ -13,19 +13,27 @@ import SpriteKit
 class Parser{
     
     public func defineAction(action: String) -> defineActionEnum{
-        let json = action
+        let data = Data(action.utf8)
+        
         do{
-            let parsedAction = try JSONDecoder().decode(Head.self, from: json.data(using: .utf8)!)
-            if parsedAction.type == "pause" || parsedAction.type == "surrender"{
-                return defineActionEnum.statusAction
-            }else if parsedAction.type == "strike" || parsedAction.type == "horizontalMove" || parsedAction.type == "block"{
-                return defineActionEnum.gameAction
-            }else{
-                return defineActionEnum.error
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                if let head = json["Head"] as? [String:Any] {
+                    if let type = json["type"] as? String {
+                        if type == "status"{
+                            return defineActionEnum.statusAction
+                        }else if type == "strikeApprove" || type == "horizontalMoveApprove" || type == "blockApprove"{
+                            return defineActionEnum.gameAction
+                        }else{
+                            return defineActionEnum.error
+                        }
+                    }
+                }
             }
-        }catch{
+        }catch let error as NSError{
+            print("Error: \(error)")
             return defineActionEnum.error
         }
+        return defineActionEnum.error
     }
     
     public func connectionActionToJSON(connectionaction: ConnectionAction) -> String{
@@ -37,15 +45,37 @@ class Parser{
         }catch{
             return ""
         }
-
-//        let somestring: String = ""
-//        return somestring
     }
     
-    public func gameActionToJSON(gameaction: GameAction) -> String{
-        let somestring: String = ""
-        return somestring
-    }
+//    public func gameActionToJSON(gameaction: GameAction) -> String{
+//
+//        if let action = gameaction as? StrikeAction{
+//            //let jsonStruct = GameActionStrikeJSON(head: Head(id: action.Fighter.hashValue, type: <#T##String#>), body: GameActionStrikeJSON.Body(x: action.Point.x, y: action.Point.y, dx: action.Vector.dx
+//                , dy: action.Vector.dy, endHP: nil))
+//            do{
+//                let json = try JSONEncoder().encode(jsonStruct)
+//                return json.base64EncodedString()
+//            }catch{
+//                return ""
+//            }
+//        }else if let action = gameaction as? HorizontalAction{
+//
+//        }else if let action = gameaction as? BlockAction{
+//
+//        }
+//
+//
+//
+//
+//        let action = gameaction
+//        //let jsonStruct = ConnectionJSON(head: Head(id: 0, type: "connection"), body: ConnectionJSON.Body(name: action.name, password: action.password))
+//        do{
+//            let json = try JSONEncoder().encode(jsonStruct)
+//            return json.base64EncodedString()
+//        }catch{
+//            return ""
+//        }
+//    }
     public func JSONToGameAction(json: String) -> GameAction{
         let gameAction = StrikeAction.init(fighter: FighterID.first, vector: CGVector(dx: 0, dy: 1), point: CGPoint(x: 0, y: 0))
         return gameAction
@@ -81,11 +111,11 @@ struct GameActionStrikeJSON: Codable{
     
     struct Body: Codable{
         //Strike
-        let x: Float
-        let y: Float
-        let dx: Float
-        let dy: Float
-        let endHP: Float
+        let x: CGFloat
+        let y: CGFloat
+        let dx: CGFloat
+        let dy: CGFloat
+        let endHP: CGFloat?
     }
 
     let head: Head
@@ -107,9 +137,9 @@ struct GameActionMoveJSON: Codable{
     
     struct Body: Codable{
         //Move
-        let from: Float
-        let to: Float
-        let by: Float
+        let from: CGFloat
+        let to: CGFloat
+        let by: CGFloat
     }
     
     let head: Head
