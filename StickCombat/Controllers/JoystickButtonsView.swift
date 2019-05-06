@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class ControllerButtonsView: UIView, Joystick {
+class JoystickButtonsView: UIView, Joystick {
     var delegate: JoystickDelegate?
     
     private func initButtons(){
@@ -17,7 +17,7 @@ class ControllerButtonsView: UIView, Joystick {
         let rect = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
         if (button_A == nil){
             button_A = UIButton(frame: rect)
-            button_A!.addTarget(self, action: #selector(ControllerButtonsView.button_A_Clicked), for: .touchUpInside)
+            button_A!.addTarget(self, action: #selector(JoystickButtonsView.button_A_Clicked), for: .touchUpInside)
             addSubview(button_A!)
         }
         else{
@@ -26,7 +26,7 @@ class ControllerButtonsView: UIView, Joystick {
         
         if (button_B == nil){
             button_B = UIButton(frame: rect)
-            button_B!.addTarget(self, action: #selector(ControllerButtonsView.button_B_Clicked), for: .touchUpInside)
+            button_B!.addTarget(self, action: #selector(JoystickButtonsView.button_B_Clicked), for: .touchUpInside)
             addSubview(button_B!)
         }
         else{
@@ -35,7 +35,7 @@ class ControllerButtonsView: UIView, Joystick {
         
         if (button_C == nil){
             button_C = UIButton(frame: rect)
-            button_C!.addTarget(self, action: #selector(ControllerButtonsView.button_C_Clicked), for: .touchUpInside)
+            button_C!.addTarget(self, action: #selector(JoystickButtonsView.button_C_Clicked), for: .touchUpInside)
             addSubview(button_C!)
         }
         else{
@@ -44,7 +44,7 @@ class ControllerButtonsView: UIView, Joystick {
         
         if (button_D == nil){
             button_D = UIButton(frame: rect)
-            button_D!.addTarget(self, action: #selector(ControllerButtonsView.button_D_Clicked), for: .touchUpInside)
+            button_D!.addTarget(self, action: #selector(JoystickButtonsView.button_D_Clicked), for: .touchUpInside)
             addSubview(button_D!)
         }
         else{

@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class ControllerStickView: UIView, Joystick {
+class JoystickStickView: UIView, Joystick {
     var delegate: JoystickDelegate?
     
     override init(frame: CGRect) {
