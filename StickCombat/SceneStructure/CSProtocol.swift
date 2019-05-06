@@ -47,7 +47,7 @@ class Parser{
         }
     }
     
-    public func gameActionToJSON(gameaction: GameAction) -> String{
+//    public func gameActionToJSON(gameaction: GameAction) -> String{
 //
 //        if let action = gameaction as? StrikeAction{
 //            //let jsonStruct = GameActionStrikeJSON(head: Head(id: action.Fighter.hashValue, type: <#T##String#>), body: GameActionStrikeJSON.Body(x: action.Point.x, y: action.Point.y, dx: action.Vector.dx
@@ -75,7 +75,7 @@ class Parser{
 //        }catch{
 //            return ""
 //        }
-    }
+//    }
     public func JSONToGameAction(json: String) -> GameAction{
         let gameAction = StrikeAction.init(fighter: FighterID.first, vector: CGVector(dx: 0, dy: 1), point: CGPoint(x: 0, y: 0))
         return gameAction
