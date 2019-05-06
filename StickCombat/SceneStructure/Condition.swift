@@ -62,6 +62,6 @@ enum SceneStatus {
 
 
 
-enum FighterID {
-    case first,second
+enum FighterID: Int {
+    case first = 0, second = 1
 }
