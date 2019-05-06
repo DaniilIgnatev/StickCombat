@@ -14,9 +14,9 @@ class GameViewController: UIViewController {
     
     private let stickRadius : CGFloat = 50
     
-    @IBOutlet weak var firstFighterStick: ControllerStickView!
+    @IBOutlet weak var firstFighterStick: JoystickStickView!
     
-    @IBOutlet weak var firstFighterButtons : ControllerButtonsView!
+    @IBOutlet weak var firstFighterButtons : JoystickButtonsView!
     
     private var mode : GameMode?
     internal var Mode : GameMode?{

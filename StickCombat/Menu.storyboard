@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qaK-cT-uhK">
-    <device id="retina4_7" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +16,7 @@
             <objects>
                 <viewController id="Uaj-5A-GUb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qPy-E3-aVI">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBe-mi-Dmr">
@@ -70,7 +66,7 @@
             <objects>
                 <viewController id="qaK-cT-uhK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jc5-k6-ZsK">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2i-gR-omm">
@@ -143,7 +139,7 @@
             <objects>
                 <viewController id="WOh-lA-QpP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mGa-wn-gqu">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hu-28-VRL">
@@ -225,7 +221,7 @@
             <objects>
                 <viewController id="Vu1-Cx-7MF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eVP-db-Poi">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NjR-mA-rJG">
@@ -265,7 +261,7 @@
             <objects>
                 <viewController id="9SU-oT-RFL" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I6x-f1-J8z">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-O1-Mwx">
@@ -328,11 +324,11 @@
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="StickCombat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYY-ZE-8FQ" userLabel="LeftStickView" customClass="ControllerStickView" customModule="StickCombat" customModuleProvider="target">
-                                <rect key="frame" x="30" y="225" width="160" height="160"/>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYY-ZE-8FQ" userLabel="LeftStickView" customClass="JoystickStickView" customModule="StickCombat" customModuleProvider="target">
+                                <rect key="frame" x="30" y="450" width="160" height="160"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="RlQ-be-jZd"/>
@@ -366,7 +362,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-NN-21D">
-                                <rect key="frame" x="310" y="20" width="47" height="16"/>
+                                <rect key="frame" x="276.5" y="40" width="47" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="cZJ-qb-TFo"/>
                                     <constraint firstAttribute="width" constant="47" id="jk4-uu-Qjr"/>
@@ -376,7 +372,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-g2-i4O">
-                                <rect key="frame" x="607" y="20" width="40" height="40"/>
+                                <rect key="frame" x="540" y="40" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="PV1-z6-HgJ"/>
                                     <constraint firstAttribute="height" constant="40" id="QdA-Nz-wzu"/>
@@ -386,8 +382,8 @@
                                     <segue destination="2bG-mh-mWC" kind="show" id="Vbd-BE-b8T"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uo7-HJ-Ctn" customClass="ControllerButtonsView" customModule="StickCombat" customModuleProvider="target">
-                                <rect key="frame" x="527" y="248" width="120" height="105"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uo7-HJ-Ctn" customClass="JoystickButtonsView" customModule="StickCombat" customModuleProvider="target">
+                                <rect key="frame" x="460" y="473" width="120" height="105"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="105" id="4TL-4v-KAu"/>
@@ -422,7 +418,7 @@
             <objects>
                 <viewController id="2bG-mh-mWC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kbb-kZ-z5a">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj1-nz-Blz">
@@ -479,7 +475,7 @@
             <objects>
                 <viewController id="CfH-JR-Jr5" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uOH-uK-eoO">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjg-uF-0JZ">

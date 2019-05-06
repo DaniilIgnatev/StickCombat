@@ -42,7 +42,7 @@ protocol LogicController : ActionEngineDelegate {
     var SceneDescriptor : SceneCondition {get}
     
     
-    func requestGameAction(_: GameAction)
+    func requestGameAction(action : GameAction)
 
     func requestConnectionAction(_: ConnectionAction)
 
@@ -103,7 +103,7 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     }
 
 
-    func requestGameAction(_: GameAction) {
+    func requestGameAction(action : GameAction) {
         //отправить game action на сервер
         //парсинг, отправка
     }
