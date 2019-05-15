@@ -17,8 +17,8 @@ class Parser{
         
         do{
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                if let head = json["Head"] as? [String:Any] {
-                    if let type = json["type"] as? String {
+                if let head = json["head"] as? [String:Any] {
+                    if let type = head["type"] as? String {
                         if type == "status"{
                             return defineActionEnum.statusAction
                         }else if type == "strikeApprove" || type == "horizontalMoveApprove" || type == "blockApprove"{
@@ -36,9 +36,9 @@ class Parser{
         return defineActionEnum.error
     }
     
-    public func connectionActionToJSON(connectionaction: ConnectionAction) -> String{
-        let action = connectionaction
-        let jsonStruct = ConnectionJSON(head: Head(id: 0, type: "connection"), body: ConnectionJSON.Body(name: action.name, password: action.password))
+    public func connectionActionToJSON(connectionAction: ConnectionAction) -> String{
+        let action = connectionAction
+        let jsonStruct = ConnectionJSON(head: Head(id: 1, type: "connection"), body: ConnectionJSON.Body(name: action.name, password: action.password))
         do{
             let json = try JSONEncoder().encode(jsonStruct)
             return json.base64EncodedString()
@@ -47,47 +47,132 @@ class Parser{
         }
     }
     
-//    public func gameActionToJSON(gameaction: GameAction) -> String{
-//
-//        if let action = gameaction as? StrikeAction{
-//            //let jsonStruct = GameActionStrikeJSON(head: Head(id: action.Fighter.hashValue, type: <#T##String#>), body: GameActionStrikeJSON.Body(x: action.Point.x, y: action.Point.y, dx: action.Vector.dx
-//                , dy: action.Vector.dy, endHP: nil))
-//            do{
-//                let json = try JSONEncoder().encode(jsonStruct)
-//                return json.base64EncodedString()
-//            }catch{
-//                return ""
-//            }
-//        }else if let action = gameaction as? HorizontalAction{
-//
-//        }else if let action = gameaction as? BlockAction{
-//
-//        }
-//
-//
-//
-//
-//        let action = gameaction
-//        //let jsonStruct = ConnectionJSON(head: Head(id: 0, type: "connection"), body: ConnectionJSON.Body(name: action.name, password: action.password))
-//        do{
-//            let json = try JSONEncoder().encode(jsonStruct)
-//            return json.base64EncodedString()
-//        }catch{
-//            return ""
-//        }
-//    }
-    public func JSONToGameAction(json: String) -> GameAction{
-        let gameAction = StrikeAction.init(fighter: FighterID.first, vector: CGVector(dx: 0, dy: 1), point: CGPoint(x: 0, y: 0))
-        return gameAction
+    public func gameActionToJSON(gameAction: GameAction) -> String{
+
+        if let action = gameAction as? StrikeAction{
+            let jsonStruct = GameActionStrikeJSON(head: Head(id: action.Fighter.hashValue, type: "strike"), body: GameActionStrikeJSON.Body(x: action.Point.x, y: action.Point.y, dx: action.Vector.dx
+                , dy: action.Vector.dy, endHP: nil))
+            do{
+                let json = try JSONEncoder().encode(jsonStruct)
+                return json.base64EncodedString()
+            }catch{
+                return ""
+            }
+        }else if let action = gameAction as? HorizontalAction{
+            let jsonStruct = GameActionMoveJSON(head: Head(id: action.Fighter.hashValue, type: "horizontalMove"), body: GameActionMoveJSON.Body(from: action.From, to: action.To, by: action.By))
+            do{
+                let json = try JSONEncoder().encode(jsonStruct)
+                return json.base64EncodedString()
+            }catch{
+                return ""
+            }
+        }else if let action = gameAction as? BlockAction{
+            let jsonStruct = GameActionBlockJSON(head: Head(id: action.Fighter.hashValue, type: "block"), body: GameActionBlockJSON.Body(isOn: action.IsOn))
+            do{
+                let json = try JSONEncoder().encode(jsonStruct)
+                return json.base64EncodedString()
+            }catch{
+                return ""
+            }
+        }else{
+            print("Undefined GameAction")
+            return ""
+        }
     }
     
-    public func statusActionToJSON(status: StatusAction) -> String{
-        let somestring: String = ""
-        return somestring
+    public func JSONToGameAction(json: String) -> GameAction{
+        let data = Data(json.utf8)
+        
+        do{
+            if let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                let body = response["body"] as? [String:Any]
+                
+                if let head = response["head"] as? [String:Any] {
+                    let fighter = head["id"] as! FighterID
+                    
+                    if let type = head["type"] as? String {
+                        //Если тип "Удар"
+                        if type == "strikeApprove"{
+                            let x = body?["x"] as! CGFloat
+                            let y = body?["y"] as! CGFloat
+                            let dx = body?["dx"] as! CGFloat
+                            let dy = body?["dy"] as! CGFloat
+                            
+                            let action = StrikeAction(fighter: fighter, vector: CGVector(dx: dx, dy: dy), point: CGPoint(x: x, y: y))
+                            return action
+                        //Если тип "Передвижение"
+                        }else if type == "horizontalMoveApprove"{
+                            let from = body?["from"] as! CGFloat
+                            let to = body?["to"] as! CGFloat
+                            
+                            let action = HorizontalAction(fighter: fighter, from: from, to: to)
+                            return action
+                        //Если тип "Блок"
+                        }else if type == "blockApprove"{
+                            let isOn = body?["isOn"] as! Bool
+                            
+                            let action = BlockAction(fighter: fighter, isOn: isOn)
+                            return action
+                        }
+                    }
+                }
+            }
+        }catch let error as NSError{
+            fatalError("Error: \(error)")
+        }
+        fatalError()
+    }
+    
+    public func statusActionToJSON(statusAction: StatusAction) -> String{
+        let action = statusAction
+        let id = action.fighter
+        
+        if action.pause{
+            let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "pause"), body: StatusJSON.Body(code: 0, description: ""))
+            do{
+                let json = try JSONEncoder().encode(jsonStruct)
+                return json.base64EncodedString()
+            }catch{
+                return ""
+            }
+        }else if action.surrender{
+            let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "surrender"), body: StatusJSON.Body(code: 0, description: ""))
+            do{
+                let json = try JSONEncoder().encode(jsonStruct)
+                return json.base64EncodedString()
+            }catch{
+                return ""
+            }
+        }else{
+            fatalError("Undefined status")
+        }
     }
     public func JSONToStatusAction(json: String) -> StatusAction{
-        let status = StatusAction.pause
-        return status
+        let data = Data(json.utf8)
+        
+        do{
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                if let head = json["head"] as? [String:Any] {
+                    if let type = head["type"] as? String {
+                        if type == "status"{
+                            let body = json["body"] as? [String:Any]
+                            
+                            let id = head["id"] as! FighterID
+                            let pause = body?["pause"] as! Bool
+                            let surrender = body?["surrender"] as! Bool
+                            
+                            let action = StatusAction(fighter: id, pause: pause, surrender: surrender)
+                            return action
+                        }else{
+                            fatalError("Error")
+                        }
+                    }
+                }
+            }
+        }catch let error as NSError{
+            fatalError("Error: \(error)")
+        }
+        fatalError("Not a status action")
     }
 }
 
@@ -149,7 +234,8 @@ struct GameActionMoveJSON: Codable{
 
 struct StatusJSON: Codable{
     struct Body: Codable{
-        
+        let code: Int
+        let description: String
     }
     let head: Head
     let body: Body
