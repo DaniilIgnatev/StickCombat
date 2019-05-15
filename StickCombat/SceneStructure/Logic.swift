@@ -130,6 +130,7 @@ class ServerLogicController: LogicController, WebSocketDelegate {
         //отправить game action на сервер
         //парсинг, отправка
         requestQueue.addOperation {
+        
             //let json = self.parser.gameActionToJSON(gameaction: action)
             //self.socket.write(string: json)
         }

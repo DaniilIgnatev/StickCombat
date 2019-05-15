@@ -51,20 +51,15 @@ class JoystickButtonsView: UIView, Joystick {
             button_D?.bounds = rect
         }
         
-        button_A!.setImage(UIImage(named: "Abutton"), for: .normal)
-        button_B!.setImage(UIImage(named: "Bbutton"), for: .normal)
-        button_C!.setImage(UIImage(named: "Cbutton"), for: .normal)
-        button_D!.setImage(UIImage(named: "Dbutton"), for: .normal)
-        
         //button_C!.center = CGPoint(x: buttonSize / 2, y: buttonSize * 3)
         //button_A!.center = CGPoint(x: buttonSize * 1.5, y: buttonSize)
         //button_D!.center = CGPoint(x: buttonSize * 2.5, y: buttonSize * 2.5)
         //button_B!.center = CGPoint(x: buttonSize * 3.5, y: buttonSize / 2)
         
-        button_A?.center = CGPoint(x: buttonSize / 2, y: buttonSize / 2 + buttonOffset)
-        button_B?.center = CGPoint(x: buttonSize * 1.5 + buttonOffset, y: buttonSize / 2 + buttonOffset)
-        button_C?.center = CGPoint(x: buttonSize / 2 + buttonOffset, y: buttonSize * 1.5)
-        button_D?.center = CGPoint(x: buttonSize * 1.5, y: buttonSize * 1.5 )
+        button_A?.center = CGPoint(x: buttonSize, y: buttonSize)
+        button_B?.center = CGPoint(x: buttonSize * 1.5 + buttonOffset, y: buttonSize)
+        button_C?.center = CGPoint(x: buttonSize, y: buttonSize * 1.5 + buttonOffset)
+        button_D?.center = CGPoint(x: buttonSize * 1.5 + buttonOffset, y: buttonSize * 1.5 + buttonOffset)
     }
     
     @objc func button_A_Clicked(){
@@ -97,7 +92,64 @@ class JoystickButtonsView: UIView, Joystick {
         super.init(coder: aDecoder)
         initButtons()
     }
-    
+
+
+    private var buttonAImageName : String = ""
+    @IBInspectable var ButtonAImageName : String{
+        get{
+            return buttonAImageName
+        }
+        set{
+            buttonAImageName = newValue
+            button_A!.setImage(UIImage(named: buttonAImageName), for: .normal)
+
+            setNeedsLayout()
+            setNeedsDisplay()
+        }
+    }
+
+    private var buttonBImageName : String = ""
+    @IBInspectable var ButtonBImageName : String{
+        get{
+            return buttonBImageName
+        }
+        set{
+            buttonBImageName = newValue
+            button_B!.setImage(UIImage(named: buttonBImageName), for: .normal)
+
+            setNeedsLayout()
+            setNeedsDisplay()
+        }
+    }
+
+    private var buttonCImageName : String = ""
+    @IBInspectable var ButtonCImageName : String{
+        get{
+            return buttonCImageName
+        }
+        set{
+            buttonCImageName = newValue
+            button_C!.setImage(UIImage(named: buttonCImageName), for: .normal)
+
+            setNeedsLayout()
+            setNeedsDisplay()
+        }
+    }
+
+    private var buttonDImageName : String = ""
+    @IBInspectable var ButtonDImageName : String{
+        get{
+            return buttonDImageName
+        }
+        set{
+            buttonDImageName = newValue
+            button_D!.setImage(UIImage(named: buttonDImageName), for: .normal)
+
+            setNeedsLayout()
+            setNeedsDisplay()
+        }
+    }
+
     
     private var buttonSize : CGFloat = 45
     @IBInspectable var ButtonSize : CGFloat{
@@ -108,6 +160,8 @@ class JoystickButtonsView: UIView, Joystick {
             buttonSize = newValue
             
             initButtons()
+            setNeedsLayout()
+            setNeedsDisplay()
         }
     }
     
@@ -121,6 +175,8 @@ class JoystickButtonsView: UIView, Joystick {
             buttonOffset = newValue
             
             initButtons()
+            setNeedsLayout()
+            setNeedsDisplay()
         }
     }
     
