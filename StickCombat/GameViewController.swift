@@ -72,7 +72,7 @@ class GameViewController: UIViewController {
         View.showsNodeCount = true
         
         //дебаг
-        Mode = .pvpNet(playerID: .first, adress: URL(string: "127.0.0.1:8080")!)
+        Mode = .pvpNet(playerID: .second, adress: URL(string: "127.0.0.1:8080")!)
     }
     
     required init?(coder aDecoder: NSCoder) {

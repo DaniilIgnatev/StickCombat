@@ -11,13 +11,25 @@ import UIKit
 @IBDesignable
 class JoystickButtonsView: UIView, Joystick {
     var delegate: JoystickDelegate?
+
+    //MARK: SETUP
+
+    private var button_C: UIButton?
+
+    private var button_A: UIButton?
+
+    private var button_D: UIButton?
+
+    private var button_B: UIButton?
+
     
     private func initButtons(){
         
         let rect = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
         if (button_A == nil){
             button_A = UIButton(frame: rect)
-            button_A!.addTarget(self, action: #selector(JoystickButtonsView.button_A_Clicked), for: .touchUpInside)
+            button_A!.addTarget(self, action: #selector(JoystickButtonsView.button_A_Clicked), for: .touchDown)
+            button_A!.addTarget(self, action: #selector(JoystickButtonsView.button_A_Released), for: .touchUpInside)
             addSubview(button_A!)
         }
         else{
@@ -26,7 +38,8 @@ class JoystickButtonsView: UIView, Joystick {
         
         if (button_B == nil){
             button_B = UIButton(frame: rect)
-            button_B!.addTarget(self, action: #selector(JoystickButtonsView.button_B_Clicked), for: .touchUpInside)
+            button_B!.addTarget(self, action: #selector(JoystickButtonsView.button_B_Clicked), for: .touchDown)
+            button_B!.addTarget(self, action: #selector(JoystickButtonsView.button_B_Released), for: .touchUpInside)
             addSubview(button_B!)
         }
         else{
@@ -35,7 +48,8 @@ class JoystickButtonsView: UIView, Joystick {
         
         if (button_C == nil){
             button_C = UIButton(frame: rect)
-            button_C!.addTarget(self, action: #selector(JoystickButtonsView.button_C_Clicked), for: .touchUpInside)
+            button_C!.addTarget(self, action: #selector(JoystickButtonsView.button_C_Clicked), for: .touchDown)
+            button_C!.addTarget(self, action: #selector(JoystickButtonsView.button_C_Released), for: .touchUpInside)
             addSubview(button_C!)
         }
         else{
@@ -44,7 +58,8 @@ class JoystickButtonsView: UIView, Joystick {
         
         if (button_D == nil){
             button_D = UIButton(frame: rect)
-            button_D!.addTarget(self, action: #selector(JoystickButtonsView.button_D_Clicked), for: .touchUpInside)
+            button_D!.addTarget(self, action: #selector(JoystickButtonsView.button_D_Clicked), for: .touchDown)
+            button_C!.addTarget(self, action: #selector(JoystickButtonsView.button_D_Released), for: .touchUpInside)
             addSubview(button_D!)
         }
         else{
@@ -61,25 +76,49 @@ class JoystickButtonsView: UIView, Joystick {
         button_C?.center = CGPoint(x: buttonSize, y: buttonSize * 1.5 + buttonOffset)
         button_D?.center = CGPoint(x: buttonSize * 1.5 + buttonOffset, y: buttonSize * 1.5 + buttonOffset)
     }
-    
+
+    //MARK: BUTTON EVENTS
     @objc func button_A_Clicked(){
-        print("A")
-        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.first))
+        print("A pressed")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.first, buttonReleased: nil))
     }
+
+    @objc func button_A_Released(){
+        print("A released")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .first))
+    }
+
     
     @objc func button_B_Clicked(){
-        print("B")
-        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.second))
+        print("B pressed")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.second, buttonReleased: nil))
     }
+
+    @objc func button_B_Released(){
+        print("B released")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .second))
+    }
+
     
     @objc func button_C_Clicked(){
-        print("C")
-        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.third))
+        print("C pressed")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.third, buttonReleased: nil))
     }
+
+    @objc func button_C_Released(){
+        print("C released")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .third))
+    }
+
     
     @objc func button_D_Clicked(){
-        print("D")
-        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.fourth))
+        print("D pressed")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.fourth, buttonReleased: nil))
+    }
+
+    @objc func button_D_Released(){
+        print("D released")
+        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .fourth))
     }
     
     
@@ -94,6 +133,7 @@ class JoystickButtonsView: UIView, Joystick {
     }
 
 
+    //MARK: INSPECTABLE PARAMS
     private var buttonAImageName : String = ""
     @IBInspectable var ButtonAImageName : String{
         get{
@@ -179,16 +219,5 @@ class JoystickButtonsView: UIView, Joystick {
             setNeedsDisplay()
         }
     }
-    
-    private var button_C: UIButton?
-    
-    private var button_A: UIButton?
-    
-    private var button_D: UIButton?
-    
-    private var button_B: UIButton?
-    
-    
-    
     
 }

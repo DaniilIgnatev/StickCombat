@@ -287,7 +287,7 @@ class JoystickStickView: UIView, Joystick {
             }
             
             
-            delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: (angle: angle, power: power), buttonPressed: nil))
+            delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: (angle: angle, power: power), buttonPressed: nil, buttonReleased: nil))
             //print("angle: \(angle); scale\(scale.xyScale)")
         }
     }

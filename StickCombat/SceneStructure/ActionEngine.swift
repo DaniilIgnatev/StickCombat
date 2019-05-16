@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SpriteKit
 
 
 protocol ActionEngineDelegate {
@@ -22,14 +22,14 @@ protocol ActionEngine {
     
     var Condition : SceneCondition {get set}
     
-    var Delegate : ActionEngineDelegate? {get set}
+    var delegate : ActionEngineDelegate? {get set}
 }
 
 
 
 class GestureEngine: ActionEngine, JoystickDelegate {
 
-    
+    //MARK: Context
     let fighter: FighterID
     var Fighter: FighterID{
         get{
@@ -49,7 +49,7 @@ class GestureEngine: ActionEngine, JoystickDelegate {
     }
     
     
-    var Delegate: ActionEngineDelegate?
+    var delegate: ActionEngineDelegate?
     
     
     public init(fighterID : FighterID, condition : SceneCondition, joysticks : JoystickSet){
@@ -60,11 +60,88 @@ class GestureEngine: ActionEngine, JoystickDelegate {
         joysticks.secondMoveJoystick?.delegate = self
         joysticks.secondStrikeJoystick?.delegate = self
     }
-    
-    //MARK: Joystick Delegate
-    
+
+    //MARK
+    ///Генерация команды из данных дескриптора
     func ControlCommand(descriptor : JoystickDescriptor) {
-        //генерация команды из данных дескриптора
+        var xVector : CGFloat = -1.0
+        var opponentPosition : CGFloat = self.condition.fighter_1.X
+        if self.fighter == .first{
+            xVector = -xVector
+            opponentPosition = self.condition.fighter_2.X
+        }
+
+        var action : GameAction? = nil
+
+        if descriptor.buttonPressed != nil{
+            action = processPressedButton(descriptor: descriptor.buttonPressed!, xStrikeVector: xVector, xOpponentPosition: opponentPosition)
+        }
+        if descriptor.buttonReleased != nil{
+            action = processReleasedButton(descriptor: descriptor.buttonReleased!)
+        }
+        if descriptor.axisShift != nil{
+            action = processAxisDescriptor(angle: descriptor.axisShift!.angle, scale: descriptor.axisShift!.power)
+        }
+
+        if action != nil{
+            delegate?.requestGameAction(action!)
+        }
+    }
+
+
+    private func processPressedButton(descriptor : ButtonDescriptor, xStrikeVector : CGFloat, xOpponentPosition : CGFloat) -> GameAction?{
+        switch descriptor {
+        case .first:
+            return BlockAction(fighter: fighter, isOn: true)//выставить блок
+        case .second:
+            //удар рукой
+            return StrikeAction(fighter: fighter, vector: CGVector(dx: xStrikeVector,dy: 0), point: CGPoint(x: xOpponentPosition, y: FighterPresence.height))
+        case .third:
+            //удар левой ногой (вверх)
+            return StrikeAction(fighter: fighter, vector: CGVector(dx: xStrikeVector, dy: 1), point: CGPoint(x: xOpponentPosition, y: FighterPresence.height))
+        case .fourth:
+            //удар правой ногой (прямо)
+            return StrikeAction(fighter: fighter, vector: CGVector(dx: xStrikeVector, dy: 0), point: CGPoint(x: xOpponentPosition, y: 0))
+        }
+    }
+
+
+    private func processReleasedButton(descriptor : ButtonDescriptor) -> GameAction?{
+        switch descriptor {
+        case .first:
+            return BlockAction(fighter: fighter, isOn: false)//снять блок
+        default:
+            return nil
+        }
+    }
+
+
+    private func processAxisDescriptor(angle : CGFloat, scale : CGFloat) -> GameAction{
+        var selfXPos = self.condition.fighter_1.X
+
+        if fighter == .second{
+            selfXPos = self.condition.fighter_2.X
+        }
+
+        let xDirection = MoveDirection(angle: angle)
+        let by = xDirection * scale * 2
+
+
+        return HorizontalAction(fighter: fighter, from: selfXPos, by: by)
+    }
+
+
+    private func MoveDirection(angle : CGFloat) -> CGFloat{
+        switch angle {
+        case 0..<90:
+            fallthrough
+        case 270..<360:
+            return 1
+        case 90..<270:
+            return -1
+        default:
+            return 0
+        }
     }
 }
 
@@ -91,7 +168,7 @@ class AIEngine: ActionEngine {
     }
     
     
-    var Delegate: ActionEngineDelegate?
+    var delegate: ActionEngineDelegate?
     
     
     public init(fighterID : FighterID, condition : SceneCondition){

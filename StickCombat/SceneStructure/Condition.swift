@@ -38,7 +38,7 @@ class FighterPresence {
 
     static public let width : CGFloat = 40.0
 
-     static public let height : CGFloat = 80.0
+    static public let height : CGFloat = 80.0
     
     public let ID : FighterID
     

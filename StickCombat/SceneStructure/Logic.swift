@@ -72,7 +72,8 @@ class LogicControllerFactory {
 
 ///Алгоритм игры по протоколу websocket
 class ServerLogicController: LogicController, WebSocketDelegate {
-    
+
+    //MARK: INIT
     
     let joysticks: JoystickSet
     
@@ -112,42 +113,6 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     }
 
 
-    //MARK: REQUEST
-    
-    private let requestQueue = OperationQueue.init()
-    
-    func requestConnectionAction(_ action : ConnectionAction) {
-        //отправить connection action на сервер
-        //парсинг, отправка
-        requestQueue.addOperation {
-            let json = self.parser.connectionActionToJSON(connectionaction: action)
-            self.socket.write(string: json)
-        }
-    }
-
-
-    func requestGameAction(_ action : GameAction) {
-        //отправить game action на сервер
-        //парсинг, отправка
-        requestQueue.addOperation {
-        
-            //let json = self.parser.gameActionToJSON(gameaction: action)
-            //self.socket.write(string: json)
-        }
-    }
-
-
-    func requestStatusAction(_ action : StatusAction) {
-        //отправить status action на сервер
-        //парсинг, отправка
-        requestQueue.addOperation {
-            let json = self.parser.statusActionToJSON(status: action)
-            self.socket.write(string: json)
-        }
-    }
-
-
-
     init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, joysticks : JoystickSet, adress : URL) {
         self.fighterID = fighterID
         self.joysticks = joysticks
@@ -162,16 +127,16 @@ class ServerLogicController: LogicController, WebSocketDelegate {
 
         if fighterID == .first{
             Engine1 = GestureEngine(fighterID: fighterID, condition: sceneDescriptor, joysticks: joysticks)
-            Engine1?.Delegate = self
+            Engine1?.delegate = self
         }else{
             Engine2 = GestureEngine(fighterID: fighterID, condition: sceneDescriptor, joysticks: joysticks)
-            Engine2!.Delegate = self
+            Engine2!.delegate = self
         }
         
         requestQueue.isSuspended = true
     }
 
-    //MARK: SOCKET
+    //MARK: WEB SOCKET
     
     private let parser = Parser()
     
@@ -181,13 +146,14 @@ class ServerLogicController: LogicController, WebSocketDelegate {
 
     func websocketDidConnect(socket: WebSocketClient) {
         requestQueue.isSuspended = false
+        doPingPong(interval: 5, timeout: 10)
     }
 
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         delegate?.GameStatusChanged(status: .ConnectionLost)
     }
     
-    //MARK: WS TIMER
+    //MARK: WS SESSION PINGPONG CONTROL
     
     private var pingTimer = Timer.init()
     private var pongTimer = Timer.init()
@@ -229,15 +195,64 @@ class ServerLogicController: LogicController, WebSocketDelegate {
         doPingPong(interval: 5, timeout: 10)
     }
 
-    //MARK: ANSWER
+
+    //MARK: WS REQUEST
+
+    private let requestQueue = OperationQueue.init()
+
+
+    func requestConnectionAction(_ action : ConnectionAction) {
+        //отправить connection action на сервер
+        //парсинг, отправка
+        requestQueue.addOperation {
+            let json = self.parser.connectionActionToJSON(connectionAction: action)
+            self.socket.write(string: json)
+        }
+    }
+
+
+    func requestGameAction(_ action : GameAction) {
+        //отправить game action на сервер
+        //парсинг, отправка
+        requestQueue.addOperation {
+            let json = self.parser.gameActionToJSON(gameAction: action)
+            self.socket.write(string: json)
+        }
+    }
+
+
+    func requestStatusAction(_ action : StatusAction) {
+        //отправить status action на сервер
+        //парсинг, отправка
+        requestQueue.addOperation {
+            let json = self.parser.statusActionToJSON(statusAction: action)
+            self.socket.write(string: json)
+        }
+    }
+
+
+    //MARK: WS ANSWER
 
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
          //обработка ответа от сервера
-        
+        let type = parser.defineAction(action: text)
+        switch type {
+        case .error:
+            print("Получены данные от сервера не соответствующие протоколу обмена")
+        case .gameAction:
+            let action = parser.JSONToGameAction(json: text)
+            //обновить состояние сцены
+            //отобразить на бойцах
+            break
+        case .statusAction:
+            let action = parser.JSONToStatusAction(json: text)
+            //обновить состояние сцены, распространить выше, если требуется
+            break
+        }
     }
 
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-
+        //не используется
     }
 }
 
