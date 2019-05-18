@@ -255,19 +255,12 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     //MARK: GAME ACTION ANSWER
 
     func processGameActionAnswer(action : GameAction){
-        if action.Fighter == .first{
-            //self.View_1.PlayAction()
-        }
-        else{
-
-        }
-
         if let horAction = action as? HorizontalAction{
-            updateForMoveAction(horAction)
+            processMoveAction(horAction)
         }
         else
             if let strikeAction = action as? StrikeAction{
-
+                processStrikeAction(strikeAction)
         }
     }
 
@@ -275,8 +268,9 @@ class ServerLogicController: LogicController, WebSocketDelegate {
         //не используется
     }
 
+
     //MARK: CONDITION UPDATE
-    func updateForMoveAction(_ action : HorizontalAction){
+    func processMoveAction(_ action : HorizontalAction){
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.X = action.To
         }
@@ -286,12 +280,12 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     }
 
     //MARK: CONDITION UPDATE
-    func updateForStrikeAction(_ action : HorizontalAction){
+    func processStrikeAction(_ action : StrikeAction){
         if action.Fighter == .first{
-            self.sceneDescriptor.fighter_1.X = action.To
+            self.sceneDescriptor.fighter_1.hp -= self.sceneDescriptor.fighter_1.hp
         }
         else{
-            self.sceneDescriptor.fighter_2.X = action.To
+            self.sceneDescriptor.fighter_2.hp -= self.sceneDescriptor.fighter_2.hp
         }
     }
 }
