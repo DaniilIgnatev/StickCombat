@@ -21,7 +21,7 @@ class FighterView {
         self.FighterNode = node
     }
     
-    public func PlayAction(_ : GameAction){
+    public func PlayAction(action : GameAction){
         //пробник
         
     }
