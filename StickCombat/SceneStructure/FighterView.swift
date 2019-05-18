@@ -16,13 +16,32 @@ class FighterView {
 
     public let FighterNode : SKSpriteNode
     
+    private var textureAtlas = SKTextureAtlas()
+    private var textureArray = [SKTexture]()
+    
     init(id : FighterID,node : SKSpriteNode) {
         self.ID = id
         self.FighterNode = node
+        
+        self.textureAtlas = SKTextureAtlas(named: "walk")
+        
+        for i in 0...(textureAtlas.textureNames.count-1){
+            let name = "\(i).png"
+            self.textureArray.append(SKTexture(imageNamed: name))
+        }
     }
     
-    public func PlayAction(_ : GameAction){
+    public func PlayAction(action : GameAction){
         //пробник
         
     }
+    public func PlayMoveAction(moveAction : GameAction){
+        
+    }
+    
+    private func moveLeftFirst(){
+        FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
+        FighterNode.run(SKAction.repeatForever(SKAction.moveBy(x: 5, y: 0, duration: 0.05)))
+    }
+    
 }
