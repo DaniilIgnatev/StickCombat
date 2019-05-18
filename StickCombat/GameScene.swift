@@ -39,7 +39,6 @@ class GameScene: SKScene {
         let firstFighterNode = childNode(withName: "fighter_1") as! SKSpriteNode
         let secondFighterNode = childNode(withName: "fighter_2") as! SKSpriteNode
         
-        
         Logic = LogicControllerFactory.BuildLogicFor(gameMode: mode, joysticks: Joysticks!, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode)
     }
     
