@@ -243,7 +243,7 @@ class ServerLogicController: LogicController, WebSocketDelegate {
             let action = parser.JSONToGameAction(json: text)
             //обновить состояние сцены
             //отобразить на бойцах
-
+            processGameActionAnswer(action: action)
             break
         case .statusAction:
             let action = parser.JSONToStatusAction(json: text)
@@ -273,9 +273,11 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     func processMoveAction(_ action : HorizontalAction){
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.X = action.To
+            self.View_1.playMoveAction(moveAction: action)
         }
         else{
              self.sceneDescriptor.fighter_2.X = action.To
+            self.View_1.playMoveAction(moveAction: action)
         }
     }
 
@@ -283,9 +285,11 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     func processStrikeAction(_ action : StrikeAction){
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.hp -= self.sceneDescriptor.fighter_1.hp
+            self.View_1.playStrikeAction(action: action)
         }
         else{
             self.sceneDescriptor.fighter_2.hp -= self.sceneDescriptor.fighter_2.hp
+            self.View_1.playStrikeAction(action: action)
         }
     }
 }
