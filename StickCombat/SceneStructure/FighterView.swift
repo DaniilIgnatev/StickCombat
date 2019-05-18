@@ -31,17 +31,18 @@ class FighterView {
         }
     }
     
-    public func PlayAction(action : GameAction){
+    public func PlayStrikeAction(action : StrikeAction){
         //пробник
         
     }
-    public func PlayMoveAction(moveAction : GameAction){
+    public func PlayMoveAction(moveAction : HorizontalAction){
         
     }
     
-    private func moveLeftFirst(){
+    private func moveLeftFirst(to: CGFloat){
         FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
-        FighterNode.run(SKAction.repeatForever(SKAction.moveBy(x: 5, y: 0, duration: 0.05)))
+        //FighterNode.run(SKAction.repeatForever(SKAction.moveBy(x: 5, y: 0, duration: 0.05)))
+        FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: <#T##CGFloat#>, duration: <#T##TimeInterval#>)))
     }
     
 }
