@@ -46,7 +46,7 @@ class FighterPresence {
     
     public var hp : CGFloat = maxHP
     
-    public var comboPoints : Int = 0
+    public var isBlock : Bool = false
     
     public init(id : FighterID, X : CGFloat){
         self.ID = id

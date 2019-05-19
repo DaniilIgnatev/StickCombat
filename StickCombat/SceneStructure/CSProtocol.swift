@@ -11,31 +11,36 @@ import SpriteKit
 
 //парсинг json
 class Parser{
-    
-    public func defineAction(action: String) -> defineActionEnum{
+
+
+    public func defineAction(action: String) -> GameActionType{
         let data = Data(action.utf8)
         
-        do{
-            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                if let head = json["head"] as? [String:Any] {
-                    if let type = head["type"] as? String {
-                        if type == "status"{
-                            return defineActionEnum.statusAction
-                        }else if type == "strikeApprove" || type == "horizontalMoveApprove" || type == "blockApprove"{
-                            return defineActionEnum.gameAction
-                        }else{
-                            return defineActionEnum.error
-                        }
+
+        if let json = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+            if let head = json["head"] as? [String:Any] {
+                if let type = head["type"] as? String {
+                    switch type{
+                    case "status":
+                        return .Status
+                    case "strikeApprove":
+                        return .Strike
+                    case "horizontalMoveApprove":
+                        return .Horizontal
+                    case "blockApprove":
+                        return .Block
+                    default:
+                        return .Connection
                     }
                 }
             }
-        }catch let error as NSError{
-            print("Error: \(error)")
-            return defineActionEnum.error
         }
-        return defineActionEnum.error
+
+        return .Connection
     }
-    
+
+
+    //+
     public func connectionActionToJSON(connectionAction: ConnectionAction) -> String{
         let action = connectionAction
 
@@ -48,7 +53,9 @@ class Parser{
         let json = String.init(data: try! JSONEncoder().encode(jsonStruct), encoding: .utf8)!
         return json
     }
-    
+
+
+    //+
     public func gameActionToJSON(gameAction: GameAction) -> String{
 
         if let action = gameAction as? StrikeAction{
@@ -63,16 +70,16 @@ class Parser{
         }else if let action = gameAction as? HorizontalAction{
             let jsonStruct = GameActionMoveJSON(head: Head(id: action.Fighter.hashValue, type: "horizontalMove"), body: GameActionMoveJSON.Body(from: action.From, to: action.To, by: action.By))
             do{
-                let json = try JSONEncoder().encode(jsonStruct)
-                return json.base64EncodedString()
+                let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
+                return json
             }catch{
                 return ""
             }
         }else if let action = gameAction as? BlockAction{
             let jsonStruct = GameActionBlockJSON(head: Head(id: action.Fighter.hashValue, type: "block"), body: GameActionBlockJSON.Body(isOn: action.IsOn))
             do{
-                let json = try JSONEncoder().encode(jsonStruct)
-                return json.base64EncodedString()
+                let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
+                return json
             }catch{
                 return ""
             }
@@ -81,7 +88,8 @@ class Parser{
             return ""
         }
     }
-    
+
+
     public func JSONToGameAction(json: String) -> GameAction{
         let data = Data(json.utf8)
         
@@ -124,7 +132,8 @@ class Parser{
         }
         fatalError()
     }
-    
+
+    //+
     public func statusActionToJSON(statusAction: StatusAction) -> String{
         let action = statusAction
         let id = action.Fighter
@@ -132,12 +141,14 @@ class Parser{
 
         let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "status"), body: StatusJSON.Body(code: 0, description: ""))
         do{
-            let json = try JSONEncoder().encode(jsonStruct)
-            return json.base64EncodedString()
+            let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
+            return json
         }catch{
             return ""
         }
     }
+
+    //+
     public func JSONToStatusAction(json: String) -> StatusAction{
         let data = Data(json.utf8)
         
@@ -229,10 +240,4 @@ struct StatusJSON: Codable{
     }
     let head: Head
     let body: Body
-}
-
-enum defineActionEnum{
-    case statusAction
-    case gameAction
-    case error
 }

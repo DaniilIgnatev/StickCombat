@@ -11,15 +11,15 @@ import SpriteKit
 
 
 
-enum ActionType {
-    case Strike, Horizontal, Vertical, Block, Status, Connection
+enum GameActionType {
+    case Strike, Horizontal, Block, Status, Connection
 }
 
 
 
 protocol GameAction {
     
-    var Kind: ActionType {get}
+    var Kind: GameActionType {get}
     
     
     var Fighter : FighterID {get}
@@ -29,8 +29,8 @@ protocol GameAction {
 
 class StrikeAction: GameAction {
     
-    private let kind : ActionType
-    public var Kind: ActionType{
+    private let kind : GameActionType
+    public var Kind: GameActionType{
         get{
             return kind
         }
@@ -63,8 +63,8 @@ class StrikeAction: GameAction {
 
 class HorizontalAction: GameAction {
     
-    private let kind : ActionType
-    public var Kind: ActionType{
+    private let kind : GameActionType
+    public var Kind: GameActionType{
         get{
             return kind
         }
@@ -106,8 +106,8 @@ class HorizontalAction: GameAction {
 
 class BlockAction: GameAction{
     
-    private let kind : ActionType
-    public var Kind: ActionType{
+    private let kind : GameActionType
+    public var Kind: GameActionType{
         get{
             return kind
         }
@@ -170,7 +170,7 @@ enum VerticalStance {
 */
 
 class ConnectionAction : GameAction{
-    var Kind: ActionType = .Connection
+    var Kind: GameActionType = .Connection
 
     var Fighter: FighterID
 
@@ -186,7 +186,7 @@ class ConnectionAction : GameAction{
 
 
 class StatusAction : GameAction{
-    var Kind: ActionType = .Status
+    var Kind: GameActionType = .Status
 
     var Fighter: FighterID
 

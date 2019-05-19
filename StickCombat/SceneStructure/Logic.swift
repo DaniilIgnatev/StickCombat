@@ -54,6 +54,7 @@ protocol LogicController : ActionEngineDelegate {
     
 }
 
+
 class LogicControllerFactory {
     static func BuildLogicFor(gameMode : GameMode, joysticks : JoystickSet, firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode) -> LogicController?{
         switch gameMode {
@@ -65,8 +66,9 @@ class LogicControllerFactory {
     }
 }
 
+
 ///Алгоритм игры по протоколу websocket
-class ServerLogicController: LogicController, WebSocketDelegate {
+class ServerLogicController: LogicController, WebSocketDelegate, WebSocketPongDelegate {
 
     //MARK: INIT
     
@@ -240,31 +242,28 @@ class ServerLogicController: LogicController, WebSocketDelegate {
          //обработка ответа от сервера
         let type = parser.defineAction(action: text)
         switch type {
-        case .error:
-            print("Получены данные от сервера не соответствующие протоколу обмена")
-        case .gameAction:
-            let action = parser.JSONToGameAction(json: text)
-            //обновить состояние сцены
-            //отобразить на бойцах
-            processGameActionAnswer(action: action)
+        case .Strike:
+            let action = parser.JSONToGameAction(json: text) as! StrikeAction
+            processStrikeAction(action)
             break
-        case .statusAction:
+        case .Horizontal:
+            let action = parser.JSONToGameAction(json: text) as! HorizontalAction
+            processHorizontalAction(action)
+            break
+        case .Block:
+            let action = parser.JSONToGameAction(json: text) as! BlockAction
+            processBlockAction(action)
+            break
+        case .Status:
             let action = parser.JSONToStatusAction(json: text)
             //обновить состояние сцены, распространить выше, если требуется
             processStatusAction(action)
             break
+        default:
+            break
         }
     }
 
-    func processGameActionAnswer(action : GameAction){
-        if let horAction = action as? HorizontalAction{
-            processMoveAction(horAction)
-        }
-        else
-            if let strikeAction = action as? StrikeAction{
-                processStrikeAction(strikeAction)
-        }
-    }
 
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         //не используется
@@ -272,7 +271,7 @@ class ServerLogicController: LogicController, WebSocketDelegate {
 
 
     //MARK: CONDITION UPDATE
-    func processMoveAction(_ action : HorizontalAction){
+    func processHorizontalAction(_ action : HorizontalAction){
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.X = action.To
             self.View_1.playMoveAction(moveAction: action)
@@ -295,9 +294,21 @@ class ServerLogicController: LogicController, WebSocketDelegate {
         }
     }
 
+
+    func processBlockAction(_ action : BlockAction){
+        if action.Fighter == .first{
+            self.sceneDescriptor.fighter_1.isBlock = action.IsOn
+            //self.View_1
+        }
+        else{
+            self.sceneDescriptor.fighter_2.isBlock = action.IsOn
+            //self.View_1.playStrikeAction(action: action)
+        }
+    }
+
     func processStatusAction(_ action : StatusAction){
         self.sceneDescriptor.status = action.statusID
-        delegate?.GameStatusChanged(status: sceneDescriptor.status)
+        delegate?.statusChanged(sceneDescriptor.status)
     }
 }
 
