@@ -11,7 +11,7 @@
 		8517A638221294C200880F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8517A637221294C200880F20 /* AppDelegate.swift */; };
 		8517A63A221294C200880F20 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8517A639221294C200880F20 /* GameScene.sks */; };
 		8517A63C221294C200880F20 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8517A63B221294C200880F20 /* Actions.sks */; };
-		8517A63E221294C200880F20 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8517A63D221294C200880F20 /* GameScene.swift */; };
+		8517A63E221294C200880F20 /* CombatScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8517A63D221294C200880F20 /* CombatScene.swift */; };
 		8517A640221294C200880F20 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8517A63F221294C200880F20 /* GameViewController.swift */; };
 		8517A645221294C400880F20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8517A644221294C400880F20 /* Assets.xcassets */; };
 		8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8517A646221294C400880F20 /* LaunchScreen.storyboard */; };
@@ -22,6 +22,8 @@
 		852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A01221959FB000EEB12 /* ActionEngine.swift */; };
 		852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0322195DCB000EEB12 /* FighterView.swift */; };
 		852A5A0622199CA5000EEB12 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0522199CA5000EEB12 /* Joystick.swift */; };
+		859619492291A98A00B19F9B /* ReceptionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 859619482291A98A00B19F9B /* ReceptionScene.sks */; };
+		8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8596194A2291ACCA00B19F9B /* PauseScene.sks */; };
 		A153FE67B822013ED5814E4B /* Pods_StickCombat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */; };
 		A5187510221AB4B2007CDFDE /* JoystickStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518750F221AB4B2007CDFDE /* JoystickStickView.swift */; };
 		A5187512221AB73E007CDFDE /* JoystickButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */; };
@@ -35,7 +37,7 @@
 		8517A637221294C200880F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8517A639221294C200880F20 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		8517A63B221294C200880F20 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		8517A63D221294C200880F20 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		8517A63D221294C200880F20 /* CombatScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatScene.swift; sourceTree = "<group>"; };
 		8517A63F221294C200880F20 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8517A644221294C400880F20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8517A647221294C400880F20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		852A5A01221959FB000EEB12 /* ActionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEngine.swift; sourceTree = "<group>"; };
 		852A5A0322195DCB000EEB12 /* FighterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FighterView.swift; sourceTree = "<group>"; };
 		852A5A0522199CA5000EEB12 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
+		859619482291A98A00B19F9B /* ReceptionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReceptionScene.sks; sourceTree = "<group>"; };
+		8596194A2291ACCA00B19F9B /* PauseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseScene.sks; sourceTree = "<group>"; };
 		933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.debug.xcconfig"; sourceTree = "<group>"; };
 		A518750F221AB4B2007CDFDE /* JoystickStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickStickView.swift; sourceTree = "<group>"; };
 		A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickButtonsView.swift; sourceTree = "<group>"; };
@@ -110,12 +114,13 @@
 			isa = PBXGroup;
 			children = (
 				8517A637221294C200880F20 /* AppDelegate.swift */,
-				8517A63D221294C200880F20 /* GameScene.swift */,
 				8517A63F221294C200880F20 /* GameViewController.swift */,
-				A518750C221AB447007CDFDE /* Controllers */,
 				852A59FA22194ADE000EEB12 /* SceneStructure */,
 				8517A639221294C200880F20 /* GameScene.sks */,
+				859619482291A98A00B19F9B /* ReceptionScene.sks */,
+				8596194A2291ACCA00B19F9B /* PauseScene.sks */,
 				8517A63B221294C200880F20 /* Actions.sks */,
+				A518750C221AB447007CDFDE /* Controllers */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
 				A5FDBC06228FDE6500FF3DE7 /* walk.atlas */,
 				A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */,
@@ -145,6 +150,7 @@
 		852A59FA22194ADE000EEB12 /* SceneStructure */ = {
 			isa = PBXGroup;
 			children = (
+				8517A63D221294C200880F20 /* CombatScene.swift */,
 				852A59FB22194B97000EEB12 /* Logic.swift */,
 				852A59FD22194BEE000EEB12 /* Action.swift */,
 				852A59FF22194CA1000EEB12 /* Condition.swift */,
@@ -232,9 +238,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				859619492291A98A00B19F9B /* ReceptionScene.sks in Resources */,
 				A5FDBC07228FDE6500FF3DE7 /* walk.atlas in Resources */,
 				A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */,
 				8517A63A221294C200880F20 /* GameScene.sks in Resources */,
+				8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */,
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
 				852A59F92219494F000EEB12 /* GameScene.mdj in Resources */,
@@ -290,7 +298,7 @@
 			files = (
 				852A5A0622199CA5000EEB12 /* Joystick.swift in Sources */,
 				852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */,
-				8517A63E221294C200880F20 /* GameScene.swift in Sources */,
+				8517A63E221294C200880F20 /* CombatScene.swift in Sources */,
 				852A5A0022194CA1000EEB12 /* Condition.swift in Sources */,
 				A5187512221AB73E007CDFDE /* JoystickButtonsView.swift in Sources */,
 				852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */,

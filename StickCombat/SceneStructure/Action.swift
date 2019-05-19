@@ -12,7 +12,7 @@ import SpriteKit
 
 
 enum ActionType {
-    case Strike, Horizontal, Vertical, Block
+    case Strike, Horizontal, Vertical, Block, Status, Connection
 }
 
 
@@ -103,6 +103,7 @@ class HorizontalAction: GameAction {
     public let By : CGFloat
 }
 
+
 class BlockAction: GameAction{
     
     private let kind : ActionType
@@ -168,15 +169,41 @@ enum VerticalStance {
 }
 */
 
-struct ConnectionAction{
-    ///true -- создать лобби,false -- присоединиться
-    public let create: Bool
+class ConnectionAction : GameAction{
+    var Kind: ActionType = .Connection
+
+    var Fighter: FighterID
+
     public let name: String
     public let password: String
+
+    init(fighter: FighterID, name: String, password: String) {
+        self.Fighter = fighter
+        self.name = name
+        self.password = password
+    }
 }
 
-struct StatusAction{
-    public let fighter: FighterID
-    public let pause: Bool
-    public let surrender: Bool
+
+class StatusAction : GameAction{
+    var Kind: ActionType = .Status
+
+    var Fighter: FighterID
+
+    public let statusID: LobbyStatusEnum
+
+    init(fighter: FighterID, statusID: LobbyStatusEnum) {
+        self.Fighter = fighter
+        self.statusID = statusID
+    }
+}
+
+
+internal enum LobbyStatusEnum : Int{
+    case refused = 0//участие в лобби отказано сервером
+    case casting = 1//сервер ждет подключения второго игрока
+    case fight = 2//идет поединок
+    case pause = 3//поединок преостановлен
+    case finished = 4//поединок завершен
+    case ConnectionLost = 100//соединение с сервером утрачено
 }

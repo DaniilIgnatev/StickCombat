@@ -17,7 +17,7 @@ class SceneCondition {
     
     public let fighter_2 : FighterPresence
     
-    public var status = SceneStatus.Preparation
+    public var status = LobbyStatusEnum.casting
     
     public var gameTime : TimeInterval = 0.0
     
@@ -53,13 +53,6 @@ class FighterPresence {
         self.X = X
     }
 }
-
-
-
-enum SceneStatus {
-    case Preparation, Play, Pause, Finished, ConnectionLost
-}
-
 
 
 enum FighterID: Int {

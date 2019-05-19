@@ -23,15 +23,21 @@ class JoystickSet {
     }
 }
 
-class GameScene: SKScene {
-    
-    
+
+class CombatScene: SKScene, LobbyDelegate {
+
+    var lobbyDelegate : LobbyDelegate? = nil
+
+
+    ///Набор игровой логики
     private var Logic : LogicController? = nil
     
-    
+
+    ///Набор джостиков для управления бойцами
     var Joysticks : JoystickSet?
     
-    
+
+    ///Подготовить игровую логику
     func SetUpGameLogic(mode : GameMode, joysticks : JoystickSet){
      
         self.Joysticks = joysticks
@@ -41,7 +47,15 @@ class GameScene: SKScene {
         
         Logic = LogicControllerFactory.BuildLogicFor(gameMode: mode, joysticks: Joysticks!, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode)
     }
-    
+
+
+    ///Действия при изменении статуса
+    func statusChanged(_ status: LobbyStatusEnum) {
+
+    }
+
+
+    ///Действия при переходе на сцену (игра началась)
     override func didMove(to view: SKView) {
         
         /*
@@ -59,17 +73,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        /*
-        let fighter1 = childNode(withName: "fighterModel_1")!
-        
-        if let touchLocation = touches.first?.location(in: self){
-            if fighter1.contains(touchLocation){
-                fighter1.physicsBody!.applyImpulse(CGVector(dx: 50, dy: -30), at: touchLocation)
-            }
-        }
- */
-        
-        
+
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

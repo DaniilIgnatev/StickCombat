@@ -10,9 +10,17 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
-    
-    private let stickRadius : CGFloat = 50
+
+protocol LobbyDelegate {
+    func statusChanged(_ status : LobbyStatusEnum)
+}
+
+
+class GameViewController: UIViewController, LobbyDelegate  {
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     
     @IBOutlet weak var firstFighterStick: JoystickStickView!
@@ -20,7 +28,8 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var firstFighterButtons : JoystickButtonsView!
     
-    
+
+    //MARK: GAME SETUP
     private var mode : GameMode?
     internal var Mode : GameMode?{
         get{
@@ -46,15 +55,21 @@ class GameViewController: UIViewController {
                     break
                 }
                 
-                scene.SetUpGameLogic(mode: mode, joysticks: joysticks!)
+                combatScene.SetUpGameLogic(mode: mode, joysticks: joysticks!)
             }
         }
     }
-    
-    
-    private var scene : GameScene = SKScene(fileNamed: "GameScene") as! GameScene
-    
-    
+
+    ///Сцена боя
+    private let combatScene : CombatScene = CombatScene(fileNamed: "GameScene")!
+
+    ///Сцена ожидания
+    private let receptionScene : SKScene = SKScene(fileNamed: "ReceptionScene")!
+
+    ///Сцена паузы
+    private let pauseScene : SKScene = SKScene(fileNamed: "PauseScene")!
+
+
     var View: SKView {
         return self.view as! SKView
     }
@@ -63,23 +78,43 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()        
 
-        scene.scaleMode = .fill
-        View.presentScene(scene)
+        combatScene.scaleMode = .fill
+        receptionScene.scaleMode = .fill
+        pauseScene.scaleMode = .fill
         
         View.ignoresSiblingOrder = true
-        
+
+        //дебаг
         View.showsFPS = true
         View.showsNodeCount = true
-        
-        //дебаг
-        Mode = .pvpNet(playerID: .second, adress: URL(string: "127.0.0.1:8080")!)
+
+        Mode = .pvpNet(playerID: .second, adress: URL(string: "ws://192.168.0.106:8080")!, lobbyName: "test", lobbyPassword: "228")
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+
+    ///Обработка изменения статуса лобби
+    func statusChanged(_ status: LobbyStatusEnum) {
+        switch status {
+        case .fight:
+            View.presentScene(combatScene)
+        case .casting:
+            View.presentScene(receptionScene)
+        case .ConnectionLost:
+            //возврат в меню
+            break
+        case .finished:
+            //показ сцены с результатами
+            break
+        case .refused:
+            //возврат в меню
+            break
+        case .pause:
+            View.presentScene(pauseScene)
+        }
     }
     
-    
+
+    //MARK: VIEW PREFERENCES
     override var shouldAutorotate: Bool {
         return true
     }

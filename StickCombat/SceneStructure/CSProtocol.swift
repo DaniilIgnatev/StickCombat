@@ -38,13 +38,15 @@ class Parser{
     
     public func connectionActionToJSON(connectionAction: ConnectionAction) -> String{
         let action = connectionAction
-        let jsonStruct = ConnectionJSON(head: Head(id: 1, type: "connection"), body: ConnectionJSON.Body(name: action.name, password: action.password))
-        do{
-            let json = try JSONEncoder().encode(jsonStruct)
-            return json.base64EncodedString()
-        }catch{
-            return ""
+
+        var type = "createLobby"
+        if action.Fighter == .second{
+            type = "joinLobby"
         }
+        let jsonStruct = ConnectionJSON(head: Head(id: action.Fighter.hashValue, type: type), body: ConnectionJSON.Body(name: action.name, password: action.password))
+
+        let json = String.init(data: try! JSONEncoder().encode(jsonStruct), encoding: .utf8)!
+        return json
     }
     
     public func gameActionToJSON(gameAction: GameAction) -> String{
@@ -53,8 +55,8 @@ class Parser{
             let jsonStruct = GameActionStrikeJSON(head: Head(id: action.Fighter.hashValue, type: "strike"), body: GameActionStrikeJSON.Body(x: action.Point.x, y: action.Point.y, dx: action.Vector.dx
                 , dy: action.Vector.dy, endHP: nil))
             do{
-                let json = try JSONEncoder().encode(jsonStruct)
-                return json.base64EncodedString()
+                let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
+                return json
             }catch{
                 return ""
             }
@@ -100,14 +102,14 @@ class Parser{
                             
                             let action = StrikeAction(fighter: fighter, vector: CGVector(dx: dx, dy: dy), point: CGPoint(x: x, y: y))
                             return action
-                        //Если тип "Передвижение"
+                            //Если тип "Передвижение"
                         }else if type == "horizontalMoveApprove"{
                             let from = body?["from"] as! CGFloat
                             let to = body?["to"] as! CGFloat
                             
                             let action = HorizontalAction(fighter: fighter, from: from, to: to)
                             return action
-                        //Если тип "Блок"
+                            //Если тип "Блок"
                         }else if type == "blockApprove"{
                             let isOn = body?["isOn"] as! Bool
                             
@@ -125,26 +127,15 @@ class Parser{
     
     public func statusActionToJSON(statusAction: StatusAction) -> String{
         let action = statusAction
-        let id = action.fighter
+        let id = action.Fighter
         
-        if action.pause{
-            let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "pause"), body: StatusJSON.Body(code: 0, description: ""))
-            do{
-                let json = try JSONEncoder().encode(jsonStruct)
-                return json.base64EncodedString()
-            }catch{
-                return ""
-            }
-        }else if action.surrender{
-            let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "surrender"), body: StatusJSON.Body(code: 0, description: ""))
-            do{
-                let json = try JSONEncoder().encode(jsonStruct)
-                return json.base64EncodedString()
-            }catch{
-                return ""
-            }
-        }else{
-            fatalError("Undefined status")
+
+        let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "status"), body: StatusJSON.Body(code: 0, description: ""))
+        do{
+            let json = try JSONEncoder().encode(jsonStruct)
+            return json.base64EncodedString()
+        }catch{
+            return ""
         }
     }
     public func JSONToStatusAction(json: String) -> StatusAction{
@@ -158,10 +149,9 @@ class Parser{
                             let body = json["body"] as? [String:Any]
                             
                             let id = head["id"] as! FighterID
-                            let pause = body?["pause"] as! Bool
-                            let surrender = body?["surrender"] as! Bool
+                            let code = body?["code"] as! Int
                             
-                            let action = StatusAction(fighter: id, pause: pause, surrender: surrender)
+                            let action = StatusAction(fighter: id, statusID: LobbyStatusEnum(rawValue: code)!)
                             return action
                         }else{
                             fatalError("Error")

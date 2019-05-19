@@ -12,20 +12,15 @@ import Starscream
 
 
 enum GameMode {
-    case pvpNet(playerID : FighterID, adress : URL)
+    case pvpNet(playerID : FighterID, adress : URL, lobbyName : String, lobbyPassword : String)
     case pvpLocal
     case pveLocal(playerID : FighterID)
 }
 
 
-protocol LogicDelegate {
-    func GameStatusChanged(status: SceneStatus)
-}
-
-
 protocol LogicController : ActionEngineDelegate {
     
-    var delegate : LogicDelegate? {get}
+    var delegate : LobbyDelegate? {get}
     
     
     var joysticks : JoystickSet {get}
@@ -62,8 +57,8 @@ protocol LogicController : ActionEngineDelegate {
 class LogicControllerFactory {
     static func BuildLogicFor(gameMode : GameMode, joysticks : JoystickSet, firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode) -> LogicController?{
         switch gameMode {
-        case .pvpNet(let fighterID, let adress):
-            return ServerLogicController(fighterID: fighterID, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, joysticks: joysticks, adress: adress)
+        case .pvpNet(let fighterID, let adress, let name, let password):
+            return ServerLogicController(fighterID: fighterID, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, joysticks: joysticks, adress: adress, lobbyName: name,lobbyPassword: password)
         default:
             return nil
         }
@@ -78,7 +73,7 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     let joysticks: JoystickSet
     
     
-    var delegate: LogicDelegate?
+    var delegate: LobbyDelegate?
     
 
     private var fighterID : FighterID
@@ -113,17 +108,20 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     }
 
 
-    init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, joysticks : JoystickSet, adress : URL) {
+    init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, joysticks : JoystickSet, adress : URL, lobbyName : String, lobbyPassword : String) {
         self.fighterID = fighterID
         self.joysticks = joysticks
         self.adress = adress
-        self.socket = WebSocket.init(url: adress)
+
 
         //инициализация представления сцены
         self.sceneDescriptor = SceneCondition(firstX: 20, secondX: 150)
 
         self.View1 = FighterView(id : .first,node: firstFighterNode)
         self.View2 = FighterView(id : .second,node: secondFighterNode)
+
+        self.socket = WebSocket.init(url: adress)
+        self.socket.delegate = self
 
         if fighterID == .first{
             Engine1 = GestureEngine(fighterID: fighterID, condition: sceneDescriptor, joysticks: joysticks)
@@ -134,7 +132,11 @@ class ServerLogicController: LogicController, WebSocketDelegate {
         }
         
         requestQueue.isSuspended = true
+
+        requestConnectionAction(ConnectionAction(fighter: fighterID, name: lobbyName, password: lobbyPassword))
+        socket.connect()
     }
+
 
     //MARK: WEB SOCKET
     
@@ -150,9 +152,10 @@ class ServerLogicController: LogicController, WebSocketDelegate {
     }
 
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        delegate?.GameStatusChanged(status: .ConnectionLost)
+        delegate?.statusChanged(.ConnectionLost)
     }
-    
+
+
     //MARK: WS SESSION PINGPONG CONTROL
     
     private var pingTimer = Timer.init()
@@ -248,11 +251,10 @@ class ServerLogicController: LogicController, WebSocketDelegate {
         case .statusAction:
             let action = parser.JSONToStatusAction(json: text)
             //обновить состояние сцены, распространить выше, если требуется
+            processStatusAction(action)
             break
         }
     }
-
-    //MARK: GAME ACTION ANSWER
 
     func processGameActionAnswer(action : GameAction){
         if let horAction = action as? HorizontalAction{
@@ -281,7 +283,7 @@ class ServerLogicController: LogicController, WebSocketDelegate {
         }
     }
 
-    //MARK: CONDITION UPDATE
+
     func processStrikeAction(_ action : StrikeAction){
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.hp -= self.sceneDescriptor.fighter_1.hp
@@ -291,6 +293,11 @@ class ServerLogicController: LogicController, WebSocketDelegate {
             self.sceneDescriptor.fighter_2.hp -= self.sceneDescriptor.fighter_2.hp
             self.View_1.playStrikeAction(action: action)
         }
+    }
+
+    func processStatusAction(_ action : StatusAction){
+        self.sceneDescriptor.status = action.statusID
+        delegate?.GameStatusChanged(status: sceneDescriptor.status)
     }
 }
 
