@@ -81,7 +81,9 @@ class GameViewController: UIViewController, LobbyDelegate  {
         combatScene.scaleMode = .fill
         receptionScene.scaleMode = .fill
         pauseScene.scaleMode = .fill
-        
+
+        combatScene.lobbyDelegate = self
+
         View.ignoresSiblingOrder = true
 
         //дебаг

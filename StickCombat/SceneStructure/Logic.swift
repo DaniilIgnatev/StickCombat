@@ -18,9 +18,9 @@ enum GameMode {
 }
 
 
-protocol LogicController : ActionEngineDelegate {
+protocol LogicManager : ActionEngineDelegate {
     
-    var delegate : LobbyDelegate? {get}
+    var delegate : LobbyDelegate? {get set}
     
     
     var joysticks : JoystickSet {get}
@@ -55,11 +55,11 @@ protocol LogicController : ActionEngineDelegate {
 }
 
 
-class LogicControllerFactory {
-    static func BuildLogicFor(gameMode : GameMode, joysticks : JoystickSet, firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode) -> LogicController?{
+class LogicManagerFactory {
+    static func BuildLogicFor(gameMode : GameMode, joysticks : JoystickSet, firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode) -> LogicManager?{
         switch gameMode {
         case .pvpNet(let fighterID, let adress, let name, let password):
-            return ServerLogicController(fighterID: fighterID, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, joysticks: joysticks, adress: adress, lobbyName: name,lobbyPassword: password)
+            return ServerLogicManager(fighterID: fighterID, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, joysticks: joysticks, adress: adress, lobbyName: name,lobbyPassword: password)
         default:
             return nil
         }
@@ -68,7 +68,7 @@ class LogicControllerFactory {
 
 
 ///Алгоритм игры по протоколу websocket
-class ServerLogicController: LogicController, WebSocketDelegate, WebSocketPongDelegate {
+class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate {
 
     //MARK: INIT
     
@@ -117,7 +117,7 @@ class ServerLogicController: LogicController, WebSocketDelegate, WebSocketPongDe
 
 
         //инициализация представления сцены
-        self.sceneDescriptor = SceneCondition(firstX: 20, secondX: 150)
+        self.sceneDescriptor = SceneCondition(firstX: -130, secondX: 130)
 
         self.View1 = FighterView(id : .first,node: firstFighterNode,direction : .left)
         self.View2 = FighterView(id : .second,node: secondFighterNode,direction : .right)
@@ -178,7 +178,7 @@ class ServerLogicController: LogicController, WebSocketDelegate, WebSocketPongDe
             
             //через timeout времени оборвать соединение
             self.pongTimer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false) {timer in
-                if self.pingPongfails <= 3{
+                if self.pingPongfails < self.maxpingPongFails{
                     self.pingPongfails += 1
                     print("WS: ping pong fails number = \(self.pingPongfails) of \(self.maxpingPongFails)")
                     self.doPingPong(interval: 0, timeout: 2)

@@ -30,7 +30,7 @@ class CombatScene: SKScene, LobbyDelegate {
 
 
     ///Набор игровой логики
-    private var Logic : LogicController? = nil
+    private var Logic : LogicManager? = nil
     
 
     ///Набор джостиков для управления бойцами
@@ -45,13 +45,14 @@ class CombatScene: SKScene, LobbyDelegate {
         let firstFighterNode = childNode(withName: "fighter_1") as! SKSpriteNode
         let secondFighterNode = childNode(withName: "fighter_2") as! SKSpriteNode
         
-        Logic = LogicControllerFactory.BuildLogicFor(gameMode: mode, joysticks: Joysticks!, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode)
+        Logic = LogicManagerFactory.BuildLogicFor(gameMode: mode, joysticks: Joysticks!, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode)
+        Logic!.delegate = self
     }
 
 
     ///Действия при изменении статуса
     func statusChanged(_ status: LobbyStatusEnum) {
-
+        lobbyDelegate?.statusChanged(status)
     }
 
 
