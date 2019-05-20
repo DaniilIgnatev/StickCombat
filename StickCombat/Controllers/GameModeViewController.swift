@@ -23,14 +23,24 @@ class GameModeViewController: UIViewController{
     
     //MARK: Функция перехода на вью в зависимости от нажатой кнопки
     func transitionBetweenViews(playerID: FighterID){
-        let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
-        guard let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else{
-            return
+        if ipTextBox.text != "", portTextBox.text != ""{
+            let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
+            guard let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "LobbyOptionsViewController") as? LobbyOptionsViewController else{
+                return
+            }
+            //destinationViewController.Mode = GameMode.pvpNet(playerID: playerID, adress: URL(string: "ws://\(ipTextBox.text!):\(portTextBox.text!)")!, lobbyName: "test", lobbyPassword: "228")
+            
+            destinationViewController.ip = ipTextBox.text ?? ""
+            destinationViewController.password = portTextBox.text ?? ""
+            destinationViewController.playerID = playerID
+            destinationViewController.modalTransitionStyle = .crossDissolve
+            present(destinationViewController, animated: true, completion: nil)
+        }else{
+            ipTextBox.text = nil
+            portTextBox.text = nil
+            portTextBox.attributedPlaceholder = NSAttributedString(string:"Please enter the port", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            ipTextBox.attributedPlaceholder = NSAttributedString(string:"Please enter the IP", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         }
-        destinationViewController.Mode = GameMode.pvpNet(playerID: playerID, adress: URL(string: "ws://\(ipTextBox.text!):\(portTextBox.text!)")!, lobbyName: "test", lobbyPassword: "228")
-        
-        destinationViewController.modalTransitionStyle = .crossDissolve
-        present(destinationViewController, animated: true, completion: nil)
     }
     
     override func viewDidLoad(){
