@@ -23,41 +23,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBe-mi-Dmr">
-                                <rect key="frame" x="284" y="77" width="99" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBe-mi-Dmr">
+                                <rect key="frame" x="218.5" y="75" width="99" height="36"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3l-a9-FLy">
-                                <rect key="frame" x="159" y="258" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
-                                <state key="normal" title="Yes" backgroundImage="MenuButton">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyU-89-3OE">
-                                <rect key="frame" x="345" y="258" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
-                                <state key="normal" title="No" backgroundImage="MenuButton">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="qaK-cT-uhK" kind="show" id="JqX-1Y-YS8"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Are you sure?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7C-qq-YEt">
-                                <rect key="frame" x="215" y="175" width="237" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7C-qq-YEt">
+                                <rect key="frame" x="149.5" y="176" width="237" height="24"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF5-2Q-47R" userLabel="ButtonsView">
+                                <rect key="frame" x="80.5" y="230" width="375" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3l-a9-FLy">
+                                        <rect key="frame" x="205" y="0.0" width="150" height="45"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                        <state key="normal" title="Yes" backgroundImage="MenuButton">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyU-89-3OE">
+                                        <rect key="frame" x="20" y="0.0" width="150" height="45"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
+                                        <state key="normal" title="No" backgroundImage="MenuButton">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="qaK-cT-uhK" kind="show" id="JqX-1Y-YS8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="J3l-a9-FLy" secondAttribute="trailing" constant="20" id="D5Q-mn-f2e"/>
+                                    <constraint firstAttribute="bottom" secondItem="J3l-a9-FLy" secondAttribute="bottom" id="D8k-jN-EJ0"/>
+                                    <constraint firstItem="xyU-89-3OE" firstAttribute="centerY" secondItem="gF5-2Q-47R" secondAttribute="centerY" id="DL0-AG-M4P"/>
+                                    <constraint firstItem="J3l-a9-FLy" firstAttribute="width" secondItem="gF5-2Q-47R" secondAttribute="width" multiplier="0.4" id="O1D-Tp-7fU"/>
+                                    <constraint firstAttribute="bottom" secondItem="xyU-89-3OE" secondAttribute="bottom" id="ODY-cf-Rc0"/>
+                                    <constraint firstItem="xyU-89-3OE" firstAttribute="leading" secondItem="gF5-2Q-47R" secondAttribute="leading" constant="20" id="YBV-8g-g2k"/>
+                                    <constraint firstItem="J3l-a9-FLy" firstAttribute="top" secondItem="gF5-2Q-47R" secondAttribute="top" id="d8P-4S-DUO"/>
+                                    <constraint firstItem="xyU-89-3OE" firstAttribute="top" secondItem="gF5-2Q-47R" secondAttribute="top" id="dDj-LG-bDE"/>
+                                    <constraint firstItem="J3l-a9-FLy" firstAttribute="centerY" secondItem="gF5-2Q-47R" secondAttribute="centerY" id="dYp-ac-IPx"/>
+                                    <constraint firstItem="xyU-89-3OE" firstAttribute="width" secondItem="gF5-2Q-47R" secondAttribute="width" multiplier="0.4" id="izk-DQ-m3q"/>
+                                    <constraint firstItem="xyU-89-3OE" firstAttribute="centerX" secondItem="gF5-2Q-47R" secondAttribute="centerX" id="s8Z-Ro-nDQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x7C-qq-YEt" firstAttribute="centerX" secondItem="qPy-E3-aVI" secondAttribute="centerX" id="9Ly-ni-Eyv"/>
+                            <constraint firstItem="gF5-2Q-47R" firstAttribute="top" secondItem="x7C-qq-YEt" secondAttribute="bottom" constant="30" id="Mgp-oa-6Ep"/>
+                            <constraint firstItem="gF5-2Q-47R" firstAttribute="height" secondItem="qPy-E3-aVI" secondAttribute="height" multiplier="0.12" id="Nex-Cp-dMr"/>
+                            <constraint firstItem="gF5-2Q-47R" firstAttribute="width" secondItem="qPy-E3-aVI" secondAttribute="width" multiplier="0.7" id="SAp-Y7-MqQ"/>
+                            <constraint firstItem="DBe-mi-Dmr" firstAttribute="top" secondItem="c1D-Jx-EDh" secondAttribute="top" constant="75" id="TyN-NL-jOJ"/>
+                            <constraint firstItem="x7C-qq-YEt" firstAttribute="top" secondItem="DBe-mi-Dmr" secondAttribute="bottom" constant="65" id="lND-YZ-TER"/>
+                            <constraint firstItem="gF5-2Q-47R" firstAttribute="centerX" secondItem="qPy-E3-aVI" secondAttribute="centerX" id="xts-O3-M2K"/>
+                            <constraint firstItem="DBe-mi-Dmr" firstAttribute="centerX" secondItem="qPy-E3-aVI" secondAttribute="centerX" id="z7b-su-sUV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="c1D-Jx-EDh"/>
                     </view>
                 </viewController>
@@ -73,64 +98,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2i-gR-omm">
-                                <rect key="frame" x="261" y="128" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2i-gR-omm">
+                                <rect key="frame" x="258.5" y="121" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
                                 <state key="normal" title="PVP" backgroundImage="MenuButton"/>
                                 <connections>
                                     <segue destination="9SU-oT-RFL" kind="show" id="A1b-np-YGX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-HQ-Rrs">
-                                <rect key="frame" x="261" y="206" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-HQ-Rrs">
+                                <rect key="frame" x="258.5" y="198" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                 <state key="normal" title="PVP 1 device" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfV-98-UCE">
-                                <rect key="frame" x="261" y="284" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfV-98-UCE">
+                                <rect key="frame" x="258.5" y="275" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
                                 <state key="normal" title="PVE" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-IU-uU5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-IU-uU5" userLabel="Settings">
                                 <rect key="frame" x="607" y="20" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="SettingsMenu"/>
                                 <connections>
                                     <segue destination="WOh-lA-QpP" kind="show" id="dmC-53-yd1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoW-89-Fj7">
-                                <rect key="frame" x="607" y="68" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoW-89-Fj7" userLabel="Help">
+                                <rect key="frame" x="607" y="70" width="40" height="40"/>
                                 <state key="normal" backgroundImage="Help"/>
                                 <connections>
                                     <segue destination="Vu1-Cx-7MF" kind="show" id="SfT-te-BJx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeR-C9-hud">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeR-C9-hud" userLabel="Exit">
                                 <rect key="frame" x="20" y="20" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="ExitButton"/>
                                 <connections>
                                     <segue destination="Uaj-5A-GUb" kind="show" id="T3v-aE-Yyf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stick Combat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbC-JM-ggT">
-                                <rect key="frame" x="170" y="52" width="333" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stick Combat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbC-JM-ggT">
+                                <rect key="frame" x="167" y="50" width="333" height="36"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p2i-gR-omm" firstAttribute="top" secondItem="HbC-JM-ggT" secondAttribute="bottom" constant="35" id="GWU-Fi-oHm"/>
+                            <constraint firstItem="7uj-IU-uU5" firstAttribute="top" secondItem="Isa-W2-WBl" secondAttribute="top" constant="20" id="HdZ-C4-tJx"/>
+                            <constraint firstItem="p2i-gR-omm" firstAttribute="centerX" secondItem="jc5-k6-ZsK" secondAttribute="centerX" id="K4T-gm-4ZD"/>
+                            <constraint firstItem="HbC-JM-ggT" firstAttribute="top" secondItem="Isa-W2-WBl" secondAttribute="top" constant="50" id="OwD-wM-L5W"/>
+                            <constraint firstItem="HbC-JM-ggT" firstAttribute="centerX" secondItem="jc5-k6-ZsK" secondAttribute="centerX" id="QQ5-rg-RNg"/>
+                            <constraint firstItem="Isa-W2-WBl" firstAttribute="trailing" secondItem="7uj-IU-uU5" secondAttribute="trailing" constant="20" id="hq3-wq-eUp"/>
+                            <constraint firstItem="qeR-C9-hud" firstAttribute="top" secondItem="Isa-W2-WBl" secondAttribute="top" constant="20" id="i8J-ea-23x"/>
+                            <constraint firstItem="UYk-HQ-Rrs" firstAttribute="centerX" secondItem="jc5-k6-ZsK" secondAttribute="centerX" id="n7E-6Q-d1o"/>
+                            <constraint firstItem="XfV-98-UCE" firstAttribute="centerX" secondItem="jc5-k6-ZsK" secondAttribute="centerX" id="oOg-pE-hOc"/>
+                            <constraint firstItem="XfV-98-UCE" firstAttribute="top" secondItem="UYk-HQ-Rrs" secondAttribute="bottom" constant="35" id="qOJ-aj-oT1"/>
+                            <constraint firstItem="UYk-HQ-Rrs" firstAttribute="top" secondItem="p2i-gR-omm" secondAttribute="bottom" constant="35" id="siV-gu-xc3"/>
+                            <constraint firstItem="zoW-89-Fj7" firstAttribute="top" secondItem="7uj-IU-uU5" secondAttribute="bottom" constant="10" id="tXB-IO-Rad"/>
+                            <constraint firstItem="qeR-C9-hud" firstAttribute="leading" secondItem="Isa-W2-WBl" secondAttribute="leading" constant="20" id="xYT-4D-xHg"/>
+                            <constraint firstItem="Isa-W2-WBl" firstAttribute="trailing" secondItem="zoW-89-Fj7" secondAttribute="trailing" constant="20" id="zGG-89-eIq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Isa-W2-WBl"/>
                     </view>
                 </viewController>
@@ -146,73 +180,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hu-28-VRL">
-                                <rect key="frame" x="224" y="56" width="219" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hu-28-VRL">
+                                <rect key="frame" x="224" y="55" width="219" height="36"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqz-Db-rGG">
-                                <rect key="frame" x="209" y="141" width="80" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kA7-q9-Jhe">
-                                <rect key="frame" x="216" y="195" width="66" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My IP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBf-fK-oBp">
-                                <rect key="frame" x="221" y="248" width="56" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="place for ip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXJ-dS-JQl">
-                                <rect key="frame" x="385" y="246" width="85" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="place for port" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liE-Xg-d0r">
-                                <rect key="frame" x="385" y="299" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDg-5a-n3F">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDg-5a-n3F">
                                 <rect key="frame" x="20" y="20" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="BackButton"/>
                                 <connections>
                                     <segue destination="qaK-cT-uhK" kind="show" id="qPf-wV-hmY"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rlo-6b-NZl">
-                                <rect key="frame" x="368" y="135" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8X-y8-KlN">
-                                <rect key="frame" x="403" y="188" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PORT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9e-Io-xGD">
-                                <rect key="frame" x="222" y="301" width="54" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5M6-gM-fC8" userLabel="Main">
+                                <rect key="frame" x="200" y="151" width="267" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kA7-q9-Jhe">
+                                        <rect key="frame" x="30" y="114" width="66" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rlo-6b-NZl">
+                                        <rect key="frame" x="111.5" y="10" width="137.5" height="31"/>
+                                    </slider>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8X-y8-KlN">
+                                        <rect key="frame" x="168" y="104" width="51" height="31"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqz-Db-rGG">
+                                        <rect key="frame" x="20" y="20" width="80" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="m8X-y8-KlN" secondAttribute="trailing" constant="50" id="0U6-Vs-lyu"/>
+                                    <constraint firstItem="rlo-6b-NZl" firstAttribute="width" secondItem="5M6-gM-fC8" secondAttribute="width" multiplier="0.5" id="23U-IX-Zta"/>
+                                    <constraint firstItem="rlo-6b-NZl" firstAttribute="top" secondItem="5M6-gM-fC8" secondAttribute="top" constant="10" id="PP5-Fp-69g"/>
+                                    <constraint firstAttribute="bottom" secondItem="m8X-y8-KlN" secondAttribute="bottom" constant="15" id="RlO-ZP-B5q"/>
+                                    <constraint firstItem="zqz-Db-rGG" firstAttribute="leading" secondItem="5M6-gM-fC8" secondAttribute="leading" constant="20" id="Wb6-KR-xjq"/>
+                                    <constraint firstAttribute="bottom" secondItem="kA7-q9-Jhe" secondAttribute="bottom" constant="20" id="ad0-Bp-lia"/>
+                                    <constraint firstItem="zqz-Db-rGG" firstAttribute="top" secondItem="5M6-gM-fC8" secondAttribute="top" constant="20" id="dar-Y8-Cbf"/>
+                                    <constraint firstAttribute="trailing" secondItem="rlo-6b-NZl" secondAttribute="trailing" constant="20" id="rtP-6F-Wqy"/>
+                                    <constraint firstItem="kA7-q9-Jhe" firstAttribute="leading" secondItem="5M6-gM-fC8" secondAttribute="leading" constant="30" id="xlv-wx-18K"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1Hu-28-VRL" firstAttribute="top" secondItem="9qc-rE-a79" secondAttribute="top" constant="55" id="1K1-hk-0zP"/>
+                            <constraint firstItem="5M6-gM-fC8" firstAttribute="top" secondItem="1Hu-28-VRL" secondAttribute="bottom" constant="60" id="ULF-67-Jad"/>
+                            <constraint firstItem="JDg-5a-n3F" firstAttribute="top" secondItem="9qc-rE-a79" secondAttribute="top" constant="20" id="UUx-0y-BKd"/>
+                            <constraint firstItem="1Hu-28-VRL" firstAttribute="centerX" secondItem="mGa-wn-gqu" secondAttribute="centerX" id="VS2-Hn-N7d"/>
+                            <constraint firstItem="5M6-gM-fC8" firstAttribute="centerX" secondItem="mGa-wn-gqu" secondAttribute="centerX" id="iQi-BB-dWe"/>
+                            <constraint firstItem="5M6-gM-fC8" firstAttribute="height" secondItem="mGa-wn-gqu" secondAttribute="height" multiplier="0.4" id="oBp-M3-2Ur"/>
+                            <constraint firstItem="5M6-gM-fC8" firstAttribute="width" secondItem="mGa-wn-gqu" secondAttribute="width" multiplier="0.4" id="oDg-Cg-tCQ"/>
+                            <constraint firstItem="JDg-5a-n3F" firstAttribute="leading" secondItem="9qc-rE-a79" secondAttribute="leading" constant="20" id="r5I-gG-pGS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="9qc-rE-a79"/>
                     </view>
                 </viewController>
@@ -228,31 +255,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NjR-mA-rJG">
-                                <rect key="frame" x="213" y="162" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Push buttons for win" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NjR-mA-rJG">
+                                <rect key="frame" x="167" y="151" width="333.5" height="187.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5R-aE-KkN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5R-aE-KkN">
                                 <rect key="frame" x="20" y="20" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="BackButton"/>
                                 <connections>
                                     <segue destination="qaK-cT-uhK" kind="show" id="S82-lk-f0D"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HELP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyL-dN-8Ve">
-                                <rect key="frame" x="275" y="69" width="116" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyL-dN-8Ve">
+                                <rect key="frame" x="275.5" y="65" width="116" height="36"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K5R-aE-KkN" firstAttribute="leading" secondItem="tyr-wL-VGg" secondAttribute="leading" constant="20" id="7MQ-gK-dtx"/>
+                            <constraint firstItem="CyL-dN-8Ve" firstAttribute="top" secondItem="tyr-wL-VGg" secondAttribute="top" constant="65" id="J8W-0v-2og"/>
+                            <constraint firstItem="NjR-mA-rJG" firstAttribute="height" secondItem="eVP-db-Poi" secondAttribute="height" multiplier="0.5" id="RMW-Zd-bRS"/>
+                            <constraint firstItem="NjR-mA-rJG" firstAttribute="centerX" secondItem="eVP-db-Poi" secondAttribute="centerX" id="Sqd-Oz-ikQ"/>
+                            <constraint firstItem="K5R-aE-KkN" firstAttribute="top" secondItem="tyr-wL-VGg" secondAttribute="top" constant="20" id="Wxe-CH-cai"/>
+                            <constraint firstItem="NjR-mA-rJG" firstAttribute="width" secondItem="eVP-db-Poi" secondAttribute="width" multiplier="0.5" id="aJk-0p-DJM"/>
+                            <constraint firstItem="NjR-mA-rJG" firstAttribute="top" secondItem="CyL-dN-8Ve" secondAttribute="bottom" constant="50" id="fly-mC-Y5K"/>
+                            <constraint firstItem="CyL-dN-8Ve" firstAttribute="centerX" secondItem="eVP-db-Poi" secondAttribute="centerX" id="oXK-Z5-8uJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tyr-wL-VGg"/>
                     </view>
                 </viewController>
@@ -268,16 +301,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name and password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS7-uk-BGr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name and password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS7-uk-BGr">
                                 <rect key="frame" x="85" y="55" width="497" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lx-x6-SqV">
-                                <rect key="frame" x="259" y="274" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lx-x6-SqV">
+                                <rect key="frame" x="258.5" y="272.5" width="150" height="45"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                 <state key="normal" title="Next" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -287,36 +318,63 @@
                                     <action selector="createLobbyButton:" destination="oiz-Hc-sJ1" eventType="touchUpInside" id="e5d-oJ-z1y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcR-cb-xn0">
-                                <rect key="frame" x="253" y="146" width="54" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ETY-T6-UOs">
-                                <rect key="frame" x="346" y="139" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dR-Yv-LKT">
-                                <rect key="frame" x="344" y="205" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZU-es-S2F">
-                                <rect key="frame" x="223" y="212" width="113" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mE5-lR-3BE" userLabel="TextBoxes">
+                                <rect key="frame" x="167" y="116" width="333.5" height="131.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ETY-T6-UOs">
+                                        <rect key="frame" x="146.5" y="10" width="167" height="26.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dR-Yv-LKT">
+                                        <rect key="frame" x="146.5" y="90" width="167" height="26.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZU-es-S2F">
+                                        <rect key="frame" x="10" y="95.5" width="113" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcR-cb-xn0">
+                                        <rect key="frame" x="30" y="20" width="54" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5dR-Yv-LKT" secondAttribute="trailing" constant="20" id="APa-87-lsa"/>
+                                    <constraint firstItem="VcR-cb-xn0" firstAttribute="top" secondItem="mE5-lR-3BE" secondAttribute="top" constant="20" id="AXs-ua-MAH"/>
+                                    <constraint firstItem="ETY-T6-UOs" firstAttribute="width" secondItem="mE5-lR-3BE" secondAttribute="width" multiplier="0.5" id="Inb-fV-x0c"/>
+                                    <constraint firstItem="ETY-T6-UOs" firstAttribute="top" secondItem="mE5-lR-3BE" secondAttribute="top" constant="10" id="Kfp-2A-Cm5"/>
+                                    <constraint firstItem="5dR-Yv-LKT" firstAttribute="width" secondItem="mE5-lR-3BE" secondAttribute="width" multiplier="0.5" id="Muf-XS-Mcx"/>
+                                    <constraint firstAttribute="trailing" secondItem="ETY-T6-UOs" secondAttribute="trailing" constant="20" id="NGp-cT-Oq7"/>
+                                    <constraint firstAttribute="bottom" secondItem="5dR-Yv-LKT" secondAttribute="bottom" constant="15" id="NRt-u7-sA1"/>
+                                    <constraint firstItem="VcR-cb-xn0" firstAttribute="leading" secondItem="mE5-lR-3BE" secondAttribute="leading" constant="30" id="Tto-95-Yhx"/>
+                                    <constraint firstItem="5dR-Yv-LKT" firstAttribute="height" secondItem="mE5-lR-3BE" secondAttribute="height" multiplier="0.2" id="WfP-c6-dJi"/>
+                                    <constraint firstItem="ETY-T6-UOs" firstAttribute="height" secondItem="mE5-lR-3BE" secondAttribute="height" multiplier="0.2" id="gii-nP-Xx0"/>
+                                    <constraint firstAttribute="bottom" secondItem="SZU-es-S2F" secondAttribute="bottom" constant="20" id="km8-zU-ebF"/>
+                                    <constraint firstItem="SZU-es-S2F" firstAttribute="leading" secondItem="mE5-lR-3BE" secondAttribute="leading" constant="10" id="zH9-YB-rdc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mE5-lR-3BE" firstAttribute="height" secondItem="Dr1-eR-c7e" secondAttribute="height" multiplier="0.35" id="PIZ-V5-3FO"/>
+                            <constraint firstItem="mE5-lR-3BE" firstAttribute="centerX" secondItem="Dr1-eR-c7e" secondAttribute="centerX" id="Q9x-Rn-n7d"/>
+                            <constraint firstItem="0lx-x6-SqV" firstAttribute="centerX" secondItem="Dr1-eR-c7e" secondAttribute="centerX" id="SMr-0f-zvC"/>
+                            <constraint firstItem="mE5-lR-3BE" firstAttribute="top" secondItem="eS7-uk-BGr" secondAttribute="bottom" constant="25" id="ZiV-wP-uHD"/>
+                            <constraint firstItem="eS7-uk-BGr" firstAttribute="centerX" secondItem="Dr1-eR-c7e" secondAttribute="centerX" id="g78-Ot-FNe"/>
+                            <constraint firstItem="0lx-x6-SqV" firstAttribute="top" secondItem="mE5-lR-3BE" secondAttribute="bottom" constant="25" id="kYt-gv-REO"/>
+                            <constraint firstItem="eS7-uk-BGr" firstAttribute="top" secondItem="x7b-bx-pP2" secondAttribute="top" constant="55" id="t7v-1q-tG8"/>
+                            <constraint firstItem="mE5-lR-3BE" firstAttribute="width" secondItem="Dr1-eR-c7e" secondAttribute="width" multiplier="0.5" id="tzi-1B-goM"/>
+                            <constraint firstItem="0lx-x6-SqV" firstAttribute="height" secondItem="Dr1-eR-c7e" secondAttribute="height" multiplier="0.12" id="uqO-LL-Yct"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="x7b-bx-pP2"/>
                     </view>
                     <connections>
@@ -336,65 +394,106 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-O1-Mwx">
-                                <rect key="frame" x="150" y="279" width="152" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <state key="normal" title="Create lobby" backgroundImage="MenuButton">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="createLobbyButton:" destination="9SU-oT-RFL" eventType="touchUpInside" id="ABs-wM-b1f"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PVP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpk-qt-rQx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PVP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpk-qt-rQx">
                                 <rect key="frame" x="289" y="65" width="89" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ape-cM-8dl">
-                                <rect key="frame" x="361" y="279" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <state key="normal" title="Join" backgroundImage="MenuButton">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="joinButton:" destination="9SU-oT-RFL" eventType="touchUpInside" id="OXG-nV-iUX"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkO-6S-AQd">
-                                <rect key="frame" x="247" y="146" width="19" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tIE-qI-Hta">
-                                <rect key="frame" x="340" y="139" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lom-jE-9QP">
-                                <rect key="frame" x="338" y="205" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PORT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jh-er-97L">
-                                <rect key="frame" x="229" y="212" width="54" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAR-xI-MGy" userLabel="TextBoxes">
+                                <rect key="frame" x="200" y="126" width="267" height="131.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tIE-qI-Hta">
+                                        <rect key="frame" x="113.5" y="15" width="133.5" height="26.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lom-jE-9QP">
+                                        <rect key="frame" x="113.5" y="90" width="133.5" height="26.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jh-er-97L">
+                                        <rect key="frame" x="20" y="95.5" width="54" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkO-6S-AQd">
+                                        <rect key="frame" x="40" y="20" width="19" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tIE-qI-Hta" firstAttribute="height" secondItem="MAR-xI-MGy" secondAttribute="height" multiplier="0.2" id="4HL-9s-eqc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lom-jE-9QP" secondAttribute="trailing" constant="20" id="5Ye-Jx-nGT"/>
+                                    <constraint firstItem="SkO-6S-AQd" firstAttribute="top" secondItem="MAR-xI-MGy" secondAttribute="top" constant="20" id="8BL-iG-5c6"/>
+                                    <constraint firstItem="Lom-jE-9QP" firstAttribute="height" secondItem="MAR-xI-MGy" secondAttribute="height" multiplier="0.2" id="98I-RA-MBb"/>
+                                    <constraint firstAttribute="bottom" secondItem="2jh-er-97L" secondAttribute="bottom" constant="20" id="9zl-8E-cm5"/>
+                                    <constraint firstAttribute="trailing" secondItem="tIE-qI-Hta" secondAttribute="trailing" constant="20" id="IrR-v3-dpD"/>
+                                    <constraint firstItem="SkO-6S-AQd" firstAttribute="leading" secondItem="MAR-xI-MGy" secondAttribute="leading" constant="40" id="UKU-bG-za4"/>
+                                    <constraint firstItem="Lom-jE-9QP" firstAttribute="width" secondItem="MAR-xI-MGy" secondAttribute="width" multiplier="0.5" id="hHc-Dt-PhA"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lom-jE-9QP" secondAttribute="bottom" constant="15" id="hTr-7x-c48"/>
+                                    <constraint firstItem="2jh-er-97L" firstAttribute="leading" secondItem="MAR-xI-MGy" secondAttribute="leading" constant="20" id="uTK-kQ-qFf"/>
+                                    <constraint firstItem="tIE-qI-Hta" firstAttribute="width" secondItem="MAR-xI-MGy" secondAttribute="width" multiplier="0.5" id="wy1-Ai-8Xj"/>
+                                    <constraint firstItem="tIE-qI-Hta" firstAttribute="top" secondItem="MAR-xI-MGy" secondAttribute="top" constant="15" id="xPA-Ru-94c"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PlJ-3u-qmb" userLabel="Buttons">
+                                <rect key="frame" x="133.5" y="267.5" width="400" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-O1-Mwx">
+                                        <rect key="frame" x="10" y="0.0" width="160" height="45"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <state key="normal" title="Create lobby" backgroundImage="MenuButton">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createLobbyButton:" destination="9SU-oT-RFL" eventType="touchUpInside" id="ABs-wM-b1f"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ape-cM-8dl">
+                                        <rect key="frame" x="230" y="0.0" width="160" height="45"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <state key="normal" title="Join" backgroundImage="MenuButton">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="joinButton:" destination="9SU-oT-RFL" eventType="touchUpInside" id="OXG-nV-iUX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="wG7-O1-Mwx" firstAttribute="width" secondItem="PlJ-3u-qmb" secondAttribute="width" multiplier="0.4" id="760-Zd-3Ed"/>
+                                    <constraint firstItem="Ape-cM-8dl" firstAttribute="centerY" secondItem="PlJ-3u-qmb" secondAttribute="centerY" id="Av6-If-FdD"/>
+                                    <constraint firstItem="wG7-O1-Mwx" firstAttribute="leading" secondItem="PlJ-3u-qmb" secondAttribute="leading" constant="10" id="Fu9-Ri-Z5n"/>
+                                    <constraint firstItem="wG7-O1-Mwx" firstAttribute="centerY" secondItem="PlJ-3u-qmb" secondAttribute="centerY" id="Hh3-sC-X8W"/>
+                                    <constraint firstItem="Ape-cM-8dl" firstAttribute="height" secondItem="PlJ-3u-qmb" secondAttribute="height" id="Y0g-fi-hyS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ape-cM-8dl" secondAttribute="trailing" constant="10" id="bgR-GT-yRb"/>
+                                    <constraint firstItem="wG7-O1-Mwx" firstAttribute="height" secondItem="PlJ-3u-qmb" secondAttribute="height" id="h2E-0N-QBd"/>
+                                    <constraint firstItem="Ape-cM-8dl" firstAttribute="width" secondItem="PlJ-3u-qmb" secondAttribute="width" multiplier="0.4" id="vRO-u7-VcM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PlJ-3u-qmb" firstAttribute="top" secondItem="MAR-xI-MGy" secondAttribute="bottom" constant="10" id="8XC-i1-hxO"/>
+                            <constraint firstItem="PlJ-3u-qmb" firstAttribute="centerX" secondItem="I6x-f1-J8z" secondAttribute="centerX" id="BTc-Pv-p8J"/>
+                            <constraint firstItem="MAR-xI-MGy" firstAttribute="centerX" secondItem="I6x-f1-J8z" secondAttribute="centerX" id="JWh-70-S6w"/>
+                            <constraint firstItem="MAR-xI-MGy" firstAttribute="top" secondItem="Wpk-qt-rQx" secondAttribute="bottom" constant="25" id="KNV-fd-RBW"/>
+                            <constraint firstItem="MAR-xI-MGy" firstAttribute="height" secondItem="I6x-f1-J8z" secondAttribute="height" multiplier="0.35" id="ROU-By-cRJ"/>
+                            <constraint firstItem="PlJ-3u-qmb" firstAttribute="height" secondItem="I6x-f1-J8z" secondAttribute="height" multiplier="0.12" id="aDt-bG-pCl"/>
+                            <constraint firstItem="MAR-xI-MGy" firstAttribute="width" secondItem="I6x-f1-J8z" secondAttribute="width" multiplier="0.4" id="fgl-Li-7hO"/>
+                            <constraint firstItem="Wpk-qt-rQx" firstAttribute="centerX" secondItem="I6x-f1-J8z" secondAttribute="centerX" id="i8z-qG-nFl"/>
+                            <constraint firstItem="Wpk-qt-rQx" firstAttribute="top" secondItem="44i-em-Tyx" secondAttribute="top" constant="65" id="v0L-kq-5eK"/>
+                            <constraint firstItem="PlJ-3u-qmb" firstAttribute="width" secondItem="I6x-f1-J8z" secondAttribute="width" multiplier="0.6" id="wPG-tn-Vvu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="44i-em-Tyx"/>
                     </view>
                     <connections>
@@ -520,16 +619,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj1-nz-Blz">
-                                <rect key="frame" x="224" y="58" width="219" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj1-nz-Blz">
+                                <rect key="frame" x="224" y="55" width="219" height="36"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idQ-qk-GlQ">
-                                <rect key="frame" x="259" y="142" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idQ-qk-GlQ">
+                                <rect key="frame" x="258.5" y="136" width="150" height="45"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
                                 <state key="normal" title="Resume" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -538,16 +635,8 @@
                                     <segue destination="BV1-FR-VrT" kind="show" id="bzI-dn-iv0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sa5-a6-YvG">
-                                <rect key="frame" x="224" y="218" width="80" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLw-mv-tDH">
-                                <rect key="frame" x="258" y="265" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLw-mv-tDH">
+                                <rect key="frame" x="258.5" y="256" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
                                 <state key="normal" title="Exit" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -556,18 +645,52 @@
                                     <segue destination="CfH-JR-Jr5" kind="show" id="RUU-Zb-0lA"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lJl-a7-wpL">
-                                <rect key="frame" x="337" y="212" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOq-ax-Pdf" userLabel="Volume">
+                                <rect key="frame" x="200" y="196" width="267" height="45"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lJl-a7-wpL">
+                                        <rect key="frame" x="148" y="0.0" width="111" height="46"/>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sa5-a6-YvG">
+                                        <rect key="frame" x="10" y="0.0" width="107" height="45"/>
+                                        <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Sa5-a6-YvG" firstAttribute="leading" secondItem="bOq-ax-Pdf" secondAttribute="leading" constant="10" id="2HD-XW-gQ1"/>
+                                    <constraint firstItem="Sa5-a6-YvG" firstAttribute="width" secondItem="bOq-ax-Pdf" secondAttribute="width" multiplier="0.4" id="5fo-q3-c0B"/>
+                                    <constraint firstItem="lJl-a7-wpL" firstAttribute="width" secondItem="bOq-ax-Pdf" secondAttribute="width" multiplier="0.4" id="8xe-2f-Rd0"/>
+                                    <constraint firstItem="lJl-a7-wpL" firstAttribute="centerY" secondItem="bOq-ax-Pdf" secondAttribute="centerY" id="9yz-ee-xPc"/>
+                                    <constraint firstAttribute="trailing" secondItem="lJl-a7-wpL" secondAttribute="trailing" constant="10" id="AYt-En-i5c"/>
+                                    <constraint firstItem="Sa5-a6-YvG" firstAttribute="centerY" secondItem="bOq-ax-Pdf" secondAttribute="centerY" id="d4X-0V-15O"/>
+                                    <constraint firstItem="Sa5-a6-YvG" firstAttribute="height" secondItem="bOq-ax-Pdf" secondAttribute="height" id="dbM-d2-3RY"/>
+                                    <constraint firstItem="lJl-a7-wpL" firstAttribute="height" secondItem="bOq-ax-Pdf" secondAttribute="height" id="gqw-LG-hqR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Sj1-nz-Blz" firstAttribute="top" secondItem="jm7-kE-LkB" secondAttribute="top" constant="55" id="2t1-gO-ktA"/>
+                            <constraint firstItem="bOq-ax-Pdf" firstAttribute="width" secondItem="Kbb-kZ-z5a" secondAttribute="width" multiplier="0.4" id="8sw-5X-1QE"/>
+                            <constraint firstItem="Sj1-nz-Blz" firstAttribute="centerX" secondItem="Kbb-kZ-z5a" secondAttribute="centerX" id="BlV-qQ-lU8"/>
+                            <constraint firstItem="idQ-qk-GlQ" firstAttribute="centerX" secondItem="Kbb-kZ-z5a" secondAttribute="centerX" id="Fai-hy-57e"/>
+                            <constraint firstItem="bOq-ax-Pdf" firstAttribute="height" secondItem="Kbb-kZ-z5a" secondAttribute="height" multiplier="0.12" id="KWZ-Iy-DsA"/>
+                            <constraint firstItem="idQ-qk-GlQ" firstAttribute="top" secondItem="Sj1-nz-Blz" secondAttribute="bottom" constant="45" id="NBn-RD-8J9"/>
+                            <constraint firstItem="idQ-qk-GlQ" firstAttribute="height" secondItem="Kbb-kZ-z5a" secondAttribute="height" multiplier="0.12" id="Zm7-kf-vDU"/>
+                            <constraint firstItem="bOq-ax-Pdf" firstAttribute="top" secondItem="idQ-qk-GlQ" secondAttribute="bottom" constant="15" id="onD-ur-AaB"/>
+                            <constraint firstItem="CLw-mv-tDH" firstAttribute="top" secondItem="bOq-ax-Pdf" secondAttribute="bottom" constant="15" id="szk-Jd-v9u"/>
+                            <constraint firstItem="CLw-mv-tDH" firstAttribute="centerX" secondItem="Kbb-kZ-z5a" secondAttribute="centerX" id="uMr-LU-v0B"/>
+                            <constraint firstItem="bOq-ax-Pdf" firstAttribute="centerX" secondItem="Kbb-kZ-z5a" secondAttribute="centerX" id="xij-3a-8ps"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jm7-kE-LkB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeN-f8-ueh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="1329"/>
+            <point key="canvasLocation" x="837.93103448275872" y="1328.8"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qfq-yh-A6G">
@@ -585,9 +708,8 @@
                                     <segue destination="2bG-mh-mWC" kind="show" id="mH4-VV-7uU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zt-zW-afC">
-                                <rect key="frame" x="258" y="166" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zt-zW-afC">
+                                <rect key="frame" x="258.5" y="156" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="18"/>
                                 <state key="normal" title="To main menu" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -596,23 +718,29 @@
                                     <segue destination="qaK-cT-uhK" kind="show" id="3PU-Vg-C0t"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-SH-xyy">
-                                <rect key="frame" x="259" y="229" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-SH-xyy">
+                                <rect key="frame" x="258.5" y="228" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="16"/>
                                 <state key="normal" title="To homescreen" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dc5-l1-EbM">
-                                <rect key="frame" x="284" y="60" width="99" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dc5-l1-EbM">
+                                <rect key="frame" x="284" y="55" width="99" height="36"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3zt-zW-afC" firstAttribute="centerX" secondItem="uOH-uK-eoO" secondAttribute="centerX" id="0wq-e4-DrY"/>
+                            <constraint firstItem="Dc5-l1-EbM" firstAttribute="centerX" secondItem="uOH-uK-eoO" secondAttribute="centerX" id="10c-LC-g9o"/>
+                            <constraint firstItem="1sf-SH-xyy" firstAttribute="top" secondItem="3zt-zW-afC" secondAttribute="bottom" constant="30" id="BMG-aj-wXq"/>
+                            <constraint firstItem="1sf-SH-xyy" firstAttribute="centerX" secondItem="uOH-uK-eoO" secondAttribute="centerX" id="J15-UO-rFR"/>
+                            <constraint firstItem="3zt-zW-afC" firstAttribute="top" secondItem="Dc5-l1-EbM" secondAttribute="bottom" constant="65" id="tCY-ha-jUQ"/>
+                            <constraint firstItem="Dc5-l1-EbM" firstAttribute="top" secondItem="NAd-7H-iEp" secondAttribute="top" constant="55" id="uLs-PE-lSx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NAd-7H-iEp"/>
                     </view>
                 </viewController>
@@ -630,7 +758,7 @@
         <image name="SettingsMenu" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vbd-BE-b8T"/>
-        <segue reference="3PU-Vg-C0t"/>
+        <segue reference="mH4-VV-7uU"/>
+        <segue reference="qPf-wV-hmY"/>
     </inferredMetricsTieBreakers>
 </document>
