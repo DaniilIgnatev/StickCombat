@@ -119,8 +119,8 @@ class ServerLogicController: LogicController, WebSocketDelegate, WebSocketPongDe
         //инициализация представления сцены
         self.sceneDescriptor = SceneCondition(firstX: 20, secondX: 150)
 
-        self.View1 = FighterView(id : .first,node: firstFighterNode)
-        self.View2 = FighterView(id : .second,node: secondFighterNode)
+        self.View1 = FighterView(id : .first,node: firstFighterNode,direction : .left)
+        self.View2 = FighterView(id : .second,node: secondFighterNode,direction : .right)
 
         self.socket = WebSocket.init(url: adress)
         self.socket.delegate = self

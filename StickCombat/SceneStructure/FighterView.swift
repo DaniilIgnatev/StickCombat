@@ -9,19 +9,25 @@
 import Foundation
 import SpriteKit
 
+enum FighterViewDirection {
+    case left, right
+}
 
 class FighterView {
 
     public let ID : FighterID
+
+    public var Direction : FighterViewDirection
 
     public let FighterNode : SKSpriteNode
     
     private var textureAtlas = SKTextureAtlas()
     private var textureArray = [SKTexture]()
     
-    init(id : FighterID,node : SKSpriteNode) {
+    init(id : FighterID, node : SKSpriteNode, direction : FighterViewDirection) {
         self.ID = id
         self.FighterNode = node
+        self.Direction = direction
         
         self.textureAtlas = SKTextureAtlas(named: "walk")
         
