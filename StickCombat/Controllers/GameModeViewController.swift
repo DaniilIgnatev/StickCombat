@@ -39,7 +39,7 @@ class GameModeViewController: UIViewController{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first{
+        if touches.first != nil{
             view.endEditing(true)
         }
         super.touchesBegan(touches, with: event)
