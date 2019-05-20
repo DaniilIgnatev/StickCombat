@@ -88,7 +88,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
         View.showsFPS = true
         View.showsNodeCount = true
 
-        Mode = .pvpNet(playerID: .second, adress: URL(string: "ws://192.168.0.106:8080")!, lobbyName: "test", lobbyPassword: "228")
+        //Mode = .pvpNet(playerID: .second, adress: URL(string: "ws://192.168.0.106:8080")!, lobbyName: "test", lobbyPassword: "228")
     }
     
 
