@@ -150,7 +150,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
     func websocketDidConnect(socket: WebSocketClient) {
         requestQueue.isSuspended = false
-        doPingPong(interval: 5, timeout: 10)
+        //doPingPong(interval: 5, timeout: 10)
     }
 
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {

@@ -73,11 +73,19 @@ class GameViewController: UIViewController, LobbyDelegate  {
         }
     }
 
+
     ///Сцена боя
     private let combatScene : CombatScene = CombatScene(fileNamed: "GameScene")!
 
     ///Сцена ожидания
     private let receptionScene : SKScene = SKScene(fileNamed: "ReceptionScene")!
+
+    ///Сцена отколненного соединения
+    private let refusedConnectionScene : SKScene = SKScene(fileNamed: "RefusedConnectionScene")!
+
+    ///Сцена потеряного соединения
+    private let lostConnectionScene : SKScene = SKScene(fileNamed: "LostConnectionScene")!
+
 
     ///Сцена паузы
     private let pauseScene : SKScene = SKScene(fileNamed: "PauseScene")!
@@ -117,16 +125,14 @@ class GameViewController: UIViewController, LobbyDelegate  {
             hideJoysticks()
             View.presentScene(receptionScene)
         case .ConnectionLost:
-            //возврат в меню
-            break
+            hideJoysticks()
+            View.presentScene(lostConnectionScene)
         case .finished:
             hideJoysticks()
             //показ сцены с результатами
-            break
         case .refused:
             hideJoysticks()
-            //возврат в меню
-            break
+            View.presentScene(refusedConnectionScene)
         case .pause:
             hideJoysticks()
             View.presentScene(pauseScene)
@@ -148,6 +154,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
             return .landscape
         }
     }
+    
     
     override var prefersStatusBarHidden: Bool {
         return true
