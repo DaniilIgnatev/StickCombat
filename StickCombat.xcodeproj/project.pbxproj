@@ -27,7 +27,7 @@
 		A153FE67B822013ED5814E4B /* Pods_StickCombat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */; };
 		A5187510221AB4B2007CDFDE /* JoystickStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518750F221AB4B2007CDFDE /* JoystickStickView.swift */; };
 		A5187512221AB73E007CDFDE /* JoystickButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */; };
-		A576DCA222927AE70022C2B4 /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A576DCA122927AE70022C2B4 /* GameModeViewController.swift */; };
+		A576DCA62292DFA90022C2B4 /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */; };
 		A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDE75622204AFB000FC333 /* Menu.storyboard */; };
 		A5FDBC07228FDE6500FF3DE7 /* walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5FDBC06228FDE6500FF3DE7 /* walk.atlas */; };
 /* End PBXBuildFile section */
@@ -56,7 +56,7 @@
 		A518750F221AB4B2007CDFDE /* JoystickStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickStickView.swift; sourceTree = "<group>"; };
 		A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickButtonsView.swift; sourceTree = "<group>"; };
 		A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFSportsNightNS.ttf; path = ../../../../Library/Fonts/SFSportsNightNS.ttf; sourceTree = "<group>"; };
-		A576DCA122927AE70022C2B4 /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
+		A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
 		A5EDE75622204AFB000FC333 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		A5FDBC06228FDE6500FF3DE7 /* walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = walk.atlas; sourceTree = "<group>"; };
 		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,8 +167,8 @@
 		A518750C221AB447007CDFDE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A576DCA122927AE70022C2B4 /* GameModeViewController.swift */,
 				8510B404227AFB0A00F153E3 /* Joysticks */,
+				A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 				852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */,
 				8517A63E221294C200880F20 /* CombatScene.swift in Sources */,
 				852A5A0022194CA1000EEB12 /* Condition.swift in Sources */,
-				A576DCA222927AE70022C2B4 /* GameModeViewController.swift in Sources */,
+				A576DCA62292DFA90022C2B4 /* GameModeViewController.swift in Sources */,
 				A5187512221AB73E007CDFDE /* JoystickButtonsView.swift in Sources */,
 				852A5A02221959FB000EEB12 /* ActionEngine.swift in Sources */,
 				8517A640221294C200880F20 /* GameViewController.swift in Sources */,

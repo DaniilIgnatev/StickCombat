@@ -263,7 +263,7 @@
         <!--GameModeViewController-->
         <scene sceneID="O8u-Uz-bqK">
             <objects>
-                <viewController storyboardIdentifier="GameModeViewController" title="GameModeViewController" id="9SU-oT-RFL" customClass="GameModeViewController" customModule="StickCombat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="GameModeViewController" storyboardIdentifier="GameModeViewController" title="GameModeViewController" id="9SU-oT-RFL" customClass="GameModeViewController" customModule="StickCombat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I6x-f1-J8z">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
