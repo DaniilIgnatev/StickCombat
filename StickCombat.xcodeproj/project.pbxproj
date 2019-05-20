@@ -24,6 +24,8 @@
 		852A5A0622199CA5000EEB12 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0522199CA5000EEB12 /* Joystick.swift */; };
 		859619492291A98A00B19F9B /* ReceptionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 859619482291A98A00B19F9B /* ReceptionScene.sks */; };
 		8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8596194A2291ACCA00B19F9B /* PauseScene.sks */; };
+		85DD9DF522932367001BB98C /* RefusedConnectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85DD9DF422932367001BB98C /* RefusedConnectionScene.sks */; };
+		85DD9DF9229325A6001BB98C /* LostConnectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85DD9DF8229325A6001BB98C /* LostConnectionScene.sks */; };
 		A153FE67B822013ED5814E4B /* Pods_StickCombat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */; };
 		A5187510221AB4B2007CDFDE /* JoystickStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518750F221AB4B2007CDFDE /* JoystickStickView.swift */; };
 		A5187512221AB73E007CDFDE /* JoystickButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */; };
@@ -53,6 +55,8 @@
 		852A5A0522199CA5000EEB12 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		859619482291A98A00B19F9B /* ReceptionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReceptionScene.sks; sourceTree = "<group>"; };
 		8596194A2291ACCA00B19F9B /* PauseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseScene.sks; sourceTree = "<group>"; };
+		85DD9DF422932367001BB98C /* RefusedConnectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RefusedConnectionScene.sks; sourceTree = "<group>"; };
+		85DD9DF8229325A6001BB98C /* LostConnectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LostConnectionScene.sks; sourceTree = "<group>"; };
 		933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.debug.xcconfig"; sourceTree = "<group>"; };
 		A518750F221AB4B2007CDFDE /* JoystickStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickStickView.swift; sourceTree = "<group>"; };
 		A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickButtonsView.swift; sourceTree = "<group>"; };
@@ -119,11 +123,9 @@
 			children = (
 				8517A637221294C200880F20 /* AppDelegate.swift */,
 				8517A63F221294C200880F20 /* GameViewController.swift */,
-				852A59FA22194ADE000EEB12 /* SceneStructure */,
-				8517A639221294C200880F20 /* GameScene.sks */,
-				859619482291A98A00B19F9B /* ReceptionScene.sks */,
-				8596194A2291ACCA00B19F9B /* PauseScene.sks */,
 				8517A63B221294C200880F20 /* Actions.sks */,
+				85DD9DF622932539001BB98C /* SKScenes */,
+				852A59FA22194ADE000EEB12 /* SceneStructure */,
 				A518750C221AB447007CDFDE /* Controllers */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
 				A5FDBC06228FDE6500FF3DE7 /* walk.atlas */,
@@ -164,6 +166,18 @@
 				8510B405227B03F400F153E3 /* CSProtocol.swift */,
 			);
 			path = SceneStructure;
+			sourceTree = "<group>";
+		};
+		85DD9DF622932539001BB98C /* SKScenes */ = {
+			isa = PBXGroup;
+			children = (
+				8517A639221294C200880F20 /* GameScene.sks */,
+				859619482291A98A00B19F9B /* ReceptionScene.sks */,
+				8596194A2291ACCA00B19F9B /* PauseScene.sks */,
+				85DD9DF422932367001BB98C /* RefusedConnectionScene.sks */,
+				85DD9DF8229325A6001BB98C /* LostConnectionScene.sks */,
+			);
+			path = SKScenes;
 			sourceTree = "<group>";
 		};
 		A518750C221AB447007CDFDE /* Controllers */ = {
@@ -218,6 +232,7 @@
 				TargetAttributes = {
 					8517A633221294C200880F20 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -251,8 +266,10 @@
 				8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */,
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
+				85DD9DF9229325A6001BB98C /* LostConnectionScene.sks in Resources */,
 				852A59F92219494F000EEB12 /* GameScene.mdj in Resources */,
 				8517A63C221294C200880F20 /* Actions.sks in Resources */,
+				85DD9DF522932367001BB98C /* RefusedConnectionScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +480,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CoderUl.StickCombat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -482,7 +499,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CoderUl.StickCombat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -22,12 +22,25 @@ class GameViewController: UIViewController, LobbyDelegate  {
         super.init(coder: aDecoder)
     }
     
-    
+
+    //MARK: JOYSTICKS VIEWS
     @IBOutlet weak var firstFighterStick: JoystickStickView!
     
     
     @IBOutlet weak var firstFighterButtons : JoystickButtonsView!
-    
+
+
+    func hideJoysticks(){
+        self.firstFighterStick.isHidden = true
+        self.firstFighterButtons.isHidden = true
+    }
+
+
+    func showJoysticks(){
+        self.firstFighterStick.isHidden = false
+        self.firstFighterButtons.isHidden = false
+    }
+
 
     //MARK: GAME SETUP
     private var mode : GameMode?
@@ -60,11 +73,19 @@ class GameViewController: UIViewController, LobbyDelegate  {
         }
     }
 
+
     ///Сцена боя
     private let combatScene : CombatScene = CombatScene(fileNamed: "GameScene")!
 
     ///Сцена ожидания
     private let receptionScene : SKScene = SKScene(fileNamed: "ReceptionScene")!
+
+    ///Сцена отколненного соединения
+    private let refusedConnectionScene : SKScene = SKScene(fileNamed: "RefusedConnectionScene")!
+
+    ///Сцена потеряного соединения
+    private let lostConnectionScene : SKScene = SKScene(fileNamed: "LostConnectionScene")!
+
 
     ///Сцена паузы
     private let pauseScene : SKScene = SKScene(fileNamed: "PauseScene")!
@@ -81,7 +102,9 @@ class GameViewController: UIViewController, LobbyDelegate  {
         combatScene.scaleMode = .fill
         receptionScene.scaleMode = .fill
         pauseScene.scaleMode = .fill
-        
+
+        combatScene.lobbyDelegate = self
+
         View.ignoresSiblingOrder = true
 
         //дебаг
@@ -96,22 +119,26 @@ class GameViewController: UIViewController, LobbyDelegate  {
     func statusChanged(_ status: LobbyStatusEnum) {
         switch status {
         case .fight:
+            showJoysticks()
             View.presentScene(combatScene)
         case .casting:
+            hideJoysticks()
             View.presentScene(receptionScene)
         case .ConnectionLost:
-            //возврат в меню
-            break
+            hideJoysticks()
+            View.presentScene(lostConnectionScene)
         case .finished:
+            hideJoysticks()
             //показ сцены с результатами
-            break
         case .refused:
-            //возврат в меню
-            break
+            hideJoysticks()
+            View.presentScene(refusedConnectionScene)
         case .pause:
+            hideJoysticks()
             View.presentScene(pauseScene)
         }
     }
+
     
 
     //MARK: VIEW PREFERENCES
@@ -127,6 +154,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
             return .landscape
         }
     }
+    
     
     override var prefersStatusBarHidden: Bool {
         return true

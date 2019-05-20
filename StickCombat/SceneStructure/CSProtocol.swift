@@ -159,7 +159,7 @@ class Parser{
                         if type == "status"{
                             let body = json["body"] as? [String:Any]
                             
-                            let id = head["id"] as! FighterID
+                            let id = (head["id"] as? FighterID) ?? FighterID.first
                             let code = body?["code"] as! Int
                             
                             let action = StatusAction(fighter: id, statusID: LobbyStatusEnum(rawValue: code)!)

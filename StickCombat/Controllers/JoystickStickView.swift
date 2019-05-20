@@ -141,7 +141,7 @@ class JoystickStickView: UIView, Joystick {
     }
     
     
-    private var RingRadius : CGFloat{
+    private func RingRadius() -> CGFloat{
         return (bounds.width / 2) - _StickThickness - _StickRadius 
     }
     
@@ -156,12 +156,12 @@ class JoystickStickView: UIView, Joystick {
             let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
             
             context.setFillColor(StickFillColor.cgColor)
-            context.addEllipse(in: CGRect(x: center.x - RingRadius, y: center.y - RingRadius, width: RingRadius * 2, height: RingRadius * 2))
+            context.addEllipse(in: CGRect(x: center.x - RingRadius(), y: center.y - RingRadius(), width: RingRadius() * 2, height: RingRadius() * 2))
             context.fillPath()
             
             context.setLineWidth(StickThickness)
             context.setStrokeColor(StickStrokeColor.cgColor)
-            context.addEllipse(in: CGRect(x: center.x - RingRadius, y: center.y - RingRadius, width: RingRadius * 2, height: RingRadius * 2))
+            context.addEllipse(in: CGRect(x: center.x - RingRadius(), y: center.y - RingRadius(), width: RingRadius() * 2, height: RingRadius() * 2))
             context.strokePath()
             
             
@@ -199,8 +199,8 @@ class JoystickStickView: UIView, Joystick {
     
     
     private func StickerPosBy(angle : CGFloat, scale : CGFloat) -> CGPoint{
-        let stock_x = RingRadius
-        let stock_y = RingRadius
+        let stock_x = RingRadius()
+        let stock_y = RingRadius()
 
         let rotated_x = stock_x * cos(angle * CGFloat.pi / 180)
         let rotated_y = stock_y * -sin(angle * CGFloat.pi / 180)
@@ -251,7 +251,7 @@ class JoystickStickView: UIView, Joystick {
     private func GetScaleRespectively(superPos : CGPoint) -> (xyScale : CGFloat,xScale : CGFloat, yScale : CGFloat){
         let xOffset = superPos.x - center.x > 0 ? superPos.x - center.x : -(superPos.x - center.x)
         let yOffset = superPos.y - center.y > 0 ? superPos.y - center.y : -(superPos.y - center.y)
-        let maxOffset = RingRadius
+        let maxOffset = RingRadius()
         
         let xScale = xOffset / maxOffset > 1.0 ? 1.0 : xOffset / maxOffset
         let yScale = yOffset / maxOffset > 1.0 ? 1.0 : yOffset / maxOffset
