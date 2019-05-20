@@ -22,12 +22,25 @@ class GameViewController: UIViewController, LobbyDelegate  {
         super.init(coder: aDecoder)
     }
     
-    
+
+    //MARK: JOYSTICKS VIEWS
     @IBOutlet weak var firstFighterStick: JoystickStickView!
     
     
     @IBOutlet weak var firstFighterButtons : JoystickButtonsView!
-    
+
+
+    func hideJoysticks(){
+        self.firstFighterStick.isHidden = true
+        self.firstFighterButtons.isHidden = true
+    }
+
+
+    func showJoysticks(){
+        self.firstFighterStick.isHidden = false
+        self.firstFighterButtons.isHidden = false
+    }
+
 
     //MARK: GAME SETUP
     private var mode : GameMode?
@@ -98,22 +111,28 @@ class GameViewController: UIViewController, LobbyDelegate  {
     func statusChanged(_ status: LobbyStatusEnum) {
         switch status {
         case .fight:
+            showJoysticks()
             View.presentScene(combatScene)
         case .casting:
+            hideJoysticks()
             View.presentScene(receptionScene)
         case .ConnectionLost:
             //возврат в меню
             break
         case .finished:
+            hideJoysticks()
             //показ сцены с результатами
             break
         case .refused:
+            hideJoysticks()
             //возврат в меню
             break
         case .pause:
+            hideJoysticks()
             View.presentScene(pauseScene)
         }
     }
+
     
 
     //MARK: VIEW PREFERENCES
