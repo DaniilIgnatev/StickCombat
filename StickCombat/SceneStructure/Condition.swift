@@ -39,7 +39,11 @@ class FighterPresence {
     static public let width : CGFloat = 100.0
 
     static public let height : CGFloat = 150.0
-    
+
+    private var halfWidth : CGFloat{
+        return FighterPresence.width / 2
+    }
+
     public let ID : FighterID
     
     public var X : CGFloat
@@ -51,6 +55,11 @@ class FighterPresence {
     public init(id : FighterID, X : CGFloat){
         self.ID = id
         self.X = X
+    }
+
+    ///Проверка на нахождение точки внутри бойца
+    public func pointInside(point : CGPoint) -> Bool{
+        return point.x >=  X - halfWidth && point.x <= X + halfWidth
     }
 }
 

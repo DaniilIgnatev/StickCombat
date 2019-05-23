@@ -239,7 +239,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     //MARK: WS ANSWER
 
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-         //обработка ответа от сервера
+        //обработка ответа от сервера
         let type = parser.defineAction(action: text)
         switch type {
         case .Strike:
@@ -271,14 +271,36 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
 
     //MARK: CONDITION UPDATE
+
+    func determineDirection() -> (fd1 : FighterViewDirection,fd2 : FighterViewDirection){
+        let f1 = self.sceneDescriptor.fighter_1
+
+        let x1 = self.sceneDescriptor.fighter_1.X
+        let x2 = self.sceneDescriptor.fighter_2.X
+
+        var direction1 = FighterViewDirection.right
+        var direction2 = FighterViewDirection.left
+
+        if x1 < x2 && !f1.pointInside(point: CGPoint(x: x2, y: 0)){
+            direction1 = .left
+            direction2 = .right
+        }
+
+        return (direction1,direction2)
+    }
+
     func processHorizontalAction(_ action : HorizontalAction){
+        let (direct1,direct2) = determineDirection()
+
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.X = action.To
+            self.View1.Direction = direct1
             self.View_1.playMoveAction(moveAction: action)
         }
         else{
-             self.sceneDescriptor.fighter_2.X = action.To
-            self.View_1.playMoveAction(moveAction: action)
+            self.sceneDescriptor.fighter_2.X = action.To
+            self.View2.Direction = direct2
+            self.View_2.playMoveAction(moveAction: action)
         }
     }
 
