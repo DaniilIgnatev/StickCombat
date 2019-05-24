@@ -96,7 +96,8 @@ class Parser{
                 let body = response["body"] as? [String:Any]
                 
                 if let head = response["head"] as? [String:Any] {
-                    let fighter = head["id"] as! FighterID
+                    let id = head["id"] as! Int
+                    let fighter = FighterID(rawValue: id)!
                     
                     if let type = head["type"] as? String {
                         //Если тип "Удар"
@@ -159,10 +160,11 @@ class Parser{
                         if type == "status"{
                             let body = json["body"] as? [String:Any]
                             
-                            let id = (head["id"] as? FighterID) ?? FighterID.first
+                            let id = (head["id"] as! Int)
+                            let fighter = FighterID(rawValue: id)!
                             let code = body?["code"] as! Int
                             
-                            let action = StatusAction(fighter: id, statusID: LobbyStatusEnum(rawValue: code)!)
+                            let action = StatusAction(fighter: fighter, statusID: LobbyStatusEnum(rawValue: code)!)
                             return action
                         }else{
                             fatalError("Error")
