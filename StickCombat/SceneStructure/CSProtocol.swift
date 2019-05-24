@@ -160,7 +160,7 @@ class Parser{
                         if type == "status"{
                             let body = json["body"] as? [String:Any]
                             
-                            let id = (head["id"] as! Int)
+                            let id = (head["id"] as? Int) ?? 0
                             let fighter = FighterID(rawValue: id)!
                             let code = body?["code"] as! Int
                             
