@@ -55,13 +55,15 @@ class FighterView {
             break
         }
     }
+    
     public func playMoveAction(moveAction : HorizontalAction){
-        self.moveAction(to: moveAction.To)
+        self.moveAction(from: moveAction.From, to: moveAction.To)
     }
     
-    private func moveAction(to: CGFloat){
+    private func moveAction(from: CGFloat, to: CGFloat){
+        let time = calculateTimeOfAnimation(from: from, to: to)
         FighterNode.run(SKAction.repeatForever(SKAction.animate(with: moveArray, timePerFrame: 0.05)))
-        FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: to, duration: 0.05)))
+        FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: to, duration: time)))
     }
    
     
@@ -77,4 +79,9 @@ class FighterView {
         return textures
     }
     
+    private func calculateTimeOfAnimation(from: CGFloat, to: CGFloat) -> Double{
+        let length: Double = Double(to) - Double(from)
+        let time = length/30
+        return time
+    }
 }
