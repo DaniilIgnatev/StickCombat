@@ -31,10 +31,10 @@
 		A5187512221AB73E007CDFDE /* JoystickButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */; };
 		A576DCA62292DFA90022C2B4 /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */; };
 		A576DCA82292F88E0022C2B4 /* LobbyOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A576DCA72292F88E0022C2B4 /* LobbyOptionsViewController.swift */; };
-		A5985AE62298072A00A67D1E /* leftPunch.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AE22298072900A67D1E /* leftPunch.atlas */; };
-		A5985AE72298072A00A67D1E /* rightKick.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AE32298072900A67D1E /* rightKick.atlas */; };
-		A5985AE82298072A00A67D1E /* rightPunch.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AE42298072900A67D1E /* rightPunch.atlas */; };
-		A5985AE92298072A00A67D1E /* leftKick.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AE52298072900A67D1E /* leftKick.atlas */; };
+		A5985AEE22980E3000A67D1E /* rightKick.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AEA22980E3000A67D1E /* rightKick.atlas */; };
+		A5985AEF22980E3000A67D1E /* leftPunch.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AEB22980E3000A67D1E /* leftPunch.atlas */; };
+		A5985AF022980E3000A67D1E /* rightPunch.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AEC22980E3000A67D1E /* rightPunch.atlas */; };
+		A5985AF122980E3000A67D1E /* leftKick.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AED22980E3000A67D1E /* leftKick.atlas */; };
 		A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDE75622204AFB000FC333 /* Menu.storyboard */; };
 		A5FDBC07228FDE6500FF3DE7 /* move.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5FDBC06228FDE6500FF3DE7 /* move.atlas */; };
 /* End PBXBuildFile section */
@@ -67,10 +67,10 @@
 		A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFSportsNightNS.ttf; path = ../../../../Library/Fonts/SFSportsNightNS.ttf; sourceTree = "<group>"; };
 		A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
 		A576DCA72292F88E0022C2B4 /* LobbyOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyOptionsViewController.swift; sourceTree = "<group>"; };
-		A5985AE22298072900A67D1E /* leftPunch.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = leftPunch.atlas; path = "../../../Атласы/leftPunch.atlas"; sourceTree = "<group>"; };
-		A5985AE32298072900A67D1E /* rightKick.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = rightKick.atlas; path = "../../../Атласы/rightKick.atlas"; sourceTree = "<group>"; };
-		A5985AE42298072900A67D1E /* rightPunch.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = rightPunch.atlas; path = "../../../Атласы/rightPunch.atlas"; sourceTree = "<group>"; };
-		A5985AE52298072900A67D1E /* leftKick.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = leftKick.atlas; path = "../../../Атласы/leftKick.atlas"; sourceTree = "<group>"; };
+		A5985AEA22980E3000A67D1E /* rightKick.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightKick.atlas; sourceTree = "<group>"; };
+		A5985AEB22980E3000A67D1E /* leftPunch.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftPunch.atlas; sourceTree = "<group>"; };
+		A5985AEC22980E3000A67D1E /* rightPunch.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightPunch.atlas; sourceTree = "<group>"; };
+		A5985AED22980E3000A67D1E /* leftKick.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftKick.atlas; sourceTree = "<group>"; };
 		A5EDE75622204AFB000FC333 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		A5FDBC06228FDE6500FF3DE7 /* move.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = move.atlas; sourceTree = "<group>"; };
 		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,10 +137,10 @@
 				A518750C221AB447007CDFDE /* Controllers */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
 				A5FDBC06228FDE6500FF3DE7 /* move.atlas */,
-				A5985AE52298072900A67D1E /* leftKick.atlas */,
-				A5985AE22298072900A67D1E /* leftPunch.atlas */,
-				A5985AE32298072900A67D1E /* rightKick.atlas */,
-				A5985AE42298072900A67D1E /* rightPunch.atlas */,
+				A5985AED22980E3000A67D1E /* leftKick.atlas */,
+				A5985AEB22980E3000A67D1E /* leftPunch.atlas */,
+				A5985AEA22980E3000A67D1E /* rightKick.atlas */,
+				A5985AEC22980E3000A67D1E /* rightPunch.atlas */,
 				A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */,
 				8517A646221294C400880F20 /* LaunchScreen.storyboard */,
 				8517A649221294C400880F20 /* Info.plist */,
@@ -271,14 +271,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5985AE92298072A00A67D1E /* leftKick.atlas in Resources */,
+				A5985AF122980E3000A67D1E /* leftKick.atlas in Resources */,
 				859619492291A98A00B19F9B /* ReceptionScene.sks in Resources */,
 				A5FDBC07228FDE6500FF3DE7 /* move.atlas in Resources */,
+				A5985AEE22980E3000A67D1E /* rightKick.atlas in Resources */,
 				A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */,
-				A5985AE62298072A00A67D1E /* leftPunch.atlas in Resources */,
+				A5985AEF22980E3000A67D1E /* leftPunch.atlas in Resources */,
+				A5985AF022980E3000A67D1E /* rightPunch.atlas in Resources */,
 				8517A63A221294C200880F20 /* GameScene.sks in Resources */,
-				A5985AE82298072A00A67D1E /* rightPunch.atlas in Resources */,
-				A5985AE72298072A00A67D1E /* rightKick.atlas in Resources */,
 				8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */,
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
