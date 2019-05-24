@@ -105,9 +105,10 @@ class Parser{
                             let y = body?["y"] as! CGFloat
                             let dx = body?["dx"] as! CGFloat
                             let dy = body?["dy"] as! CGFloat
+                            let impact = body?["endHP"] as! Int
                             let hp = body?["endHP"] as! CGFloat
-                            
-                            let action = StrikeAction(fighter: fighter, vector: CGVector(dx: dx, dy: dy), point: CGPoint(x: x, y: y), endHP: hp)
+
+                            let action = StrikeAction(fighter: fighter, impact: StrikeActionImpact(rawValue: impact)!, vector: CGVector(dx: dx, dy: dy), point: CGPoint(x: x, y: y), endHP: hp)
                             return action
                             //Если тип "Передвижение"
                         }else if type == "horizontalMoveApprove"{

@@ -77,13 +77,13 @@ class StrikeAction: GameAction {
     public let endHP : CGFloat?
 
 
-    init(fighter: FighterID, vector : CGVector, point : CGPoint, endHP : CGFloat) {
+    init(fighter: FighterID, impact : StrikeActionImpact, vector : CGVector, point : CGPoint, endHP : CGFloat) {
         self.kind = .Strike
         self.fighter = fighter
         self.Vector = vector
         self.Point = point
         self.endHP = endHP
-        self.Impact = nil
+        self.Impact = impact
         self.Direction = nil
     }
 }
