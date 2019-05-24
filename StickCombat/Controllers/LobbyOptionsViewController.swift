@@ -23,10 +23,10 @@ class LobbyOptionsViewController: UIViewController{
             guard let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else{
                 return
             }
-            destinationViewController.Mode = GameMode.pvpNet(playerID: playerID!, adress: URL(string: "ws://\(ip):\(password)")!, lobbyName: nameTextBox.text!, lobbyPassword: passwordTextBox.text!)
             
             destinationViewController.modalTransitionStyle = .crossDissolve
             present(destinationViewController, animated: true, completion: nil)
+            destinationViewController.Mode = GameMode.pvpNet(playerID: playerID!, adress: URL(string: "ws://\(ip):\(password)")!, lobbyName: nameTextBox.text!, lobbyPassword: passwordTextBox.text!)
         }else{
             passwordTextBox.text = nil
             nameTextBox.text = nil
@@ -36,5 +36,11 @@ class LobbyOptionsViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first != nil{
+            view.endEditing(true)
+        }
+        super.touchesBegan(touches, with: event)
     }
 }

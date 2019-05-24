@@ -17,35 +17,57 @@ class FighterView {
     public var Direction : FighterDirection
 
     public let FighterNode : SKSpriteNode
+    //Атласы
+    private var leftPunchAtlas = SKTextureAtlas()
+    private var rightKickAtlas = SKTextureAtlas()
+    private var rightPunchAtlas = SKTextureAtlas()
+    private var moveAtlas = SKTextureAtlas()
+    private var leftKickAtlas = SKTextureAtlas()
+    //Массивы текстур
+    private var leftKickArray = [SKTexture]()
+    private var moveArray = [SKTexture]()
+    private var leftPunchArray = [SKTexture]()
+    private var rightKickArray = [SKTexture]()
+    private var rightPunchArray = [SKTexture]()
     
-    private var textureAtlas = SKTextureAtlas()
-    private var textureArray = [SKTexture]()
     
     init(id : FighterID, node : SKSpriteNode, direction : FighterDirection) {
         self.ID = id
         self.FighterNode = node
         self.Direction = direction
         
-        self.textureAtlas = SKTextureAtlas(named: "walk")
-        
-        for i in 0...(textureAtlas.textureNames.count-1){
-            let name = "\(i).png"
-            self.textureArray.append(SKTexture(imageNamed: name))
-        }
+        self.moveArray = initTextureArray(nameAtlas: "move")
+        self.leftKickArray = initTextureArray(nameAtlas: "leftKick")
+        self.leftPunchArray = initTextureArray(nameAtlas: "leftPunch")
+        self.rightKickArray = initTextureArray(nameAtlas: "rightKick")
+        self.rightPunchArray = initTextureArray(nameAtlas: "rightPunch")
     }
+
     
     public func playStrikeAction(action : StrikeAction){
         //пробник
         
     }
     public func playMoveAction(moveAction : HorizontalAction){
-        moveLeftFirst(to: moveAction.To)
+        self.moveAction(to: moveAction.To)
     }
     
-    private func moveLeftFirst(to: CGFloat){
-        FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
-        //FighterNode.run(SKAction.repeatForever(SKAction.moveBy(x: 5, y: 0, duration: 0.05)))
+    private func moveAction(to: CGFloat){
+        FighterNode.run(SKAction.repeatForever(SKAction.animate(with: moveArray, timePerFrame: 0.05)))
         FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: to, duration: 0.05)))
+    }
+   
+    
+    private func initTextureArray(nameAtlas: String) -> [SKTexture]{
+        let atlas = SKTextureAtlas(named: nameAtlas)
+        var textures = [SKTexture]()
+        
+        for i in 0...(atlas.textureNames.count-1){
+            let name = "\(i).png"
+            textures.append(SKTexture(imageNamed: name))
+        }
+        
+        return textures
     }
     
 }
