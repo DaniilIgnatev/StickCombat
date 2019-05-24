@@ -57,10 +57,8 @@ class Parser{
 
     //+
     public func gameActionToJSON(gameAction: GameAction) -> String{
-
         if let action = gameAction as? StrikeAction{
-            let jsonStruct = GameActionStrikeJSON(head: Head(id: action.Fighter.hashValue, type: "strike"), body: GameActionStrikeJSON.Body(x: action.Point.x, y: action.Point.y, dx: action.Vector.dx
-                , dy: action.Vector.dy, endHP: nil))
+            let jsonStruct = GameActionStrikeRequestJSON(head: Head(id: gameAction.Fighter.hashValue, type: "strike"), body: GameActionStrikeRequestJSON.Body(direction: action.Direction!.hashValue, impact: action.Impact!.hashValue))
             do{
                 let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
                 return json
@@ -107,8 +105,9 @@ class Parser{
                             let y = body?["y"] as! CGFloat
                             let dx = body?["dx"] as! CGFloat
                             let dy = body?["dy"] as! CGFloat
+                            let hp = body?["endHP"] as! CGFloat
                             
-                            let action = StrikeAction(fighter: fighter, vector: CGVector(dx: dx, dy: dy), point: CGPoint(x: x, y: y))
+                            let action = StrikeAction(fighter: fighter, vector: CGVector(dx: dx, dy: dy), point: CGPoint(x: x, y: y), endHP: hp)
                             return action
                             //Если тип "Передвижение"
                         }else if type == "horizontalMoveApprove"{
@@ -193,20 +192,33 @@ struct ConnectionJSON: Codable{
     var body: Body
 }
 
-struct GameActionStrikeJSON: Codable{
+struct GameActionStrikeApproveJSON: Decodable{
     
-    struct Body: Codable{
+    struct Body: Decodable{
         //Strike
         let x: CGFloat
         let y: CGFloat
         let dx: CGFloat
         let dy: CGFloat
-        let endHP: CGFloat?
+        let endHP: CGFloat
     }
 
     let head: Head
     let body: Body
 }
+
+
+struct GameActionStrikeRequestJSON: Encodable{
+
+    struct Body: Encodable{
+        let direction : Int
+        let impact : Int
+    }
+
+    let head: Head
+    let body: Body
+}
+
 
 struct GameActionBlockJSON: Codable{
     

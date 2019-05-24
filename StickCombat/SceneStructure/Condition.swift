@@ -31,6 +31,11 @@ class SceneCondition {
 }
 
 
+///Направление взгляда бойца
+enum FighterDirection : Int {
+    case left = 0, right = 1
+}
+
 
 class FighterPresence {
     
@@ -44,6 +49,9 @@ class FighterPresence {
         return FighterPresence.width / 2
     }
 
+    ///Направление взгляда бойца
+    public var direction : FighterDirection
+
     public let ID : FighterID
     
     public var X : CGFloat
@@ -53,6 +61,12 @@ class FighterPresence {
     public var isBlock : Bool = false
     
     public init(id : FighterID, X : CGFloat){
+        direction = .left
+
+        if id == .first{
+            direction = .right
+        }
+
         self.ID = id
         self.X = X
     }

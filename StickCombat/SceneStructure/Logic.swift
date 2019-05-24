@@ -272,14 +272,14 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
     //MARK: CONDITION UPDATE
 
-    func determineDirection() -> (fd1 : FighterViewDirection,fd2 : FighterViewDirection){
+    func determineDirection() -> (fd1 : FighterDirection,fd2 : FighterDirection){
         let f1 = self.sceneDescriptor.fighter_1
 
         let x1 = self.sceneDescriptor.fighter_1.X
         let x2 = self.sceneDescriptor.fighter_2.X
 
-        var direction1 = FighterViewDirection.right
-        var direction2 = FighterViewDirection.left
+        var direction1 = FighterDirection.right
+        var direction2 = FighterDirection.left
 
         if x1 < x2 && !f1.pointInside(point: CGPoint(x: x2, y: 0)){
             direction1 = .left
@@ -294,11 +294,13 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.X = action.To
+            self.sceneDescriptor.fighter_1.direction = direct1
             self.View1.Direction = direct1
             self.View_1.playMoveAction(moveAction: action)
         }
         else{
             self.sceneDescriptor.fighter_2.X = action.To
+            self.sceneDescriptor.fighter_2.direction = direct2
             self.View2.Direction = direct2
             self.View_2.playMoveAction(moveAction: action)
         }
@@ -307,11 +309,11 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
     func processStrikeAction(_ action : StrikeAction){
         if action.Fighter == .first{
-            self.sceneDescriptor.fighter_1.hp -= self.sceneDescriptor.fighter_1.hp
+            self.sceneDescriptor.fighter_2.hp = action.endHP!
             self.View_1.playStrikeAction(action: action)
         }
         else{
-            self.sceneDescriptor.fighter_2.hp -= self.sceneDescriptor.fighter_2.hp
+            self.sceneDescriptor.fighter_1.hp = action.endHP!
             self.View_1.playStrikeAction(action: action)
         }
     }

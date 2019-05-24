@@ -17,11 +17,11 @@ protocol ActionEngineDelegate {
 
 
 protocol ActionEngine {
-    
+    ///От чьего имени генерируются действия
     var Fighter : FighterID{get}
-    
+    ///Состояние игровой сцены
     var Condition : SceneCondition {get set}
-    
+    ///Осведомленный объект
     var delegate : ActionEngineDelegate? {get set}
 }
 
@@ -31,6 +31,7 @@ class GestureEngine: ActionEngine, JoystickDelegate {
 
     //MARK: Context
     let fighter: FighterID
+    ///От чьего имени генерируются действия
     var Fighter: FighterID{
         get{
             return fighter
@@ -90,18 +91,24 @@ class GestureEngine: ActionEngine, JoystickDelegate {
 
 
     private func processPressedButton(descriptor : ButtonDescriptor, xStrikeVector : CGFloat, xOpponentPosition : CGFloat) -> GameAction?{
+
+        var direction = FighterDirection.left
+        if fighter == .first{
+            direction = .right
+        }
+
         switch descriptor {
         case .first:
             return BlockAction(fighter: fighter, isOn: true)//выставить блок
         case .second:
             //удар рукой
-            return StrikeAction(fighter: fighter, vector: CGVector(dx: xStrikeVector,dy: 0), point: CGPoint(x: xOpponentPosition, y: FighterPresence.height))
+            return StrikeAction(fighter: fighter, impact: .Jeb, direction: direction)
         case .third:
             //удар левой ногой (вверх)
-            return StrikeAction(fighter: fighter, vector: CGVector(dx: xStrikeVector, dy: 1), point: CGPoint(x: xOpponentPosition, y: FighterPresence.height))
+            return StrikeAction(fighter: fighter, impact: .leftKick, direction: direction)
         case .fourth:
             //удар правой ногой (прямо)
-            return StrikeAction(fighter: fighter, vector: CGVector(dx: xStrikeVector, dy: 0), point: CGPoint(x: xOpponentPosition, y: 0))
+            return StrikeAction(fighter: fighter, impact: .RightKick, direction: direction)
         }
     }
 

@@ -26,6 +26,12 @@ protocol GameAction {
 }
 
 
+enum StrikeActionImpact : Int {
+    case Jeb = 0
+    case leftKick = 1
+    case RightKick = 2
+}
+
 
 class StrikeAction: GameAction {
     
@@ -43,20 +49,43 @@ class StrikeAction: GameAction {
             return fighter
         }
     }
-    
-    
-    required init(fighter: FighterID, vector : CGVector, point : CGPoint) {
+
+
+    public let Impact : StrikeActionImpact?
+
+
+    public let Direction : FighterDirection?
+
+
+    init(fighter: FighterID, impact : StrikeActionImpact, direction : FighterDirection) {
+        self.kind = .Strike
+        self.fighter = fighter
+        self.Impact = impact
+        self.Direction = direction
+        self.Vector = nil
+        self.Point = nil
+        self.endHP = nil
+    }
+
+
+    public let Vector : CGVector?
+
+
+    public let Point : CGPoint?
+
+
+    public let endHP : CGFloat?
+
+
+    init(fighter: FighterID, vector : CGVector, point : CGPoint, endHP : CGFloat) {
         self.kind = .Strike
         self.fighter = fighter
         self.Vector = vector
         self.Point = point
+        self.endHP = endHP
+        self.Impact = nil
+        self.Direction = nil
     }
-    
-    
-    public let Vector : CGVector
-    
-    
-    public let Point : CGPoint
 }
 
 
