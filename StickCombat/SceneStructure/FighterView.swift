@@ -46,7 +46,14 @@ class FighterView {
     
     public func playStrikeAction(action : StrikeAction){
         //пробник
-        
+        switch action.Impact! {
+        case .Jeb:
+            break
+        case .leftKick:
+            break
+        case .RightKick:
+            break
+        }
     }
     public func playMoveAction(moveAction : HorizontalAction){
         self.moveAction(to: moveAction.To)
