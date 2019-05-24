@@ -48,7 +48,7 @@ class Parser{
         if action.Fighter == .second{
             type = "joinLobby"
         }
-        let jsonStruct = ConnectionJSON(head: Head(id: action.Fighter.hashValue, type: type), body: ConnectionJSON.Body(name: action.name, password: action.password))
+        let jsonStruct = ConnectionJSON(head: Head(id: action.Fighter.rawValue, type: type), body: ConnectionJSON.Body(name: action.name, password: action.password))
 
         let json = String.init(data: try! JSONEncoder().encode(jsonStruct), encoding: .utf8)!
         return json
@@ -58,7 +58,7 @@ class Parser{
     //+
     public func gameActionToJSON(gameAction: GameAction) -> String{
         if let action = gameAction as? StrikeAction{
-            let jsonStruct = GameActionStrikeRequestJSON(head: Head(id: gameAction.Fighter.hashValue, type: "strike"), body: GameActionStrikeRequestJSON.Body(direction: action.Direction!.hashValue, impact: action.Impact!.hashValue))
+            let jsonStruct = GameActionStrikeRequestJSON(head: Head(id: gameAction.Fighter.rawValue, type: "strike"), body: GameActionStrikeRequestJSON.Body(direction: action.Direction!.rawValue, impact: action.Impact!.rawValue))
             do{
                 let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
                 return json
@@ -66,7 +66,7 @@ class Parser{
                 return ""
             }
         }else if let action = gameAction as? HorizontalAction{
-            let jsonStruct = GameActionMoveJSON(head: Head(id: action.Fighter.hashValue, type: "horizontalMove"), body: GameActionMoveJSON.Body(from: action.From, to: action.To, by: action.By))
+            let jsonStruct = GameActionMoveJSON(head: Head(id: action.Fighter.rawValue, type: "horizontalMove"), body: GameActionMoveJSON.Body(from: action.From, to: action.To, by: action.By))
             do{
                 let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
                 return json
@@ -74,7 +74,7 @@ class Parser{
                 return ""
             }
         }else if let action = gameAction as? BlockAction{
-            let jsonStruct = GameActionBlockJSON(head: Head(id: action.Fighter.hashValue, type: "block"), body: GameActionBlockJSON.Body(isOn: action.IsOn))
+            let jsonStruct = GameActionBlockJSON(head: Head(id: action.Fighter.rawValue, type: "block"), body: GameActionBlockJSON.Body(isOn: action.IsOn))
             do{
                 let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
                 return json
