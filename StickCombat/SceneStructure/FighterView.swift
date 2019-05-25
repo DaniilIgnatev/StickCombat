@@ -17,12 +17,7 @@ class FighterView {
     public var Direction : FighterDirection
 
     public let FighterNode : SKSpriteNode
-    //Атласы
-    private var leftPunchAtlas = SKTextureAtlas()
-    private var rightKickAtlas = SKTextureAtlas()
-    private var rightPunchAtlas = SKTextureAtlas()
-    private var moveAtlas = SKTextureAtlas()
-    private var leftKickAtlas = SKTextureAtlas()
+    
     //Массивы текстур
     private var leftKickArray = [SKTexture]()
     private var moveArray = [SKTexture]()
@@ -45,7 +40,6 @@ class FighterView {
 
     
     public func playStrikeAction(action : StrikeAction){
-        //пробник
         switch action.Impact! {
         case .Jeb:
             break
@@ -57,13 +51,9 @@ class FighterView {
     }
     
     public func playMoveAction(moveAction : HorizontalAction){
-        self.moveAction(from: moveAction.From, to: moveAction.To)
-    }
-    
-    private func moveAction(from: CGFloat, to: CGFloat){
-        let time = calculateTimeOfAnimation(from: from, to: to)
+        let time = calculateTimeOfAnimation(from: moveAction.From, to: moveAction.To)
         FighterNode.run(SKAction.repeatForever(SKAction.animate(with: moveArray, timePerFrame: 0.05)))
-        FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: to, duration: time)))
+        FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: moveAction.To, duration: time)))
     }
    
     
