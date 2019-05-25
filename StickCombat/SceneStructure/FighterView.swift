@@ -81,7 +81,7 @@ class FighterView {
     
     private func calculateTimeOfAnimation(from: CGFloat, to: CGFloat) -> Double{
         let length: Double = Double(to) - Double(from)
-        let time = length/30
+        let time = length/80
         return time
     }
 }
