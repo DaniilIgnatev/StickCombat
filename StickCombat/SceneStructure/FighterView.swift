@@ -57,7 +57,7 @@ class FighterView {
             case .Jeb:
                 self.strikeAction(textureArray: leftPunchArray)
             case .leftKick:
-                self.strikeAction(textureArray: leftPunchArray)
+                self.strikeAction(textureArray: leftKickArray)
             case .RightKick:
                 self.strikeAction(textureArray: rightKickArray)
             }
@@ -66,9 +66,9 @@ class FighterView {
             case .Jeb:
                 self.strikeAction(textureArray: leftPunchMirroredArray)
             case .leftKick:
-                self.strikeAction(textureArray: leftPunchMirroredArray)
+                self.strikeAction(textureArray: leftKickMirroredArray)
             case .RightKick:
-                self.strikeAction(textureArray: leftPunchMirroredArray)
+                self.strikeAction(textureArray: rightKickMirroredArray)
             }
         }
     }
