@@ -18,44 +18,80 @@ class FighterView {
 
     public let FighterNode : SKSpriteNode
     
-    //Массивы текстур
+    //Массивы текстур левого бойца
     private var leftKickArray = [SKTexture]()
     private var moveArray = [SKTexture]()
     private var leftPunchArray = [SKTexture]()
     private var rightKickArray = [SKTexture]()
     private var rightPunchArray = [SKTexture]()
+    //Массивы текстур правого бойца
+    private var leftKickMirroredArray = [SKTexture]()
+    private var moveMirroredArray = [SKTexture]()
+    private var leftPunchMirroredArray = [SKTexture]()
+    private var rightKickMirroredArray = [SKTexture]()
+    private var rightPunchMirroredArray = [SKTexture]()
     
     
     init(id : FighterID, node : SKSpriteNode, direction : FighterDirection) {
         self.ID = id
         self.FighterNode = node
         self.Direction = direction
-        
+        //Инициализация массивов текстур для левого бойца
         self.moveArray = initTextureArray(nameAtlas: "move")
         self.leftKickArray = initTextureArray(nameAtlas: "leftKick")
         self.leftPunchArray = initTextureArray(nameAtlas: "leftPunch")
         self.rightKickArray = initTextureArray(nameAtlas: "rightKick")
         self.rightPunchArray = initTextureArray(nameAtlas: "rightPunch")
+        //Инициализация массивов текстур для правого бойца
+        self.moveMirroredArray = initTextureArray(nameAtlas: "moveMirrored")
+        self.leftKickMirroredArray = initTextureArray(nameAtlas: "leftKickMirrored")
+        self.leftPunchMirroredArray = initTextureArray(nameAtlas: "leftPunchMirrored")
+        self.rightKickMirroredArray = initTextureArray(nameAtlas: "rightKickMirrored")
+        self.rightPunchMirroredArray = initTextureArray(nameAtlas: "rightPunchMirrored")
     }
 
     
-    public func playStrikeAction(action : StrikeAction){
-        switch action.Impact! {
-        case .Jeb:
-            break
-        case .leftKick:
-            break
-        case .RightKick:
-            break
+    public func playStrikeAction(strikeAction : StrikeAction){
+        if Direction == .left{
+            switch strikeAction.Impact! {
+            case .Jeb:
+                self.strikeAction(textureArray: leftPunchArray)
+            case .leftKick:
+                self.strikeAction(textureArray: leftPunchArray)
+            case .RightKick:
+                self.strikeAction(textureArray: rightKickArray)
+            }
+        }else if Direction == .right{
+            switch strikeAction.Impact! {
+            case .Jeb:
+                self.strikeAction(textureArray: leftPunchMirroredArray)
+            case .leftKick:
+                self.strikeAction(textureArray: leftPunchMirroredArray)
+            case .RightKick:
+                self.strikeAction(textureArray: leftPunchMirroredArray)
+            }
         }
     }
     
+    private func strikeAction(textureArray: [SKTexture]){
+        FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
+    }
+
+    
     public func playMoveAction(moveAction : HorizontalAction){
-        let time = calculateTimeOfAnimation(from: moveAction.From, to: moveAction.To)
-        FighterNode.run(SKAction.repeatForever(SKAction.animate(with: moveArray, timePerFrame: 0.05)))
-        FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: moveAction.To, duration: time)))
+        switch Direction {
+        case .left:
+            self.moveAction(from: moveAction.From, to: moveAction.To, textureArray: moveArray)
+        case .right:
+            self.moveAction(from: moveAction.From, to: moveAction.To, textureArray: moveMirroredArray)
+        }
     }
    
+    private func moveAction(from: CGFloat, to: CGFloat, textureArray: [SKTexture]){
+        let time = calculateTimeOfMoveAnimation(from: from, to: to)
+        FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
+        FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: to, duration: time)))
+    }
     
     private func initTextureArray(nameAtlas: String) -> [SKTexture]{
         let atlas = SKTextureAtlas(named: nameAtlas)
@@ -69,7 +105,7 @@ class FighterView {
         return textures
     }
     
-    private func calculateTimeOfAnimation(from: CGFloat, to: CGFloat) -> Double{
+    private func calculateTimeOfMoveAnimation(from: CGFloat, to: CGFloat) -> Double{
         let length: Double = Double(to) - Double(from)
         let time = length/80
         return time

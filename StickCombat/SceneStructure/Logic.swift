@@ -310,11 +310,11 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     func processStrikeAction(_ action : StrikeAction){
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_2.hp = action.endHP!
-            self.View_1.playStrikeAction(action: action)
+            self.View_1.playStrikeAction(strikeAction: action)
         }
         else{
             self.sceneDescriptor.fighter_1.hp = action.endHP!
-            self.View_1.playStrikeAction(action: action)
+            self.View_1.playStrikeAction(strikeAction: action)
         }
     }
 
