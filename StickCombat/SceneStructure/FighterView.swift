@@ -31,7 +31,6 @@ class FighterView {
     private var rightKickMirroredArray = [SKTexture]()
     private var rightPunchMirroredArray = [SKTexture]()
     
-    
     init(id : FighterID, node : SKSpriteNode, direction : FighterDirection) {
         self.ID = id
         self.FighterNode = node
@@ -89,8 +88,9 @@ class FighterView {
    
     private func moveAction(from: CGFloat, to: CGFloat, textureArray: [SKTexture]){
         let time = calculateTimeOfMoveAnimation(from: from, to: to)
-        FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
-        FighterNode.run(SKAction.repeatForever(SKAction.moveTo(x: to, duration: time)))
+        FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05))
+        FighterNode.run(SKAction.moveTo(x: to, duration: time))
+        //FighterNode.
     }
     
     private func initTextureArray(nameAtlas: String) -> [SKTexture]{

@@ -41,6 +41,8 @@
 		A5985B112299DC5F00A67D1E /* rightKickMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985B0C2299DC5F00A67D1E /* rightKickMirrored.atlas */; };
 		A5985B122299DC5F00A67D1E /* leftKickMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985B0D2299DC5F00A67D1E /* leftKickMirrored.atlas */; };
 		A5985B132299DC5F00A67D1E /* rightPunchMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985B0E2299DC5F00A67D1E /* rightPunchMirrored.atlas */; };
+		A5D49BA4229DD081005A8E89 /* defaultPositionsMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5D49BA2229DD081005A8E89 /* defaultPositionsMirrored.atlas */; };
+		A5D49BA5229DD081005A8E89 /* defaultPositions.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5D49BA3229DD081005A8E89 /* defaultPositions.atlas */; };
 		A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDE75622204AFB000FC333 /* Menu.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		A5985B0C2299DC5F00A67D1E /* rightKickMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightKickMirrored.atlas; sourceTree = "<group>"; };
 		A5985B0D2299DC5F00A67D1E /* leftKickMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftKickMirrored.atlas; sourceTree = "<group>"; };
 		A5985B0E2299DC5F00A67D1E /* rightPunchMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightPunchMirrored.atlas; sourceTree = "<group>"; };
+		A5D49BA2229DD081005A8E89 /* defaultPositionsMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = defaultPositionsMirrored.atlas; sourceTree = "<group>"; };
+		A5D49BA3229DD081005A8E89 /* defaultPositions.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = defaultPositions.atlas; sourceTree = "<group>"; };
 		A5EDE75622204AFB000FC333 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
 		ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickCombat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +151,8 @@
 				A518750C221AB447007CDFDE /* Controllers */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
 				A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */,
+				A5D49BA3229DD081005A8E89 /* defaultPositions.atlas */,
+				A5D49BA2229DD081005A8E89 /* defaultPositionsMirrored.atlas */,
 				A5985AFD2299DB2700A67D1E /* leftKick.atlas */,
 				A5985B0D2299DC5F00A67D1E /* leftKickMirrored.atlas */,
 				A5985AF92299DB2600A67D1E /* leftPunch.atlas */,
@@ -301,10 +307,12 @@
 				A5985B032299DB2700A67D1E /* leftPunch.atlas in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
 				85DD9DF9229325A6001BB98C /* LostConnectionScene.sks in Resources */,
+				A5D49BA4229DD081005A8E89 /* defaultPositionsMirrored.atlas in Resources */,
 				852A59F92219494F000EEB12 /* GameScene.mdj in Resources */,
 				8517A63C221294C200880F20 /* Actions.sks in Resources */,
 				A5985B082299DB2700A67D1E /* rightPunch.atlas in Resources */,
 				85DD9DF522932367001BB98C /* RefusedConnectionScene.sks in Resources */,
+				A5D49BA5229DD081005A8E89 /* defaultPositions.atlas in Resources */,
 				A5985B132299DC5F00A67D1E /* rightPunchMirrored.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
