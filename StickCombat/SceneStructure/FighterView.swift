@@ -11,13 +11,18 @@ import SpriteKit
 
 
 class FighterView {
-
+    
     public let ID : FighterID
-
+    
     public var Direction : FighterDirection
-
+    
     public let FighterNode : SKSpriteNode
     
+    //private var timer: Timer = Timer(timeInterval: 0, repeats: false, block: {_ in })
+    
+    //Текстурки не для анимаций
+    private var defaultPositionsArray = [SKTexture]()
+    private var defaultPositionsMirroredArray = [SKTexture]()
     //Массивы текстур левого бойца
     private var leftKickArray = [SKTexture]()
     private var moveArray = [SKTexture]()
@@ -35,6 +40,9 @@ class FighterView {
         self.ID = id
         self.FighterNode = node
         self.Direction = direction
+        //Инициализация массивов текстур не для анимаций
+        self.defaultPositionsArray = initTextureArray(nameAtlas: "defaultPositions")
+        self.defaultPositionsMirroredArray = initTextureArray(nameAtlas: "defaultPositionsMirrored")
         //Инициализация массивов текстур для левого бойца
         self.moveArray = initTextureArray(nameAtlas: "move")
         self.leftKickArray = initTextureArray(nameAtlas: "leftKick")
@@ -48,49 +56,82 @@ class FighterView {
         self.rightKickMirroredArray = initTextureArray(nameAtlas: "rightKickMirrored")
         self.rightPunchMirroredArray = initTextureArray(nameAtlas: "rightPunchMirrored")
     }
-
+    
     
     public func playStrikeAction(strikeAction : StrikeAction){
-        if Direction == .left{
-            switch strikeAction.Impact! {
-            case .Jeb:
-                self.strikeAction(textureArray: leftPunchArray)
-            case .leftKick:
-                self.strikeAction(textureArray: leftKickArray)
-            case .RightKick:
-                self.strikeAction(textureArray: rightKickArray)
-            }
-        }else if Direction == .right{
-            switch strikeAction.Impact! {
-            case .Jeb:
-                self.strikeAction(textureArray: leftPunchMirroredArray)
-            case .leftKick:
-                self.strikeAction(textureArray: leftKickMirroredArray)
-            case .RightKick:
-                self.strikeAction(textureArray: rightKickMirroredArray)
+        
+        if FighterNode.action(forKey: "strike") != nil{
+            print("Сontinue to animate")
+        }else{
+            if Direction == .left{
+                switch strikeAction.Impact! {
+                case .Jeb:
+                    self.strikeAction(textureArray: leftPunchArray)
+                case .leftKick:
+                    self.strikeAction(textureArray: leftKickArray)
+                case .RightKick:
+                    self.strikeAction(textureArray: rightKickArray)
+                }
+            }else if Direction == .right{
+                switch strikeAction.Impact! {
+                case .Jeb:
+                    self.strikeAction(textureArray: leftPunchMirroredArray)
+                case .leftKick:
+                    self.strikeAction(textureArray: leftKickMirroredArray)
+                case .RightKick:
+                    self.strikeAction(textureArray: rightKickMirroredArray)
+                }
             }
         }
     }
     
     private func strikeAction(textureArray: [SKTexture]){
-        FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
+        //FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
+        FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strike")
     }
-
+    
     
     public func playMoveAction(moveAction : HorizontalAction){
-        switch Direction {
-        case .left:
-            self.moveAction(from: moveAction.From, to: moveAction.To, textureArray: moveArray)
-        case .right:
-            self.moveAction(from: moveAction.From, to: moveAction.To, textureArray: moveMirroredArray)
+        
+        var timeLeft = 0.5
+        
+        if FighterNode.action(forKey: "moveAnimation") != nil{
+            switch Direction {
+            case .left:
+                self.moveAction(from: moveAction.From, to: moveAction.To)
+            case .right:
+                self.moveAction(from: moveAction.From, to: moveAction.To)
+            }
+            print("Сontinue to animate")
+            timeLeft = 0.5
+        }else{
+            switch Direction {
+            case .left:
+                self.moveAction(from: moveAction.From, to: moveAction.To)
+                self.moveActionAnimation(textureArray: moveArray)
+            case .right:
+                self.moveAction(from: moveAction.From, to: moveAction.To)
+                self.moveActionAnimation(textureArray: moveMirroredArray)
+            }
+        }
+        //Создание таймера для отслеживания времени. Если в течении заданного промежутка не приходит экшн, удаляем все экшны у бойца
+        var timer = Timer(timeInterval: 0.1, repeats: false){timer in
+            timeLeft -= 0.1
+            if timeLeft < 0{
+                self.FighterNode.removeAllActions()
+                timer.invalidate()
+            }
         }
     }
-   
-    private func moveAction(from: CGFloat, to: CGFloat, textureArray: [SKTexture]){
+    
+    private func moveAction(from: CGFloat, to: CGFloat){
         let time = calculateTimeOfMoveAnimation(from: from, to: to)
-        FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05))
-        FighterNode.run(SKAction.moveTo(x: to, duration: time))
-        //FighterNode.
+        let actionMove = SKAction.moveTo(x: to, duration: time)
+        FighterNode.run(actionMove, withKey: "move")
+    }
+    private func moveActionAnimation(textureArray: [SKTexture]){
+        let actionAnimate = SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05))
+        FighterNode.run(actionAnimate, withKey: "moveAnimation")
     }
     
     private func initTextureArray(nameAtlas: String) -> [SKTexture]{
@@ -109,5 +150,9 @@ class FighterView {
         let length: Double = Double(to) - Double(from)
         let time = length/80
         return time
+    }
+    
+    @objc private func fireTimer(){
+        self.FighterNode.removeAllActions()
     }
 }
