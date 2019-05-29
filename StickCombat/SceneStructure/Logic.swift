@@ -282,23 +282,23 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     //MARK: CONDITION UPDATE
 
     /*
-    func determineDirection() -> (fd1 : FighterDirection,fd2 : FighterDirection){
-        let f1 = self.sceneDescriptor.fighter_1
+     func determineDirection() -> (fd1 : FighterDirection,fd2 : FighterDirection){
+     let f1 = self.sceneDescriptor.fighter_1
 
-        let x1 = self.sceneDescriptor.fighter_1.X
-        let x2 = self.sceneDescriptor.fighter_2.X
+     let x1 = self.sceneDescriptor.fighter_1.X
+     let x2 = self.sceneDescriptor.fighter_2.X
 
-        var direction1 = FighterDirection.right
-        var direction2 = FighterDirection.left
+     var direction1 = FighterDirection.right
+     var direction2 = FighterDirection.left
 
-        if x1 < x2 && !f1.pointInside(point: CGPoint(x: x2, y: 0)){
-            direction1 = .left
-            direction2 = .right
-        }
+     if x1 < x2 && !f1.pointInside(point: CGPoint(x: x2, y: 0)){
+     direction1 = .left
+     direction2 = .right
+     }
 
-        return (direction1,direction2)
-    }
-    */
+     return (direction1,direction2)
+     }
+     */
 
     func processHorizontalAction(_ action : HorizontalAction){
         //let (direct1,direct2) = determineDirection()
@@ -335,27 +335,46 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     func processBlockAction(_ action : BlockAction){
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.isBlock = action.IsOn
-            //self.View_1
+
+            if action.IsOn{
+                self.View_1.playBlockAction()
+            }
+            else{
+                self.View_1.stopBlockAction()
+            }
         }
         else{
             self.sceneDescriptor.fighter_2.isBlock = action.IsOn
-            //self.View_1.playStrikeAction(action: action)
+
+            if action.IsOn{
+                self.View_2.playBlockAction()
+            }
+            else{
+                self.View_2.stopBlockAction()
+            }
         }
     }
 
     func processStatusAction(_ action : StatusAction){
         switch action.statusID {
         case .over:
-             let fighter = playingFighterDescriptor
-             if  fighter.hp <= 0{
+            //уточнение итогов окончания матча
+            let fighter = playingFighterDescriptor
+            if  fighter.hp <= 0{
                 self.sceneDescriptor.status = .Defeat
             }
-             else{
+            else{
                 self.sceneDescriptor.status = .Victory
             }
         case .surrender:
+            //соединение оборвано осознано
             if !socket.isConnected{
-                self.sceneDescriptor.status =   .ConnectionLost
+                self.sceneDescriptor.status = .ConnectionLost
+            }
+        case .ConnectionLost:
+            //сдача противника при ее наличии в статусе считается приоритетнее
+            if self.sceneDescriptor.status == .surrender{
+                return
             }
         default:
             self.sceneDescriptor.status = action.statusID
