@@ -233,6 +233,9 @@ internal enum LobbyStatusEnum : Int{
     case casting = 1//сервер ждет подключения второго игрока
     case fight = 2//идет поединок
     case pause = 3//поединок преостановлен
-    case finished = 4//поединок завершен
-    case ConnectionLost = 100//соединение с сервером утрачено
+    case over = 4//поединок завершен
+    case surrender = 5//один из игроков досрочно завершил игру
+    case ConnectionLost = 100//соединение с сервером утрачено по техническим причинам
+    case Victory = 101//победа
+    case Defeat = 102//поражение
 }

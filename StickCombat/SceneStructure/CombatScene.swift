@@ -26,12 +26,18 @@ class JoystickSet {
 
 class CombatScene: SKScene, LobbyDelegate {
 
+    
     var lobbyDelegate : LobbyDelegate? = nil
 
 
     ///Набор игровой логики
     private var Logic : LogicManager? = nil
-    
+
+    ///Запросить изменение статуса из вне
+    func RequestStatus(status: LobbyStatusEnum) {
+        Logic!.requestStatusAction(StatusAction(fighter: .first, statusID: status))
+    }
+
 
     ///Набор джостиков для управления бойцами
     var Joysticks : JoystickSet?

@@ -15,6 +15,7 @@
 		8517A640221294C200880F20 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8517A63F221294C200880F20 /* GameViewController.swift */; };
 		8517A645221294C400880F20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8517A644221294C400880F20 /* Assets.xcassets */; };
 		8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8517A646221294C400880F20 /* LaunchScreen.storyboard */; };
+		852352E5229E88330026D153 /* SurrenderScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 852352E4229E88330026D153 /* SurrenderScene.sks */; };
 		852A59F92219494F000EEB12 /* GameScene.mdj in Resources */ = {isa = PBXBuildFile; fileRef = 852A59F82219494F000EEB12 /* GameScene.mdj */; };
 		852A59FC22194B97000EEB12 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FB22194B97000EEB12 /* Logic.swift */; };
 		852A59FE22194BEE000EEB12 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A59FD22194BEE000EEB12 /* Action.swift */; };
@@ -26,6 +27,8 @@
 		8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8596194A2291ACCA00B19F9B /* PauseScene.sks */; };
 		85DD9DF522932367001BB98C /* RefusedConnectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85DD9DF422932367001BB98C /* RefusedConnectionScene.sks */; };
 		85DD9DF9229325A6001BB98C /* LostConnectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85DD9DF8229325A6001BB98C /* LostConnectionScene.sks */; };
+		85FFE8B4229E893600F0E3E5 /* VictoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85FFE8B3229E893600F0E3E5 /* VictoryScene.sks */; };
+		85FFE8B6229E896400F0E3E5 /* DefeatScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85FFE8B5229E896400F0E3E5 /* DefeatScene.sks */; };
 		A153FE67B822013ED5814E4B /* Pods_StickCombat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */; };
 		A5187510221AB4B2007CDFDE /* JoystickStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518750F221AB4B2007CDFDE /* JoystickStickView.swift */; };
 		A5187512221AB73E007CDFDE /* JoystickButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */; };
@@ -57,6 +60,7 @@
 		8517A644221294C400880F20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8517A647221294C400880F20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8517A649221294C400880F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		852352E4229E88330026D153 /* SurrenderScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SurrenderScene.sks; sourceTree = "<group>"; };
 		852A59F82219494F000EEB12 /* GameScene.mdj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GameScene.mdj; sourceTree = "<group>"; };
 		852A59FB22194B97000EEB12 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		852A59FD22194BEE000EEB12 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 		8596194A2291ACCA00B19F9B /* PauseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseScene.sks; sourceTree = "<group>"; };
 		85DD9DF422932367001BB98C /* RefusedConnectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RefusedConnectionScene.sks; sourceTree = "<group>"; };
 		85DD9DF8229325A6001BB98C /* LostConnectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LostConnectionScene.sks; sourceTree = "<group>"; };
+		85FFE8B3229E893600F0E3E5 /* VictoryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = VictoryScene.sks; sourceTree = "<group>"; };
+		85FFE8B5229E896400F0E3E5 /* DefeatScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DefeatScene.sks; sourceTree = "<group>"; };
 		933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.debug.xcconfig"; sourceTree = "<group>"; };
 		A518750F221AB4B2007CDFDE /* JoystickStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickStickView.swift; sourceTree = "<group>"; };
 		A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickButtonsView.swift; sourceTree = "<group>"; };
@@ -144,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				8517A637221294C200880F20 /* AppDelegate.swift */,
-				8517A63F221294C200880F20 /* GameViewController.swift */,
 				8517A63B221294C200880F20 /* Actions.sks */,
 				85DD9DF622932539001BB98C /* SKScenes */,
 				852A59FA22194ADE000EEB12 /* SceneStructure */,
@@ -209,6 +214,9 @@
 				8596194A2291ACCA00B19F9B /* PauseScene.sks */,
 				85DD9DF422932367001BB98C /* RefusedConnectionScene.sks */,
 				85DD9DF8229325A6001BB98C /* LostConnectionScene.sks */,
+				852352E4229E88330026D153 /* SurrenderScene.sks */,
+				85FFE8B3229E893600F0E3E5 /* VictoryScene.sks */,
+				85FFE8B5229E896400F0E3E5 /* DefeatScene.sks */,
 			);
 			path = SKScenes;
 			sourceTree = "<group>";
@@ -219,6 +227,7 @@
 				8510B404227AFB0A00F153E3 /* Joysticks */,
 				A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */,
 				A576DCA72292F88E0022C2B4 /* LobbyOptionsViewController.swift */,
+				8517A63F221294C200880F20 /* GameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -304,6 +313,8 @@
 				A5985B112299DC5F00A67D1E /* rightKickMirrored.atlas in Resources */,
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
 				A5985B102299DC5F00A67D1E /* leftPunchMirrored.atlas in Resources */,
+				852352E5229E88330026D153 /* SurrenderScene.sks in Resources */,
+				85FFE8B4229E893600F0E3E5 /* VictoryScene.sks in Resources */,
 				A5985B032299DB2700A67D1E /* leftPunch.atlas in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
 				85DD9DF9229325A6001BB98C /* LostConnectionScene.sks in Resources */,
@@ -313,6 +324,7 @@
 				A5985B082299DB2700A67D1E /* rightPunch.atlas in Resources */,
 				85DD9DF522932367001BB98C /* RefusedConnectionScene.sks in Resources */,
 				A5D49BA5229DD081005A8E89 /* defaultPositions.atlas in Resources */,
+				85FFE8B6229E896400F0E3E5 /* DefeatScene.sks in Resources */,
 				A5985B132299DC5F00A67D1E /* rightPunchMirrored.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
