@@ -140,7 +140,7 @@ class Parser{
         let id = action.Fighter
         
 
-        let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "status"), body: StatusJSON.Body(code: 0, description: ""))
+        let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "status"), body: StatusJSON.Body(code: statusAction.statusID.rawValue, description: ""))
         do{
             let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
             return json
