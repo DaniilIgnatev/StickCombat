@@ -54,9 +54,6 @@
                                         <state key="normal" title="No" backgroundImage="MenuButton">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="qaK-cT-uhK" kind="show" id="JqX-1Y-YS8"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,39 +102,32 @@
                                     <segue destination="9SU-oT-RFL" kind="show" id="A1b-np-YGX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-HQ-Rrs">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-HQ-Rrs">
                                 <rect key="frame" x="258.5" y="214.5" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                 <state key="normal" title="PVP 1 device" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfV-98-UCE">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfV-98-UCE">
                                 <rect key="frame" x="258.5" y="291.5" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
                                 <state key="normal" title="PVE" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-IU-uU5" userLabel="Settings">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-IU-uU5" userLabel="Settings">
                                 <rect key="frame" x="607" y="20" width="40" height="40"/>
                                 <state key="normal" backgroundImage="SettingsMenu"/>
                                 <connections>
                                     <segue destination="WOh-lA-QpP" kind="show" id="dmC-53-yd1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoW-89-Fj7" userLabel="Help">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoW-89-Fj7" userLabel="Help">
                                 <rect key="frame" x="607" y="70" width="40" height="40"/>
                                 <state key="normal" backgroundImage="Help"/>
                                 <connections>
                                     <segue destination="Vu1-Cx-7MF" kind="show" id="SfT-te-BJx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeR-C9-hud" userLabel="Exit">
-                                <rect key="frame" x="20" y="20" width="40" height="40"/>
-                                <state key="normal" backgroundImage="ExitButton"/>
-                                <connections>
-                                    <segue destination="Uaj-5A-GUb" kind="show" id="T3v-aE-Yyf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stick Combat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbC-JM-ggT">
@@ -155,13 +145,11 @@
                             <constraint firstItem="HbC-JM-ggT" firstAttribute="top" secondItem="Isa-W2-WBl" secondAttribute="top" constant="50" id="OwD-wM-L5W"/>
                             <constraint firstItem="HbC-JM-ggT" firstAttribute="centerX" secondItem="jc5-k6-ZsK" secondAttribute="centerX" id="QQ5-rg-RNg"/>
                             <constraint firstItem="Isa-W2-WBl" firstAttribute="trailing" secondItem="7uj-IU-uU5" secondAttribute="trailing" constant="20" id="hq3-wq-eUp"/>
-                            <constraint firstItem="qeR-C9-hud" firstAttribute="top" secondItem="Isa-W2-WBl" secondAttribute="top" constant="20" id="i8J-ea-23x"/>
                             <constraint firstItem="UYk-HQ-Rrs" firstAttribute="centerX" secondItem="jc5-k6-ZsK" secondAttribute="centerX" id="n7E-6Q-d1o"/>
                             <constraint firstItem="XfV-98-UCE" firstAttribute="centerX" secondItem="jc5-k6-ZsK" secondAttribute="centerX" id="oOg-pE-hOc"/>
                             <constraint firstItem="XfV-98-UCE" firstAttribute="top" secondItem="UYk-HQ-Rrs" secondAttribute="bottom" constant="35" id="qOJ-aj-oT1"/>
                             <constraint firstItem="UYk-HQ-Rrs" firstAttribute="top" secondItem="p2i-gR-omm" secondAttribute="bottom" constant="35" id="siV-gu-xc3"/>
                             <constraint firstItem="zoW-89-Fj7" firstAttribute="top" secondItem="7uj-IU-uU5" secondAttribute="bottom" constant="10" id="tXB-IO-Rad"/>
-                            <constraint firstItem="qeR-C9-hud" firstAttribute="leading" secondItem="Isa-W2-WBl" secondAttribute="leading" constant="20" id="xYT-4D-xHg"/>
                             <constraint firstItem="Isa-W2-WBl" firstAttribute="trailing" secondItem="zoW-89-Fj7" secondAttribute="trailing" constant="20" id="zGG-89-eIq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Isa-W2-WBl"/>
@@ -760,7 +748,6 @@
     </scenes>
     <resources>
         <image name="BackButton" width="40" height="40"/>
-        <image name="ExitButton" width="40" height="40"/>
         <image name="Help" width="40" height="40"/>
         <image name="MenuButton" width="150" height="42"/>
         <image name="MenuIngame" width="40" height="40"/>
