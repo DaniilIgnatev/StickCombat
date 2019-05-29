@@ -21,7 +21,22 @@ class GameViewController: UIViewController, LobbyDelegate  {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
+
+    //MARK: NAVIGATION
+
+    @IBAction func pauseGame(_ sender: Any) {
+        combatScene.RequestStatus(status: .pause)
+    }
+
+
+    @IBAction func surrenderGame(_ sender: Any) {
+        combatScene.RequestStatus(status: .surrender)
+        let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
+        let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
+        present(destinationViewController, animated: true, completion: nil)
+    }
+
 
     //MARK: JOYSTICKS VIEWS
     @IBOutlet weak var firstFighterStick: JoystickStickView!
@@ -86,6 +101,14 @@ class GameViewController: UIViewController, LobbyDelegate  {
     ///Сцена потеряного соединения
     private let lostConnectionScene : SKScene = SKScene(fileNamed: "LostConnectionScene")!
 
+    ///Сцена победы
+    private let victoryScene : SKScene = SKScene(fileNamed: "VictoryScene")!
+
+    ///Сцена поражения
+    private let defeatScene : SKScene = SKScene(fileNamed: "DefeatScene")!
+
+    ///Сцена сдачи
+    private let surrenderScene : SKScene = SKScene(fileNamed: "SurrenderScene")!
 
     ///Сцена паузы
     private let pauseScene : SKScene = SKScene(fileNamed: "PauseScene")!
@@ -127,15 +150,23 @@ class GameViewController: UIViewController, LobbyDelegate  {
         case .ConnectionLost:
             hideJoysticks()
             View.presentScene(lostConnectionScene)
-        case .finished:
+        case .over:
+            print("Ошибка")
+        case .surrender:
             hideJoysticks()
-            //показ сцены с результатами
+            View.presentScene(surrenderScene)
         case .refused:
             hideJoysticks()
             View.presentScene(refusedConnectionScene)
         case .pause:
             hideJoysticks()
             View.presentScene(pauseScene)
+        case .Victory:
+            hideJoysticks()
+            View.presentScene(victoryScene)
+        case .Defeat:
+            hideJoysticks()
+            View.presentScene(defeatScene)
         }
     }
 

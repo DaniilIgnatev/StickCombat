@@ -110,6 +110,11 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
+    private var playingFighterDescriptor : FighterPresence{
+        return fighterID == .first ? self.sceneDescriptor.fighter_1 : self.sceneDescriptor.fighter_2
+    }
+
+
     init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, joysticks : JoystickSet, adress : URL, lobbyName : String, lobbyPassword : String) {
         self.fighterID = fighterID
         self.joysticks = joysticks
@@ -232,6 +237,10 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         requestQueue.addOperation {
             let json = self.parser.statusActionToJSON(statusAction: action)
             self.socket.write(string: json)
+
+            if action.statusID == .surrender{
+                self.socket.disconnect()
+            }
         }
     }
 
@@ -272,6 +281,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
     //MARK: CONDITION UPDATE
 
+    /*
     func determineDirection() -> (fd1 : FighterDirection,fd2 : FighterDirection){
         let f1 = self.sceneDescriptor.fighter_1
 
@@ -288,20 +298,21 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
         return (direction1,direction2)
     }
+    */
 
     func processHorizontalAction(_ action : HorizontalAction){
-        let (direct1,direct2) = determineDirection()
+        //let (direct1,direct2) = determineDirection()
 
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.X = action.To
-            self.sceneDescriptor.fighter_1.direction = direct1
-            self.View1.Direction = direct1
+            self.sceneDescriptor.fighter_1.direction = .right
+            self.View1.Direction = .right
             self.View_1.playMoveAction(moveAction: action)
         }
         else{
             self.sceneDescriptor.fighter_2.X = action.To
-            self.sceneDescriptor.fighter_2.direction = direct2
-            self.View2.Direction = direct2
+            self.sceneDescriptor.fighter_2.direction = .left
+            self.View2.Direction = .left
             self.View_2.playMoveAction(moveAction: action)
         }
     }
@@ -333,7 +344,23 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
     func processStatusAction(_ action : StatusAction){
-        self.sceneDescriptor.status = action.statusID
+        switch action.statusID {
+        case .over:
+             let fighter = playingFighterDescriptor
+             if  fighter.hp <= 0{
+                self.sceneDescriptor.status = .Defeat
+            }
+             else{
+                self.sceneDescriptor.status = .Victory
+            }
+        case .surrender:
+            if !socket.isConnected{
+                self.sceneDescriptor.status =   .ConnectionLost
+            }
+        default:
+            self.sceneDescriptor.status = action.statusID
+        }
+
         delegate?.statusChanged(sceneDescriptor.status)
     }
 }
