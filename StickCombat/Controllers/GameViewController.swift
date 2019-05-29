@@ -32,9 +32,11 @@ class GameViewController: UIViewController, LobbyDelegate  {
 
     @IBAction func surrenderGame(_ sender: Any) {
         combatScene.RequestStatus(status: .surrender)
-        let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
-        let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
-        present(destinationViewController, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
+            let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
+            let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
+            self.present(destinationViewController, animated: true, completion: nil)
+        }
     }
 
 
@@ -84,6 +86,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
                 }
                 
                 combatScene.SetUpGameLogic(mode: mode, joysticks: joysticks!)
+                hideJoysticks()
             }
         }
     }
@@ -122,12 +125,17 @@ class GameViewController: UIViewController, LobbyDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()        
 
-        combatScene.scaleMode = .fill
-        receptionScene.scaleMode = .fill
-        pauseScene.scaleMode = .fill
+        combatScene.scaleMode = .aspectFill
+        receptionScene.scaleMode = .aspectFill
+        pauseScene.scaleMode = .aspectFill
+        refusedConnectionScene.scaleMode = .aspectFill
+        lostConnectionScene.scaleMode = .aspectFill
+        surrenderScene.scaleMode = .aspectFill
+        victoryScene.scaleMode = .aspectFill
+        defeatScene.scaleMode = .aspectFill
+
 
         combatScene.lobbyDelegate = self
-
         View.ignoresSiblingOrder = true
 
         //дебаг
@@ -151,7 +159,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
             hideJoysticks()
             View.presentScene(lostConnectionScene)
         case .over:
-            print("Ошибка")
+            print("Ошибка. Должен быть перевод на surrender,victory или defeat")
         case .surrender:
             hideJoysticks()
             View.presentScene(surrenderScene)
@@ -161,10 +169,10 @@ class GameViewController: UIViewController, LobbyDelegate  {
         case .pause:
             hideJoysticks()
             View.presentScene(pauseScene)
-        case .Victory:
+        case .victory:
             hideJoysticks()
             View.presentScene(victoryScene)
-        case .Defeat:
+        case .defeat:
             hideJoysticks()
             View.presentScene(defeatScene)
         }

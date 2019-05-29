@@ -19,6 +19,8 @@ enum GameMode {
 
 
 protocol LogicManager : ActionEngineDelegate {
+
+    func StopProcessingLogic()
     
     var delegate : LobbyDelegate? {get set}
     
@@ -110,8 +112,15 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
+    ///Дескриптор играющего бойца
     private var playingFighterDescriptor : FighterPresence{
         return fighterID == .first ? self.sceneDescriptor.fighter_1 : self.sceneDescriptor.fighter_2
+    }
+
+
+    ///Дескриптор бойца оппонента
+    private var opponentFighterDescriptor : FighterPresence{
+        return fighterID == .first ? self.sceneDescriptor.fighter_2 : self.sceneDescriptor.fighter_1
     }
 
 
@@ -124,8 +133,8 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         //инициализация представления сцены
         self.sceneDescriptor = SceneCondition(firstX: -130, secondX: 130)
 
-        self.View1 = FighterView(id : .first,node: firstFighterNode,direction : .left)
-        self.View2 = FighterView(id : .second,node: secondFighterNode,direction : .right)
+        self.View1 = FighterView(id : .first,node: firstFighterNode,direction : .right)
+        self.View2 = FighterView(id : .second,node: secondFighterNode,direction : .left)
 
         self.socket = WebSocket.init(url: adress)
         self.socket.delegate = self
@@ -210,6 +219,14 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
     private let requestQueue = OperationQueue.init()
 
+    private var isProcessAnswers = true
+
+    func StopProcessingLogic() {
+        isProcessAnswers = false
+        requestQueue.isSuspended = true
+        requestQueue.cancelAllOperations()
+    }
+
 
     func requestConnectionAction(_ action : ConnectionAction) {
         //отправить connection action на сервер
@@ -237,10 +254,6 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         requestQueue.addOperation {
             let json = self.parser.statusActionToJSON(statusAction: action)
             self.socket.write(string: json)
-
-            if action.statusID == .surrender{
-                self.socket.disconnect()
-            }
         }
     }
 
@@ -248,6 +261,10 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     //MARK: WS ANSWER
 
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        guard isProcessAnswers else{
+            return
+        }
+
         //обработка ответа от сервера
         let type = parser.defineAction(action: text)
         switch type {
@@ -359,13 +376,19 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         switch action.statusID {
         case .over:
             //уточнение итогов окончания матча
-            let fighter = playingFighterDescriptor
-            if  fighter.hp <= 0{
-                self.sceneDescriptor.status = .Defeat
+            let myFighter = playingFighterDescriptor
+            let opponentFighter = opponentFighterDescriptor
+
+            if  myFighter.hp <= 0{
+                self.sceneDescriptor.status = .defeat
             }
-            else{
-                self.sceneDescriptor.status = .Victory
-            }
+            else
+                if opponentFighter.hp <= 0{
+                    self.sceneDescriptor.status = .victory
+                }
+                else{
+                    self.sceneDescriptor.status = .surrender
+                }
         case .surrender:
             //соединение оборвано осознано
             if !socket.isConnected{
