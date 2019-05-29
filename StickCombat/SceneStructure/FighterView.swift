@@ -18,8 +18,6 @@ class FighterView {
     
     public let FighterNode : SKSpriteNode
     
-    //private var timer: Timer = Timer(timeInterval: 0, repeats: false, block: {_ in })
-    
     //Текстурки не для анимаций
     private var defaultPositionsArray = [SKTexture]()
     private var defaultPositionsMirroredArray = [SKTexture]()
@@ -86,7 +84,6 @@ class FighterView {
     }
     
     private func strikeAction(textureArray: [SKTexture]){
-        //FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
         FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strike")
     }
     
@@ -119,6 +116,11 @@ class FighterView {
             timeLeft -= 0.1
             if timeLeft < 0{
                 self.FighterNode.removeAllActions()
+                if self.Direction == .left{
+                    self.FighterNode.texture = self.defaultPositionsArray[0]
+                }else{
+                    self.FighterNode.texture = self.defaultPositionsMirroredArray[0]
+                }
                 timer.invalidate()
             }
         }
@@ -132,6 +134,21 @@ class FighterView {
     private func moveActionAnimation(textureArray: [SKTexture]){
         let actionAnimate = SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05))
         FighterNode.run(actionAnimate, withKey: "moveAnimation")
+    }
+    
+    public func playBlockAction(){
+        if Direction == .left{
+            self.FighterNode.texture = defaultPositionsArray[1]
+        }else{
+            self.FighterNode.texture = defaultPositionsMirroredArray[1]
+        }
+    }
+    public func stopBlockAction(){
+        if Direction == .left{
+            self.FighterNode.texture = defaultPositionsArray[0]
+        }else{
+            self.FighterNode.texture = defaultPositionsMirroredArray[0]
+        }
     }
     
     private func initTextureArray(nameAtlas: String) -> [SKTexture]{
@@ -148,11 +165,7 @@ class FighterView {
     
     private func calculateTimeOfMoveAnimation(from: CGFloat, to: CGFloat) -> Double{
         let length: Double = Double(to) - Double(from)
-        let time = length/80
+        let time = abs(length)/80
         return time
-    }
-    
-    @objc private func fireTimer(){
-        self.FighterNode.removeAllActions()
     }
 }
