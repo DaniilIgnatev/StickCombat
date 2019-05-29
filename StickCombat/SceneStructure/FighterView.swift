@@ -86,7 +86,6 @@ class FighterView {
     }
     
     private func strikeAction(textureArray: [SKTexture]){
-        //FighterNode.run(SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05)))
         FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strike")
     }
     
@@ -148,7 +147,7 @@ class FighterView {
     
     private func calculateTimeOfMoveAnimation(from: CGFloat, to: CGFloat) -> Double{
         let length: Double = Double(to) - Double(from)
-        let time = length/80
+        let time = abs(length)/80
         return time
     }
     
