@@ -58,7 +58,7 @@ class FighterView {
     
     public func playStrikeAction(strikeAction : StrikeAction){
         
-        if FighterNode.action(forKey: "strike") != nil{
+        if FighterNode.action(forKey: "strikeAnimation") != nil{
             print("Сontinue to animate")
         }else{
             if Direction == .left{
@@ -84,24 +84,29 @@ class FighterView {
     }
     
     private func strikeAction(textureArray: [SKTexture]){
-        FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strike")
+        FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strikeAnimation")
     }
     
+    //Создание таймера для отслеживания времени. Если в течении заданного промежутка не приходит экшн, удаляем все экшны у бойца
+    
+    var moveTimer: Timer?
+    
+    func createMoveTimer() -> Timer {
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (t) in
+            self.FighterNode.removeAction(forKey: "moveTexturesAnimation")
+        })
+        return timer
+    }
     
     public func playMoveAction(moveAction : HorizontalAction){
         
-        var timeLeft = 0.5
-        
-        if FighterNode.action(forKey: "moveAnimation") != nil{
-//            switch Direction {
-//            case .left:
-//                self.moveAction(from: moveAction.From, to: moveAction.To)
-//            case .right:
-//                self.moveAction(from: moveAction.From, to: moveAction.To)
-//            }
+        if FighterNode.action(forKey: "moveTexturesAnimation") != nil{
             self.moveAction(from: moveAction.From, to: moveAction.To)
             print("Сontinue to animate")
-            timeLeft = 0.5
+            if let timer = moveTimer{
+                timer.invalidate()
+                moveTimer = createMoveTimer()
+            }
         }else{
             switch Direction {
             case .left:
@@ -111,31 +116,18 @@ class FighterView {
                 self.moveAction(from: moveAction.From, to: moveAction.To)
                 self.moveActionAnimation(textureArray: moveArray)
             }
+            moveTimer = createMoveTimer()
         }
-        //Создание таймера для отслеживания времени. Если в течении заданного промежутка не приходит экшн, удаляем все экшны у бойца
-        let timer = Timer(timeInterval: 0.1, repeats: false){timer in
-            timeLeft -= 0.1
-            if timeLeft < 0{
-                self.FighterNode.removeAllActions()
-                if self.Direction == .left{
-                    self.FighterNode.texture = self.defaultPositionsMirroredArray[0]
-                }else{
-                    self.FighterNode.texture = self.defaultPositionsArray[0]
-                }
-                timer.invalidate()
-            }
-        }
-        timer.fire()
     }
     
     private func moveAction(from: CGFloat, to: CGFloat){
         let time = calculateTimeOfMoveAnimation(from: from, to: to)
         let actionMove = SKAction.moveTo(x: to, duration: time)
-        FighterNode.run(actionMove, withKey: "move")
+        FighterNode.run(actionMove, withKey: "movePositionAnimation")
     }
     private func moveActionAnimation(textureArray: [SKTexture]){
         let actionAnimate = SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05))
-        FighterNode.run(actionAnimate, withKey: "moveAnimation")
+        FighterNode.run(actionAnimate, withKey: "moveTexturesAnimation")
     }
     
     public func playBlockAction(){
