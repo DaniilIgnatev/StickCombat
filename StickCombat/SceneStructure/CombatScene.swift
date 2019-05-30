@@ -35,7 +35,11 @@ class CombatScene: SKScene, LobbyDelegate {
 
     ///Запросить изменение статуса из вне
     func RequestStatus(status: LobbyStatusEnum) {
-        Logic!.requestStatusAction(StatusAction(fighter: .first, statusID: status))
+        Logic!.requestStatusAction(StatusAction(fighter: Logic!.FighterID, statusID: status))
+
+        if status == .surrender{
+            Logic!.StopProcessingLogic()
+        }
     }
 
 

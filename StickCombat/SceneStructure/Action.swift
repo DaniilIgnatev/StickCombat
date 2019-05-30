@@ -236,6 +236,6 @@ internal enum LobbyStatusEnum : Int{
     case over = 4//поединок завершен
     case surrender = 5//один из игроков досрочно завершил игру
     case ConnectionLost = 100//соединение с сервером утрачено по техническим причинам
-    case Victory = 101//победа
-    case Defeat = 102//поражение
+    case victory = 101//победа
+    case defeat = 102//поражение
 }
