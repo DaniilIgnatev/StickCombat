@@ -62,7 +62,9 @@ class GestureEngine: ActionEngine, JoystickDelegate {
         joysticks.secondStrikeJoystick?.delegate = self
     }
 
-    //MARK
+
+    //MARK: Commands processing
+
     ///Генерация команды из данных дескриптора
     func ControlCommand(descriptor : JoystickDescriptor) {
         var xVector : CGFloat = -1.0
@@ -131,7 +133,7 @@ class GestureEngine: ActionEngine, JoystickDelegate {
         }
 
         let xDirection = MoveDirection(angle: angle)
-        let by = xDirection * scale * 2
+        let by = xDirection * scale * 30
 
 
         return HorizontalAction(fighter: fighter, from: selfXPos, by: by)
