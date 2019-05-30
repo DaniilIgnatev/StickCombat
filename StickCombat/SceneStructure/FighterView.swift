@@ -64,20 +64,20 @@ class FighterView {
             if Direction == .left{
                 switch strikeAction.Impact! {
                 case .Jeb:
-                    self.strikeAction(textureArray: leftPunchArray)
-                case .leftKick:
-                    self.strikeAction(textureArray: leftKickArray)
-                case .RightKick:
-                    self.strikeAction(textureArray: rightKickArray)
-                }
-            }else if Direction == .right{
-                switch strikeAction.Impact! {
-                case .Jeb:
                     self.strikeAction(textureArray: leftPunchMirroredArray)
                 case .leftKick:
                     self.strikeAction(textureArray: leftKickMirroredArray)
                 case .RightKick:
                     self.strikeAction(textureArray: rightKickMirroredArray)
+                }
+            }else if Direction == .right{
+                switch strikeAction.Impact! {
+                case .Jeb:
+                    self.strikeAction(textureArray: leftPunchArray)
+                case .leftKick:
+                    self.strikeAction(textureArray: leftKickArray)
+                case .RightKick:
+                    self.strikeAction(textureArray: rightKickArray)
                 }
             }
         }
@@ -93,22 +93,23 @@ class FighterView {
         var timeLeft = 0.5
         
         if FighterNode.action(forKey: "moveAnimation") != nil{
-            switch Direction {
-            case .left:
-                self.moveAction(from: moveAction.From, to: moveAction.To)
-            case .right:
-                self.moveAction(from: moveAction.From, to: moveAction.To)
-            }
+//            switch Direction {
+//            case .left:
+//                self.moveAction(from: moveAction.From, to: moveAction.To)
+//            case .right:
+//                self.moveAction(from: moveAction.From, to: moveAction.To)
+//            }
+            self.moveAction(from: moveAction.From, to: moveAction.To)
             print("Сontinue to animate")
             timeLeft = 0.5
         }else{
             switch Direction {
             case .left:
                 self.moveAction(from: moveAction.From, to: moveAction.To)
-                self.moveActionAnimation(textureArray: moveArray)
+                self.moveActionAnimation(textureArray: moveMirroredArray)
             case .right:
                 self.moveAction(from: moveAction.From, to: moveAction.To)
-                self.moveActionAnimation(textureArray: moveMirroredArray)
+                self.moveActionAnimation(textureArray: moveArray)
             }
         }
         //Создание таймера для отслеживания времени. Если в течении заданного промежутка не приходит экшн, удаляем все экшны у бойца
@@ -117,9 +118,9 @@ class FighterView {
             if timeLeft < 0{
                 self.FighterNode.removeAllActions()
                 if self.Direction == .left{
-                    self.FighterNode.texture = self.defaultPositionsArray[0]
-                }else{
                     self.FighterNode.texture = self.defaultPositionsMirroredArray[0]
+                }else{
+                    self.FighterNode.texture = self.defaultPositionsArray[0]
                 }
                 timer.invalidate()
             }
@@ -139,16 +140,16 @@ class FighterView {
     
     public func playBlockAction(){
         if Direction == .left{
-            self.FighterNode.texture = defaultPositionsArray[1]
-        }else{
             self.FighterNode.texture = defaultPositionsMirroredArray[1]
+        }else{
+            self.FighterNode.texture = defaultPositionsArray[1]
         }
     }
     public func stopBlockAction(){
         if Direction == .left{
-            self.FighterNode.texture = defaultPositionsArray[0]
-        }else{
             self.FighterNode.texture = defaultPositionsMirroredArray[0]
+        }else{
+            self.FighterNode.texture = defaultPositionsArray[0]
         }
     }
     
