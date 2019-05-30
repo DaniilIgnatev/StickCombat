@@ -34,18 +34,6 @@
 		A5187512221AB73E007CDFDE /* JoystickButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */; };
 		A576DCA62292DFA90022C2B4 /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */; };
 		A576DCA82292F88E0022C2B4 /* LobbyOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A576DCA72292F88E0022C2B4 /* LobbyOptionsViewController.swift */; };
-		A5985B022299DB2700A67D1E /* rightKick.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AF82299DB2600A67D1E /* rightKick.atlas */; };
-		A5985B032299DB2700A67D1E /* leftPunch.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AF92299DB2600A67D1E /* leftPunch.atlas */; };
-		A5985B062299DB2700A67D1E /* move.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AFC2299DB2700A67D1E /* move.atlas */; };
-		A5985B072299DB2700A67D1E /* leftKick.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AFD2299DB2700A67D1E /* leftKick.atlas */; };
-		A5985B082299DB2700A67D1E /* rightPunch.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985AFE2299DB2700A67D1E /* rightPunch.atlas */; };
-		A5985B0F2299DC5F00A67D1E /* moveMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985B0A2299DC5F00A67D1E /* moveMirrored.atlas */; };
-		A5985B102299DC5F00A67D1E /* leftPunchMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985B0B2299DC5F00A67D1E /* leftPunchMirrored.atlas */; };
-		A5985B112299DC5F00A67D1E /* rightKickMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985B0C2299DC5F00A67D1E /* rightKickMirrored.atlas */; };
-		A5985B122299DC5F00A67D1E /* leftKickMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985B0D2299DC5F00A67D1E /* leftKickMirrored.atlas */; };
-		A5985B132299DC5F00A67D1E /* rightPunchMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5985B0E2299DC5F00A67D1E /* rightPunchMirrored.atlas */; };
-		A5D49BA4229DD081005A8E89 /* defaultPositionsMirrored.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5D49BA2229DD081005A8E89 /* defaultPositionsMirrored.atlas */; };
-		A5D49BA5229DD081005A8E89 /* defaultPositions.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A5D49BA3229DD081005A8E89 /* defaultPositions.atlas */; };
 		A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDE75622204AFB000FC333 /* Menu.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -80,18 +68,6 @@
 		A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFSportsNightNS.ttf; path = ../../../../Library/Fonts/SFSportsNightNS.ttf; sourceTree = "<group>"; };
 		A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
 		A576DCA72292F88E0022C2B4 /* LobbyOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyOptionsViewController.swift; sourceTree = "<group>"; };
-		A5985AF82299DB2600A67D1E /* rightKick.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightKick.atlas; sourceTree = "<group>"; };
-		A5985AF92299DB2600A67D1E /* leftPunch.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftPunch.atlas; sourceTree = "<group>"; };
-		A5985AFC2299DB2700A67D1E /* move.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = move.atlas; sourceTree = "<group>"; };
-		A5985AFD2299DB2700A67D1E /* leftKick.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftKick.atlas; sourceTree = "<group>"; };
-		A5985AFE2299DB2700A67D1E /* rightPunch.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightPunch.atlas; sourceTree = "<group>"; };
-		A5985B0A2299DC5F00A67D1E /* moveMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = moveMirrored.atlas; sourceTree = "<group>"; };
-		A5985B0B2299DC5F00A67D1E /* leftPunchMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftPunchMirrored.atlas; sourceTree = "<group>"; };
-		A5985B0C2299DC5F00A67D1E /* rightKickMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightKickMirrored.atlas; sourceTree = "<group>"; };
-		A5985B0D2299DC5F00A67D1E /* leftKickMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftKickMirrored.atlas; sourceTree = "<group>"; };
-		A5985B0E2299DC5F00A67D1E /* rightPunchMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightPunchMirrored.atlas; sourceTree = "<group>"; };
-		A5D49BA2229DD081005A8E89 /* defaultPositionsMirrored.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = defaultPositionsMirrored.atlas; sourceTree = "<group>"; };
-		A5D49BA3229DD081005A8E89 /* defaultPositions.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = defaultPositions.atlas; sourceTree = "<group>"; };
 		A5EDE75622204AFB000FC333 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		E81889C0AE908F91A8EECFA5 /* Pods-StickCombat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.release.xcconfig"; sourceTree = "<group>"; };
 		ECE5D153B1430EADB46DC852 /* Pods_StickCombat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickCombat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,18 +132,6 @@
 				A518750C221AB447007CDFDE /* Controllers */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
 				A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */,
-				A5D49BA3229DD081005A8E89 /* defaultPositions.atlas */,
-				A5D49BA2229DD081005A8E89 /* defaultPositionsMirrored.atlas */,
-				A5985AFD2299DB2700A67D1E /* leftKick.atlas */,
-				A5985B0D2299DC5F00A67D1E /* leftKickMirrored.atlas */,
-				A5985AF92299DB2600A67D1E /* leftPunch.atlas */,
-				A5985B0B2299DC5F00A67D1E /* leftPunchMirrored.atlas */,
-				A5985AFC2299DB2700A67D1E /* move.atlas */,
-				A5985B0A2299DC5F00A67D1E /* moveMirrored.atlas */,
-				A5985AF82299DB2600A67D1E /* rightKick.atlas */,
-				A5985B0C2299DC5F00A67D1E /* rightKickMirrored.atlas */,
-				A5985AFE2299DB2700A67D1E /* rightPunch.atlas */,
-				A5985B0E2299DC5F00A67D1E /* rightPunchMirrored.atlas */,
 				8517A646221294C400880F20 /* LaunchScreen.storyboard */,
 				8517A649221294C400880F20 /* Info.plist */,
 				A5EDE75622204AFB000FC333 /* Menu.storyboard */,
@@ -301,31 +265,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5985B0F2299DC5F00A67D1E /* moveMirrored.atlas in Resources */,
 				859619492291A98A00B19F9B /* ReceptionScene.sks in Resources */,
 				A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */,
 				8517A63A221294C200880F20 /* GameScene.sks in Resources */,
 				8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */,
-				A5985B022299DB2700A67D1E /* rightKick.atlas in Resources */,
-				A5985B072299DB2700A67D1E /* leftKick.atlas in Resources */,
-				A5985B062299DB2700A67D1E /* move.atlas in Resources */,
-				A5985B122299DC5F00A67D1E /* leftKickMirrored.atlas in Resources */,
-				A5985B112299DC5F00A67D1E /* rightKickMirrored.atlas in Resources */,
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
-				A5985B102299DC5F00A67D1E /* leftPunchMirrored.atlas in Resources */,
 				852352E5229E88330026D153 /* SurrenderScene.sks in Resources */,
 				85FFE8B4229E893600F0E3E5 /* VictoryScene.sks in Resources */,
-				A5985B032299DB2700A67D1E /* leftPunch.atlas in Resources */,
 				8517A648221294C400880F20 /* LaunchScreen.storyboard in Resources */,
 				85DD9DF9229325A6001BB98C /* LostConnectionScene.sks in Resources */,
-				A5D49BA4229DD081005A8E89 /* defaultPositionsMirrored.atlas in Resources */,
 				852A59F92219494F000EEB12 /* GameScene.mdj in Resources */,
 				8517A63C221294C200880F20 /* Actions.sks in Resources */,
-				A5985B082299DB2700A67D1E /* rightPunch.atlas in Resources */,
 				85DD9DF522932367001BB98C /* RefusedConnectionScene.sks in Resources */,
-				A5D49BA5229DD081005A8E89 /* defaultPositions.atlas in Resources */,
 				85FFE8B6229E896400F0E3E5 /* DefeatScene.sks in Resources */,
-				A5985B132299DC5F00A67D1E /* rightPunchMirrored.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
