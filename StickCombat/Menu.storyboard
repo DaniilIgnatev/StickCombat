@@ -535,7 +535,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-NN-21D">
-                                <rect key="frame" x="310" y="20" width="47" height="16"/>
+                                <rect key="frame" x="310" y="32" width="47" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="cZJ-qb-TFo"/>
                                     <constraint firstAttribute="width" constant="47" id="jk4-uu-Qjr"/>
@@ -586,25 +586,42 @@
                                     <action selector="surrenderGame:" destination="BV1-FR-VrT" eventType="touchUpInside" id="E28-1K-I91"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fighter1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oj-ar-JmT">
+                                <rect key="frame" x="120" y="28" width="77.5" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fighter2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX0-Cf-yxg">
+                                <rect key="frame" x="467" y="28" width="80" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstItem="bzJ-Fa-yvu" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="0Wl-Cz-Gdw"/>
+                            <constraint firstItem="6oj-ar-JmT" firstAttribute="leading" secondItem="bzJ-Fa-yvu" secondAttribute="trailing" constant="60" id="27j-t3-uuk"/>
+                            <constraint firstItem="6oj-ar-JmT" firstAttribute="centerY" secondItem="bzJ-Fa-yvu" secondAttribute="centerY" id="3RU-mh-ZLQ"/>
                             <constraint firstItem="ivp-NN-21D" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="G7F-cc-P8W"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="HUI-g2-i4O" secondAttribute="trailing" constant="20" id="HjR-zr-0jk"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="EYY-ZE-8FQ" secondAttribute="bottom" constant="-10" id="QJq-v1-Rpe"/>
+                            <constraint firstItem="HUI-g2-i4O" firstAttribute="leading" secondItem="vX0-Cf-yxg" secondAttribute="trailing" constant="60" id="RZl-bG-djg"/>
                             <constraint firstItem="HUI-g2-i4O" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="V16-9a-tUB"/>
                             <constraint firstItem="bzJ-Fa-yvu" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="fne-od-U1R"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="Uo7-HJ-Ctn" secondAttribute="trailing" constant="30" id="jft-0a-FbM"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="Uo7-HJ-Ctn" secondAttribute="bottom" constant="40" id="kah-z9-1Gr"/>
                             <constraint firstItem="EYY-ZE-8FQ" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="15" id="lSV-CF-rpd"/>
-                            <constraint firstItem="ivp-NN-21D" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="nM1-wc-pOb"/>
+                            <constraint firstItem="vX0-Cf-yxg" firstAttribute="centerY" secondItem="HUI-g2-i4O" secondAttribute="centerY" id="qG3-fr-aFm"/>
+                            <constraint firstItem="ivp-NN-21D" firstAttribute="centerY" secondItem="HUI-g2-i4O" secondAttribute="centerY" id="wRO-Vg-5L9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
                         <outlet property="firstFighterButtons" destination="Uo7-HJ-Ctn" id="AeY-DA-YdZ"/>
                         <outlet property="firstFighterStick" destination="EYY-ZE-8FQ" id="ZDK-c1-SWS"/>
+                        <outlet property="timeLeftLabel" destination="ivp-NN-21D" id="L5K-aM-KbD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

@@ -60,6 +60,11 @@ class CombatScene: SKScene, LobbyDelegate {
     }
 
 
+    func gameTimer(timeLeft: (Int, Int)) {
+        lobbyDelegate?.gameTimer(timeLeft: timeLeft)
+    }
+
+
     ///Действия при изменении статуса
     func statusChanged(_ status: LobbyStatusEnum) {
         lobbyDelegate?.statusChanged(status)

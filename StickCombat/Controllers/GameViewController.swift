@@ -13,10 +13,12 @@ import GameplayKit
 
 protocol LobbyDelegate {
     func statusChanged(_ status : LobbyStatusEnum)
+    func gameTimer(timeLeft : (Int,Int))
 }
 
 
 class GameViewController: UIViewController, LobbyDelegate  {
+
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -32,7 +34,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
 
     @IBAction func surrenderGame(_ sender: Any) {
         combatScene.RequestStatus(status: .surrender)
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
             let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
             let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
             self.present(destinationViewController, animated: true, completion: nil)
@@ -151,33 +153,40 @@ class GameViewController: UIViewController, LobbyDelegate  {
         switch status {
         case .fight:
             showJoysticks()
-            View.presentScene(combatScene)
+            View.presentScene(combatScene,transition: .doorsCloseHorizontal(withDuration: 1))
         case .casting:
             hideJoysticks()
-            View.presentScene(receptionScene)
+            View.presentScene(receptionScene,transition: .doorsOpenHorizontal(withDuration: 1))
         case .ConnectionLost:
             hideJoysticks()
-            View.presentScene(lostConnectionScene)
+            View.presentScene(lostConnectionScene,transition: .flipVertical(withDuration: 1))
         case .over:
             print("Ошибка. Должен быть перевод на surrender,victory или defeat")
         case .surrender:
             hideJoysticks()
-            View.presentScene(surrenderScene)
+            View.presentScene(surrenderScene,transition: .flipVertical(withDuration: 1))
         case .refused:
             hideJoysticks()
-            View.presentScene(refusedConnectionScene)
+            View.presentScene(refusedConnectionScene,transition: .flipVertical(withDuration: 1))
         case .pause:
             hideJoysticks()
-            View.presentScene(pauseScene)
+            View.presentScene(pauseScene,transition: .doorsOpenHorizontal(withDuration: 1))
         case .victory:
             hideJoysticks()
-            View.presentScene(victoryScene)
+            View.presentScene(victoryScene,transition: .flipVertical(withDuration: 1))
         case .defeat:
             hideJoysticks()
-            View.presentScene(defeatScene)
+            View.presentScene(defeatScene,transition: .flipVertical(withDuration: 1))
         }
     }
 
+
+    @IBOutlet weak var timeLeftLabel: UILabel!
+
+
+    func gameTimer(timeLeft: (Int, Int)) {
+        timeLeftLabel.text = String(timeLeft.0) + ":" + String(timeLeft.1)
+    }
     
 
     //MARK: VIEW PREFERENCES
