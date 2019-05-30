@@ -77,49 +77,82 @@ class JoystickButtonsView: UIView, Joystick {
         button_D?.center = CGPoint(x: buttonSize * 1.5 + buttonOffset, y: buttonSize * 1.5 + buttonOffset)
     }
 
+
+
     //MARK: BUTTON EVENTS
     @objc func button_A_Clicked(){
-        print("A pressed")
-        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.first, buttonReleased: nil))
+        if isCanClick{
+            print("A pressed")
+            delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.first, buttonReleased: nil))
+        }
     }
 
     @objc func button_A_Released(){
         print("A released")
         delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .first))
+        HangOnClickDelay()
     }
 
     
     @objc func button_B_Clicked(){
-        print("B pressed")
-        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.second, buttonReleased: nil))
+        if isCanClick{
+            print("B pressed")
+            delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.second, buttonReleased: nil))
+        }
     }
 
     @objc func button_B_Released(){
         print("B released")
         delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .second))
+        HangOnClickDelay()
     }
 
     
     @objc func button_C_Clicked(){
-        print("C pressed")
-        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.third, buttonReleased: nil))
+        if isCanClick{
+            print("C pressed")
+            delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.third, buttonReleased: nil))
+        }
     }
 
     @objc func button_C_Released(){
         print("C released")
         delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .third))
+        HangOnClickDelay()
     }
 
     
     @objc func button_D_Clicked(){
-        print("D pressed")
-        delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.fourth, buttonReleased: nil))
+        if isCanClick{
+            print("D pressed")
+            delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.fourth, buttonReleased: nil))
+        }
     }
 
     @objc func button_D_Released(){
         print("D released")
         delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .fourth))
+        HangOnClickDelay()
     }
+
+
+    //MARK: CLICK DELAY
+
+    //Наложить задержку следующего нажатия
+    private func HangOnClickDelay(){
+        isCanClick = false
+        clickDelayTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (t) in
+            self.isCanClick = true
+        })
+    }
+
+
+    ///Состояние доступности нажатия
+    private var isCanClick : Bool = true
+
+
+    ///Таймер задержки для предотвращения спама
+    private var clickDelayTimer : Timer?
     
     
     override init(frame: CGRect) {

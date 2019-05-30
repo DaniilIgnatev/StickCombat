@@ -26,6 +26,11 @@ class JoystickStickView: UIView, Joystick {
     
     
     private func InitializationActions(){
+        self.delegateTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (_) in
+            if self.inProgress{
+                self.delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: (angle: self.angle, power: self.power), buttonPressed: nil, buttonReleased: nil))
+            }
+        }
         backgroundColor = UIColor.init(white: 1, alpha: 0)
     }
     
@@ -267,15 +272,26 @@ class JoystickStickView: UIView, Joystick {
     
     
     private var inProgress : Bool = false
-    
+
+
+    ///Угол отклонения
+    private var angle : CGFloat = 0.0
+
+
+    ///Величина отклонения
+    private var power : CGFloat = 0.0
+
+    ///Таймер-датчик движения
+    private var delegateTimer : Timer? = nil
+
     
     internal func MoveStick(superposition : CGPoint, touch : UITouch){
         //print("Moved at superpos \(superposition)")
         
         if inProgress{
-            let angle = GetAngleRespectively(superPos: superposition)
+            angle = GetAngleRespectively(superPos: superposition)
             let scale = GetScaleRespectively(superPos: superposition)
-            var power = scale.xyScale
+            power = scale.xyScale
             
             if scale.xyScale < 1.0 {
                 let pos = touch.location(in: self)
@@ -287,7 +303,7 @@ class JoystickStickView: UIView, Joystick {
             }
             
             
-            delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: (angle: angle, power: power), buttonPressed: nil, buttonReleased: nil))
+            //delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: (angle: angle, power: power), buttonPressed: nil, buttonReleased: nil))
             //print("angle: \(angle); scale\(scale.xyScale)")
         }
     }
