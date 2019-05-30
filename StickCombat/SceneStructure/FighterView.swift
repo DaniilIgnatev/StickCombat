@@ -112,7 +112,7 @@ class FighterView {
             }
         }
         //Создание таймера для отслеживания времени. Если в течении заданного промежутка не приходит экшн, удаляем все экшны у бойца
-        var timer = Timer(timeInterval: 0.1, repeats: false){timer in
+        let timer = Timer(timeInterval: 0.1, repeats: false){timer in
             timeLeft -= 0.1
             if timeLeft < 0{
                 self.FighterNode.removeAllActions()
@@ -124,6 +124,7 @@ class FighterView {
                 timer.invalidate()
             }
         }
+        timer.fire()
     }
     
     private func moveAction(from: CGFloat, to: CGFloat){
