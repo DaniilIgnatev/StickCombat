@@ -133,7 +133,7 @@ class GestureEngine: ActionEngine, JoystickDelegate {
         }
 
         let xDirection = MoveDirection(angle: angle)
-        let by = xDirection * scale * 25
+        let by = xDirection * scale * 23
 
 
         return HorizontalAction(fighter: fighter, from: selfXPos, by: by)

@@ -82,19 +82,19 @@ class JoystickButtonsView: UIView, Joystick {
 
     //MARK: BUTTON EVENTS
     @objc func button_A_Clicked(){
-        if isCanClick{
+        //if isCanClick{
             print("A pressed")
             delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: ButtonDescriptor.first, buttonReleased: nil))
-            HangOnClickDelay()
-        }
+            //HangOnClickDelay()
+        //}
     }
 
     @objc func button_A_Released(){
-        if isCanClick{
+        //if isCanClick{
             print("A released")
             delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .first))
-            HangOnClickDelay()
-        }
+            //HangOnClickDelay()
+        //}
     }
 
     
