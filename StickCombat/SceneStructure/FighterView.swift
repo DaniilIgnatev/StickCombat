@@ -155,7 +155,7 @@ class FighterView {
         var textures = [SKTexture]()
         
         for i in 0...(atlas.textureNames.count-1){
-            let name = "\(i).png"
+            let name = "\(nameAtlas)/\(i).png"
             textures.append(SKTexture(imageNamed: name))
         }
         
