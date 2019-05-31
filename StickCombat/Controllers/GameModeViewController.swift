@@ -13,6 +13,7 @@ class GameModeViewController: UIViewController{
     
     @IBOutlet weak var ipTextBox: UITextField!
     @IBOutlet weak var portTextBox: UITextField!
+    @IBOutlet weak var textBoxesView: UIView!
     
     @IBAction func createLobbyButton(_ sender: Any) {
         transitionBetweenViews(playerID: FighterID.first)
@@ -45,9 +46,26 @@ class GameModeViewController: UIViewController{
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                if ipTextBox.isEditing{
+                    self.view.frame.origin.y -= abs(keyboardSize.height - ipTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                }else if portTextBox.isEditing{
+                    self.view.frame.origin.y -= abs(keyboardSize.height - portTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                }
+            }
+        }
     }
     
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.first != nil{
             view.endEditing(true)

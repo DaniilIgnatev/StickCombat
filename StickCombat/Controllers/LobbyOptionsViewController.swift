@@ -18,7 +18,7 @@ class LobbyOptionsViewController: UIViewController{
     @IBOutlet weak var passwordTextBox: UITextField!
     @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var nicknameTextBox: UITextField!
-    
+    @IBOutlet weak var textBoxesView: UIView!
     
     @IBAction func createLobbyButton(_ sender: Any) {
         if passwordTextBox.text != "", nameTextBox.text != ""{
@@ -48,6 +48,27 @@ class LobbyOptionsViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                if passwordTextBox.isEditing{
+                    self.view.frame.origin.y -= abs(keyboardSize.height - passwordTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                }else if nameTextBox.isEditing{
+                    self.view.frame.origin.y -= abs(keyboardSize.height - nameTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                }else if nicknameTextBox.isEditing{
+                    self.view.frame.origin.y -= abs(keyboardSize.height - nicknameTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                }
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.first != nil{
