@@ -58,7 +58,7 @@ class FighterView {
     
     public func playStrikeAction(strikeAction : StrikeAction){
         
-        if FighterNode.action(forKey: "strikeAnimation") != nil{
+        if FighterNode.action(forKey: "strikeTexturesAnimation") != nil{
             print("Сontinue to animate")
         }else{
             if Direction == .left{
@@ -84,16 +84,21 @@ class FighterView {
     }
     
     private func strikeAction(textureArray: [SKTexture]){
-        FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strikeAnimation")
+        FighterNode.removeAction(forKey: "strikeTexturesAnimation")
+        FighterNode.removeAction(forKey: "moveTexturesAnimation")
+        FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strikeTexturesAnimation")
     }
     
     //Создание таймера для отслеживания времени. Если в течении заданного промежутка не приходит экшн, удаляем все экшны у бойца
-    
     var moveTimer: Timer?
     
     func createMoveTimer() -> Timer {
         let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (t) in
-            self.FighterNode.removeAction(forKey: "moveTexturesAnimation")
+            if self.FighterNode.action(forKey: "moveTexturesAnimation") != nil{
+                _ = self.createMoveTimer()
+            }else{
+                self.FighterNode.removeAction(forKey: "moveTexturesAnimation")
+            }
         })
         return timer
     }
