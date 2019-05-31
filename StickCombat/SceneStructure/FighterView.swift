@@ -140,9 +140,27 @@ class FighterView {
         let actionMove = SKAction.moveTo(x: to, duration: time)
         FighterNode.run(actionMove, withKey: "movePositionAnimation")
     }
+    
+    
+    
+    func moveTexturesAction(textureArray: [SKTexture]) -> SKAction{
+        return SKAction.animate(with: textureArray, timePerFrame: 0.05)
+    }
+    
+    func moveAnimationtexturesCallback(_ actionAnimate : SKAction){
+        if self.FighterNode.action(forKey: "movePositionAnimation") != nil{
+            FighterNode.run(actionAnimate) {
+                self.moveAnimationtexturesCallback(actionAnimate)
+            }
+        }
+    }
+    
     private func moveActionAnimation(textureArray: [SKTexture]){
-        let actionAnimate = SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05))
-        FighterNode.run(actionAnimate, withKey: "moveTexturesAnimation")
+        //let actionAnimate = SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05))
+        //FighterNode.run(actionAnimate, withKey: "moveTexturesAnimation")
+        
+        let actionAnimate = moveTexturesAction(textureArray: textureArray)
+        moveAnimationtexturesCallback(actionAnimate)
     }
     
     public func playBlockAction(){
