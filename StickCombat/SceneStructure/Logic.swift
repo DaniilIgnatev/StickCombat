@@ -125,10 +125,10 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
 
     ///Осталось играть минут
-    private var GameTimeLeft_Minutes : Int = 1
+    private var GameTimeLeft_Minutes : Int = 2
 
     ///Осталось играть секунд
-    private var GameTimeLeft_Seconds : Int = 5
+    private var GameTimeLeft_Seconds : Int = 0
 
 
     private var gameTimer : Timer? = nil
