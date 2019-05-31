@@ -172,8 +172,8 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         self.sceneDescriptor = SceneCondition(firstX: -130, secondX: 130)
         self.sceneDescriptor.fighter_1.nickname = nickname
         
-        self.View1 = FighterView(id : .first,fighterNode: firstFighterNode, hpNode: firstHpNode,direction : .right)
-        self.View2 = FighterView(id : .second,fighterNode: secondFighterNode,hpNode: secondHpNode,direction : .left)
+        self.View1 = FighterView(id : .first,fighterNode: firstFighterNode, hpNode: secondHpNode,direction : .right)
+        self.View2 = FighterView(id : .second,fighterNode: secondFighterNode,hpNode: firstHpNode,direction : .left)
 
         self.socket = WebSocket.init(url: adress)
         self.socket.delegate = self
@@ -357,6 +357,13 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
      }
      */
 
+    
+    private func updateHPNodePosition(label: SKLabelNode,from: CGFloat, to: CGFloat){
+        let duration =  FighterView.calculateTimeOfMoveAnimation(from: from, to: to)
+        label.run(SKAction.move(to: CGPoint(x: to, y: label.position.y), duration: duration))
+    }
+    
+    
     func processHorizontalAction(_ action : HorizontalAction){
         //let (direct1,direct2) = determineDirection()
 
@@ -365,26 +372,37 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
             self.sceneDescriptor.fighter_1.direction = .right
             self.View1.Direction = .right
             self.View_1.playMoveAction(moveAction: action)
+            updateHPNodePosition(label: View1.hpNode, from: View1.hpNode.position.x, to: sceneDescriptor.fighter_1.X)
         }
         else{
             self.sceneDescriptor.fighter_2.X = action.To
             self.sceneDescriptor.fighter_2.direction = .left
             self.View2.Direction = .left
             self.View_2.playMoveAction(moveAction: action)
+            updateHPNodePosition(label: View2.hpNode, from: View2.hpNode.position.x, to: sceneDescriptor.fighter_2.X)
         }
     }
-
+    
+    
+    
+    private func updateHPNodeContent(label: SKLabelNode,endHp : CGFloat){
+        let intHp = Int(endHp)
+        label.text = "\(intHp)"
+    }
+    
 
     func processStrikeAction(_ action : StrikeAction){
         if action.Fighter == .first{
             //удар, вызваный первым бойцом
             self.sceneDescriptor.fighter_2.hp = action.endHP!
             self.View_1.playStrikeAction(strikeAction: action)
+            updateHPNodeContent(label: View_2.hpNode,endHp: sceneDescriptor.fighter_2.hp)
         }
         else{
             //удар, вызваный вторым бойцом
             self.sceneDescriptor.fighter_1.hp = action.endHP!
             self.View_2.playStrikeAction(strikeAction: action)
+            updateHPNodeContent(label: View_1.hpNode,endHp: sceneDescriptor.fighter_1.hp)
         }
     }
 

@@ -91,10 +91,10 @@ class FighterView {
         FighterNode.removeAction(forKey: "strikeTexturesAnimation")
         FighterNode.removeAction(forKey: "moveTexturesAnimation")
         FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strikeTexturesAnimation")
-        if let hp = action.endHP{
-            let intValue = Int(hp)
-            hpNode.text = "\(intValue)"
-        }
+//        if let hp = action.endHP{
+//            let intValue = Int(hp)
+//            hpNode.text = "\(intValue)"
+//        }
     }
     
     
@@ -138,16 +138,19 @@ class FighterView {
         }
     }
     
+    
     private func moveAction(from: CGFloat, to: CGFloat){
-        let time = calculateTimeOfMoveAnimation(from: from, to: to)
+        let time = FighterView.calculateTimeOfMoveAnimation(from: from, to: to)
         let actionMove = SKAction.moveTo(x: to, duration: time)
         hpNode.run(SKAction.moveTo(x: to, duration: time))
         FighterNode.run(actionMove, withKey: "movePositionAnimation")
     }
     
+    
     func moveTexturesAction(textureArray: [SKTexture]) -> SKAction{
         return SKAction.animate(with: textureArray, timePerFrame: 0.05)
     }
+    
     
     func moveAnimationtexturesCallback(_ actionAnimate : SKAction){
         if self.FighterNode.action(forKey: "movePositionAnimation") != nil{
@@ -156,6 +159,7 @@ class FighterView {
             }
         }
     }
+    
     
     private func moveActionAnimation(textureArray: [SKTexture]){
         let actionAnimate = moveTexturesAction(textureArray: textureArray)
@@ -189,7 +193,7 @@ class FighterView {
         return textures
     }
     
-    private func calculateTimeOfMoveAnimation(from: CGFloat, to: CGFloat) -> Double{
+    internal static func calculateTimeOfMoveAnimation(from: CGFloat, to: CGFloat) -> Double{
         let length: Double = Double(to) - Double(from)
         let time = abs(length)/80
         return time
