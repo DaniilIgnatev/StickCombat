@@ -38,7 +38,9 @@ class CombatScene: SKScene, LobbyDelegate {
         Logic!.requestStatusAction(StatusAction(fighter: Logic!.FighterID, statusID: status, nickname1: nil, nickname2: nil))
 
         if status == .surrender{
-            Logic!.StopProcessingLogic()
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+                self.Logic!.StopProcessingLogic()
+            }
         }
     }
 

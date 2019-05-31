@@ -155,13 +155,22 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
 
     func stopGameTimer(){
-
+        self.View1.FighterNode.removeAction(forKey: "gameTimer")
     }
 
     func startGameTimer(){
-        self.gameTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
-            self.decreaseGameTime()
+        if self.View1.FighterNode.action(forKey: "gameTimer") == nil{
+            self.View1.FighterNode.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: 1),SKAction.run
+                {
+                    self.decreaseGameTime()
+                }
+                ])
+            ), withKey: "gameTimer")
         }
+
+        //self.gameTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
+
+        //}
     }
 
 
@@ -465,7 +474,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
                 }
                 else{
                     self.sceneDescriptor.status = .surrender
-                }
+            }
         case .surrender:
             stopGameTimer()
             //соединение оборвано осознано

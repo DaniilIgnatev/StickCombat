@@ -157,38 +157,38 @@ class GameViewController: UIViewController, LobbyDelegate  {
         case .fight:
             print("Статус: fight")
             showJoysticks()
-            View.presentScene(combatScene,transition: .doorsOpenHorizontal(withDuration: 1))
+            View.presentScene(combatScene,transition: .doorsOpenHorizontal(withDuration: 0.2))
         case .casting:
             print("Статус: casting")
             hideJoysticks()
-            View.presentScene(receptionScene,transition: .doorsCloseHorizontal(withDuration: 1))
+            View.presentScene(receptionScene,transition: .doorsCloseHorizontal(withDuration: 0.2))
         case .ConnectionLost:
             print("Статус: connection lost")
             hideJoysticks()
-            View.presentScene(lostConnectionScene,transition: .flipVertical(withDuration: 1))
+            View.presentScene(lostConnectionScene,transition: .flipVertical(withDuration: 0.2))
         case .over:
             print("Статус: connection over")
             print("Ошибка. Должен быть перевод на surrender,victory или defeat")
         case .surrender:
             print("Статус: connection surrender")
             hideJoysticks()
-            View.presentScene(surrenderScene,transition: .flipVertical(withDuration: 1))
+            View.presentScene(surrenderScene,transition: .flipVertical(withDuration: 0.2))
         case .refused:
             print("Статус: connection refused")
             hideJoysticks()
-            View.presentScene(refusedConnectionScene,transition: .flipVertical(withDuration: 1))
+            View.presentScene(refusedConnectionScene,transition: .flipVertical(withDuration: 0.2))
         case .pause:
             print("Статус: connection pause")
             hideJoysticks()
-            View.presentScene(pauseScene,transition: .doorsCloseHorizontal(withDuration: 1))
+            View.presentScene(pauseScene,transition: .doorsCloseHorizontal(withDuration: 0.2))
         case .victory:
             print("Статус: connection victory")
             hideJoysticks()
-            View.presentScene(victoryScene,transition: .flipVertical(withDuration: 1))
+            View.presentScene(victoryScene,transition: .flipVertical(withDuration: 0.2))
         case .defeat:
             print("Статус: connection defeat")
             hideJoysticks()
-            View.presentScene(defeatScene,transition: .flipVertical(withDuration: 1))
+            View.presentScene(defeatScene,transition: .flipVertical(withDuration: 0.2))
         }
     }
     
