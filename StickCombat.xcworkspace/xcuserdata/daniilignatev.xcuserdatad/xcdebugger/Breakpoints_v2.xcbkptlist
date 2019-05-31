@@ -58,45 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.7886651"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "requestGameAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.789042"
+            timestampString = "581009520.262916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "358"
             endingLineNumber = "358"
             landmarkName = "ServerLogicManager"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.789252"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "requestStatusAction(_:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -169,22 +137,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.78959"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
-            landmarkName = "websocketDidReceiveMessage(socket:text:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "StickCombat/Controllers/GameViewController.swift"
             timestampString = "581000780.7898051"
             startingColumnNumber = "9223372036854775807"
@@ -192,22 +144,6 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "pauseGame(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.7898459"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "requestConnectionAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -234,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.790062"
+            timestampString = "581009520.263423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "411"
@@ -266,39 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.790269"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "StopProcessingLogic()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.790465"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "ServerLogicManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.790658"
+            timestampString = "581009520.263744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "480"
@@ -362,12 +266,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StickCombat/SceneStructure/Logic.swift"
-            timestampString = "581000780.791097"
+            timestampString = "581009520.264083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
             endingLineNumber = "390"
             landmarkName = "updateHPNodeContent(label:endHp:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StickCombat/Controllers/LobbyOptionsViewController.swift"
+            timestampString = "581012615.7200381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "createLobbyButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

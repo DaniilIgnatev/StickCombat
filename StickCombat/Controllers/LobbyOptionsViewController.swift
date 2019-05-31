@@ -28,12 +28,16 @@ class LobbyOptionsViewController: UIViewController{
             }
 
             guard let adress = URL(string: "ws://\(ip):\(password)")else {
+                let menuViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
+
+                present(menuViewController, animated: true, completion: nil)
                 return
             }
             
             destinationViewController.modalTransitionStyle = .crossDissolve
-            present(destinationViewController, animated: true, completion: nil)
-            destinationViewController.Mode = GameMode.pvpNet(playerID: playerID!, nickname: nicknameTextBox.text!, adress: adress, lobbyName: nameTextBox.text!, lobbyPassword: passwordTextBox.text!)
+            present(destinationViewController, animated: true, completion: {
+                destinationViewController.Mode = GameMode.pvpNet(playerID: self.playerID!, nickname: self.nicknameTextBox.text!, adress: adress, lobbyName: self.nameTextBox.text!, lobbyPassword: self.passwordTextBox.text!)
+            })
         }else{
             passwordTextBox.text = nil
             nameTextBox.text = nil
