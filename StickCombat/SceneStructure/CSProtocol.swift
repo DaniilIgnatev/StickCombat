@@ -48,7 +48,7 @@ class Parser{
         if action.Fighter == .second{
             type = "joinLobby"
         }
-        let jsonStruct = ConnectionJSON(head: Head(id: action.Fighter.rawValue, type: type), body: ConnectionJSON.Body(name: action.name, password: action.password))
+        let jsonStruct = ConnectionJSON(head: Head(id: action.Fighter.rawValue, type: type), body: ConnectionJSON.Body(name: action.name, password: action.password, nickname: connectionAction.nickname))
 
         let json = String.init(data: try! JSONEncoder().encode(jsonStruct), encoding: .utf8)!
         return json
@@ -140,7 +140,7 @@ class Parser{
         let id = action.Fighter
         
 
-        let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "status"), body: StatusJSON.Body(code: statusAction.statusID.rawValue, description: ""))
+        let jsonStruct = StatusJSON(head: Head(id: id.rawValue, type: "status"), body: StatusJSON.Body(code: statusAction.statusID.rawValue, description: "", nickname1: nil, nickname2: nil))
         do{
             let json = String.init(data: try JSONEncoder().encode(jsonStruct), encoding: .utf8)!
             return json
@@ -163,8 +163,10 @@ class Parser{
                             let id = (head["id"] as? Int) ?? 0
                             let fighter = FighterID(rawValue: id)!
                             let code = body?["code"] as! Int
+                            let nickname1 = body?["nickname1"] as? String
+                            let nickname2 = body?["nickname2"] as? String
                             
-                            let action = StatusAction(fighter: fighter, statusID: LobbyStatusEnum(rawValue: code)!)
+                            let action = StatusAction(fighter: fighter, statusID: LobbyStatusEnum(rawValue: code)!, nickname1: nickname1, nickname2: nickname2)
                             return action
                         }else{
                             fatalError("Error")
@@ -189,6 +191,7 @@ struct ConnectionJSON: Codable{
     struct Body: Codable {
         var name: String
         var password: String
+        var nickname: String
     }
     
     let head: Head
@@ -252,6 +255,8 @@ struct StatusJSON: Codable{
     struct Body: Codable{
         let code: Int
         let description: String
+        let nickname1: String?
+        let nickname2: String?
     }
     let head: Head
     let body: Body

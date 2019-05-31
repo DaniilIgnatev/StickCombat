@@ -205,25 +205,37 @@ class ConnectionAction : GameAction{
 
     public let name: String
     public let password: String
+    public let nickname: String
 
-    init(fighter: FighterID, name: String, password: String) {
+    init(fighter: FighterID, name: String, password: String, nickname: String) {
         self.Fighter = fighter
         self.name = name
         self.password = password
+        self.nickname = nickname
     }
 }
 
 
 class StatusAction : GameAction{
     var Kind: GameActionType = .Status
-
+    
     var Fighter: FighterID
 
     public let statusID: LobbyStatusEnum
+    public var nicknames: (String,String)? = nil
 
-    init(fighter: FighterID, statusID: LobbyStatusEnum) {
+    init(fighter: FighterID, statusID: LobbyStatusEnum, nickname1: String?, nickname2: String?) {
         self.Fighter = fighter
         self.statusID = statusID
+        
+        if nickname1 != nil && nickname2 != nil{
+            self.nicknames = (nickname1!,nickname2!)
+        }
+    }
+    
+    convenience init(fighter: FighterID, statusID: LobbyStatusEnum) {
+        self.init(fighter: fighter,statusID: statusID,nickname1: nil,nickname2: nil)
+        self.nicknames = nil
     }
 }
 

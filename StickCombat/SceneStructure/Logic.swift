@@ -12,7 +12,7 @@ import Starscream
 
 
 enum GameMode {
-    case pvpNet(playerID : FighterID, adress : URL, lobbyName : String, lobbyPassword : String)
+    case pvpNet(playerID : FighterID, nickname : String, adress : URL, lobbyName : String, lobbyPassword : String)
     case pvpLocal
     case pveLocal(playerID : FighterID)
 }
@@ -60,8 +60,8 @@ protocol LogicManager : ActionEngineDelegate {
 class LogicManagerFactory {
     static func BuildLogicFor(gameMode : GameMode, joysticks : JoystickSet, firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode) -> LogicManager?{
         switch gameMode {
-        case .pvpNet(let fighterID, let adress, let name, let password):
-            return ServerLogicManager(fighterID: fighterID, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, joysticks: joysticks, adress: adress, lobbyName: name,lobbyPassword: password)
+        case .pvpNet(let fighterID,let nickname, let adress, let name, let password):
+            return ServerLogicManager(fighterID: fighterID, nickname: nickname, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, joysticks: joysticks, adress: adress, lobbyName: name,lobbyPassword: password)
         default:
             return nil
         }
@@ -161,16 +161,17 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
-    init(fighterID : FighterID, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, joysticks : JoystickSet, adress : URL, lobbyName : String, lobbyPassword : String) {
+    init(fighterID : FighterID, nickname: String, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, joysticks : JoystickSet, adress : URL, lobbyName : String, lobbyPassword : String) {
         self.fighterID = fighterID
         self.joysticks = joysticks
         self.adress = adress
-
+        
 
 
         //инициализация представления сцены
         self.sceneDescriptor = SceneCondition(firstX: -130, secondX: 130)
-
+        self.sceneDescriptor.fighter_1.nickname = nickname
+        
         self.View1 = FighterView(id : .first,node: firstFighterNode,direction : .right)
         self.View2 = FighterView(id : .second,node: secondFighterNode,direction : .left)
 
@@ -187,7 +188,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         
         requestQueue.isSuspended = true
 
-        requestConnectionAction(ConnectionAction(fighter: fighterID, name: lobbyName, password: lobbyPassword))
+        requestConnectionAction(ConnectionAction(fighter: fighterID, name: lobbyName, password: lobbyPassword, nickname: nickname))
         socket.connect()
     }
 

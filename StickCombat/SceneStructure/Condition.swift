@@ -45,6 +45,8 @@ class FighterPresence {
 
     static public let height : CGFloat = 150.0
 
+    public var nickname : String
+    
     private var halfWidth : CGFloat{
         return FighterPresence.width / 2
     }
@@ -62,9 +64,11 @@ class FighterPresence {
     
     public init(id : FighterID, X : CGFloat){
         direction = .left
+        nickname = "боец1"
 
         if id == .first{
             direction = .right
+            nickname = "боец2"
         }
 
         self.ID = id

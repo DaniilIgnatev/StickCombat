@@ -14,11 +14,12 @@ import GameplayKit
 protocol LobbyDelegate {
     func statusChanged(_ status : LobbyStatusEnum)
     func gameTimer(timeLeft : (Int,Int))
+    func sceneCondition(condition : SceneCondition)
 }
 
 
 class GameViewController: UIViewController, LobbyDelegate  {
-
+    
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -179,8 +180,24 @@ class GameViewController: UIViewController, LobbyDelegate  {
             View.presentScene(defeatScene,transition: .flipVertical(withDuration: 1))
         }
     }
+    
+    
+    //MARK: SCENE CONDITION
+    
+    func sceneCondition(condition: SceneCondition) {
+        nickname1.text = condition.fighter_1.nickname
+        nickname2.text = condition.fighter_2.nickname
+    }
+    
+    //MARK: NICKNAMES
+    
+    @IBOutlet var nickname1: UILabel!
+    
+    
+    @IBOutlet var nickname2: UILabel!
+    
 
-
+    //MARK: GAME  TIMER
     @IBOutlet weak var timeLeftLabel: UILabel!
 
 

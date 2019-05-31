@@ -25,7 +25,7 @@ class JoystickSet {
 
 
 class CombatScene: SKScene, LobbyDelegate {
-
+  
     
     var lobbyDelegate : LobbyDelegate? = nil
 
@@ -35,7 +35,7 @@ class CombatScene: SKScene, LobbyDelegate {
 
     ///Запросить изменение статуса из вне
     func RequestStatus(status: LobbyStatusEnum) {
-        Logic!.requestStatusAction(StatusAction(fighter: Logic!.FighterID, statusID: status))
+        Logic!.requestStatusAction(StatusAction(fighter: Logic!.FighterID, statusID: status, nickname1: nil, nickname2: nil))
 
         if status == .surrender{
             Logic!.StopProcessingLogic()
@@ -69,6 +69,11 @@ class CombatScene: SKScene, LobbyDelegate {
     ///Действия при изменении статуса
     func statusChanged(_ status: LobbyStatusEnum) {
         lobbyDelegate?.statusChanged(status)
+    }
+    
+    
+    func sceneCondition(condition: SceneCondition) {
+        lobbyDelegate?.sceneCondition(condition: condition)
     }
 
 
