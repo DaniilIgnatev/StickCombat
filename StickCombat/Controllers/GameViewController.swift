@@ -130,14 +130,14 @@ class GameViewController: UIViewController, LobbyDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()        
 
-        combatScene.scaleMode = .aspectFill
-        receptionScene.scaleMode = .aspectFill
-        pauseScene.scaleMode = .aspectFill
-        refusedConnectionScene.scaleMode = .aspectFill
-        lostConnectionScene.scaleMode = .aspectFill
-        surrenderScene.scaleMode = .aspectFill
-        victoryScene.scaleMode = .aspectFill
-        defeatScene.scaleMode = .aspectFill
+        combatScene.scaleMode = .resizeFill
+        receptionScene.scaleMode = .resizeFill
+        pauseScene.scaleMode = .resizeFill
+        refusedConnectionScene.scaleMode = .resizeFill
+        lostConnectionScene.scaleMode = .resizeFill
+        surrenderScene.scaleMode = .resizeFill
+        victoryScene.scaleMode = .resizeFill
+        defeatScene.scaleMode = .resizeFill
 
 
         combatScene.lobbyDelegate = self
