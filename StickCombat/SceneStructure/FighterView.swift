@@ -68,29 +68,33 @@ class FighterView {
             if Direction == .left{
                 switch strikeAction.Impact! {
                 case .Jeb:
-                    self.strikeAction(textureArray: leftPunchMirroredArray)
+                    self.strikeAction(action: strikeAction,textureArray: leftPunchMirroredArray)
                 case .leftKick:
-                    self.strikeAction(textureArray: leftKickMirroredArray)
+                    self.strikeAction(action: strikeAction,textureArray: leftKickMirroredArray)
                 case .RightKick:
-                    self.strikeAction(textureArray: rightKickMirroredArray)
+                    self.strikeAction(action: strikeAction,textureArray: rightKickMirroredArray)
                 }
             }else if Direction == .right{
                 switch strikeAction.Impact! {
                 case .Jeb:
-                    self.strikeAction(textureArray: leftPunchArray)
+                    self.strikeAction(action: strikeAction,textureArray: leftPunchArray)
                 case .leftKick:
-                    self.strikeAction(textureArray: leftKickArray)
+                    self.strikeAction(action: strikeAction,textureArray: leftKickArray)
                 case .RightKick:
-                    self.strikeAction(textureArray: rightKickArray)
+                    self.strikeAction(action: strikeAction,textureArray: rightKickArray)
                 }
             }
         }
     }
     
-    private func strikeAction(textureArray: [SKTexture]){
+    private func strikeAction(action: StrikeAction, textureArray: [SKTexture]){
         FighterNode.removeAction(forKey: "strikeTexturesAnimation")
         FighterNode.removeAction(forKey: "moveTexturesAnimation")
         FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strikeTexturesAnimation")
+        if let hp = action.endHP{
+            let intValue = Int(hp)
+            hpNode.text = "\(intValue)"
+        }
     }
     
     
@@ -114,7 +118,6 @@ class FighterView {
     }
     
     public func playMoveAction(moveAction : HorizontalAction){
-        
         if FighterNode.action(forKey: "moveTexturesAnimation") != nil{
             self.moveAction(from: moveAction.From, to: moveAction.To)
             print("Сontinue to animate")
@@ -138,10 +141,9 @@ class FighterView {
     private func moveAction(from: CGFloat, to: CGFloat){
         let time = calculateTimeOfMoveAnimation(from: from, to: to)
         let actionMove = SKAction.moveTo(x: to, duration: time)
+        hpNode.run(SKAction.moveTo(x: to, duration: time))
         FighterNode.run(actionMove, withKey: "movePositionAnimation")
     }
-    
-    
     
     func moveTexturesAction(textureArray: [SKTexture]) -> SKAction{
         return SKAction.animate(with: textureArray, timePerFrame: 0.05)
@@ -156,9 +158,6 @@ class FighterView {
     }
     
     private func moveActionAnimation(textureArray: [SKTexture]){
-        //let actionAnimate = SKAction.repeatForever(SKAction.animate(with: textureArray, timePerFrame: 0.05))
-        //FighterNode.run(actionAnimate, withKey: "moveTexturesAnimation")
-        
         let actionAnimate = moveTexturesAction(textureArray: textureArray)
         moveAnimationtexturesCallback(actionAnimate)
     }
