@@ -53,15 +53,17 @@ class CombatScene: SKScene, LobbyDelegate {
         self.Joysticks = joysticks
         
         let firstFighterNode = childNode(withName: "fighter_1") as! SKSpriteNode
-        let secondFighterNode = childNode(withName: "fighter_2") as! SKSpriteNode
-        
         firstFighterNode.physicsBody?.isDynamic = false
         firstFighterNode.physicsBody?.affectedByGravity = false
         
+        let secondFighterNode = childNode(withName: "fighter_2") as! SKSpriteNode
         secondFighterNode.physicsBody?.isDynamic = false
         secondFighterNode.physicsBody?.affectedByGravity = false
         
-        Logic = LogicManagerFactory.BuildLogicFor(gameMode: mode, joysticks: Joysticks!, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode)
+        let firstHpNode = childNode(withName: "hp_1") as! SKLabelNode
+        let secondHpNode = childNode(withName: "hp_2") as! SKLabelNode
+        
+        Logic = LogicManagerFactory.BuildLogicFor(gameMode: mode, joysticks: Joysticks!, firstFighterNode: firstFighterNode, firstHpNode: firstHpNode, secondFighterNode: secondFighterNode, secondHpNode: secondHpNode)
         Logic!.delegate = self
     }
 

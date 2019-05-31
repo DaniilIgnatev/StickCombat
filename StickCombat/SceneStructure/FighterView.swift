@@ -18,6 +18,8 @@ class FighterView {
     
     public let FighterNode : SKSpriteNode
     
+    public let hpNode : SKLabelNode
+    
     //Текстурки не для анимаций
     private var defaultPositionsArray = [SKTexture]()
     private var defaultPositionsMirroredArray = [SKTexture]()
@@ -34,10 +36,12 @@ class FighterView {
     private var rightKickMirroredArray = [SKTexture]()
     private var rightPunchMirroredArray = [SKTexture]()
     
-    init(id : FighterID, node : SKSpriteNode, direction : FighterDirection) {
+    init(id : FighterID, fighterNode : SKSpriteNode, hpNode : SKLabelNode, direction : FighterDirection) {
         self.ID = id
-        self.FighterNode = node
+        self.FighterNode = fighterNode
+        self.hpNode = hpNode
         self.Direction = direction
+        
         //Инициализация массивов текстур не для анимаций
         self.defaultPositionsArray = initTextureArray(nameAtlas: "defaultPositions")
         self.defaultPositionsMirroredArray = initTextureArray(nameAtlas: "defaultPositionsMirrored")
@@ -87,6 +91,12 @@ class FighterView {
         FighterNode.removeAction(forKey: "strikeTexturesAnimation")
         FighterNode.removeAction(forKey: "moveTexturesAnimation")
         FighterNode.run(SKAction.animate(with: textureArray, timePerFrame: 0.05), withKey: "strikeTexturesAnimation")
+    }
+    
+    
+    ///Проиграть попадание
+    internal func simulateHit(){
+        
     }
     
     //Создание таймера для отслеживания времени. Если в течении заданного промежутка не приходит экшн, удаляем все экшны у бойца

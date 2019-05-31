@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
-            landmarkName = "init(id:node:direction:)"
+            landmarkName = "init(id:fighterNode:hpNode:direction:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

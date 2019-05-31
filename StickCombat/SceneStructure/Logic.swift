@@ -58,10 +58,10 @@ protocol LogicManager : ActionEngineDelegate {
 
 
 class LogicManagerFactory {
-    static func BuildLogicFor(gameMode : GameMode, joysticks : JoystickSet, firstFighterNode : SKSpriteNode , secondFighterNode : SKSpriteNode) -> LogicManager?{
+    static func BuildLogicFor(gameMode : GameMode, joysticks : JoystickSet, firstFighterNode : SKSpriteNode, firstHpNode : SKLabelNode, secondFighterNode : SKSpriteNode, secondHpNode : SKLabelNode) -> LogicManager?{
         switch gameMode {
         case .pvpNet(let fighterID,let nickname, let adress, let name, let password):
-            return ServerLogicManager(fighterID: fighterID, nickname: nickname, firstFighterNode: firstFighterNode, secondFighterNode: secondFighterNode, joysticks: joysticks, adress: adress, lobbyName: name,lobbyPassword: password)
+            return ServerLogicManager(fighterID: fighterID, nickname: nickname, firstFighterNode: firstFighterNode, firstHpNode: firstHpNode, secondFighterNode: secondFighterNode, secondHpNode: secondHpNode, joysticks: joysticks, adress: adress, lobbyName: name,lobbyPassword: password)
         default:
             return nil
         }
@@ -161,7 +161,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
-    init(fighterID : FighterID, nickname: String, firstFighterNode: SKSpriteNode, secondFighterNode: SKSpriteNode, joysticks : JoystickSet, adress : URL, lobbyName : String, lobbyPassword : String) {
+    init(fighterID : FighterID, nickname: String, firstFighterNode: SKSpriteNode, firstHpNode : SKLabelNode, secondFighterNode: SKSpriteNode, secondHpNode : SKLabelNode, joysticks : JoystickSet, adress : URL, lobbyName : String, lobbyPassword : String) {
         self.fighterID = fighterID
         self.joysticks = joysticks
         self.adress = adress
@@ -172,8 +172,8 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         self.sceneDescriptor = SceneCondition(firstX: -130, secondX: 130)
         self.sceneDescriptor.fighter_1.nickname = nickname
         
-        self.View1 = FighterView(id : .first,node: firstFighterNode,direction : .right)
-        self.View2 = FighterView(id : .second,node: secondFighterNode,direction : .left)
+        self.View1 = FighterView(id : .first,fighterNode: firstFighterNode, hpNode: firstHpNode,direction : .right)
+        self.View2 = FighterView(id : .second,fighterNode: secondFighterNode,hpNode: secondHpNode,direction : .left)
 
         self.socket = WebSocket.init(url: adress)
         self.socket.delegate = self
