@@ -148,7 +148,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         delegate?.gameTimer(timeLeft: (GameTimeLeft_Minutes, GameTimeLeft_Seconds))
 
         if GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds == 0{
-            gameTimer?.invalidate()
+            self.gameTimer?.invalidate()
             requestStatusAction(StatusAction(fighter: self.fighterID, statusID: .surrender))
         }
     }
@@ -420,8 +420,11 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
             gameTimer?.invalidate()
             self.sceneDescriptor.status = action.statusID
         case .fight:
+            self.sceneDescriptor.fighter_1.nickname = action.nicknames!.0
+            self.sceneDescriptor.fighter_2.nickname = action.nicknames!.1
             startGameTimer()
             self.sceneDescriptor.status = action.statusID
+            self.delegate?.sceneCondition(condition: self.sceneDescriptor)
         case .over:
             gameTimer?.invalidate()
             //уточнение итогов окончания матча

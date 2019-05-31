@@ -38,8 +38,8 @@ class GameModeViewController: UIViewController{
         }else{
             ipTextBox.text = nil
             portTextBox.text = nil
-            portTextBox.attributedPlaceholder = NSAttributedString(string:"Please enter the port", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            ipTextBox.attributedPlaceholder = NSAttributedString(string:"Please enter the IP", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            portTextBox.attributedPlaceholder = NSAttributedString(string:"Заполните", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            ipTextBox.attributedPlaceholder = NSAttributedString(string:"Заполните", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         }
     }
     

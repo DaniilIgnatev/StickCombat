@@ -33,13 +33,13 @@ class LobbyOptionsViewController: UIViewController{
             
             destinationViewController.modalTransitionStyle = .crossDissolve
             present(destinationViewController, animated: true, completion: nil)
-            destinationViewController.Mode = GameMode.pvpNet(playerID: playerID!, nickname: nameTextBox.text!, adress: adress, lobbyName: nameTextBox.text!, lobbyPassword: passwordTextBox.text!)
+            destinationViewController.Mode = GameMode.pvpNet(playerID: playerID!, nickname: nicknameTextBox.text!, adress: adress, lobbyName: nameTextBox.text!, lobbyPassword: passwordTextBox.text!)
         }else{
             passwordTextBox.text = nil
             nameTextBox.text = nil
-            passwordTextBox.attributedPlaceholder = NSAttributedString(string:"Please enter the password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            nameTextBox.attributedPlaceholder = NSAttributedString(string:"Please enter the name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            nicknameTextBox.attributedPlaceholder = NSAttributedString(string:"Please enter the name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            passwordTextBox.attributedPlaceholder = NSAttributedString(string:"Заполните", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            nameTextBox.attributedPlaceholder = NSAttributedString(string:"Заполните", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            nicknameTextBox.attributedPlaceholder = NSAttributedString(string:"Заполните", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         }
     }
     override func viewDidLoad() {
