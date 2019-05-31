@@ -148,11 +148,15 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         delegate?.gameTimer(timeLeft: (GameTimeLeft_Minutes, GameTimeLeft_Seconds))
 
         if GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds == 0{
-            self.gameTimer?.invalidate()
+            stopGameTimer()
             requestStatusAction(StatusAction(fighter: self.fighterID, statusID: .surrender))
         }
     }
 
+
+    func stopGameTimer(){
+
+    }
 
     func startGameTimer(){
         self.gameTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
@@ -263,7 +267,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     func StopProcessingLogic() {
         isProcessAnswers = false
         requestQueue.isSuspended = true
-        requestQueue.cancelAllOperations()
+        //requestQueue.cancelAllOperations()
         socket.disconnect()
     }
 
@@ -433,10 +437,10 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     func processStatusAction(_ action : StatusAction){
         switch action.statusID {
         case .refused:
-            gameTimer?.invalidate()
+            stopGameTimer()
             self.sceneDescriptor.status = action.statusID
         case .pause:
-            gameTimer?.invalidate()
+            stopGameTimer()
             self.sceneDescriptor.status = action.statusID
         case .fight:
             if let nicknames = action.nicknames{
@@ -447,7 +451,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
             self.sceneDescriptor.status = action.statusID
             self.delegate?.sceneCondition(condition: self.sceneDescriptor)
         case .over:
-            gameTimer?.invalidate()
+            stopGameTimer()
             //уточнение итогов окончания матча
             let myFighter = playingFighterDescriptor
             let opponentFighter = opponentFighterDescriptor
@@ -463,13 +467,13 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
                     self.sceneDescriptor.status = .surrender
                 }
         case .surrender:
-            gameTimer?.invalidate()
+            stopGameTimer()
             //соединение оборвано осознано
             if !socket.isConnected{
                 self.sceneDescriptor.status = .ConnectionLost
             }
         case .ConnectionLost:
-            gameTimer?.invalidate()
+            stopGameTimer()
             //сдача противника при ее наличии в статусе считается приоритетнее
             if self.sceneDescriptor.status == .surrender{
                 return
