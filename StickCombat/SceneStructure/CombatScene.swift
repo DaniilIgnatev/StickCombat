@@ -31,7 +31,7 @@ class CombatScene: SKScene, LobbyDelegate {
 
 
     ///Набор игровой логики
-    private var Logic : LogicManager? = nil
+    internal var Logic : LogicManager? = nil
 
     ///Запросить изменение статуса из вне
     func RequestStatus(status: LobbyStatusEnum) {

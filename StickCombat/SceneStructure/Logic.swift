@@ -264,6 +264,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         isProcessAnswers = false
         requestQueue.isSuspended = true
         requestQueue.cancelAllOperations()
+        socket.disconnect()
     }
 
 

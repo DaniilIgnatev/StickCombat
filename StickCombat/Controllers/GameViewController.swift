@@ -34,11 +34,13 @@ class GameViewController: UIViewController, LobbyDelegate  {
 
 
     @IBAction func surrenderGame(_ sender: Any) {
-        combatScene.RequestStatus(status: .surrender)
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
-            let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
-            let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
-            self.present(destinationViewController, animated: true, completion: nil)
+        if self.combatScene.Logic?.SceneDescriptor.status != LobbyStatusEnum.pause{
+            combatScene.RequestStatus(status: .surrender)
+            Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
+                let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
+                let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
+                self.present(destinationViewController, animated: true, completion: nil)
+            }
         }
     }
 
