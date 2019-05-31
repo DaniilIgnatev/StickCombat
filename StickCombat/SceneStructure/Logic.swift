@@ -420,8 +420,10 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
             gameTimer?.invalidate()
             self.sceneDescriptor.status = action.statusID
         case .fight:
-            self.sceneDescriptor.fighter_1.nickname = action.nicknames!.0
-            self.sceneDescriptor.fighter_2.nickname = action.nicknames!.1
+            if let nicknames = action.nicknames{
+                self.sceneDescriptor.fighter_1.nickname = nicknames.0
+                self.sceneDescriptor.fighter_2.nickname = nicknames.1
+            }
             startGameTimer()
             self.sceneDescriptor.status = action.statusID
             self.delegate?.sceneCondition(condition: self.sceneDescriptor)

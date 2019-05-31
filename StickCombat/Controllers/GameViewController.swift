@@ -155,11 +155,11 @@ class GameViewController: UIViewController, LobbyDelegate  {
         case .fight:
             print("Статус: fight")
             showJoysticks()
-            View.presentScene(combatScene,transition: .doorsCloseHorizontal(withDuration: 1))
+            View.presentScene(combatScene,transition: .doorsOpenHorizontal(withDuration: 1))
         case .casting:
             print("Статус: casting")
             hideJoysticks()
-            View.presentScene(receptionScene,transition: .doorsOpenHorizontal(withDuration: 1))
+            View.presentScene(receptionScene,transition: .doorsCloseHorizontal(withDuration: 1))
         case .ConnectionLost:
             print("Статус: connection lost")
             hideJoysticks()
@@ -178,7 +178,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
         case .pause:
             print("Статус: connection pause")
             hideJoysticks()
-            View.presentScene(pauseScene,transition: .doorsOpenHorizontal(withDuration: 1))
+            View.presentScene(pauseScene,transition: .doorsCloseHorizontal(withDuration: 1))
         case .victory:
             print("Статус: connection victory")
             hideJoysticks()

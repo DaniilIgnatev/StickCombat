@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qaK-cT-uhK">
-    <device id="ipad9_7" orientation="landscape">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,33 +20,33 @@
             <objects>
                 <viewController id="Uaj-5A-GUb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qPy-E3-aVI">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBe-mi-Dmr">
-                                <rect key="frame" x="288" y="95" width="93" height="53"/>
+                                <rect key="frame" x="288" y="75" width="93" height="53"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7C-qq-YEt">
-                                <rect key="frame" x="242" y="213" width="185" height="35"/>
+                                <rect key="frame" x="242" y="193" width="185" height="35"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF5-2Q-47R" userLabel="ButtonsView">
-                                <rect key="frame" x="100" y="278" width="824" height="418"/>
+                                <rect key="frame" x="100" y="258" width="467" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3l-a9-FLy">
-                                        <rect key="frame" x="260" y="0.0" width="544" height="418"/>
+                                        <rect key="frame" x="260" y="0.0" width="187" height="45"/>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
                                         <state key="normal" title="Yes" backgroundImage="MenuButton">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyU-89-3OE">
-                                        <rect key="frame" x="20" y="0.0" width="187" height="418"/>
+                                        <rect key="frame" x="20" y="0.0" width="187" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="187" id="SxQ-0I-efr"/>
                                         </constraints>
@@ -91,11 +91,11 @@
             <objects>
                 <viewController storyboardIdentifier="MenuViewController" id="qaK-cT-uhK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jc5-k6-ZsK">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqJ-0F-6j6">
-                                <rect key="frame" x="402" y="304" width="220" height="220"/>
+                                <rect key="frame" x="223.5" y="107.5" width="220" height="220"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfV-98-UCE">
                                         <rect key="frame" x="10" y="150" width="200" height="50"/>
@@ -145,21 +145,21 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-IU-uU5" userLabel="Settings">
-                                <rect key="frame" x="964" y="40" width="40" height="40"/>
+                                <rect key="frame" x="607" y="20" width="40" height="40"/>
                                 <state key="normal" backgroundImage="SettingsMenu"/>
                                 <connections>
                                     <segue destination="WOh-lA-QpP" kind="show" id="dmC-53-yd1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoW-89-Fj7" userLabel="Help">
-                                <rect key="frame" x="964" y="90" width="40" height="40"/>
+                                <rect key="frame" x="607" y="70" width="40" height="40"/>
                                 <state key="normal" backgroundImage="Help"/>
                                 <connections>
                                     <segue destination="Vu1-Cx-7MF" kind="show" id="SfT-te-BJx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stick Combat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbC-JM-ggT">
-                                <rect key="frame" x="362" y="234" width="300" height="60"/>
+                                <rect key="frame" x="183.5" y="37.5" width="300" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Ooy-cZ-2zW"/>
                                     <constraint firstAttribute="height" constant="60" id="cIp-vI-1TN"/>
@@ -192,39 +192,39 @@
             <objects>
                 <viewController id="WOh-lA-QpP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mGa-wn-gqu">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hu-28-VRL">
-                                <rect key="frame" x="402.5" y="75" width="219" height="35.5"/>
+                                <rect key="frame" x="225.5" y="55" width="216" height="52.5"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDg-5a-n3F">
-                                <rect key="frame" x="20" y="40" width="40" height="40"/>
+                                <rect key="frame" x="20" y="20" width="40" height="40"/>
                                 <state key="normal" backgroundImage="BackButton"/>
                                 <connections>
                                     <segue destination="qaK-cT-uhK" kind="show" id="qPf-wV-hmY"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5M6-gM-fC8" userLabel="Main">
-                                <rect key="frame" x="307" y="170.5" width="410" height="307"/>
+                                <rect key="frame" x="200" y="167.5" width="267" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kA7-q9-Jhe">
-                                        <rect key="frame" x="30" y="271" width="66" height="16"/>
+                                        <rect key="frame" x="30" y="106.5" width="53" height="23.5"/>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rlo-6b-NZl">
-                                        <rect key="frame" x="183" y="10" width="209" height="31"/>
+                                        <rect key="frame" x="111.5" y="10" width="137.5" height="31"/>
                                     </slider>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8X-y8-KlN">
-                                        <rect key="frame" x="311" y="261" width="51" height="31"/>
+                                        <rect key="frame" x="168" y="104" width="51" height="31"/>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqz-Db-rGG">
-                                        <rect key="frame" x="20" y="20" width="79.5" height="16"/>
+                                        <rect key="frame" x="20" y="20" width="66" height="23.5"/>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -267,24 +267,24 @@
             <objects>
                 <viewController id="Vu1-Cx-7MF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eVP-db-Poi">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Push buttons for win" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NjR-mA-rJG">
-                                <rect key="frame" x="256" y="170.5" width="512" height="384"/>
+                                <rect key="frame" x="167" y="167.5" width="333.5" height="187.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5R-aE-KkN">
-                                <rect key="frame" x="20" y="40" width="40" height="40"/>
+                                <rect key="frame" x="20" y="20" width="40" height="40"/>
                                 <state key="normal" backgroundImage="BackButton"/>
                                 <connections>
                                     <segue destination="qaK-cT-uhK" kind="show" id="S82-lk-f0D"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyL-dN-8Ve">
-                                <rect key="frame" x="454.5" y="85" width="115" height="35.5"/>
+                                <rect key="frame" x="276" y="65" width="115" height="52.5"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -313,17 +313,17 @@
             <objects>
                 <viewController restorationIdentifier="LobbyOptionsViewController" storyboardIdentifier="LobbyOptionsViewController" id="oiz-Hc-sJ1" customClass="LobbyOptionsViewController" customModule="StickCombat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dr1-eR-c7e">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Параметры лобби" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS7-uk-BGr">
-                                <rect key="frame" x="318.5" y="246.5" width="387.5" height="35.5"/>
+                                <rect key="frame" x="142" y="41.5" width="383" height="52.5"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lx-x6-SqV">
-                                <rect key="frame" x="437" y="688" width="150" height="50"/>
+                                <rect key="frame" x="258.5" y="295" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="COc-qV-j9k"/>
                                     <constraint firstAttribute="width" constant="150" id="fLp-sw-UL6"/>
@@ -338,10 +338,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mE5-lR-3BE" userLabel="TextBoxes">
-                                <rect key="frame" x="256" y="309" width="512" height="150"/>
+                                <rect key="frame" x="167" y="112.5" width="333.5" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ETY-T6-UOs">
-                                        <rect key="frame" x="236" y="13" width="256" height="30"/>
+                                        <rect key="frame" x="146.5" y="17.5" width="167" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="YlW-Tu-lrN"/>
                                         </constraints>
@@ -350,7 +350,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dR-Yv-LKT">
-                                        <rect key="frame" x="236" y="44.5" width="256" height="30"/>
+                                        <rect key="frame" x="146.5" y="58" width="167" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="vMW-R6-hhc"/>
                                         </constraints>
@@ -359,19 +359,27 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZU-es-S2F">
-                                        <rect key="frame" x="10" y="51.5" width="69.5" height="16"/>
+                                        <rect key="frame" x="10" y="60.5" width="110" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="b9r-QL-9gg"/>
+                                            <constraint firstAttribute="height" constant="25" id="w1B-IM-jwI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcR-cb-xn0">
-                                        <rect key="frame" x="10" y="20" width="92" height="16"/>
+                                        <rect key="frame" x="10" y="20" width="110" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="q74-L7-Pz1"/>
+                                            <constraint firstAttribute="width" constant="110" id="qmx-si-HTp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jNh-8n-qau">
-                                        <rect key="frame" x="236" y="77" width="256" height="30"/>
+                                        <rect key="frame" x="146.5" y="99.5" width="167" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="yGc-vS-owv"/>
                                         </constraints>
@@ -380,7 +388,11 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Никнейм" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpZ-4p-Z5p">
-                                        <rect key="frame" x="10" y="84" width="84" height="16"/>
+                                        <rect key="frame" x="10" y="102" width="110" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="MBj-vc-X1X"/>
+                                            <constraint firstAttribute="width" constant="110" id="lcL-ri-6Pz"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -434,20 +446,20 @@
             <objects>
                 <viewController restorationIdentifier="GameModeViewController" storyboardIdentifier="GameModeViewController" title="GameModeViewController" id="9SU-oT-RFL" customClass="GameModeViewController" customModule="StickCombat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I6x-f1-J8z">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Параметры сервера" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpk-qt-rQx">
-                                <rect key="frame" x="296" y="246.5" width="432.5" height="35.5"/>
+                                <rect key="frame" x="119" y="41.5" width="429" height="52.5"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAR-xI-MGy" userLabel="TextBoxes">
-                                <rect key="frame" x="307" y="324" width="410" height="120"/>
+                                <rect key="frame" x="200" y="127.5" width="267" height="120"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tIE-qI-Hta">
-                                        <rect key="frame" x="185" y="13" width="205" height="30"/>
+                                        <rect key="frame" x="113.5" y="17.5" width="133.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GxB-SF-qT1"/>
                                         </constraints>
@@ -456,7 +468,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lom-jE-9QP">
-                                        <rect key="frame" x="185" y="77" width="205" height="30"/>
+                                        <rect key="frame" x="113.5" y="72.5" width="133.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="bTj-H0-IgU"/>
                                         </constraints>
@@ -465,13 +477,21 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Порт" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jh-er-97L">
-                                        <rect key="frame" x="10" y="84" width="47" height="16"/>
+                                        <rect key="frame" x="10" y="75" width="70" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="ETQ-c3-fTr"/>
+                                            <constraint firstAttribute="width" constant="70" id="aCM-OH-ZMK"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адрес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkO-6S-AQd">
-                                        <rect key="frame" x="10" y="20" width="58" height="16"/>
+                                        <rect key="frame" x="10" y="20" width="70" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="2pB-Cm-L8F"/>
+                                            <constraint firstAttribute="width" constant="70" id="v0L-b1-bD3"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -493,10 +513,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PlJ-3u-qmb" userLabel="Buttons">
-                                <rect key="frame" x="205" y="626" width="614" height="92"/>
+                                <rect key="frame" x="133.5" y="280" width="400" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-O1-Mwx">
-                                        <rect key="frame" x="10" y="21" width="140" height="50"/>
+                                        <rect key="frame" x="10" y="-2.5" width="140" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="DI6-aH-Y5i"/>
                                             <constraint firstAttribute="width" constant="140" id="GHa-zO-t8d"/>
@@ -510,7 +530,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ape-cM-8dl">
-                                        <rect key="frame" x="464" y="21" width="140" height="50"/>
+                                        <rect key="frame" x="250" y="-2.5" width="140" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5QQ-NL-yAZ"/>
                                             <constraint firstAttribute="width" constant="140" id="908-VI-IGk"/>
@@ -561,11 +581,11 @@
             <objects>
                 <viewController restorationIdentifier="GameViewController" storyboardIdentifier="GameViewController" id="BV1-FR-VrT" customClass="GameViewController" customModule="StickCombat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYY-ZE-8FQ" userLabel="LeftStickView" customClass="JoystickStickView" customModule="StickCombat" customModuleProvider="target">
-                                <rect key="frame" x="15" y="618" width="160" height="160"/>
+                                <rect key="frame" x="15" y="225" width="160" height="160"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="RlQ-be-jZd"/>
@@ -599,17 +619,17 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-NN-21D">
-                                <rect key="frame" x="472" y="50" width="80" height="20"/>
+                                <rect key="frame" x="293.5" y="25" width="80" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="cZJ-qb-TFo"/>
+                                    <constraint firstAttribute="height" constant="30" id="cZJ-qb-TFo"/>
                                     <constraint firstAttribute="width" constant="80" id="jk4-uu-Qjr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-g2-i4O">
-                                <rect key="frame" x="964" y="40" width="40" height="40"/>
+                                <rect key="frame" x="607" y="20" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="PV1-z6-HgJ"/>
                                     <constraint firstAttribute="height" constant="40" id="QdA-Nz-wzu"/>
@@ -620,7 +640,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uo7-HJ-Ctn" customClass="JoystickButtonsView" customModule="StickCombat" customModuleProvider="target">
-                                <rect key="frame" x="894" y="628" width="100" height="100"/>
+                                <rect key="frame" x="537" y="235" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="BxF-l4-AFA"/>
                                     <constraint firstAttribute="height" constant="100" id="YuB-tl-Q28"/>
@@ -640,7 +660,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzJ-Fa-yvu">
-                                <rect key="frame" x="20" y="40" width="40" height="40"/>
+                                <rect key="frame" x="20" y="20" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LCz-Qf-nmv"/>
                                     <constraint firstAttribute="width" constant="40" id="aqk-2j-vNk"/>
@@ -650,14 +670,14 @@
                                     <action selector="surrenderGame:" destination="BV1-FR-VrT" eventType="touchUpInside" id="E28-1K-I91"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Боец1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oj-ar-JmT">
-                                <rect key="frame" x="120" y="48" width="59.5" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Боец1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oj-ar-JmT">
+                                <rect key="frame" x="120" y="28" width="113.5" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Боец2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX0-Cf-yxg">
-                                <rect key="frame" x="842" y="48" width="62" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Боец2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX0-Cf-yxg">
+                                <rect key="frame" x="433.5" y="28" width="113.5" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -672,11 +692,13 @@
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="HUI-g2-i4O" secondAttribute="trailing" constant="20" id="HjR-zr-0jk"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="EYY-ZE-8FQ" secondAttribute="bottom" constant="-10" id="QJq-v1-Rpe"/>
                             <constraint firstItem="HUI-g2-i4O" firstAttribute="leading" secondItem="vX0-Cf-yxg" secondAttribute="trailing" constant="60" id="RZl-bG-djg"/>
+                            <constraint firstItem="vX0-Cf-yxg" firstAttribute="leading" secondItem="ivp-NN-21D" secondAttribute="trailing" constant="60" id="Trh-P1-1gh"/>
                             <constraint firstItem="HUI-g2-i4O" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="V16-9a-tUB"/>
                             <constraint firstItem="bzJ-Fa-yvu" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="fne-od-U1R"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="Uo7-HJ-Ctn" secondAttribute="trailing" constant="30" id="jft-0a-FbM"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="Uo7-HJ-Ctn" secondAttribute="bottom" constant="40" id="kah-z9-1Gr"/>
                             <constraint firstItem="EYY-ZE-8FQ" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="15" id="lSV-CF-rpd"/>
+                            <constraint firstItem="ivp-NN-21D" firstAttribute="leading" secondItem="6oj-ar-JmT" secondAttribute="trailing" constant="60" id="pNG-MZ-riY"/>
                             <constraint firstItem="vX0-Cf-yxg" firstAttribute="centerY" secondItem="HUI-g2-i4O" secondAttribute="centerY" id="qG3-fr-aFm"/>
                             <constraint firstItem="ivp-NN-21D" firstAttribute="centerY" secondItem="HUI-g2-i4O" secondAttribute="centerY" id="wRO-Vg-5L9"/>
                         </constraints>
@@ -699,24 +721,24 @@
             <objects>
                 <viewController id="2bG-mh-mWC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kbb-kZ-z5a">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj1-nz-Blz">
-                                <rect key="frame" x="402.5" y="75" width="219" height="35.5"/>
+                                <rect key="frame" x="225.5" y="55" width="216" height="52.5"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idQ-qk-GlQ">
-                                <rect key="frame" x="437" y="155.5" width="150" height="92"/>
+                                <rect key="frame" x="258.5" y="152.5" width="150" height="45"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
                                 <state key="normal" title="Resume" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLw-mv-tDH">
-                                <rect key="frame" x="437" y="370" width="150" height="42"/>
+                                <rect key="frame" x="258.5" y="272.5" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="28"/>
                                 <state key="normal" title="Exit" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -726,13 +748,13 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOq-ax-Pdf" userLabel="Volume">
-                                <rect key="frame" x="307" y="262.5" width="410" height="92.5"/>
+                                <rect key="frame" x="200" y="212.5" width="267" height="45"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lJl-a7-wpL">
-                                        <rect key="frame" x="234" y="0.0" width="168" height="93.5"/>
+                                        <rect key="frame" x="148" y="0.0" width="111" height="46"/>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sa5-a6-YvG">
-                                        <rect key="frame" x="10" y="0.0" width="164" height="92.5"/>
+                                        <rect key="frame" x="10" y="0.0" width="107" height="45"/>
                                         <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -777,7 +799,7 @@
             <objects>
                 <viewController id="CfH-JR-Jr5" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uOH-uK-eoO">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjg-uF-0JZ">
@@ -789,7 +811,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zt-zW-afC">
-                                <rect key="frame" x="437" y="175.5" width="150" height="42"/>
+                                <rect key="frame" x="258.5" y="172.5" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="18"/>
                                 <state key="normal" title="To main menu" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -799,14 +821,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-SH-xyy">
-                                <rect key="frame" x="437" y="247.5" width="150" height="42"/>
+                                <rect key="frame" x="258.5" y="244.5" width="150" height="42"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="16"/>
                                 <state key="normal" title="To homescreen" backgroundImage="MenuButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dc5-l1-EbM">
-                                <rect key="frame" x="462.5" y="75" width="99" height="35.5"/>
+                                <rect key="frame" x="287.5" y="55" width="92.5" height="52.5"/>
                                 <fontDescription key="fontDescription" name="SFSportsNightNS" family="SF Sports Night NS" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
