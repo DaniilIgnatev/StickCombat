@@ -26,10 +26,10 @@ class LobbyOptionsViewController: UIViewController{
             guard let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else{
                 return
             }
-
+            
             guard let adress = URL(string: "ws://\(ip):\(password)")else {
                 let menuViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
-
+                
                 present(menuViewController, animated: true, completion: nil)
                 return
             }
@@ -55,11 +55,26 @@ class LobbyOptionsViewController: UIViewController{
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 if passwordTextBox.isEditing{
-                    self.view.frame.origin.y -= abs(keyboardSize.height - passwordTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
+                    let shiftTF = textBoxesView.frame.height - passwordTextBox.frame.origin.y - passwordTextBox.frame.height
+                    let shift = shiftTF + shiftTFV
+                    if(keyboardSize.height - shift) > 0{
+                        self.view.frame.origin.y -= keyboardSize.height - shift
+                    }
                 }else if nameTextBox.isEditing{
-                    self.view.frame.origin.y -= abs(keyboardSize.height - nameTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
+                    let shiftTF = textBoxesView.frame.height - nameTextBox.frame.origin.y - nameTextBox.frame.height
+                    let shift = shiftTF + shiftTFV
+                    if(keyboardSize.height - shift) > 0{
+                        self.view.frame.origin.y -= keyboardSize.height - shift
+                    }
                 }else if nicknameTextBox.isEditing{
-                    self.view.frame.origin.y -= abs(keyboardSize.height - nicknameTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
+                    let shiftTF = textBoxesView.frame.height - nicknameTextBox.frame.origin.y - nicknameTextBox.frame.height
+                    let shift = shiftTF + shiftTFV
+                    if(keyboardSize.height - shift) > 0{
+                        self.view.frame.origin.y -= keyboardSize.height - shift
+                    }
                 }
             }
         }

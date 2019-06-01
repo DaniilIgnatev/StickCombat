@@ -53,9 +53,19 @@ class GameModeViewController: UIViewController{
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 if ipTextBox.isEditing{
-                    self.view.frame.origin.y -= abs(keyboardSize.height - ipTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
+                    let shiftTF = textBoxesView.frame.height - ipTextBox.frame.origin.y - ipTextBox.frame.height
+                    let shift = shiftTF + shiftTFV
+                    if (keyboardSize.height - shift) > 0{
+                        self.view.frame.origin.y -= keyboardSize.height - shift
+                    }
                 }else if portTextBox.isEditing{
-                    self.view.frame.origin.y -= abs(keyboardSize.height - portTextBox.frame.origin.y - textBoxesView.frame.origin.y)
+                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
+                    let shiftTF = textBoxesView.frame.height - portTextBox.frame.origin.y - portTextBox.frame.height
+                    let shift = shiftTF + shiftTFV
+                    if(keyboardSize.height - shift) > 0{
+                        self.view.frame.origin.y -= keyboardSize.height - shift
+                    }
                 }
             }
         }
