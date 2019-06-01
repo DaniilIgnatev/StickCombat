@@ -55,26 +55,11 @@ class LobbyOptionsViewController: UIViewController{
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 if passwordTextBox.isEditing{
-                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
-                    let shiftTF = textBoxesView.frame.height - passwordTextBox.frame.origin.y - passwordTextBox.frame.height
-                    let shift = shiftTF + shiftTFV
-                    if(keyboardSize.height - shift) > 0{
-                        self.view.frame.origin.y -= keyboardSize.height - shift
-                    }
+                    shiftView(mainView: self.view, textBoxesView: self.textBoxesView, textField: self.passwordTextBox, keyboardSize: keyboardSize)
                 }else if nameTextBox.isEditing{
-                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
-                    let shiftTF = textBoxesView.frame.height - nameTextBox.frame.origin.y - nameTextBox.frame.height
-                    let shift = shiftTF + shiftTFV
-                    if(keyboardSize.height - shift) > 0{
-                        self.view.frame.origin.y -= keyboardSize.height - shift
-                    }
+                    shiftView(mainView: self.view, textBoxesView: self.textBoxesView, textField: self.nameTextBox, keyboardSize: keyboardSize)
                 }else if nicknameTextBox.isEditing{
-                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
-                    let shiftTF = textBoxesView.frame.height - nicknameTextBox.frame.origin.y - nicknameTextBox.frame.height
-                    let shift = shiftTF + shiftTFV
-                    if(keyboardSize.height - shift) > 0{
-                        self.view.frame.origin.y -= keyboardSize.height - shift
-                    }
+                    shiftView(mainView: self.view, textBoxesView: self.textBoxesView, textField: self.nicknameTextBox, keyboardSize: keyboardSize)
                 }
             }
         }
@@ -85,6 +70,16 @@ class LobbyOptionsViewController: UIViewController{
             self.view.frame.origin.y = 0
         }
     }
+    
+    private func shiftView(mainView: UIView, textBoxesView: UIView, textField: UITextField, keyboardSize: CGRect){
+        let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
+        let shiftTF = textBoxesView.frame.height - textField.frame.origin.y - textField.frame.height
+        let shift = shiftTF + shiftTFV
+        if (keyboardSize.height - shift) > 0{
+            self.view.frame.origin.y -= keyboardSize.height - shift
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.first != nil{
             view.endEditing(true)

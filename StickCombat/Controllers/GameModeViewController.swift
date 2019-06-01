@@ -53,19 +53,9 @@ class GameModeViewController: UIViewController{
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 if ipTextBox.isEditing{
-                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
-                    let shiftTF = textBoxesView.frame.height - ipTextBox.frame.origin.y - ipTextBox.frame.height
-                    let shift = shiftTF + shiftTFV
-                    if (keyboardSize.height - shift) > 0{
-                        self.view.frame.origin.y -= keyboardSize.height - shift
-                    }
+                    shiftView(mainView: self.view, textBoxesView: self.textBoxesView, textField: self.ipTextBox, keyboardSize: keyboardSize)
                 }else if portTextBox.isEditing{
-                    let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
-                    let shiftTF = textBoxesView.frame.height - portTextBox.frame.origin.y - portTextBox.frame.height
-                    let shift = shiftTF + shiftTFV
-                    if(keyboardSize.height - shift) > 0{
-                        self.view.frame.origin.y -= keyboardSize.height - shift
-                    }
+                    shiftView(mainView: self.view, textBoxesView: self.textBoxesView, textField: self.portTextBox, keyboardSize: keyboardSize)
                 }
             }
         }
@@ -76,6 +66,17 @@ class GameModeViewController: UIViewController{
             self.view.frame.origin.y = 0
         }
     }
+    
+    private func shiftView(mainView: UIView, textBoxesView: UIView, textField: UITextField, keyboardSize: CGRect){
+        let shiftTFV = view.frame.height - textBoxesView.frame.origin.y - textBoxesView.frame.height
+        let shiftTF = textBoxesView.frame.height - textField.frame.origin.y - textField.frame.height
+        let shift = shiftTF + shiftTFV
+        if (keyboardSize.height - shift) > 0{
+            self.view.frame.origin.y -= keyboardSize.height - shift
+            print(self.view.frame.origin.y)
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.first != nil{
             view.endEditing(true)
