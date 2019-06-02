@@ -465,11 +465,11 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
             let myFighter = playingFighterDescriptor
             let opponentFighter = opponentFighterDescriptor
 
-            if  myFighter.hp <= 0{
+            if  myFighter.hp < opponentFighter.hp{
                 self.sceneDescriptor.status = .defeat
             }
             else
-                if opponentFighter.hp <= 0{
+                if myFighter.hp > opponentFighter.hp{
                     self.sceneDescriptor.status = .victory
                 }
                 else{
