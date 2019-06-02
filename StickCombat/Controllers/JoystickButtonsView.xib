@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JoystickButtonsView" customModule="StickCombat" customModuleProvider="target">
+            <connections>
+                <outlet property="button_A" destination="6WD-3X-Z5D" id="Zv0-DG-flK"/>
+                <outlet property="button_B" destination="RRH-1f-5kc" id="EQ8-dn-Pmc"/>
+                <outlet property="button_C" destination="Uor-Dy-adf" id="TT9-TM-jbJ"/>
+                <outlet property="button_D" destination="Skf-kC-4B4" id="zDo-cc-9KP"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="5rI-GA-DYz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WD-3X-Z5D" userLabel="Button_A">
+                    <rect key="frame" x="10" y="10" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="6WD-3X-Z5D" secondAttribute="height" multiplier="1:1" id="DAO-EF-qEm"/>
+                    </constraints>
+                    <state key="normal" image="Abutton"/>
+                    <connections>
+                        <action selector="button_A_touchDown:" destination="-1" eventType="touchDown" id="KoE-kc-JWa"/>
+                        <action selector="button_A_touchUp:" destination="-1" eventType="touchUpInside" id="OtT-Oh-hgt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRH-1f-5kc" userLabel="Button_B">
+                    <rect key="frame" x="120" y="10" width="70" height="70"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <bool key="isElement" value="NO"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="RRH-1f-5kc" secondAttribute="height" multiplier="1:1" id="caP-Pu-d5t"/>
+                    </constraints>
+                    <state key="normal" image="Bbutton"/>
+                    <connections>
+                        <action selector="button_B_touchDown:" destination="-1" eventType="touchDown" id="sFL-eM-HLe"/>
+                        <action selector="button_B_touchUp:" destination="-1" eventType="touchUpInside" id="KUx-rD-r4N"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uor-Dy-adf" userLabel="Button_C">
+                    <rect key="frame" x="10" y="120" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Uor-Dy-adf" secondAttribute="height" multiplier="1:1" id="tkc-x2-9Gf"/>
+                    </constraints>
+                    <state key="normal" image="Cbutton"/>
+                    <connections>
+                        <action selector="button_C_touchDown:" destination="-1" eventType="touchDown" id="Y6C-Wd-gDa"/>
+                        <action selector="button_C_touchUp:" destination="-1" eventType="touchUpInside" id="Saj-pr-eYA"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skf-kC-4B4" userLabel="Button_D">
+                    <rect key="frame" x="120" y="120" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Skf-kC-4B4" secondAttribute="height" multiplier="1:1" id="kIR-HN-361"/>
+                    </constraints>
+                    <state key="normal" image="Dbutton"/>
+                    <connections>
+                        <action selector="button_D_TouchUP:" destination="-1" eventType="touchUpInside" id="L0a-Xq-gMz"/>
+                        <action selector="button_D_touchDown:" destination="-1" eventType="touchDown" id="40Y-6m-wcU"/>
+                    </connections>
+                </button>
+            </subviews>
+            <accessibility key="accessibilityConfiguration">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Uor-Dy-adf" secondAttribute="bottom" constant="10" id="2Xv-t0-04v"/>
+                <constraint firstAttribute="bottom" secondItem="Skf-kC-4B4" secondAttribute="bottom" constant="20" id="3Qg-Se-FlY"/>
+                <constraint firstItem="Uor-Dy-adf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="4UD-xn-M9H"/>
+                <constraint firstAttribute="bottom" secondItem="Uor-Dy-adf" secondAttribute="bottom" constant="20" id="4nt-Bn-JQh"/>
+                <constraint firstAttribute="trailing" secondItem="RRH-1f-5kc" secondAttribute="trailing" constant="20" id="58t-ee-hXV"/>
+                <constraint firstItem="RRH-1f-5kc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="GSr-S6-8MQ"/>
+                <constraint firstItem="RRH-1f-5kc" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.35" id="HfH-5h-Ijb"/>
+                <constraint firstAttribute="trailing" secondItem="RRH-1f-5kc" secondAttribute="trailing" constant="10" id="J5g-4F-x49"/>
+                <constraint firstItem="6WD-3X-Z5D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="JDF-jl-UKa"/>
+                <constraint firstItem="6WD-3X-Z5D" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.35" id="Ru9-7P-j6D"/>
+                <constraint firstItem="6WD-3X-Z5D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="YIa-be-gjA"/>
+                <constraint firstItem="Uor-Dy-adf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="arz-C7-xVD"/>
+                <constraint firstAttribute="trailing" secondItem="Skf-kC-4B4" secondAttribute="trailing" constant="20" id="e9b-zF-LZa"/>
+                <constraint firstItem="Skf-kC-4B4" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.35" id="euh-UI-Oey"/>
+                <constraint firstItem="6WD-3X-Z5D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="fuH-Y1-C12"/>
+                <constraint firstAttribute="bottom" secondItem="Skf-kC-4B4" secondAttribute="bottom" constant="10" id="jrC-4R-zJA"/>
+                <constraint firstAttribute="trailing" secondItem="Skf-kC-4B4" secondAttribute="trailing" constant="10" id="mWI-LG-LJR"/>
+                <constraint firstItem="Uor-Dy-adf" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.35" id="sYQ-TO-YHs"/>
+                <constraint firstItem="6WD-3X-Z5D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="wGo-3I-b3z"/>
+                <constraint firstItem="RRH-1f-5kc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="yJi-3E-9Wc"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="JDF-jl-UKa"/>
+                    <exclude reference="wGo-3I-b3z"/>
+                    <exclude reference="2Xv-t0-04v"/>
+                    <exclude reference="arz-C7-xVD"/>
+                    <exclude reference="J5g-4F-x49"/>
+                    <exclude reference="yJi-3E-9Wc"/>
+                    <exclude reference="jrC-4R-zJA"/>
+                    <exclude reference="mWI-LG-LJR"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="JDF-jl-UKa"/>
+                    <exclude reference="YIa-be-gjA"/>
+                    <exclude reference="fuH-Y1-C12"/>
+                    <include reference="wGo-3I-b3z"/>
+                    <include reference="2Xv-t0-04v"/>
+                    <exclude reference="4UD-xn-M9H"/>
+                    <exclude reference="4nt-Bn-JQh"/>
+                    <include reference="arz-C7-xVD"/>
+                    <exclude reference="58t-ee-hXV"/>
+                    <exclude reference="GSr-S6-8MQ"/>
+                    <include reference="J5g-4F-x49"/>
+                    <include reference="yJi-3E-9Wc"/>
+                    <exclude reference="3Qg-Se-FlY"/>
+                    <exclude reference="e9b-zF-LZa"/>
+                    <include reference="jrC-4R-zJA"/>
+                    <include reference="mWI-LG-LJR"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Abutton" width="128" height="128"/>
+        <image name="Bbutton" width="128" height="128"/>
+        <image name="Cbutton" width="128" height="128"/>
+        <image name="Dbutton" width="128" height="128"/>
+    </resources>
+</document>

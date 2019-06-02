@@ -48,15 +48,19 @@ class JoystickStickView: UIView, Joystick {
     }
     
     
-    private var _StickRadius : CGFloat = 20
-    @IBInspectable public var StickRadius : CGFloat{
+    private var _StickRadiusRatio : CGFloat = 0.2
+    @IBInspectable public var StickRadiusRatio : CGFloat{
         get{
-            return _StickRadius
+            return _StickRadiusRatio
         }
         set{
-            _StickRadius = newValue
+            _StickRadiusRatio = newValue
             setNeedsDisplay()
         }
+    }
+
+    private func StickRadius() -> CGFloat{
+        return (bounds.width / 2) * _StickRadiusRatio
     }
     
     
@@ -147,7 +151,7 @@ class JoystickStickView: UIView, Joystick {
     
     
     private func RingRadius() -> CGFloat{
-        return (bounds.width / 2) - _StickThickness - _StickRadius 
+        return (bounds.width / 2) - _StickThickness - (bounds.width / 2) * _StickRadiusRatio
     }
     
     
@@ -174,7 +178,7 @@ class JoystickStickView: UIView, Joystick {
             let locations : [CGFloat] = [0.0,_RingColorPoint,1.0]
             
             let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: locations)!
-            context.drawRadialGradient(gradient, startCenter: StickPosition!, startRadius: 0, endCenter: StickPosition!, endRadius: StickRadius, options:  .drawsBeforeStartLocation)
+            context.drawRadialGradient(gradient, startCenter: StickPosition!, startRadius: 0, endCenter: StickPosition!, endRadius: StickRadius(), options:  .drawsBeforeStartLocation)
         }
     }
 
@@ -235,16 +239,14 @@ class JoystickStickView: UIView, Joystick {
         var cos = dx / localRadius;
         
         //Check negative cos
-        if (superPos.x < center.x)
-        {
+        if (superPos.x < center.x){
             cos *= -1;
         }
         
         var Angle = acos(cos) * 180.0 / CGFloat.pi
         
         //Check negative sin
-        if (superPos.y > center.y)
-        {
+        if (superPos.y > center.y){
             Angle = 360.0 - Angle;
         }
         
@@ -301,9 +303,6 @@ class JoystickStickView: UIView, Joystick {
                 StickPosition = StickerPosBy(angle: angle, scale: 1.0)
                 power = 1.0
             }
-            
-            
-            //delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: (angle: angle, power: power), buttonPressed: nil, buttonReleased: nil))
             //print("angle: \(angle); scale\(scale.xyScale)")
         }
     }

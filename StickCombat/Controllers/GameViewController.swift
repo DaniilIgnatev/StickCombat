@@ -130,7 +130,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()        
 
-        combatScene.scaleMode = .resizeFill
+        combatScene.scaleMode = .fill
         receptionScene.scaleMode = .resizeFill
         pauseScene.scaleMode = .resizeFill
         refusedConnectionScene.scaleMode = .resizeFill
@@ -144,8 +144,8 @@ class GameViewController: UIViewController, LobbyDelegate  {
         View.ignoresSiblingOrder = true
 
         //дебаг
-        View.showsFPS = true
-        View.showsNodeCount = true
+        //View.showsFPS = true
+        //View.showsNodeCount = true
 
         View.presentScene(receptionScene)
 
