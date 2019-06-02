@@ -400,7 +400,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     
     private func updateHPNodeContent(label: SKLabelNode,endHp : CGFloat){
         let intHp = Int(endHp)
-        label.text = "\(intHp)хп"
+        label.text = "\(intHp)"
     }
     
 

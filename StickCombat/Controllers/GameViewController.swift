@@ -175,7 +175,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
             print("Статус: connection over")
             print("Ошибка. Должен быть перевод на surrender,victory или defeat")
         case .surrender:
-            print("Статус: connection surrender")
+            print("Статус: surrender")
             View.presentScene(surrenderScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(surrenderScene)
@@ -185,17 +185,17 @@ class GameViewController: UIViewController, LobbyDelegate  {
             hideJoysticks()
             View.presentScene(refusedConnectionScene)
         case .pause:
-            print("Статус: connection pause")
+            print("Статус: pause")
             View.presentScene(pauseScene,transition: .doorsCloseHorizontal(withDuration: 0.2))
              hideJoysticks()
             View.presentScene(pauseScene)
         case .victory:
-            print("Статус: connection victory")
+            print("Статус: victory")
             View.presentScene(victoryScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(victoryScene)
         case .defeat:
-            print("Статус: connection defeat")
+            print("Статус: defeat")
             View.presentScene(defeatScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(defeatScene)
