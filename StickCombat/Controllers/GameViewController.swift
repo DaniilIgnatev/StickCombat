@@ -223,7 +223,22 @@ class GameViewController: UIViewController, LobbyDelegate  {
 
 
     func gameTimer(timeLeft: (Int, Int)) {
-        timeLeftLabel.text = String(timeLeft.0) + ":" + String(timeLeft.1)
+        let min = timeLeft.0
+        let sec = timeLeft.1
+
+        var text = ""
+
+        if min < 10 && min != 0{
+            text += "0"
+        }
+        text += "\(min):"
+
+        if sec < 10 && sec != 0{
+            text += "0"
+        }
+        text += "\(sec)"
+
+        timeLeftLabel.text = text
     }
     
 
