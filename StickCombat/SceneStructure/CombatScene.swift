@@ -36,12 +36,6 @@ class CombatScene: SKScene, LobbyDelegate {
     ///Запросить изменение статуса из вне
     func RequestStatus(status: LobbyStatusEnum) {
         Logic!.requestStatusAction(StatusAction(fighter: Logic!.FighterID, statusID: status, nickname1: nil, nickname2: nil))
-
-        if status == .surrender{
-            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
-                self.Logic!.StopProcessingLogic()
-            }
-        }
     }
 
 
@@ -89,18 +83,6 @@ class CombatScene: SKScene, LobbyDelegate {
     ///Действия при переходе на сцену (игра началась)
     override func didMove(to view: SKView) {
         
-        /*
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: w, height: w))
-*/
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

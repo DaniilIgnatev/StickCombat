@@ -167,10 +167,6 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
                 ])
             ), withKey: "gameTimer")
         }
-
-        //self.gameTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
-
-        //}
     }
 
 
@@ -220,7 +216,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        delegate?.statusChanged(.ConnectionLost)
+        processStatusAction(StatusAction.init(fighter: fighterID, statusID: .ConnectionLost))
     }
 
 
@@ -273,6 +269,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
     private var isProcessAnswers = true
 
+    ///Остановка обработки данных
     func StopProcessingLogic() {
         isProcessAnswers = false
         requestQueue.isSuspended = true
@@ -281,6 +278,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
+    ///Запрос соединения действия
     func requestConnectionAction(_ action : ConnectionAction) {
         //отправить connection action на сервер
         //парсинг, отправка
@@ -290,7 +288,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         }
     }
 
-
+    ///Запрос игрвого действия
     func requestGameAction(_ action : GameAction) {
         //отправить game action на сервер
         //парсинг, отправка
@@ -301,7 +299,18 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
+    ///Запрос статуса действия
     func requestStatusAction(_ action : StatusAction) {
+        if action.statusID == .surrender{
+            if action.statusID != .surrender && action.statusID != .defeat && action.statusID != .over && action.statusID != .victory{
+                 SceneDescriptor.status = .defeat//поражение не требует подтверждения
+            }
+
+            //остановка движка по таймеру
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (_) in
+                self.StopProcessingLogic()
+            }
+        }
         //отправить status action на сервер
         //парсинг, отправка
         requestQueue.addOperation {
@@ -312,7 +321,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
 
     //MARK: WS ANSWER
-
+    ///Обработчик входящих сообщений от сокета
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         guard isProcessAnswers else{
             return
@@ -349,35 +358,14 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
-    //MARK: CONDITION UPDATE
-
-    /*
-     func determineDirection() -> (fd1 : FighterDirection,fd2 : FighterDirection){
-     let f1 = self.sceneDescriptor.fighter_1
-
-     let x1 = self.sceneDescriptor.fighter_1.X
-     let x2 = self.sceneDescriptor.fighter_2.X
-
-     var direction1 = FighterDirection.right
-     var direction2 = FighterDirection.left
-
-     if x1 < x2 && !f1.pointInside(point: CGPoint(x: x2, y: 0)){
-     direction1 = .left
-     direction2 = .right
-     }
-
-     return (direction1,direction2)
-     }
-     */
-
-    
+    ///Обработка расположения надписи хп
     private func updateHPNodePosition(label: SKLabelNode,from: CGFloat, to: CGFloat){
         let duration =  FighterView.calculateTimeOfMoveAnimation(from: from, to: to)
         label.run(SKAction.move(to: CGPoint(x: to, y: label.position.y), duration: duration))
     }
-    
-    
-    func processHorizontalAction(_ action : HorizontalAction){
+
+    ///Обработка ответа передвижения
+    private func processHorizontalAction(_ action : HorizontalAction){
         //let (direct1,direct2) = determineDirection()
 
         if action.Fighter == .first{
@@ -397,14 +385,15 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
     
     
-    
+    ///Обновления надписи хп
     private func updateHPNodeContent(label: SKLabelNode,endHp : CGFloat){
         let intHp = Int(endHp)
         label.text = "\(intHp)"
     }
     
 
-    func processStrikeAction(_ action : StrikeAction){
+    ///Обработка ответа удара
+    private func processStrikeAction(_ action : StrikeAction){
         if action.Fighter == .first{
             //удар, вызваный первым бойцом
             self.sceneDescriptor.fighter_2.hp = action.endHP!
@@ -420,7 +409,8 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
-    func processBlockAction(_ action : BlockAction){
+    ///Обработка ответа блока
+    private func processBlockAction(_ action : BlockAction){
         if action.Fighter == .first{
             self.sceneDescriptor.fighter_1.isBlock = action.IsOn
 
@@ -443,53 +433,85 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         }
     }
 
-    func processStatusAction(_ action : StatusAction){
+
+    ///Обработка ответа статуса
+    private func processStatusAction(_ action : StatusAction){
         switch action.statusID {
         case .refused:
-            stopGameTimer()
-            self.sceneDescriptor.status = action.statusID
+            processRefusedStatusAnswer()
         case .pause:
-            stopGameTimer()
-            self.sceneDescriptor.status = action.statusID
+            processPauseStatusAnswer()
         case .fight:
-            if let nicknames = action.nicknames{
-                self.sceneDescriptor.fighter_1.nickname = nicknames.0
-                self.sceneDescriptor.fighter_2.nickname = nicknames.1
-            }
-            startGameTimer()
-            self.sceneDescriptor.status = action.statusID
-            self.delegate?.sceneCondition(condition: self.sceneDescriptor)
+            processFightStatusAnswer(nicknames: action.nicknames)
         case .over:
-            stopGameTimer()
-            //уточнение итогов окончания матча
-            let myFighter = playingFighterDescriptor
-            let opponentFighter = opponentFighterDescriptor
-
-            if  myFighter.hp <= opponentFighter.hp{
-                self.sceneDescriptor.status = .defeat
-            }
-            else{
-                self.sceneDescriptor.status = .victory
-            }
+            processOverStatusAnswer()
         case .surrender:
-        stopGameTimer()
-        //соединение оборвано осознано
-        if !socket.isConnected{
-            self.sceneDescriptor.status = .ConnectionLost
-        }
+            processSurrenderStatusAnswer()
         case .ConnectionLost:
-        stopGameTimer()
-        //сдача противника при ее наличии в статусе считается приоритетнее
-        if self.sceneDescriptor.status == .surrender{
-            return
-        }
-        self.sceneDescriptor.status = action.statusID
+            processConnectionLostStatusAnswer()
         default:
-        self.sceneDescriptor.status = action.statusID
+            self.sceneDescriptor.status = self.sceneDescriptor.status//без изменений
+        }
+
+        delegate?.statusChanged(sceneDescriptor.status)
     }
 
-    delegate?.statusChanged(sceneDescriptor.status)
-}
+
+    private func processRefusedStatusAnswer(){
+        stopGameTimer()
+        self.sceneDescriptor.status = .refused
+    }
+
+
+    private func processPauseStatusAnswer(){
+        stopGameTimer()
+        self.sceneDescriptor.status = .pause
+    }
+
+
+    private func processFightStatusAnswer(nicknames : (String,String)?){
+        if let nicknames = nicknames{
+            self.sceneDescriptor.fighter_1.nickname = nicknames.0
+            self.sceneDescriptor.fighter_2.nickname = nicknames.1
+        }
+        startGameTimer()
+
+        self.sceneDescriptor.status = .fight
+        self.delegate?.sceneCondition(condition: self.sceneDescriptor)
+    }
+
+
+    private func processOverStatusAnswer(){
+        stopGameTimer()
+        //уточнение итогов окончания матча
+        let myFighter = playingFighterDescriptor
+        let opponentFighter = opponentFighterDescriptor
+
+        if  myFighter.hp <= opponentFighter.hp{
+            self.sceneDescriptor.status = .defeat
+        }
+        else{
+            self.sceneDescriptor.status = .victory
+        }
+    }
+
+
+    private func processSurrenderStatusAnswer(){
+        stopGameTimer()
+
+        if sceneDescriptor.status != .over && sceneDescriptor.status != .defeat && sceneDescriptor.status != .victory{
+            sceneDescriptor.status = .surrender
+        }
+    }
+
+
+    private func processConnectionLostStatusAnswer(){
+        stopGameTimer()
+        //сдача противника при ее наличии в статусе считается приоритетнее
+        if sceneDescriptor.status != .surrender && sceneDescriptor.status != .over && sceneDescriptor.status != .defeat && sceneDescriptor.status != .victory {
+            self.sceneDescriptor.status = .ConnectionLost
+        }
+    }
 }
 
 
