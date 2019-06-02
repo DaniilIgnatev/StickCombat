@@ -400,7 +400,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     
     private func updateHPNodeContent(label: SKLabelNode,endHp : CGFloat){
         let intHp = Int(endHp)
-        label.text = "\(intHp)"
+        label.text = "\(intHp)хп"
     }
     
 
@@ -465,35 +465,31 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
             let myFighter = playingFighterDescriptor
             let opponentFighter = opponentFighterDescriptor
 
-            if  myFighter.hp < opponentFighter.hp{
+            if  myFighter.hp <= opponentFighter.hp{
                 self.sceneDescriptor.status = .defeat
             }
-            else
-                if myFighter.hp > opponentFighter.hp{
-                    self.sceneDescriptor.status = .victory
-                }
-                else{
-                    self.sceneDescriptor.status = .surrender
+            else{
+                self.sceneDescriptor.status = .victory
             }
         case .surrender:
-            stopGameTimer()
-            //соединение оборвано осознано
-            if !socket.isConnected{
-                self.sceneDescriptor.status = .ConnectionLost
-            }
-        case .ConnectionLost:
-            stopGameTimer()
-            //сдача противника при ее наличии в статусе считается приоритетнее
-            if self.sceneDescriptor.status == .surrender{
-                return
-            }
-            self.sceneDescriptor.status = action.statusID
-        default:
-            self.sceneDescriptor.status = action.statusID
+        stopGameTimer()
+        //соединение оборвано осознано
+        if !socket.isConnected{
+            self.sceneDescriptor.status = .ConnectionLost
         }
-
-        delegate?.statusChanged(sceneDescriptor.status)
+        case .ConnectionLost:
+        stopGameTimer()
+        //сдача противника при ее наличии в статусе считается приоритетнее
+        if self.sceneDescriptor.status == .surrender{
+            return
+        }
+        self.sceneDescriptor.status = action.statusID
+        default:
+        self.sceneDescriptor.status = action.statusID
     }
+
+    delegate?.statusChanged(sceneDescriptor.status)
+}
 }
 
 
