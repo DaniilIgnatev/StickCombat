@@ -116,6 +116,9 @@ class GameViewController: UIViewController, LobbyDelegate  {
     ///Сцена поражения
     private let defeatScene : SKScene = SKScene(fileNamed: "DefeatScene")!
 
+    ///Сцена ничьи
+    private let drawScene : SKScene = SKScene(fileNamed: "DrawScene")!
+
     ///Сцена сдачи
     private let surrenderScene : SKScene = SKScene(fileNamed: "SurrenderScene")!
 
@@ -139,6 +142,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
         surrenderScene.scaleMode = .resizeFill
         victoryScene.scaleMode = .resizeFill
         defeatScene.scaleMode = .resizeFill
+        drawScene.scaleMode = .resizeFill
 
 
         combatScene.lobbyDelegate = self
@@ -200,6 +204,11 @@ class GameViewController: UIViewController, LobbyDelegate  {
             View.presentScene(defeatScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(defeatScene)
+        case .draw:
+            print("Статус: draw")
+            View.presentScene(drawScene,transition: .flipVertical(withDuration: 0.2))
+            hideJoysticks()
+            View.presentScene(drawScene)
         }
     }
     

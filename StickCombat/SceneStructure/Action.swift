@@ -250,4 +250,5 @@ internal enum LobbyStatusEnum : Int{
     case ConnectionLost = 100//соединение с сервером утрачено по техническим причинам
     case victory = 101//победа
     case defeat = 102//поражение
+    case draw = 103//ничья
 }

@@ -24,6 +24,7 @@
 		852A5A0422195DCB000EEB12 /* FighterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0322195DCB000EEB12 /* FighterView.swift */; };
 		852A5A0622199CA5000EEB12 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A5A0522199CA5000EEB12 /* Joystick.swift */; };
 		855AC64D22A3F0FE00988992 /* JoystickButtonsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 855AC64C22A3F0FE00988992 /* JoystickButtonsView.xib */; };
+		857E441822A441F400FEB62E /* DrawScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 857E441722A441F400FEB62E /* DrawScene.sks */; };
 		859619492291A98A00B19F9B /* ReceptionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 859619482291A98A00B19F9B /* ReceptionScene.sks */; };
 		8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8596194A2291ACCA00B19F9B /* PauseScene.sks */; };
 		85DD9DF522932367001BB98C /* RefusedConnectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85DD9DF422932367001BB98C /* RefusedConnectionScene.sks */; };
@@ -58,6 +59,7 @@
 		852A5A0322195DCB000EEB12 /* FighterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FighterView.swift; sourceTree = "<group>"; };
 		852A5A0522199CA5000EEB12 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		855AC64C22A3F0FE00988992 /* JoystickButtonsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoystickButtonsView.xib; sourceTree = "<group>"; };
+		857E441722A441F400FEB62E /* DrawScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DrawScene.sks; sourceTree = "<group>"; };
 		859619482291A98A00B19F9B /* ReceptionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReceptionScene.sks; sourceTree = "<group>"; };
 		8596194A2291ACCA00B19F9B /* PauseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseScene.sks; sourceTree = "<group>"; };
 		85DD9DF422932367001BB98C /* RefusedConnectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RefusedConnectionScene.sks; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				852352E4229E88330026D153 /* SurrenderScene.sks */,
 				85FFE8B3229E893600F0E3E5 /* VictoryScene.sks */,
 				85FFE8B5229E896400F0E3E5 /* DefeatScene.sks */,
+				857E441722A441F400FEB62E /* DrawScene.sks */,
 			);
 			path = SKScenes;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				A5EDE75722204AFB000FC333 /* Menu.storyboard in Resources */,
 				8517A63A221294C200880F20 /* GameScene.sks in Resources */,
 				8596194B2291ACCA00B19F9B /* PauseScene.sks in Resources */,
+				857E441822A441F400FEB62E /* DrawScene.sks in Resources */,
 				8517A645221294C400880F20 /* Assets.xcassets in Resources */,
 				852352E5229E88330026D153 /* SurrenderScene.sks in Resources */,
 				85FFE8B4229E893600F0E3E5 /* VictoryScene.sks in Resources */,

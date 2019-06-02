@@ -125,10 +125,10 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
 
     ///Осталось играть минут
-    private var GameTimeLeft_Minutes : Int = 2
+    private var GameTimeLeft_Minutes : Int = 0
 
     ///Осталось играть секунд
-    private var GameTimeLeft_Seconds : Int = 0
+    private var GameTimeLeft_Seconds : Int = 10
 
 
     private var gameTimer : Timer? = nil
@@ -145,12 +145,12 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
             }
         }
 
-        delegate?.gameTimer(timeLeft: (GameTimeLeft_Minutes, GameTimeLeft_Seconds))
-
         if GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds == 0{
             stopGameTimer()
-            requestStatusAction(StatusAction(fighter: self.fighterID, statusID: .surrender))
+            requestStatusAction(StatusAction(fighter: self.fighterID, statusID: .over))
         }
+
+        delegate?.gameTimer(timeLeft: (GameTimeLeft_Minutes, GameTimeLeft_Seconds))
     }
 
 
@@ -311,6 +311,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
                 self.StopProcessingLogic()
             }
         }
+
         //отправить status action на сервер
         //парсинг, отправка
         requestQueue.addOperation {
@@ -469,6 +470,12 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     }
 
 
+    private func processDrawStatusAnswer(){
+        stopGameTimer()
+        self.sceneDescriptor.status = .pause
+    }
+
+
     private func processFightStatusAnswer(nicknames : (String,String)?){
         if let nicknames = nicknames{
             self.sceneDescriptor.fighter_1.nickname = nicknames.0
@@ -483,16 +490,23 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
     private func processOverStatusAnswer(){
         stopGameTimer()
-        //уточнение итогов окончания матча
         let myFighter = playingFighterDescriptor
         let opponentFighter = opponentFighterDescriptor
 
-        if  myFighter.hp <= opponentFighter.hp{
-            self.sceneDescriptor.status = .defeat
+
+        if myFighter.hp != 0 && opponentFighter.hp != 0{
+            self.sceneDescriptor.status = .draw
         }
         else{
-            self.sceneDescriptor.status = .victory
+            //уточнение итогов окончания матча
+            if  myFighter.hp <= opponentFighter.hp{
+                self.sceneDescriptor.status = .defeat
+            }
+            else{
+                self.sceneDescriptor.status = .victory
+            }
         }
+
     }
 
 
