@@ -69,7 +69,6 @@
 		933571C040C96E10A98A61EC /* Pods-StickCombat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickCombat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StickCombat/Pods-StickCombat.debug.xcconfig"; sourceTree = "<group>"; };
 		A518750F221AB4B2007CDFDE /* JoystickStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickStickView.swift; sourceTree = "<group>"; };
 		A5187511221AB73E007CDFDE /* JoystickButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickButtonsView.swift; sourceTree = "<group>"; };
-		A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFSportsNightNS.ttf; path = ../../../../Library/Fonts/SFSportsNightNS.ttf; sourceTree = "<group>"; };
 		A576DCA52292DFA90022C2B4 /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
 		A576DCA72292F88E0022C2B4 /* LobbyOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyOptionsViewController.swift; sourceTree = "<group>"; };
 		A5EDE75622204AFB000FC333 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -136,7 +135,6 @@
 				852A59FA22194ADE000EEB12 /* SceneStructure */,
 				A518750C221AB447007CDFDE /* Controllers */,
 				8517A644221294C400880F20 /* Assets.xcassets */,
-				A567BDD42232C40400D143B4 /* SFSportsNightNS.ttf */,
 				8517A646221294C400880F20 /* LaunchScreen.storyboard */,
 				8517A649221294C400880F20 /* Info.plist */,
 				A5EDE75622204AFB000FC333 /* Menu.storyboard */,
