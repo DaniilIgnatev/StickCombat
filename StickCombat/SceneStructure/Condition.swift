@@ -70,11 +70,6 @@ class FighterPresence {
         self.ID = id
         self.X = X
     }
-
-    ///Проверка на нахождение точки внутри бойца
-    public func pointInside(point : CGPoint) -> Bool{
-        return point.x >=  X - halfWidth && point.x <= X + halfWidth
-    }
 }
 
 

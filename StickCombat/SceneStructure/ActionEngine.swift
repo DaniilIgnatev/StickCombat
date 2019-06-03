@@ -31,7 +31,7 @@ class GestureEngine: ActionEngine, JoystickDelegate {
 
     //MARK: Context
     let fighter: FighterID
-    ///От чьего имени генерируются действия
+    ///От имени какого бойца генерируются действия
     var Fighter: FighterID{
         get{
             return fighter
@@ -65,7 +65,7 @@ class GestureEngine: ActionEngine, JoystickDelegate {
 
     //MARK: Commands processing
 
-    ///Генерация команды из данных дескриптора
+    ///Генерация команды из данных дескриптора джойстика
     func ControlCommand(descriptor : JoystickDescriptor) {
         var xVector : CGFloat = -1.0
         var opponentPosition : CGFloat = self.condition.fighter_1.X

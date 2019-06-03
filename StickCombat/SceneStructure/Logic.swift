@@ -69,7 +69,7 @@ class LogicManagerFactory {
 }
 
 
-///Алгоритм игры по протоколу websocket
+///Алгоритм игровой логики по протоколу websocket
 class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate {
 
     //MARK: INIT
@@ -508,7 +508,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     private func processSurrenderStatusAnswer(){
         stopGameTimer()
 
-        if sceneDescriptor.status == .over || sceneDescriptor.status == .fight || sceneDescriptor.status == .defeat || sceneDescriptor.status == .victory{
+        if sceneDescriptor.status == .over || sceneDescriptor.status == .defeat || sceneDescriptor.status == .victory{
             //блокировка от установления статуса surrender, у перечисленных статусов ниже приоритет выше
             return
         }

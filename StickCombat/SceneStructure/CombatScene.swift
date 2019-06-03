@@ -33,7 +33,7 @@ class CombatScene: SKScene, LobbyDelegate {
     ///Набор игровой логики
     internal var Logic : LogicManager? = nil
 
-    ///Запросить изменение статуса из вне
+    ///Запросить изменение статуса извне
     func RequestStatus(status: LobbyStatusEnum) {
         Logic!.requestStatusAction(StatusAction(fighter: Logic!.FighterID, statusID: status, nickname1: nil, nickname2: nil))
     }
