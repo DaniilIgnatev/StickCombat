@@ -50,7 +50,7 @@ class JoystickButtonsView: UIView, Joystick {
         if isCanClick{
             print("B released")
             delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .second))
-            HangOnClickDelay()
+            //HangOnClickDelay()
         }
     }
 
@@ -71,7 +71,7 @@ class JoystickButtonsView: UIView, Joystick {
         if isCanClick{
             print("C released")
             delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .third))
-            HangOnClickDelay()
+            //HangOnClickDelay()
         }
     }
 
@@ -92,17 +92,17 @@ class JoystickButtonsView: UIView, Joystick {
         if isCanClick{
             print("D released")
             delegate?.ControlCommand(descriptor: JoystickDescriptor(axisShift: nil, buttonPressed: nil, buttonReleased: .fourth))
-            HangOnClickDelay()
+            //HangOnClickDelay()
         }
     }
 
 
     //MARK: CLICK DELAY
-
+    //правильно вынести решения об ударах в движок и связать с окончанием анимации предыдущего удара
     //Наложить задержку следующего нажатия
     private func HangOnClickDelay(){
         isCanClick = false
-        clickDelayTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (t) in
+        clickDelayTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (t) in
             self.isCanClick = true
         })
     }

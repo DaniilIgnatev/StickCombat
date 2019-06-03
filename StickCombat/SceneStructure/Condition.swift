@@ -19,14 +19,10 @@ class SceneCondition {
     
     public var status = LobbyStatusEnum.casting
     
-    public var gameTime : TimeInterval = 0.0
-    
-    public var gameEndTime : TimeInterval = 0.0
-    
-    public init(firstX : CGFloat, secondX : CGFloat, endTime : TimeInterval = 0.0){
+    public init(firstX : CGFloat, secondX : CGFloat){
         self.fighter_1 = FighterPresence(id: .first, X: firstX)
         self.fighter_2 = FighterPresence(id: .second, X: secondX)
-        self.gameEndTime = endTime
+        //self.gameEndTime = endTime
     }
 }
 

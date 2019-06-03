@@ -125,10 +125,10 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
 
     ///Осталось играть минут
-    private var GameTimeLeft_Minutes : Int = 0
+    private var GameTimeLeft_Minutes : Int = 2
 
     ///Осталось играть секунд
-    private var GameTimeLeft_Seconds : Int = 10
+    private var GameTimeLeft_Seconds : Int = 0
 
 
     private var gameTimer : Timer? = nil
@@ -147,7 +147,7 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
 
         if GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds == 0{
             stopGameTimer()
-            requestStatusAction(StatusAction(fighter: self.fighterID, statusID: .over))
+            requestStatusAction(StatusAction(fighter: self.fighterID, statusID: .surrender))
         }
 
         delegate?.gameTimer(timeLeft: (GameTimeLeft_Minutes, GameTimeLeft_Seconds))
@@ -303,11 +303,11 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     func requestStatusAction(_ action : StatusAction) {
         if action.statusID == .surrender{
             if action.statusID != .surrender && action.statusID != .defeat && action.statusID != .over && action.statusID != .victory{
-                 SceneDescriptor.status = .defeat//поражение не требует подтверждения
+                SceneDescriptor.status = .defeat//поражение не требует подтверждения
             }
 
             //остановка движка по таймеру
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (_) in
+            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (_) in
                 self.StopProcessingLogic()
             }
         }
@@ -494,17 +494,12 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         let opponentFighter = opponentFighterDescriptor
 
 
-        if myFighter.hp != 0 && opponentFighter.hp != 0{
-            self.sceneDescriptor.status = .draw
+        //уточнение итогов окончания матча
+        if  myFighter.hp <= opponentFighter.hp{
+            self.sceneDescriptor.status = .defeat
         }
         else{
-            //уточнение итогов окончания матча
-            if  myFighter.hp <= opponentFighter.hp{
-                self.sceneDescriptor.status = .defeat
-            }
-            else{
-                self.sceneDescriptor.status = .victory
-            }
+            self.sceneDescriptor.status = .victory
         }
 
     }
@@ -513,16 +508,25 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     private func processSurrenderStatusAnswer(){
         stopGameTimer()
 
-        if sceneDescriptor.status != .over && sceneDescriptor.status != .defeat && sceneDescriptor.status != .victory{
-            sceneDescriptor.status = .surrender
+        if sceneDescriptor.status == .over || sceneDescriptor.status == .fight || sceneDescriptor.status == .defeat || sceneDescriptor.status == .victory{
+            //блокировка от установления статуса surrender, у перечисленных статусов ниже приоритет выше
+            return
         }
+        else{
+            if sceneDescriptor.status == .fight && GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds < 2{//таймер игры закончился -- ничья
+                sceneDescriptor.status = .draw
+                return
+            }
+        }
+
+        sceneDescriptor.status = .surrender
     }
 
 
     private func processConnectionLostStatusAnswer(){
         stopGameTimer()
-        //сдача противника при ее наличии в статусе считается приоритетнее
-        if sceneDescriptor.status != .surrender && sceneDescriptor.status != .over && sceneDescriptor.status != .defeat && sceneDescriptor.status != .victory {
+        //статусы ниже считаются приоритетнее чем потеря соединения или предусматривают ее
+        if sceneDescriptor.status != .surrender && sceneDescriptor.status != .draw && sceneDescriptor.status != .over && sceneDescriptor.status != .defeat && sceneDescriptor.status != .victory {
             self.sceneDescriptor.status = .ConnectionLost
         }
     }
