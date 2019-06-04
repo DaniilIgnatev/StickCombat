@@ -251,4 +251,15 @@ internal enum LobbyStatusEnum : Int{
     case victory = 101//победа
     case defeat = 102//поражение
     case draw = 103//ничья
+
+
+     ///признак завершенной сессии, не заменяется другим статусом
+    func isPersistent() -> Bool {
+        if self == .surrender || self == .draw || self == .over || self == .defeat || self == .victory{
+            return true
+        }
+        else{
+            return false
+        }
+    }
 }

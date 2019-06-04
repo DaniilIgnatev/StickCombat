@@ -302,12 +302,12 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     ///Запрос статуса действия
     func requestStatusAction(_ action : StatusAction) {
         if action.statusID == .surrender{
-            if action.statusID != .surrender && action.statusID != .defeat && action.statusID != .over && action.statusID != .victory{
-                SceneDescriptor.status = .defeat//поражение не требует подтверждения
-            }
+            if !sceneDescriptor.status.isPersistent(){
+                SceneDescriptor.status = .defeat//игрок сдался - поражение
+            }//иначе игрок покинул завершенную сессию
 
             //остановка движка по таймеру
-            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (_) in
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (_) in
                 self.StopProcessingLogic()
             }
         }
@@ -508,25 +508,24 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
     private func processSurrenderStatusAnswer(){
         stopGameTimer()
 
-        if sceneDescriptor.status == .over || sceneDescriptor.status == .defeat || sceneDescriptor.status == .victory{
-            //блокировка от установления статуса surrender, у перечисленных статусов ниже приоритет выше
+        guard !sceneDescriptor.status.isPersistent() else {
             return
         }
-        else{
-            if sceneDescriptor.status == .fight && GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds < 2{//таймер игры закончился -- ничья
-                sceneDescriptor.status = .draw
-                return
-            }
-        }
 
-        sceneDescriptor.status = .surrender
+
+        if sceneDescriptor.status == .fight && GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds < 2{//таймер игры закончился -- ничья
+            sceneDescriptor.status = .draw
+        }
+        else{
+            sceneDescriptor.status = .surrender
+        }
     }
 
 
     private func processConnectionLostStatusAnswer(){
         stopGameTimer()
-        //статусы ниже считаются приоритетнее чем потеря соединения или предусматривают ее
-        if sceneDescriptor.status != .surrender && sceneDescriptor.status != .draw && sceneDescriptor.status != .over && sceneDescriptor.status != .defeat && sceneDescriptor.status != .victory {
+
+        if !sceneDescriptor.status.isPersistent() {
             self.sceneDescriptor.status = .ConnectionLost
         }
     }
