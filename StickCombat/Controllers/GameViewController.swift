@@ -34,15 +34,12 @@ class GameViewController: UIViewController, LobbyDelegate  {
 
 
     @IBAction func surrenderGame(_ sender: Any) {
-        //if self.combatScene.Logic?.SceneDescriptor.status != LobbyStatusEnum.pause{
-        
-            combatScene.RequestStatus(status: .surrender)
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
-                let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
-                let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
-                self.present(destinationViewController, animated: true, completion: nil)
-            }
-        //}
+        combatScene.RequestStatus(status: .surrender)
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+            let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
+            let destinationViewController = menuStoryboard.instantiateViewController(withIdentifier: "MenuViewController")
+            self.present(destinationViewController, animated: true, completion: nil)
+        }
     }
 
 
@@ -53,13 +50,13 @@ class GameViewController: UIViewController, LobbyDelegate  {
     @IBOutlet weak var firstFighterButtons : JoystickButtonsView!
 
 
-    func hideJoysticks(){
+    private func hideJoysticks(){
         self.firstFighterStick.isHidden = true
         self.firstFighterButtons.isHidden = true
     }
 
 
-    func showJoysticks(){
+    private func showJoysticks(){
         self.firstFighterStick.isHidden = false
         self.firstFighterButtons.isHidden = false
     }
@@ -192,7 +189,7 @@ class GameViewController: UIViewController, LobbyDelegate  {
         case .pause:
             print("Статус: pause")
             View.presentScene(pauseScene,transition: .doorsCloseHorizontal(withDuration: 0.2))
-             hideJoysticks()
+            hideJoysticks()
             View.presentScene(pauseScene)
         case .victory:
             print("Статус: victory")
