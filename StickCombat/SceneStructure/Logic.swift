@@ -493,7 +493,6 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         let myFighter = playingFighterDescriptor
         let opponentFighter = opponentFighterDescriptor
 
-
         //уточнение итогов окончания матча
         if  myFighter.hp <= opponentFighter.hp{
             self.sceneDescriptor.status = .defeat
@@ -501,23 +500,23 @@ class ServerLogicManager: LogicManager, WebSocketDelegate, WebSocketPongDelegate
         else{
             self.sceneDescriptor.status = .victory
         }
-
     }
 
 
     private func processSurrenderStatusAnswer(){
         stopGameTimer()
 
-        guard !sceneDescriptor.status.isPersistent() else {
-            return
-        }
-
-
-        if sceneDescriptor.status == .fight && GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds < 2{//таймер игры закончился -- ничья
+        //ничья наступает при генерации команды surrender.
+        //surrender у вызывающего = поражение по умолчанию, смена статуса на ничью у вызывающего определяется таймером игры
+        //ничья у принимающего может возникнуть только во время поединка
+        if (sceneDescriptor.status == .fight || sceneDescriptor.status == .defeat) && GameTimeLeft_Minutes == 0 && GameTimeLeft_Seconds < 2{//таймер игры закончился -- ничья
             sceneDescriptor.status = .draw
         }
         else{
-            sceneDescriptor.status = .surrender
+            //во всех остальных случаях противник сдался, если иной конечный статус не установлен
+            if !sceneDescriptor.status.isPersistent(){
+                sceneDescriptor.status = .surrender
+            }
         }
     }
 
