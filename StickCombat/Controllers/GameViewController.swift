@@ -159,50 +159,51 @@ class GameViewController: UIViewController, LobbyDelegate  {
     func statusChanged(_ status: LobbyStatusEnum) {
         switch status {
         case .fight:
-            print("Статус: fight")
+            //print("Статус: fight")
             View.presentScene(combatScene,transition: .doorsOpenHorizontal(withDuration: 0.2))
             showJoysticks()
             View.presentScene(combatScene)
         case .casting:
-            print("Статус: casting")
+            //print("Статус: casting")
             View.presentScene(receptionScene,transition: .doorsCloseHorizontal(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(receptionScene)
         case .ConnectionLost:
-            print("Статус: connection lost")
+            //print("Статус: connection lost")
             View.presentScene(lostConnectionScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(lostConnectionScene)
         case .over:
-            print("Статус: connection over")
-            print("Ошибка. Должен быть перевод на surrender,victory или defeat")
+            //print("Статус: connection over")
+            //print("Ошибка. Должен быть перевод на surrender,victory или defeat")
+            break
         case .surrender:
-            print("Статус: surrender")
+            //print("Статус: surrender")
             View.presentScene(surrenderScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(surrenderScene)
         case .refused:
-            print("Статус: connection refused")
+            //print("Статус: connection refused")
             View.presentScene(refusedConnectionScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(refusedConnectionScene)
         case .pause:
-            print("Статус: pause")
+            //print("Статус: pause")
             View.presentScene(pauseScene,transition: .doorsCloseHorizontal(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(pauseScene)
         case .victory:
-            print("Статус: victory")
+            //print("Статус: victory")
             View.presentScene(victoryScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(victoryScene)
         case .defeat:
-            print("Статус: defeat")
+            //print("Статус: defeat")
             View.presentScene(defeatScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(defeatScene)
         case .draw:
-            print("Статус: draw")
+            //print("Статус: draw")
             View.presentScene(drawScene,transition: .flipVertical(withDuration: 0.2))
             hideJoysticks()
             View.presentScene(drawScene)
@@ -251,21 +252,21 @@ class GameViewController: UIViewController, LobbyDelegate  {
 
     //MARK: VIEW PREFERENCES
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
     
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .landscape
-        } else {
-            return .landscape
-        }
+        return .landscape
     }
     
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        return .landscapeLeft
     }
     
     
@@ -280,4 +281,5 @@ class GameViewController: UIViewController, LobbyDelegate  {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         firstFighterStick?.touchEndedInSuperView(touches.first!,superpos : touches.first!.location(in: view))
     }
+
 }

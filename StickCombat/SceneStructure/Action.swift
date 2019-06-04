@@ -255,7 +255,7 @@ internal enum LobbyStatusEnum : Int{
 
      ///признак завершенной сессии, не заменяется другим статусом
     func isPersistent() -> Bool {
-        if self == .surrender || self == .draw || self == .over || self == .defeat || self == .victory{
+        if self == .surrender || self == .draw || self == .over || self == .defeat || self == .victory || self == .refused{
             return true
         }
         else{

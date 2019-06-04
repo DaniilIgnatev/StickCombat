@@ -881,7 +881,7 @@
     </scenes>
     <resources>
         <image name="BackButton" width="40" height="40"/>
-        <image name="ExitButton" width="40" height="40"/>
+        <image name="ExitButton" width="128" height="128"/>
         <image name="Help" width="40" height="40"/>
         <image name="MenuButton" width="150" height="42"/>
         <image name="Pause" width="128" height="128"/>
